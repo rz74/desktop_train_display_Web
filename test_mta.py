@@ -1,98 +1,50 @@
-"""
-Test script for NYC Subway (MTA) real-time arrivals using the underground library.
-Tests multiple stations on the ACE lines.
-"""
+﻿from underground import SubwayFeed
+from mappings import get_mta_station_name, get_mta_direction, calculate_minutes_until, MTA_LINES
 
-from underground import metadata, SubwayFeed
-from datetime import datetime, timezone
-
-def get_station_arrivals(feed, stop_id, station_name):
-    """Get arrivals for a specific station."""
+def get_station_arrivals(feed, stop_id, station_name=None):
     arrivals = []
-    
+    if station_name is None:
+        station_name = get_mta_station_name(stop_id)
     for entity in feed.entity:
         if hasattr(entity, 'trip_update') and entity.trip_update:
             trip = entity.trip_update
             route_id = trip.trip.route_id
-            
-            # Get destination (last stop)
-            destination = "Unknown"
-            if trip.stop_time_update and len(trip.stop_time_update) > 0:
-                last_stop = trip.stop_time_update[-1].stop_id
-                try:
-                    destination = metadata.stops.get(last_stop, {}).get('stop_name', last_stop)
-                except:
-                    destination = last_stop
-            
-            # Check each stop time update for our target stop
+            if route_id not in MTA_LINES:
+                continue
             if trip.stop_time_update:
                 for stop_update in trip.stop_time_update:
                     if stop_update.stop_id.startswith(stop_id):
                         if hasattr(stop_update, 'arrival') and stop_update.arrival:
                             arrival_time = stop_update.arrival.time
-                            
-                            # Handle both timestamp (int) and datetime objects
-                            if isinstance(arrival_time, datetime):
-                                now = datetime.now(timezone.utc)
-                                if arrival_time.tzinfo is None:
-                                    arrival_time = arrival_time.replace(tzinfo=timezone.utc)
-                                minutes = int((arrival_time - now).total_seconds() / 60)
-                            else:
-                                now = int(datetime.now().timestamp())
-                                minutes = int((arrival_time - now) / 60)
-                            
+                            minutes = calculate_minutes_until(arrival_time)
                             if minutes >= 0:
-                                sort_key = arrival_time.timestamp() if isinstance(arrival_time, datetime) else arrival_time
-                                arrivals.append({
-                                    'line': route_id,
-                                    'destination': destination,
-                                    'minutes': minutes,
-                                    'time': sort_key
-                                })
-    
-    # Sort by arrival time and get next 5
+                                direction = get_mta_direction(stop_update.stop_id, route_id)
+                                arrivals.append({'line': route_id, 'direction': direction, 'minutes': minutes, 'time': arrival_time})
     arrivals.sort(key=lambda x: x['time'])
     next_arrivals = arrivals[:5]
-    
-    # Print results
-    print(f"NYC SUBWAY - {station_name} ({stop_id})")
-    print("-" * 60)
-    
+    print(f'MTA - {station_name} ({stop_id})')
+    print('-' * 60)
     if next_arrivals:
         for arrival in next_arrivals:
-            dest = arrival['destination']
-            if not any(char.isalpha() and char.islower() for char in dest):
-                dest = f"Stop {dest}"
-            print(f"  [{arrival['line']}] {dest[:28]:28s} - {arrival['minutes']} min")
-        print(f"  Total: {len(arrivals)} arrivals")
+            time_str = 'Now' if arrival['minutes'] == 0 else f"{arrival['minutes']} min"
+            print(f"  [{arrival['line']}] {arrival['direction']:25s} - {time_str}")
+        print(f'  Total: {len(arrivals)} arrivals')
     else:
-        print("  No upcoming arrivals found.")
+        print('  No arrivals')
     print()
 
-def get_mta_arrivals():
-    # Initialize the ACE subway feed
-    feed = SubwayFeed.get("A")
-    
-    # Test multiple stations
-    stations = [
-        ("A27", "Fulton St"),
-        ("A32", "34 St-Penn Station"),
-        ("A42", "42 St-Port Authority")
-    ]
-    
-    print("=" * 60)
-    print("NYC SUBWAY - Testing Multiple Stations")
-    print("=" * 60)
+def test_mta_stations():
+    print('=' * 60)
+    print('MTA SUBWAY - Real-time Test')
+    print('=' * 60)
     print()
-    
-    for stop_id, station_name in stations:
-        get_station_arrivals(feed, stop_id, station_name)
-    
-    print("=" * 60)
+    for feed_name, stop_id, name in [('A', 'A27', 'Fulton St'), ('A', 'A32', '34 St'), ('L', 'L03', '14 St')]:
+        try:
+            feed = SubwayFeed.get(feed_name)
+            get_station_arrivals(feed, stop_id, name)
+        except Exception as e:
+            print(f'Error: {e}')
+    print('=' * 60)
 
-if __name__ == "__main__":
-    try:
-        get_mta_arrivals()
-    except Exception as e:
-        print(f"Error fetching MTA data: {e}")
-        print("\nMake sure you have an active internet connection.")
+if __name__ == '__main__':
+    test_mta_stations()

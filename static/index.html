@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Ink Transit Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: white;
+            color: black;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        /* Selection Page */
+        .page {
+            display: none;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 3px solid black;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            border: 3px solid black;
+            background: white;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border: 3px solid black;
+        }
+
+        .search-results {
+            border: 2px solid black;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .search-result {
+            padding: 15px;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .search-result:hover {
+            background: black;
+            color: white;
+        }
+
+        .search-result:last-child {
+            border-bottom: none;
+        }
+
+        .line-selector {
+            border: 2px solid black;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .line-checkbox {
+            display: block;
+            padding: 12px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            border: 2px solid black;
+            background: white;
+        }
+
+        .line-checkbox:hover {
+            background: black;
+            color: white;
+        }
+
+        .line-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background: white;
+            color: black;
+            border: 3px solid black;
+        }
+
+        button.secondary {
+            background: white;
+            color: black;
+            border: 3px solid black;
+        }
+
+        button.secondary:hover {
+            background: black;
+            color: white;
+        }
+
+        /* Dashboard Page */
+        #dashboard {
+            padding: 30px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 4px solid black;
+            padding-bottom: 20px;
+        }
+
+        .dashboard-title {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .dashboard-time {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .arrivals-container {
+            font-size: 22px;
+        }
+
+        .arrival-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 10px;
+            border-bottom: 2px solid black;
+            font-weight: bold;
+        }
+
+        .arrival-row:nth-child(odd) {
+            background: white;
+        }
+
+        .arrival-row:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .arrival-agency {
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .arrival-route {
+            width: 80px;
+            font-weight: bold;
+        }
+
+        .arrival-destination {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .arrival-time {
+            width: 120px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .no-arrivals {
+            text-align: center;
+            padding: 50px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .back-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Selection Page -->
+    <div id="selection" class="page active">
+        <h1>Transit Dashboard Setup</h1>
+        
+        <h2>1. Search for Station</h2>
+        <input type="text" id="stationSearch" placeholder="Type station name (e.g., 'WTC', '14th St')">
+        <div id="searchResults" class="search-results"></div>
+
+        <div id="lineSelection" style="display: none;">
+            <h2>2. Select Lines to Watch</h2>
+            <div id="linesContainer" class="line-selector"></div>
+            <button onclick="saveAndGo()">Watch These Lines</button>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard" class="page">
+        <div class="dashboard-header">
+            <div class="dashboard-title" id="stationName">Loading...</div>
+            <div class="dashboard-time" id="currentTime">--:--</div>
+        </div>
+        
+        <div id="arrivalsContainer" class="arrivals-container">
+            <div class="loading">Loading arrivals...</div>
+        </div>
+
+        <button class="secondary back-button" onclick="goBack()">Back to Setup</button>
+    </div>
+
+    <script>
+        let selectedStation = null;
+        let selectedLines = [];
+        let refreshTimer = null;
+
+        // Station search with debouncing
+        let searchTimeout = null;
+        document.getElementById('stationSearch').addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            const query = e.target.value.trim();
+            
+            if (query.length < 2) {
+                document.getElementById('searchResults').innerHTML = '';
+                return;
+            }
+
+            searchTimeout = setTimeout(() => {
+                searchStations(query);
+            }, 300);
+        });
+
+        async function searchStations(query) {
+            try {
+                const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+                const stations = await response.json();
+                
+                const resultsDiv = document.getElementById('searchResults');
+                if (stations.length === 0) {
+                    resultsDiv.innerHTML = '<div class="search-result">No stations found</div>';
+                    return;
+                }
+
+                resultsDiv.innerHTML = stations.map(station => `
+                    <div class="search-result" onclick='selectStation(${JSON.stringify(station)})'>
+                        ${station.name} [${station.type}]
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Search error:', error);
+            }
+        }
+
+        async function selectStation(station) {
+            selectedStation = station;
+            document.getElementById('searchResults').innerHTML = '';
+            document.getElementById('stationSearch').value = station.name;
+            
+            // Load lines for this station
+            try {
+                const response = await fetch(`/api/lines?station_id=${encodeURIComponent(station.id)}`);
+                const lines = await response.json();
+                
+                const linesContainer = document.getElementById('linesContainer');
+                linesContainer.innerHTML = lines.map(line => `
+                    <label class="line-checkbox">
+                        <input type="checkbox" value="${line.line_id}" checked>
+                        ${line.line_name}
+                    </label>
+                `).join('');
+                
+                document.getElementById('lineSelection').style.display = 'block';
+            } catch (error) {
+                console.error('Lines error:', error);
+            }
+        }
+
+        function saveAndGo() {
+            // Get selected lines
+            const checkboxes = document.querySelectorAll('.line-checkbox input:checked');
+            selectedLines = Array.from(checkboxes).map(cb => cb.value);
+            
+            if (selectedLines.length === 0) {
+                alert('Please select at least one line to watch');
+                return;
+            }
+
+            // Save to localStorage
+            localStorage.setItem('selectedStation', JSON.stringify(selectedStation));
+            localStorage.setItem('selectedLines', JSON.stringify(selectedLines));
+            
+            // Switch to dashboard
+            showDashboard();
+        }
+
+        function showDashboard() {
+            document.getElementById('selection').classList.remove('active');
+            document.getElementById('dashboard').classList.add('active');
+            
+            // Update station name
+            document.getElementById('stationName').textContent = selectedStation.name;
+            
+            // Start refresh cycle
+            updateTime();
+            refreshData();
+            scheduleNextRefresh();
+        }
+
+        function goBack() {
+            document.getElementById('dashboard').classList.remove('active');
+            document.getElementById('selection').classList.add('active');
+            
+            // Stop refresh timer
+            if (refreshTimer) {
+                clearTimeout(refreshTimer);
+                refreshTimer = null;
+            }
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12;
+            const displayMinutes = minutes.toString().padStart(2, '0');
+            
+            document.getElementById('currentTime').textContent = 
+                `${displayHours}:${displayMinutes} ${ampm}`;
+        }
+
+        async function refreshData() {
+            updateTime();
+            
+            try {
+                const response = await fetch('/api/arrivals', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        station_id: selectedStation.id,
+                        selected_lines: selectedLines
+                    })
+                });
+                
+                const data = await response.json();
+                displayArrivals(data.arrivals);
+            } catch (error) {
+                console.error('Refresh error:', error);
+                document.getElementById('arrivalsContainer').innerHTML = 
+                    '<div class="no-arrivals">Error loading arrivals</div>';
+            }
+        }
+
+        function displayArrivals(arrivals) {
+            const container = document.getElementById('arrivalsContainer');
+            
+            if (!arrivals || arrivals.length === 0) {
+                container.innerHTML = '<div class="no-arrivals">No upcoming arrivals</div>';
+                return;
+            }
+
+            container.innerHTML = arrivals.slice(0, 20).map(arrival => {
+                const minutesText = arrival.minutes === 0 ? 'Due' : `${arrival.minutes} min`;
+                const destination = arrival.destination || '';
+                
+                return `
+                    <div class="arrival-row">
+                        <div class="arrival-agency">[${arrival.agency}]</div>
+                        <div class="arrival-route">${arrival.route}</div>
+                        <div class="arrival-destination">${destination}</div>
+                        <div class="arrival-time">${minutesText}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function scheduleNextRefresh() {
+            // Calculate time until next minute
+            const now = new Date();
+            const msUntilNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
+            
+            // Wait until next minute, then refresh every 60 seconds
+            refreshTimer = setTimeout(() => {
+                refreshData();
+                // Now set up regular interval perfectly synced to the minute
+                refreshTimer = setInterval(refreshData, 60000);
+            }, msUntilNextMinute);
+        }
+
+        // Load saved configuration on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedStation = localStorage.getItem('selectedStation');
+            const savedLines = localStorage.getItem('selectedLines');
+            
+            if (savedStation && savedLines) {
+                selectedStation = JSON.parse(savedStation);
+                selectedLines = JSON.parse(savedLines);
+                
+                // Show dashboard immediately
+                showDashboard();
+            }
+        });
+    </script>
+</body>
+</html>
