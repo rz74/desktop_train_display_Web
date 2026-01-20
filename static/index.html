@@ -192,13 +192,14 @@
         }
 
         .arrival-route {
-            width: 80px;
+            width: 60px;
             font-weight: bold;
         }
 
         .arrival-destination {
             flex: 1;
-            padding-left: 20px;
+            padding-left: 15px;
+            font-weight: bold;
         }
 
         .arrival-time {
@@ -238,6 +239,15 @@
         <div id="lineSelection" style="display: none;">
             <h2>2. Select Lines to Watch</h2>
             <div id="linesContainer" class="line-selector"></div>
+            
+            <h2>3. Set Time Filter</h2>
+            <label for="maxMinutes" style="font-size: 18px; display: block; margin-bottom: 10px;">
+                Show arrivals within: 
+            </label>
+            <input type="number" id="maxMinutes" min="5" max="60" value="20" 
+                   style="width: 100px; padding: 10px; font-size: 20px; border: 3px solid black; margin-bottom: 20px;">
+            <span style="font-size: 18px; margin-left: 10px;">minutes</span>
+            
             <button onclick="saveAndGo()">Watch These Lines</button>
         </div>
     </div>
@@ -259,7 +269,9 @@
     <script>
         let selectedStation = null;
         let selectedLines = [];
+        let maxMinutes = 20;
         let refreshTimer = null;
+        let refreshInterval = null;
 
         // Station search with debouncing
         let searchTimeout = null;
@@ -332,9 +344,13 @@
                 return;
             }
 
+            // Get max minutes
+            maxMinutes = parseInt(document.getElementById('maxMinutes').value) || 20;
+            
             // Save to localStorage
             localStorage.setItem('selectedStation', JSON.stringify(selectedStation));
             localStorage.setItem('selectedLines', JSON.stringify(selectedLines));
+            localStorage.setItem('maxMinutes', maxMinutes);
             
             // Switch to dashboard
             showDashboard();
@@ -357,10 +373,14 @@
             document.getElementById('dashboard').classList.remove('active');
             document.getElementById('selection').classList.add('active');
             
-            // Stop refresh timer
+            // Stop refresh timers
             if (refreshTimer) {
                 clearTimeout(refreshTimer);
                 refreshTimer = null;
+            }
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+                refreshInterval = null;
             }
         }
 
@@ -387,7 +407,8 @@
                     },
                     body: JSON.stringify({
                         station_id: selectedStation.id,
-                        selected_lines: selectedLines
+                        selected_lines: selectedLines,
+                        max_minutes: maxMinutes
                     })
                 });
                 
@@ -424,15 +445,27 @@
         }
 
         function scheduleNextRefresh() {
-            // Calculate time until next minute
-            const now = new Date();
-            const msUntilNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
+            // Clear any existing timers
+            if (refreshTimer) clearTimeout(refreshTimer);
+            if (refreshInterval) clearInterval(refreshInterval);
             
-            // Wait until next minute, then refresh every 60 seconds
+            // Calculate time until next minute (XX:XX:00)
+            const now = new Date();
+            const secondsUntilNextMinute = 60 - now.getSeconds();
+            const msUntilNextMinute = secondsUntilNextMinute * 1000 - now.getMilliseconds();
+            
+            console.log(`Next refresh in ${secondsUntilNextMinute} seconds (at :00)`);
+            
+            // Wait until the start of next minute
             refreshTimer = setTimeout(() => {
+                console.log('Refreshing on the minute!');
                 refreshData();
-                // Now set up regular interval perfectly synced to the minute
-                refreshTimer = setInterval(refreshData, 60000);
+                
+                // Now set up interval to refresh every 60 seconds, perfectly synced
+                refreshInterval = setInterval(() => {
+                    console.log('Scheduled refresh at :00');
+                    refreshData();
+                }, 60000);
             }, msUntilNextMinute);
         }
 
@@ -440,10 +473,12 @@
         window.addEventListener('DOMContentLoaded', () => {
             const savedStation = localStorage.getItem('selectedStation');
             const savedLines = localStorage.getItem('selectedLines');
+            const savedMaxMinutes = localStorage.getItem('maxMinutes');
             
             if (savedStation && savedLines) {
                 selectedStation = JSON.parse(savedStation);
                 selectedLines = JSON.parse(savedLines);
+                maxMinutes = savedMaxMinutes ? parseInt(savedMaxMinutes) : 20;
                 
                 // Show dashboard immediately
                 showDashboard();

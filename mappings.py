@@ -80,28 +80,70 @@ def get_mta_station_name(stop_id):
 # ============================================================================
 
 PATH_STATIONS = {
-    "26722": "14th St",
-    "26723": "23rd St",
-    "26724": "33rd St",
-    "26725": "9th St",
-    "26726": "Christopher St",
+    "26722": "14th Street",
+    "26723": "23rd Street",
+    "26724": "33rd Street",
+    "26725": "9th Street",
+    "26726": "Christopher Street",
     "26727": "Exchange Place",
-    "26728": "Grove St",
+    "26728": "Grove Street",
     "26729": "Harrison",
     "26730": "Hoboken",
     "26731": "Journal Square",
-    "26732": "Newark",
-    "26733": "Newport",
+    "26732": "Newport",
+    "26733": "Newark",
     "26734": "World Trade Center"
 }
 
 PATH_ROUTES = {
-    "859": "Green (HOB-WTC)",
-    "860": "Red (NWK-WTC)",
+    "862": "Red (NWK-WTC)",
     "861": "Yellow (JSQ-33)",
-    "862": "Blue (JSQ-33 via HOB)",
-    "1024": "Blue (JSQ-33 via HOB)"
+    "1024": "Orange (JSQ-33 via HOB)",
+    "860": "Green (HOB-WTC)",
+    "859": "Blue (HOB-33)"
 }
+
+# Abbreviated PATH route names for e-ink display
+PATH_ROUTES_ABBREV = {
+    "862": "RD",
+    "861": "YL",
+    "1024": "OR",
+    "860": "GN",
+    "859": "BL"
+}
+
+# PATH direction mappings based on direction_id from GTFS-RT
+def get_path_direction(route_id, direction_id):
+    """Get PATH direction based on route and direction_id from GTFS-RT.
+    
+    direction_id mapping (based on terminal analysis):
+    - 0 = toward Manhattan/east terminal
+    - 1 = toward NJ/west terminal
+    """
+    route_id_str = str(route_id)
+    
+    # Route 862: Red (NWK-WTC)
+    if route_id_str == "862":
+        return "To WTC" if direction_id == 0 else "To Newark"
+    
+    # Route 861: Yellow (JSQ-33)
+    elif route_id_str == "861":
+        return "To 33rd St" if direction_id == 0 else "To Journal Sq"
+    
+    # Route 1024: Orange (JSQ-33 via HOB)
+    elif route_id_str == "1024":
+        return "To 33rd St" if direction_id == 0 else "To Journal Sq"
+    
+    # Route 860: Green (HOB-WTC)
+    elif route_id_str == "860":
+        return "To WTC" if direction_id == 0 else "To Hoboken"
+    
+    # Route 859: Blue (HOB-33)
+    elif route_id_str == "859":
+        return "To 33rd St" if direction_id == 0 else "To Hoboken"
+    
+    return ""
+
 
 def get_path_station_name(stop_id):
     """Get PATH station name from stop ID."""
@@ -110,19 +152,6 @@ def get_path_station_name(stop_id):
 def get_path_route_name(route_id):
     """Get PATH route name with color coding."""
     return PATH_ROUTES.get(route_id, f"Route {route_id}")
-
-def get_path_direction(route_id):
-    """Get general direction description for PATH route."""
-    route_name = PATH_ROUTES.get(route_id, "")
-    
-    if "HOB-WTC" in route_name:
-        return "Manhattan"
-    elif "NWK-WTC" in route_name:
-        return "Manhattan"
-    elif "JSQ-33" in route_name:
-        return "Manhattan"
-    else:
-        return "Various"
 
 # ============================================================================
 # TIMEZONE UTILITIES

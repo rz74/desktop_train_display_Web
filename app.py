@@ -17,8 +17,11 @@ from google.transit import gtfs_realtime_pb2
 from mappings import (
     PATH_STATIONS,
     PATH_ROUTES,
+    PATH_ROUTES_ABBREV,
+    get_path_direction,
     MTA_LINES,
     get_mta_direction,
+    get_mta_station_name,
     calculate_minutes_until,
     get_eastern_time
 )
@@ -34,28 +37,117 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Station mappings
+# Station mappings - Major MTA stations (using correct GTFS stop IDs)
 MTA_STATIONS = {
-    "world trade center": [("E01", "A", "World Trade Center")],
-    "wtc": [("E01", "A", "World Trade Center")],
-    "fulton": [("A27", "A", "Fulton St")],
-    "fulton st": [("A27", "A", "Fulton St")],
-    "14th st": [("L03", "L", "14 St-Union Sq"), ("R20", "N", "14 St-Union Sq")],
-    "14 st": [("L03", "L", "14 St-Union Sq")],
-    "union square": [("L03", "L", "14 St-Union Sq"), ("R20", "N", "14 St-Union Sq")],
-    "union sq": [("L03", "L", "14 St-Union Sq")],
-    "23rd st": [("A25", "A", "23 St"), ("L05", "L", "23 St")],
-    "23 st": [("A25", "A", "23 St"), ("L05", "L", "23 St")],
-    "34th st": [("A32", "A", "34 St-Penn Station")],
-    "34 st": [("A32", "A", "34 St-Penn Station")],
-    "penn station": [("A32", "A", "34 St-Penn Station")],
-    "33rd st": [("A32", "A", "34 St-Penn Station")],
-    "33 st": [("A32", "A", "34 St-Penn Station")],
-    "42nd st": [("A42", "A", "42 St-Port Authority"), ("127", "1", "Times Sq-42 St")],
-    "42 st": [("A42", "A", "42 St-Port Authority"), ("127", "1", "Times Sq-42 St")],
-    "times square": [("127", "1", "Times Sq-42 St"), ("A42", "A", "42 St-Port Authority")],
-    "times sq": [("127", "1", "Times Sq-42 St")],
+    # Lower Manhattan
+    "world trade center": [("E01", "A", "World Trade Center"), ("228", "1", "WTC Cortlandt")],
+    "wtc": [("E01", "A", "World Trade Center"), ("228", "1", "WTC Cortlandt")],
+    "south ferry": [("142", "1", "South Ferry")],
+    "south": [("142", "1", "South Ferry")],
+    "ferry": [("142", "1", "South Ferry")],
+    "whitehall": [("R27", "N", "Whitehall St-South Ferry")],
+    "bowling green": [("R28", "N", "Bowling Green")],
+    "wall street": [("R29", "N", "Wall St"), ("423", "A", "Wall St")],
+    "wall st": [("R29", "N", "Wall St"), ("423", "A", "Wall St")],
+    "rector": [("R30", "N", "Rector St")],
+    "rector st": [("R30", "N", "Rector St")],
+    "cortlandt": [("228", "1", "WTC Cortlandt")],
+    "cortlandt st": [("228", "1", "WTC Cortlandt")],
+    "city hall": [("R32", "N", "City Hall")],
+    "brooklyn bridge": [("R33", "N", "Brooklyn Bridge-City Hall"), ("423", "A", "Brooklyn Bridge")],
+    "fulton": [("A27", "A", "Fulton St"), ("137", "1", "Fulton St")],
+    "fulton st": [("A27", "A", "Fulton St"), ("137", "1", "Fulton St")],
+    "chambers": [("A31", "A", "Chambers St"), ("232", "1", "Chambers St")],
+    "chambers st": [("A31", "A", "Chambers St"), ("232", "1", "Chambers St")],
+    "canal": [("A32", "A", "Canal St"), ("R21", "N", "Canal St"), ("238", "1", "Canal St")],
+    "canal st": [("A32", "A", "Canal St"), ("R21", "N", "Canal St")],
+    "spring": [("A33", "A", "Spring St")],
+    "spring st": [("A33", "A", "Spring St")],
+    "houston": [("R22", "N", "Prince St"), ("239", "1", "Houston St")],
+    "prince": [("R22", "N", "Prince St")],
+    "bleecker": [("D19", "1", "Bleecker St")],
+    "bleecker st": [("D19", "1", "Bleecker St")],
+    "astor": [("D20", "1", "Astor Pl")],
+    "astor place": [("D20", "1", "Astor Pl")],
+    "christopher": [("D21", "1", "Christopher St-Sheridan Sq"), ("233", "1", "Christopher St")],
+    "christopher st": [("233", "1", "Christopher St")],
+    "sheridan": [("D21", "1", "Christopher St-Sheridan Sq")],
+    
+    # Midtown
+    "14th st": [("L03", "L", "14 St-Union Sq"), ("R20", "N", "14 St-Union Sq"), ("635", "1", "14 St")],
+    "14 st": [("L03", "L", "14 St-Union Sq"), ("635", "1", "14 St")],
+    "union square": [("L03", "L", "14 St-Union Sq"), ("R20", "N", "14 St-Union Sq"), ("635", "1", "14 St-Union Sq")],
+    "union sq": [("L03", "L", "14 St-Union Sq"), ("635", "1", "14 St-Union Sq")],
+    "23rd st": [("A25", "A", "23 St"), ("L05", "L", "23 St"), ("R19", "N", "23 St"), ("120", "1", "23 St")],
+    "23 st": [("A25", "A", "23 St"), ("120", "1", "23 St")],
+    "28th st": [("R18", "N", "28 St"), ("122", "1", "28 St")],
+    "28 st": [("R18", "N", "28 St"), ("122", "1", "28 St")],
+    "34th st": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
+    "34 st": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
+    "penn station": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
+    "33rd st": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
+    "33 st": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
+    "42nd st": [("A42", "A", "42 St-Port Authority"), ("725", "1", "Times Sq-42 St")],
+    "42 st": [("A42", "A", "42 St-Port Authority"), ("725", "1", "Times Sq-42 St")],
+    "times square": [("725", "1", "Times Sq-42 St"), ("A42", "A", "42 St-Port Authority")],
+    "times sq": [("725", "1", "Times Sq-42 St")],
     "port authority": [("A42", "A", "42 St-Port Authority")],
+    "grand central": [("631", "1", "Grand Central-42 St"), ("902", "1", "Grand Central")],
+    "grand central 42": [("631", "1", "Grand Central-42 St"), ("902", "1", "Grand Central")],
+    "50th st": [("A41", "A", "50 St"), ("132", "1", "50 St")],
+    "50 st": [("A41", "A", "50 St"), ("132", "1", "50 St")],
+    "59th st": [("A40", "A", "59 St-Columbus Circle"), ("R16", "N", "Lexington Av/59 St"), ("137", "1", "59 St-Columbus Circle")],
+    "59 st": [("A40", "A", "59 St-Columbus Circle"), ("137", "1", "59 St-Columbus Circle")],
+    "columbus circle": [("A40", "A", "59 St-Columbus Circle"), ("137", "1", "59 St-Columbus Circle")],
+    "lexington": [("R16", "N", "Lexington Av/59 St")],
+    
+    # Upper Manhattan  
+    "66th st": [("115", "1", "66 St-Lincoln Center")],
+    "66 st": [("115", "1", "66 St-Lincoln Center")],
+    "lincoln center": [("115", "1", "66 St-Lincoln Center")],
+    "72nd st": [("116", "1", "72 St"), ("R15", "N", "72 St")],
+    "72 st": [("116", "1", "72 St")],
+    "79th st": [("117", "1", "79 St")],
+    "79 st": [("117", "1", "79 St")],
+    "86th st": [("118", "1", "86 St"), ("R14", "N", "86 St")],
+    "86 st": [("118", "1", "86 St")],
+    "96th st": [("119", "1", "96 St"), ("R13", "N", "96 St")],
+    "96 st": [("119", "1", "96 St")],
+    "103rd st": [("120", "1", "103 St")],
+    "103 st": [("120", "1", "103 St")],
+    "110th st": [("121", "1", "110 St-Cathedral Pkwy")],
+    "110 st": [("121", "1", "110 St")],
+    "cathedral": [("121", "1", "110 St-Cathedral Pkwy")],
+    "116th st": [("122", "1", "116 St-Columbia University")],
+    "116 st": [("122", "1", "116 St")],
+    "columbia": [("122", "1", "116 St-Columbia University")],
+    "125th st": [("123", "1", "125 St"), ("A06", "A", "125 St")],
+    "125 st": [("123", "1", "125 St")],
+    "harlem": [("123", "1", "125 St")],
+    
+    # Brooklyn
+    "atlantic": [("A42", "A", "Atlantic Av-Barclays Ctr"), ("L17", "L", "Atlantic Av")],
+    "atlantic ave": [("A42", "A", "Atlantic Av-Barclays Ctr")],
+    "barclays": [("A42", "A", "Atlantic Av-Barclays Ctr")],
+    "brooklyn": [("A42", "A", "Atlantic Av-Barclays Ctr")],
+    "prospect park": [("D26", "1", "Prospect Park")],
+    "borough hall": [("R31", "N", "Borough Hall")],
+    "jay st": [("A41", "A", "Jay St-MetroTech")],
+    "jay street": [("A41", "A", "Jay St-MetroTech")],
+    "dekalb": [("R30", "N", "DeKalb Av")],
+    "dekalb ave": [("R30", "N", "DeKalb Av")],
+    
+    # Queens
+    "queensboro": [("G22", "N", "Queensboro Plaza")],
+    "queensboro plaza": [("G22", "N", "Queensboro Plaza")],
+    "queens plaza": [("G21", "N", "Queens Plaza")],
+    "court sq": [("G19", "N", "Court Sq-23 St")],
+    "court square": [("G19", "N", "Court Sq-23 St")],
+    "jackson heights": [("G14", "N", "Jackson Hts-Roosevelt Av")],
+    "roosevelt": [("G14", "N", "Jackson Hts-Roosevelt Av")],
+    "flushing": [("7", "N", "Flushing-Main St")],
+    "main st": [("7", "N", "Flushing-Main St")],
+    "astoria": [("R09", "N", "Astoria-Ditmars Blvd")],
 }
 
 DUAL_SYSTEM_STATIONS = {
@@ -99,6 +191,7 @@ PATH_FEED_URL = "https://path.transitdata.nyc/gtfsrt"
 class ArrivalRequest(BaseModel):
     station_id: str
     selected_lines: List[str]
+    max_minutes: Optional[int] = 20  # Default to 20 minutes
 
 class StationResult(BaseModel):
     id: str
@@ -122,7 +215,7 @@ def fuzzy_match_station(query):
     results = []
     seen = set()
     
-    # Check dual-system stations
+    # Check dual-system stations first (priority)
     for key, info in DUAL_SYSTEM_STATIONS.items():
         if query_lower in key or key in query_lower:
             if "mta" in info:
@@ -182,27 +275,51 @@ def get_station_lines(station_id: str):
                     routes_seen = set()
                     for entity in feed.entity:
                         if hasattr(entity, 'trip_update') and entity.trip_update:
-                            route_id = entity.trip_update.trip.route_id
-                            if route_id in MTA_LINES and route_id not in routes_seen:
-                                routes_seen.add(route_id)
-                                lines.append(LineInfo(
-                                    line_id=f"MTA-{route_id}",
-                                    line_name=f"MTA {route_id}",
-                                    agency="MTA"
-                                ))
+                            trip = entity.trip_update.trip
+                            route_id = trip.route_id
+                            # Check if this route stops at this station
+                            for stop_time in entity.trip_update.stop_time_update:
+                                if stop_time.stop_id.startswith(stop_id):
+                                    if route_id in MTA_LINES and route_id not in routes_seen:
+                                        routes_seen.add(route_id)
+                                        lines.append(LineInfo(
+                                            line_id=f"MTA-{route_id}",
+                                            line_name=f"MTA {route_id}",
+                                            agency="MTA"
+                                        ))
+                                    break
                 except:
                     pass
         
         # Add PATH routes
         if "path" in info:
-            for route_id, route_name in PATH_ROUTES.items():
-                lines.append(LineInfo(
-                    line_id=f"PATH-{route_id}",
-                    line_name=route_name,
-                    agency="PATH"
-                ))
+            path_stop_id = str(info["path"][0])
+            # Check which routes actually serve this station
+            try:
+                import httpx
+                response = httpx.get(PATH_FEED_URL, timeout=10.0)
+                feed = gtfs_realtime_pb2.FeedMessage()
+                feed.ParseFromString(response.content)
+                routes_seen = set()
+                
+                for entity in feed.entity:
+                    if entity.HasField('trip_update'):
+                        route_id = entity.trip_update.trip.route_id
+                        for stop_time in entity.trip_update.stop_time_update:
+                            if str(stop_time.stop_id) == path_stop_id:
+                                if route_id not in routes_seen:
+                                    routes_seen.add(route_id)
+                                    route_abbrev = PATH_ROUTES_ABBREV.get(route_id, route_id)
+                                    lines.append(LineInfo(
+                                        line_id=f"PATH-{route_id}",
+                                        line_name=f"PATH {route_abbrev}",
+                                        agency="PATH"
+                                    ))
+                                break
+            except:
+                pass
     
-    # Check if MTA only
+    # Check if MTA station
     elif station_id_lower in MTA_STATIONS:
         for stop_id, feed_name, name in MTA_STATIONS[station_id_lower]:
             try:
@@ -210,25 +327,49 @@ def get_station_lines(station_id: str):
                 routes_seen = set()
                 for entity in feed.entity:
                     if hasattr(entity, 'trip_update') and entity.trip_update:
-                        route_id = entity.trip_update.trip.route_id
-                        if route_id in MTA_LINES and route_id not in routes_seen:
-                            routes_seen.add(route_id)
-                            lines.append(LineInfo(
-                                line_id=f"MTA-{route_id}",
-                                line_name=f"MTA {route_id}",
-                                agency="MTA"
-                            ))
+                        trip = entity.trip_update.trip
+                        route_id = trip.route_id
+                        for stop_time in entity.trip_update.stop_time_update:
+                            if stop_time.stop_id.startswith(stop_id):
+                                if route_id in MTA_LINES and route_id not in routes_seen:
+                                    routes_seen.add(route_id)
+                                    lines.append(LineInfo(
+                                        line_id=f"MTA-{route_id}",
+                                        line_name=f"MTA {route_id}",
+                                        agency="MTA"
+                                    ))
+                                break
             except:
                 pass
     
-    # Check if PATH only
+    # Check if PATH station
     else:
-        for route_id, route_name in PATH_ROUTES.items():
-            lines.append(LineInfo(
-                line_id=f"PATH-{route_id}",
-                line_name=route_name,
-                agency="PATH"
-            ))
+        # Try to match PATH station by name
+        for path_stop_id, path_name in PATH_STATIONS.items():
+            if station_id_lower == path_name.lower().replace(" ", "_"):
+                try:
+                    import httpx
+                    response = httpx.get(PATH_FEED_URL, timeout=10.0)
+                    feed = gtfs_realtime_pb2.FeedMessage()
+                    feed.ParseFromString(response.content)
+                    routes_seen = set()
+                    
+                    for entity in feed.entity:
+                        if entity.HasField('trip_update'):
+                            route_id = entity.trip_update.trip.route_id
+                            for stop_time in entity.trip_update.stop_time_update:
+                                if str(stop_time.stop_id) == path_stop_id:
+                                    if route_id not in routes_seen:
+                                        routes_seen.add(route_id)
+                                        route_abbrev = PATH_ROUTES_ABBREV.get(route_id, route_id)
+                                        lines.append(LineInfo(
+                                            line_id=f"PATH-{route_id}",
+                                            line_name=f"PATH {route_abbrev}",
+                                            agency="PATH"
+                                        ))
+                                    break
+                except:
+                    pass
     
     return lines
 
@@ -290,6 +431,7 @@ def get_path_arrivals(stop_id, selected_lines):
             if entity.HasField('trip_update'):
                 trip = entity.trip_update.trip
                 route_id = trip.route_id
+                direction_id = trip.direction_id if trip.HasField('direction_id') else 0
                 
                 # Filter by selected lines
                 if selected_lines and f"PATH-{route_id}" not in selected_lines:
@@ -302,12 +444,13 @@ def get_path_arrivals(stop_id, selected_lines):
                             minutes = calculate_minutes_until(arrival_time)
                             
                             if minutes >= 0:
-                                route_name = PATH_ROUTES.get(route_id, route_id)
+                                route_abbrev = PATH_ROUTES_ABBREV.get(route_id, route_id)
+                                direction = get_path_direction(route_id, direction_id)
                                 
                                 arrivals.append(Arrival(
                                     agency='PATH',
-                                    route=route_name,
-                                    destination='',
+                                    route=route_abbrev,
+                                    destination=direction,
                                     minutes=minutes
                                 ))
     except Exception as e:
@@ -341,6 +484,7 @@ async def get_arrivals(request: ArrivalRequest):
     """Get live arrivals for selected lines at a station"""
     station_id = request.station_id.lower().replace("_", " ")
     selected_lines = request.selected_lines
+    max_minutes = request.max_minutes or 20
     
     all_arrivals = []
     
@@ -360,13 +504,13 @@ async def get_arrivals(request: ArrivalRequest):
             arrivals = get_path_arrivals(path_stop_id, selected_lines)
             all_arrivals.extend(arrivals)
     
-    # Check if MTA only
+    # Check if MTA station
     elif station_id in MTA_STATIONS:
         for stop_id, feed_name, name in MTA_STATIONS[station_id]:
             arrivals = get_mta_arrivals(stop_id, feed_name, selected_lines)
             all_arrivals.extend(arrivals)
     
-    # Check if PATH only
+    # Check if PATH station
     else:
         # Find PATH stop ID
         for stop_id, name in PATH_STATIONS.items():
@@ -374,6 +518,9 @@ async def get_arrivals(request: ArrivalRequest):
                 arrivals = get_path_arrivals(stop_id, selected_lines)
                 all_arrivals.extend(arrivals)
                 break
+    
+    # Filter by max_minutes
+    all_arrivals = [a for a in all_arrivals if a.minutes <= max_minutes]
     
     # Sort by minutes
     all_arrivals = sorted(all_arrivals, key=lambda x: x.minutes)
