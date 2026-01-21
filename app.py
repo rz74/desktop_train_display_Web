@@ -11,6 +11,8 @@ from pydantic import BaseModel
 from typing import List, Optional
 import difflib
 import httpx
+import json
+import os
 from underground import SubwayFeed
 from google.transit import gtfs_realtime_pb2
 
@@ -37,118 +39,32 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Station mappings - Major MTA stations (using correct GTFS stop IDs)
-MTA_STATIONS = {
-    # Lower Manhattan
-    "world trade center": [("E01", "A", "World Trade Center"), ("228", "1", "WTC Cortlandt")],
-    "wtc": [("E01", "A", "World Trade Center"), ("228", "1", "WTC Cortlandt")],
-    "south ferry": [("142", "1", "South Ferry")],
-    "south": [("142", "1", "South Ferry")],
-    "ferry": [("142", "1", "South Ferry")],
-    "whitehall": [("R27", "N", "Whitehall St-South Ferry")],
-    "bowling green": [("R28", "N", "Bowling Green")],
-    "wall street": [("R29", "N", "Wall St"), ("423", "A", "Wall St")],
-    "wall st": [("R29", "N", "Wall St"), ("423", "A", "Wall St")],
-    "rector": [("R30", "N", "Rector St")],
-    "rector st": [("R30", "N", "Rector St")],
-    "cortlandt": [("228", "1", "WTC Cortlandt")],
-    "cortlandt st": [("228", "1", "WTC Cortlandt")],
-    "city hall": [("R32", "N", "City Hall")],
-    "brooklyn bridge": [("R33", "N", "Brooklyn Bridge-City Hall"), ("423", "A", "Brooklyn Bridge")],
-    "fulton": [("A27", "A", "Fulton St"), ("137", "1", "Fulton St")],
-    "fulton st": [("A27", "A", "Fulton St"), ("137", "1", "Fulton St")],
-    "chambers": [("A31", "A", "Chambers St"), ("232", "1", "Chambers St")],
-    "chambers st": [("A31", "A", "Chambers St"), ("232", "1", "Chambers St")],
-    "canal": [("A32", "A", "Canal St"), ("R21", "N", "Canal St"), ("238", "1", "Canal St")],
-    "canal st": [("A32", "A", "Canal St"), ("R21", "N", "Canal St")],
-    "spring": [("A33", "A", "Spring St")],
-    "spring st": [("A33", "A", "Spring St")],
-    "houston": [("R22", "N", "Prince St"), ("239", "1", "Houston St")],
-    "prince": [("R22", "N", "Prince St")],
-    "bleecker": [("D19", "1", "Bleecker St")],
-    "bleecker st": [("D19", "1", "Bleecker St")],
-    "astor": [("D20", "1", "Astor Pl")],
-    "astor place": [("D20", "1", "Astor Pl")],
-    "christopher": [("D21", "1", "Christopher St-Sheridan Sq"), ("233", "1", "Christopher St")],
-    "christopher st": [("233", "1", "Christopher St")],
-    "sheridan": [("D21", "1", "Christopher St-Sheridan Sq")],
-    
-    # Midtown
-    "14th st": [("L03", "L", "14 St-Union Sq"), ("R20", "N", "14 St-Union Sq"), ("635", "1", "14 St")],
-    "14 st": [("L03", "L", "14 St-Union Sq"), ("635", "1", "14 St")],
-    "union square": [("L03", "L", "14 St-Union Sq"), ("R20", "N", "14 St-Union Sq"), ("635", "1", "14 St-Union Sq")],
-    "union sq": [("L03", "L", "14 St-Union Sq"), ("635", "1", "14 St-Union Sq")],
-    "23rd st": [("A25", "A", "23 St"), ("L05", "L", "23 St"), ("R19", "N", "23 St"), ("120", "1", "23 St")],
-    "23 st": [("A25", "A", "23 St"), ("120", "1", "23 St")],
-    "28th st": [("R18", "N", "28 St"), ("122", "1", "28 St")],
-    "28 st": [("R18", "N", "28 St"), ("122", "1", "28 St")],
-    "34th st": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
-    "34 st": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
-    "penn station": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
-    "33rd st": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
-    "33 st": [("A32", "A", "34 St-Penn Station"), ("127", "1", "34 St-Penn Station")],
-    "42nd st": [("A42", "A", "42 St-Port Authority"), ("725", "1", "Times Sq-42 St")],
-    "42 st": [("A42", "A", "42 St-Port Authority"), ("725", "1", "Times Sq-42 St")],
-    "times square": [("725", "1", "Times Sq-42 St"), ("A42", "A", "42 St-Port Authority")],
-    "times sq": [("725", "1", "Times Sq-42 St")],
-    "port authority": [("A42", "A", "42 St-Port Authority")],
-    "grand central": [("631", "1", "Grand Central-42 St"), ("902", "1", "Grand Central")],
-    "grand central 42": [("631", "1", "Grand Central-42 St"), ("902", "1", "Grand Central")],
-    "50th st": [("A41", "A", "50 St"), ("132", "1", "50 St")],
-    "50 st": [("A41", "A", "50 St"), ("132", "1", "50 St")],
-    "59th st": [("A40", "A", "59 St-Columbus Circle"), ("R16", "N", "Lexington Av/59 St"), ("137", "1", "59 St-Columbus Circle")],
-    "59 st": [("A40", "A", "59 St-Columbus Circle"), ("137", "1", "59 St-Columbus Circle")],
-    "columbus circle": [("A40", "A", "59 St-Columbus Circle"), ("137", "1", "59 St-Columbus Circle")],
-    "lexington": [("R16", "N", "Lexington Av/59 St")],
-    
-    # Upper Manhattan  
-    "66th st": [("115", "1", "66 St-Lincoln Center")],
-    "66 st": [("115", "1", "66 St-Lincoln Center")],
-    "lincoln center": [("115", "1", "66 St-Lincoln Center")],
-    "72nd st": [("116", "1", "72 St"), ("R15", "N", "72 St")],
-    "72 st": [("116", "1", "72 St")],
-    "79th st": [("117", "1", "79 St")],
-    "79 st": [("117", "1", "79 St")],
-    "86th st": [("118", "1", "86 St"), ("R14", "N", "86 St")],
-    "86 st": [("118", "1", "86 St")],
-    "96th st": [("119", "1", "96 St"), ("R13", "N", "96 St")],
-    "96 st": [("119", "1", "96 St")],
-    "103rd st": [("120", "1", "103 St")],
-    "103 st": [("120", "1", "103 St")],
-    "110th st": [("121", "1", "110 St-Cathedral Pkwy")],
-    "110 st": [("121", "1", "110 St")],
-    "cathedral": [("121", "1", "110 St-Cathedral Pkwy")],
-    "116th st": [("122", "1", "116 St-Columbia University")],
-    "116 st": [("122", "1", "116 St")],
-    "columbia": [("122", "1", "116 St-Columbia University")],
-    "125th st": [("123", "1", "125 St"), ("A06", "A", "125 St")],
-    "125 st": [("123", "1", "125 St")],
-    "harlem": [("123", "1", "125 St")],
-    
-    # Brooklyn
-    "atlantic": [("A42", "A", "Atlantic Av-Barclays Ctr"), ("L17", "L", "Atlantic Av")],
-    "atlantic ave": [("A42", "A", "Atlantic Av-Barclays Ctr")],
-    "barclays": [("A42", "A", "Atlantic Av-Barclays Ctr")],
-    "brooklyn": [("A42", "A", "Atlantic Av-Barclays Ctr")],
-    "prospect park": [("D26", "1", "Prospect Park")],
-    "borough hall": [("R31", "N", "Borough Hall")],
-    "jay st": [("A41", "A", "Jay St-MetroTech")],
-    "jay street": [("A41", "A", "Jay St-MetroTech")],
-    "dekalb": [("R30", "N", "DeKalb Av")],
-    "dekalb ave": [("R30", "N", "DeKalb Av")],
-    
-    # Queens
-    "queensboro": [("G22", "N", "Queensboro Plaza")],
-    "queensboro plaza": [("G22", "N", "Queensboro Plaza")],
-    "queens plaza": [("G21", "N", "Queens Plaza")],
-    "court sq": [("G19", "N", "Court Sq-23 St")],
-    "court square": [("G19", "N", "Court Sq-23 St")],
-    "jackson heights": [("G14", "N", "Jackson Hts-Roosevelt Av")],
-    "roosevelt": [("G14", "N", "Jackson Hts-Roosevelt Av")],
-    "flushing": [("7", "N", "Flushing-Main St")],
-    "main st": [("7", "N", "Flushing-Main St")],
-    "astoria": [("R09", "N", "Astoria-Ditmars Blvd")],
-}
+# Load comprehensive MTA station database
+MTA_STATIONS = {}
+json_path = os.path.join(os.path.dirname(__file__), 'all_mta_stations.json')
+if os.path.exists(json_path):
+    with open(json_path, 'r') as f:
+        loaded_data = json.load(f)
+        # Convert from JSON format to tuple format
+        for key, value in loaded_data.items():
+            MTA_STATIONS[key] = [tuple(item) for item in value]
+    print(f"✓ Loaded {len(MTA_STATIONS)} MTA stations from all_mta_stations.json")
+else:
+    print("⚠ all_mta_stations.json not found, using fallback stations")
+    # Fallback to minimal set if JSON not available
+    MTA_STATIONS = {
+        "times square": [("725", "1", "Times Sq-42 St")],
+        "union square": [("635", "1", "14 St-Union Sq")],
+        "grand central": [("631", "1", "Grand Central-42 St")],
+    }
+
+# Load static station-to-lines mapping (fallback for when real-time feed is empty)
+STATION_LINES_MAP = {}
+lines_map_path = os.path.join(os.path.dirname(__file__), 'station_lines_map.json')
+if os.path.exists(lines_map_path):
+    with open(lines_map_path, 'r') as f:
+        STATION_LINES_MAP = json.load(f)
+    print(f"✓ Loaded static lines mapping for {len(STATION_LINES_MAP)} stations")
 
 DUAL_SYSTEM_STATIONS = {
     "world trade center": {
@@ -261,6 +177,7 @@ def get_station_lines(station_id: str):
     """Get all lines available at a station"""
     lines = []
     station_id_lower = station_id.lower().replace("_", " ")
+    routes_seen = set()
     
     # Check if dual-system
     if station_id_lower in DUAL_SYSTEM_STATIONS:
@@ -269,10 +186,9 @@ def get_station_lines(station_id: str):
         # Add MTA lines
         if "mta" in info:
             for stop_id, feed_name, name in info["mta"]:
-                # Get lines from feed
+                # Try to get lines from real-time feed first
                 try:
                     feed = SubwayFeed.get(feed_name)
-                    routes_seen = set()
                     for entity in feed.entity:
                         if hasattr(entity, 'trip_update') and entity.trip_update:
                             trip = entity.trip_update.trip
@@ -290,6 +206,18 @@ def get_station_lines(station_id: str):
                                     break
                 except:
                     pass
+            
+            # Fallback to static mapping if no lines found from real-time feed
+            if not routes_seen and station_id_lower in STATION_LINES_MAP:
+                station_data = STATION_LINES_MAP[station_id_lower]
+                for route_id in station_data.get('routes', []):
+                    if route_id in MTA_LINES:
+                        routes_seen.add(route_id)
+                        lines.append(LineInfo(
+                            line_id=f"MTA-{route_id}",
+                            line_name=f"MTA {route_id}",
+                            agency="MTA"
+                        ))
         
         # Add PATH routes
         if "path" in info:
@@ -324,7 +252,6 @@ def get_station_lines(station_id: str):
         for stop_id, feed_name, name in MTA_STATIONS[station_id_lower]:
             try:
                 feed = SubwayFeed.get(feed_name)
-                routes_seen = set()
                 for entity in feed.entity:
                     if hasattr(entity, 'trip_update') and entity.trip_update:
                         trip = entity.trip_update.trip
@@ -341,6 +268,18 @@ def get_station_lines(station_id: str):
                                 break
             except:
                 pass
+        
+        # Fallback to static mapping if no lines found from real-time feed
+        if not routes_seen and station_id_lower in STATION_LINES_MAP:
+            station_data = STATION_LINES_MAP[station_id_lower]
+            for route_id in station_data.get('routes', []):
+                if route_id in MTA_LINES:
+                    routes_seen.add(route_id)
+                    lines.append(LineInfo(
+                        line_id=f"MTA-{route_id}",
+                        line_name=f"MTA {route_id}",
+                        agency="MTA"
+                    ))
     
     # Check if PATH station
     else:

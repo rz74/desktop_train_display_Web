@@ -1,0 +1,3252 @@
+{
+  "astoria-ditmars blvd": [
+    [
+      "R01",
+      "N",
+      "Astoria-Ditmars Blvd"
+    ]
+  ],
+  "astoria blvd": [
+    [
+      "R03",
+      "N",
+      "Astoria Blvd"
+    ]
+  ],
+  "30 av": [
+    [
+      "R04",
+      "N",
+      "30 Av"
+    ]
+  ],
+  "broadway": [
+    [
+      "R05",
+      "N",
+      "Broadway"
+    ],
+    [
+      "G30",
+      "G",
+      "Broadway"
+    ]
+  ],
+  "36 av": [
+    [
+      "R06",
+      "N",
+      "36 Av"
+    ]
+  ],
+  "39 av-dutch kills": [
+    [
+      "R08",
+      "N",
+      "39 Av-Dutch Kills"
+    ]
+  ],
+  "lexington av/59 st": [
+    [
+      "R11",
+      "N",
+      "Lexington Av/59 St"
+    ]
+  ],
+  "5 av/59 st": [
+    [
+      "R13",
+      "N",
+      "5 Av/59 St"
+    ]
+  ],
+  "57 st-7 av": [
+    [
+      "R14",
+      "N",
+      "57 St-7 Av"
+    ]
+  ],
+  "49 st": [
+    [
+      "R15",
+      "N",
+      "49 St"
+    ]
+  ],
+  "times sq-42 st": [
+    [
+      "R16",
+      "N",
+      "Times Sq-42 St"
+    ],
+    [
+      "127",
+      "1",
+      "Times Sq-42 St"
+    ],
+    [
+      "725",
+      "1",
+      "Times Sq-42 St"
+    ],
+    [
+      "902",
+      "1",
+      "Times Sq-42 St"
+    ]
+  ],
+  "34 st-herald sq": [
+    [
+      "R17",
+      "N",
+      "34 St-Herald Sq"
+    ],
+    [
+      "D17",
+      "A",
+      "34 St-Herald Sq"
+    ]
+  ],
+  "28 st": [
+    [
+      "R18",
+      "N",
+      "28 St"
+    ],
+    [
+      "129",
+      "1",
+      "28 St"
+    ],
+    [
+      "633",
+      "1",
+      "28 St"
+    ]
+  ],
+  "23 st": [
+    [
+      "R19",
+      "N",
+      "23 St"
+    ],
+    [
+      "A30",
+      "A",
+      "23 St"
+    ],
+    [
+      "D18",
+      "A",
+      "23 St"
+    ],
+    [
+      "130",
+      "1",
+      "23 St"
+    ],
+    [
+      "634",
+      "1",
+      "23 St"
+    ]
+  ],
+  "14 st-union sq": [
+    [
+      "R20",
+      "N",
+      "14 St-Union Sq"
+    ],
+    [
+      "L03",
+      "L",
+      "14 St-Union Sq"
+    ],
+    [
+      "635",
+      "1",
+      "14 St-Union Sq"
+    ]
+  ],
+  "8 st-nyu": [
+    [
+      "R21",
+      "N",
+      "8 St-NYU"
+    ]
+  ],
+  "prince st": [
+    [
+      "R22",
+      "N",
+      "Prince St"
+    ]
+  ],
+  "canal st": [
+    [
+      "R23",
+      "N",
+      "Canal St"
+    ],
+    [
+      "Q01",
+      "N",
+      "Canal St"
+    ],
+    [
+      "M20",
+      "1",
+      "Canal St"
+    ],
+    [
+      "A34",
+      "A",
+      "Canal St"
+    ],
+    [
+      "135",
+      "1",
+      "Canal St"
+    ],
+    [
+      "639",
+      "1",
+      "Canal St"
+    ]
+  ],
+  "city hall": [
+    [
+      "R24",
+      "N",
+      "City Hall"
+    ]
+  ],
+  "cortlandt st": [
+    [
+      "R25",
+      "N",
+      "Cortlandt St"
+    ]
+  ],
+  "rector st": [
+    [
+      "R26",
+      "N",
+      "Rector St"
+    ],
+    [
+      "139",
+      "1",
+      "Rector St"
+    ]
+  ],
+  "whitehall st-south ferry": [
+    [
+      "R27",
+      "N",
+      "Whitehall St-South Ferry"
+    ]
+  ],
+  "court st": [
+    [
+      "R28",
+      "N",
+      "Court St"
+    ]
+  ],
+  "jay st-metrotech": [
+    [
+      "R29",
+      "N",
+      "Jay St-MetroTech"
+    ],
+    [
+      "A41",
+      "A",
+      "Jay St-MetroTech"
+    ]
+  ],
+  "dekalb av": [
+    [
+      "R30",
+      "N",
+      "DeKalb Av"
+    ],
+    [
+      "L16",
+      "L",
+      "DeKalb Av"
+    ]
+  ],
+  "atlantic av-barclays ctr": [
+    [
+      "R31",
+      "N",
+      "Atlantic Av-Barclays Ctr"
+    ],
+    [
+      "D24",
+      "A",
+      "Atlantic Av-Barclays Ctr"
+    ],
+    [
+      "235",
+      "1",
+      "Atlantic Av-Barclays Ctr"
+    ]
+  ],
+  "union st": [
+    [
+      "R32",
+      "N",
+      "Union St"
+    ]
+  ],
+  "4 av-9 st": [
+    [
+      "R33",
+      "N",
+      "4 Av-9 St"
+    ],
+    [
+      "F23",
+      "A",
+      "4 Av-9 St"
+    ]
+  ],
+  "prospect av": [
+    [
+      "R34",
+      "N",
+      "Prospect Av"
+    ],
+    [
+      "219",
+      "1",
+      "Prospect Av"
+    ]
+  ],
+  "25 st": [
+    [
+      "R35",
+      "N",
+      "25 St"
+    ]
+  ],
+  "36 st": [
+    [
+      "R36",
+      "N",
+      "36 St"
+    ],
+    [
+      "G20",
+      "G",
+      "36 St"
+    ]
+  ],
+  "45 st": [
+    [
+      "R39",
+      "N",
+      "45 St"
+    ]
+  ],
+  "53 st": [
+    [
+      "R40",
+      "N",
+      "53 St"
+    ]
+  ],
+  "59 st": [
+    [
+      "R41",
+      "N",
+      "59 St"
+    ],
+    [
+      "629",
+      "1",
+      "59 St"
+    ]
+  ],
+  "bay ridge av": [
+    [
+      "R42",
+      "N",
+      "Bay Ridge Av"
+    ]
+  ],
+  "77 st": [
+    [
+      "R43",
+      "N",
+      "77 St"
+    ],
+    [
+      "627",
+      "1",
+      "77 St"
+    ]
+  ],
+  "86 st": [
+    [
+      "R44",
+      "N",
+      "86 St"
+    ],
+    [
+      "N10",
+      "N",
+      "86 St"
+    ],
+    [
+      "A20",
+      "A",
+      "86 St"
+    ],
+    [
+      "121",
+      "1",
+      "86 St"
+    ],
+    [
+      "626",
+      "1",
+      "86 St"
+    ],
+    [
+      "Q04",
+      "N",
+      "86 St"
+    ]
+  ],
+  "bay ridge-95 st": [
+    [
+      "R45",
+      "N",
+      "Bay Ridge-95 St"
+    ]
+  ],
+  "7 av": [
+    [
+      "D25",
+      "A",
+      "7 Av"
+    ],
+    [
+      "F24",
+      "A",
+      "7 Av"
+    ],
+    [
+      "D14",
+      "A",
+      "7 Av"
+    ]
+  ],
+  "prospect park": [
+    [
+      "D26",
+      "A",
+      "Prospect Park"
+    ]
+  ],
+  "parkside av": [
+    [
+      "D27",
+      "A",
+      "Parkside Av"
+    ]
+  ],
+  "church av": [
+    [
+      "D28",
+      "A",
+      "Church Av"
+    ],
+    [
+      "F27",
+      "A",
+      "Church Av"
+    ],
+    [
+      "244",
+      "1",
+      "Church Av"
+    ]
+  ],
+  "beverley rd": [
+    [
+      "D29",
+      "A",
+      "Beverley Rd"
+    ]
+  ],
+  "cortelyou rd": [
+    [
+      "D30",
+      "A",
+      "Cortelyou Rd"
+    ]
+  ],
+  "newkirk plaza": [
+    [
+      "D31",
+      "A",
+      "Newkirk Plaza"
+    ]
+  ],
+  "avenue h": [
+    [
+      "D32",
+      "A",
+      "Avenue H"
+    ]
+  ],
+  "avenue j": [
+    [
+      "D33",
+      "A",
+      "Avenue J"
+    ]
+  ],
+  "avenue m": [
+    [
+      "D34",
+      "A",
+      "Avenue M"
+    ]
+  ],
+  "kings hwy": [
+    [
+      "D35",
+      "A",
+      "Kings Hwy"
+    ],
+    [
+      "N08",
+      "N",
+      "Kings Hwy"
+    ],
+    [
+      "F35",
+      "A",
+      "Kings Hwy"
+    ]
+  ],
+  "avenue u": [
+    [
+      "D37",
+      "A",
+      "Avenue U"
+    ],
+    [
+      "N09",
+      "N",
+      "Avenue U"
+    ],
+    [
+      "F36",
+      "A",
+      "Avenue U"
+    ]
+  ],
+  "neck rd": [
+    [
+      "D38",
+      "A",
+      "Neck Rd"
+    ]
+  ],
+  "sheepshead bay": [
+    [
+      "D39",
+      "A",
+      "Sheepshead Bay"
+    ]
+  ],
+  "brighton beach": [
+    [
+      "D40",
+      "A",
+      "Brighton Beach"
+    ]
+  ],
+  "ocean pkwy": [
+    [
+      "D41",
+      "A",
+      "Ocean Pkwy"
+    ]
+  ],
+  "w 8 st-ny aquarium": [
+    [
+      "D42",
+      "A",
+      "W 8 St-NY Aquarium"
+    ]
+  ],
+  "coney island-stillwell av": [
+    [
+      "D43",
+      "A",
+      "Coney Island-Stillwell Av"
+    ]
+  ],
+  "9 av": [
+    [
+      "B12",
+      "A",
+      "9 Av"
+    ]
+  ],
+  "fort hamilton pkwy": [
+    [
+      "B13",
+      "A",
+      "Fort Hamilton Pkwy"
+    ],
+    [
+      "N03",
+      "N",
+      "Fort Hamilton Pkwy"
+    ],
+    [
+      "F26",
+      "A",
+      "Fort Hamilton Pkwy"
+    ]
+  ],
+  "50 st": [
+    [
+      "B14",
+      "A",
+      "50 St"
+    ],
+    [
+      "A25",
+      "A",
+      "50 St"
+    ],
+    [
+      "126",
+      "1",
+      "50 St"
+    ]
+  ],
+  "55 st": [
+    [
+      "B15",
+      "A",
+      "55 St"
+    ]
+  ],
+  "62 st": [
+    [
+      "B16",
+      "A",
+      "62 St"
+    ]
+  ],
+  "71 st": [
+    [
+      "B17",
+      "A",
+      "71 St"
+    ]
+  ],
+  "79 st": [
+    [
+      "B18",
+      "A",
+      "79 St"
+    ],
+    [
+      "122",
+      "1",
+      "79 St"
+    ]
+  ],
+  "18 av": [
+    [
+      "B19",
+      "A",
+      "18 Av"
+    ],
+    [
+      "N05",
+      "N",
+      "18 Av"
+    ],
+    [
+      "F30",
+      "A",
+      "18 Av"
+    ]
+  ],
+  "20 av": [
+    [
+      "B20",
+      "A",
+      "20 Av"
+    ],
+    [
+      "N06",
+      "N",
+      "20 Av"
+    ]
+  ],
+  "bay pkwy": [
+    [
+      "B21",
+      "A",
+      "Bay Pkwy"
+    ],
+    [
+      "N07",
+      "N",
+      "Bay Pkwy"
+    ],
+    [
+      "F32",
+      "A",
+      "Bay Pkwy"
+    ]
+  ],
+  "25 av": [
+    [
+      "B22",
+      "A",
+      "25 Av"
+    ]
+  ],
+  "bay 50 st": [
+    [
+      "B23",
+      "A",
+      "Bay 50 St"
+    ]
+  ],
+  "8 av": [
+    [
+      "N02",
+      "N",
+      "8 Av"
+    ],
+    [
+      "L01",
+      "L",
+      "8 Av"
+    ]
+  ],
+  "new utrecht av": [
+    [
+      "N04",
+      "N",
+      "New Utrecht Av"
+    ]
+  ],
+  "121 st": [
+    [
+      "J12",
+      "1",
+      "121 St"
+    ]
+  ],
+  "111 st": [
+    [
+      "J13",
+      "1",
+      "111 St"
+    ],
+    [
+      "A64",
+      "A",
+      "111 St"
+    ],
+    [
+      "705",
+      "1",
+      "111 St"
+    ]
+  ],
+  "104 st": [
+    [
+      "J14",
+      "1",
+      "104 St"
+    ],
+    [
+      "A63",
+      "A",
+      "104 St"
+    ]
+  ],
+  "woodhaven blvd": [
+    [
+      "J15",
+      "1",
+      "Woodhaven Blvd"
+    ],
+    [
+      "G11",
+      "G",
+      "Woodhaven Blvd"
+    ]
+  ],
+  "85 st-forest pkwy": [
+    [
+      "J16",
+      "1",
+      "85 St-Forest Pkwy"
+    ]
+  ],
+  "75 st-elderts ln": [
+    [
+      "J17",
+      "1",
+      "75 St-Elderts Ln"
+    ]
+  ],
+  "cypress hills": [
+    [
+      "J19",
+      "1",
+      "Cypress Hills"
+    ]
+  ],
+  "crescent st": [
+    [
+      "J20",
+      "1",
+      "Crescent St"
+    ]
+  ],
+  "norwood av": [
+    [
+      "J21",
+      "1",
+      "Norwood Av"
+    ]
+  ],
+  "cleveland st": [
+    [
+      "J22",
+      "1",
+      "Cleveland St"
+    ]
+  ],
+  "van siclen av": [
+    [
+      "J23",
+      "1",
+      "Van Siclen Av"
+    ],
+    [
+      "A53",
+      "A",
+      "Van Siclen Av"
+    ],
+    [
+      "256",
+      "1",
+      "Van Siclen Av"
+    ]
+  ],
+  "alabama av": [
+    [
+      "J24",
+      "1",
+      "Alabama Av"
+    ]
+  ],
+  "broadway junction": [
+    [
+      "J27",
+      "1",
+      "Broadway Junction"
+    ],
+    [
+      "L22",
+      "L",
+      "Broadway Junction"
+    ],
+    [
+      "A51",
+      "A",
+      "Broadway Junction"
+    ]
+  ],
+  "chauncey st": [
+    [
+      "J28",
+      "1",
+      "Chauncey St"
+    ]
+  ],
+  "halsey st": [
+    [
+      "J29",
+      "1",
+      "Halsey St"
+    ],
+    [
+      "L19",
+      "L",
+      "Halsey St"
+    ]
+  ],
+  "gates av": [
+    [
+      "J30",
+      "1",
+      "Gates Av"
+    ]
+  ],
+  "kosciuszko st": [
+    [
+      "J31",
+      "1",
+      "Kosciuszko St"
+    ]
+  ],
+  "myrtle av": [
+    [
+      "M11",
+      "1",
+      "Myrtle Av"
+    ]
+  ],
+  "flushing av": [
+    [
+      "M12",
+      "1",
+      "Flushing Av"
+    ],
+    [
+      "G31",
+      "G",
+      "Flushing Av"
+    ]
+  ],
+  "lorimer st": [
+    [
+      "M13",
+      "1",
+      "Lorimer St"
+    ],
+    [
+      "L10",
+      "L",
+      "Lorimer St"
+    ]
+  ],
+  "hewes st": [
+    [
+      "M14",
+      "1",
+      "Hewes St"
+    ]
+  ],
+  "marcy av": [
+    [
+      "M16",
+      "1",
+      "Marcy Av"
+    ]
+  ],
+  "delancey st-essex st": [
+    [
+      "M18",
+      "1",
+      "Delancey St-Essex St"
+    ],
+    [
+      "F15",
+      "A",
+      "Delancey St-Essex St"
+    ]
+  ],
+  "bowery": [
+    [
+      "M19",
+      "1",
+      "Bowery"
+    ]
+  ],
+  "chambers st": [
+    [
+      "M21",
+      "1",
+      "Chambers St"
+    ],
+    [
+      "A36",
+      "A",
+      "Chambers St"
+    ],
+    [
+      "137",
+      "1",
+      "Chambers St"
+    ]
+  ],
+  "fulton st": [
+    [
+      "M22",
+      "1",
+      "Fulton St"
+    ],
+    [
+      "A38",
+      "A",
+      "Fulton St"
+    ],
+    [
+      "G36",
+      "G",
+      "Fulton St"
+    ],
+    [
+      "229",
+      "1",
+      "Fulton St"
+    ],
+    [
+      "418",
+      "1",
+      "Fulton St"
+    ]
+  ],
+  "broad st": [
+    [
+      "M23",
+      "1",
+      "Broad St"
+    ]
+  ],
+  "middle village-metropolitan av": [
+    [
+      "M01",
+      "1",
+      "Middle Village-Metropolitan Av"
+    ]
+  ],
+  "fresh pond rd": [
+    [
+      "M04",
+      "1",
+      "Fresh Pond Rd"
+    ]
+  ],
+  "forest av": [
+    [
+      "M05",
+      "1",
+      "Forest Av"
+    ]
+  ],
+  "seneca av": [
+    [
+      "M06",
+      "1",
+      "Seneca Av"
+    ]
+  ],
+  "myrtle-wyckoff avs": [
+    [
+      "M08",
+      "1",
+      "Myrtle-Wyckoff Avs"
+    ],
+    [
+      "L17",
+      "L",
+      "Myrtle-Wyckoff Avs"
+    ]
+  ],
+  "knickerbocker av": [
+    [
+      "M09",
+      "1",
+      "Knickerbocker Av"
+    ]
+  ],
+  "central av": [
+    [
+      "M10",
+      "1",
+      "Central Av"
+    ]
+  ],
+  "6 av": [
+    [
+      "L02",
+      "L",
+      "6 Av"
+    ]
+  ],
+  "3 av": [
+    [
+      "L05",
+      "L",
+      "3 Av"
+    ]
+  ],
+  "1 av": [
+    [
+      "L06",
+      "L",
+      "1 Av"
+    ]
+  ],
+  "bedford av": [
+    [
+      "L08",
+      "L",
+      "Bedford Av"
+    ]
+  ],
+  "graham av": [
+    [
+      "L11",
+      "L",
+      "Graham Av"
+    ]
+  ],
+  "grand st": [
+    [
+      "L12",
+      "L",
+      "Grand St"
+    ],
+    [
+      "D22",
+      "A",
+      "Grand St"
+    ]
+  ],
+  "montrose av": [
+    [
+      "L13",
+      "L",
+      "Montrose Av"
+    ]
+  ],
+  "morgan av": [
+    [
+      "L14",
+      "L",
+      "Morgan Av"
+    ]
+  ],
+  "jefferson st": [
+    [
+      "L15",
+      "L",
+      "Jefferson St"
+    ]
+  ],
+  "wilson av": [
+    [
+      "L20",
+      "L",
+      "Wilson Av"
+    ]
+  ],
+  "bushwick av-aberdeen st": [
+    [
+      "L21",
+      "L",
+      "Bushwick Av-Aberdeen St"
+    ]
+  ],
+  "atlantic av": [
+    [
+      "L24",
+      "L",
+      "Atlantic Av"
+    ]
+  ],
+  "sutter av": [
+    [
+      "L25",
+      "L",
+      "Sutter Av"
+    ]
+  ],
+  "livonia av": [
+    [
+      "L26",
+      "L",
+      "Livonia Av"
+    ]
+  ],
+  "new lots av": [
+    [
+      "L27",
+      "L",
+      "New Lots Av"
+    ],
+    [
+      "257",
+      "1",
+      "New Lots Av"
+    ]
+  ],
+  "east 105 st": [
+    [
+      "L28",
+      "L",
+      "East 105 St"
+    ]
+  ],
+  "canarsie-rockaway pkwy": [
+    [
+      "L29",
+      "L",
+      "Canarsie-Rockaway Pkwy"
+    ]
+  ],
+  "franklin av": [
+    [
+      "S01",
+      "1",
+      "Franklin Av"
+    ],
+    [
+      "A45",
+      "A",
+      "Franklin Av"
+    ]
+  ],
+  "park pl": [
+    [
+      "S03",
+      "1",
+      "Park Pl"
+    ]
+  ],
+  "botanic garden": [
+    [
+      "S04",
+      "1",
+      "Botanic Garden"
+    ]
+  ],
+  "inwood-207 st": [
+    [
+      "A02",
+      "A",
+      "Inwood-207 St"
+    ]
+  ],
+  "dyckman st": [
+    [
+      "A03",
+      "A",
+      "Dyckman St"
+    ],
+    [
+      "109",
+      "1",
+      "Dyckman St"
+    ]
+  ],
+  "190 st": [
+    [
+      "A05",
+      "A",
+      "190 St"
+    ]
+  ],
+  "181 st": [
+    [
+      "A06",
+      "A",
+      "181 St"
+    ],
+    [
+      "111",
+      "1",
+      "181 St"
+    ]
+  ],
+  "175 st": [
+    [
+      "A07",
+      "A",
+      "175 St"
+    ]
+  ],
+  "168 st": [
+    [
+      "A09",
+      "A",
+      "168 St"
+    ]
+  ],
+  "163 st-amsterdam av": [
+    [
+      "A10",
+      "A",
+      "163 St-Amsterdam Av"
+    ]
+  ],
+  "155 st": [
+    [
+      "A11",
+      "A",
+      "155 St"
+    ],
+    [
+      "D12",
+      "A",
+      "155 St"
+    ]
+  ],
+  "145 st": [
+    [
+      "A12",
+      "A",
+      "145 St"
+    ],
+    [
+      "D13",
+      "A",
+      "145 St"
+    ],
+    [
+      "114",
+      "1",
+      "145 St"
+    ],
+    [
+      "302",
+      "1",
+      "145 St"
+    ]
+  ],
+  "135 st": [
+    [
+      "A14",
+      "A",
+      "135 St"
+    ],
+    [
+      "224",
+      "1",
+      "135 St"
+    ]
+  ],
+  "125 st": [
+    [
+      "A15",
+      "A",
+      "125 St"
+    ],
+    [
+      "116",
+      "1",
+      "125 St"
+    ],
+    [
+      "621",
+      "1",
+      "125 St"
+    ],
+    [
+      "225",
+      "1",
+      "125 St"
+    ]
+  ],
+  "116 st": [
+    [
+      "A16",
+      "A",
+      "116 St"
+    ],
+    [
+      "622",
+      "1",
+      "116 St"
+    ],
+    [
+      "226",
+      "1",
+      "116 St"
+    ]
+  ],
+  "cathedral pkwy (110 st)": [
+    [
+      "A17",
+      "A",
+      "Cathedral Pkwy (110 St)"
+    ],
+    [
+      "118",
+      "1",
+      "Cathedral Pkwy (110 St)"
+    ]
+  ],
+  "103 st": [
+    [
+      "A18",
+      "A",
+      "103 St"
+    ],
+    [
+      "119",
+      "1",
+      "103 St"
+    ],
+    [
+      "624",
+      "1",
+      "103 St"
+    ]
+  ],
+  "96 st": [
+    [
+      "A19",
+      "A",
+      "96 St"
+    ],
+    [
+      "120",
+      "1",
+      "96 St"
+    ],
+    [
+      "625",
+      "1",
+      "96 St"
+    ],
+    [
+      "Q05",
+      "N",
+      "96 St"
+    ]
+  ],
+  "81 st-museum of natural history": [
+    [
+      "A21",
+      "A",
+      "81 St-Museum of Natural History"
+    ]
+  ],
+  "72 st": [
+    [
+      "A22",
+      "A",
+      "72 St"
+    ],
+    [
+      "123",
+      "1",
+      "72 St"
+    ],
+    [
+      "Q03",
+      "N",
+      "72 St"
+    ]
+  ],
+  "59 st-columbus circle": [
+    [
+      "A24",
+      "A",
+      "59 St-Columbus Circle"
+    ],
+    [
+      "125",
+      "1",
+      "59 St-Columbus Circle"
+    ]
+  ],
+  "42 st-port authority bus terminal": [
+    [
+      "A27",
+      "A",
+      "42 St-Port Authority Bus Terminal"
+    ]
+  ],
+  "34 st-penn": [
+    [
+      "A28",
+      "A",
+      "34 St-Penn Station"
+    ],
+    [
+      "128",
+      "1",
+      "34 St-Penn Station"
+    ]
+  ],
+  "14 st": [
+    [
+      "A31",
+      "A",
+      "14 St"
+    ],
+    [
+      "D19",
+      "A",
+      "14 St"
+    ],
+    [
+      "132",
+      "1",
+      "14 St"
+    ]
+  ],
+  "w 4 st-wash sq": [
+    [
+      "A32",
+      "A",
+      "W 4 St-Wash Sq"
+    ],
+    [
+      "D20",
+      "A",
+      "W 4 St-Wash Sq"
+    ]
+  ],
+  "spring st": [
+    [
+      "A33",
+      "A",
+      "Spring St"
+    ],
+    [
+      "638",
+      "1",
+      "Spring St"
+    ]
+  ],
+  "world trade center": [
+    [
+      "E01",
+      "A",
+      "World Trade Center"
+    ]
+  ],
+  "high st": [
+    [
+      "A40",
+      "A",
+      "High St"
+    ]
+  ],
+  "hoyt-schermerhorn sts": [
+    [
+      "A42",
+      "A",
+      "Hoyt-Schermerhorn Sts"
+    ]
+  ],
+  "lafayette av": [
+    [
+      "A43",
+      "A",
+      "Lafayette Av"
+    ]
+  ],
+  "clinton-washington avs": [
+    [
+      "A44",
+      "A",
+      "Clinton-Washington Avs"
+    ],
+    [
+      "G35",
+      "G",
+      "Clinton-Washington Avs"
+    ]
+  ],
+  "nostrand av": [
+    [
+      "A46",
+      "A",
+      "Nostrand Av"
+    ],
+    [
+      "248",
+      "1",
+      "Nostrand Av"
+    ]
+  ],
+  "kingston-throop avs": [
+    [
+      "A47",
+      "A",
+      "Kingston-Throop Avs"
+    ]
+  ],
+  "utica av": [
+    [
+      "A48",
+      "A",
+      "Utica Av"
+    ]
+  ],
+  "ralph av": [
+    [
+      "A49",
+      "A",
+      "Ralph Av"
+    ]
+  ],
+  "rockaway av": [
+    [
+      "A50",
+      "A",
+      "Rockaway Av"
+    ],
+    [
+      "253",
+      "1",
+      "Rockaway Av"
+    ]
+  ],
+  "liberty av": [
+    [
+      "A52",
+      "A",
+      "Liberty Av"
+    ]
+  ],
+  "shepherd av": [
+    [
+      "A54",
+      "A",
+      "Shepherd Av"
+    ]
+  ],
+  "euclid av": [
+    [
+      "A55",
+      "A",
+      "Euclid Av"
+    ]
+  ],
+  "grant av": [
+    [
+      "A57",
+      "A",
+      "Grant Av"
+    ]
+  ],
+  "80 st": [
+    [
+      "A59",
+      "A",
+      "80 St"
+    ]
+  ],
+  "88 st": [
+    [
+      "A60",
+      "A",
+      "88 St"
+    ]
+  ],
+  "rockaway blvd": [
+    [
+      "A61",
+      "A",
+      "Rockaway Blvd"
+    ]
+  ],
+  "ozone park-lefferts blvd": [
+    [
+      "A65",
+      "A",
+      "Ozone Park-Lefferts Blvd"
+    ]
+  ],
+  "aqueduct racetrack": [
+    [
+      "H01",
+      "SI",
+      "Aqueduct Racetrack"
+    ]
+  ],
+  "aqueduct-n conduit av": [
+    [
+      "H02",
+      "SI",
+      "Aqueduct-N Conduit Av"
+    ]
+  ],
+  "howard beach-jfk airport": [
+    [
+      "H03",
+      "SI",
+      "Howard Beach-JFK Airport"
+    ]
+  ],
+  "broad channel": [
+    [
+      "H04",
+      "SI",
+      "Broad Channel"
+    ]
+  ],
+  "beach 90 st": [
+    [
+      "H12",
+      "SI",
+      "Beach 90 St"
+    ]
+  ],
+  "beach 98 st": [
+    [
+      "H13",
+      "SI",
+      "Beach 98 St"
+    ]
+  ],
+  "beach 105 st": [
+    [
+      "H14",
+      "SI",
+      "Beach 105 St"
+    ]
+  ],
+  "rockaway park-beach 116 st": [
+    [
+      "H15",
+      "SI",
+      "Rockaway Park-Beach 116 St"
+    ]
+  ],
+  "beach 67 st": [
+    [
+      "H06",
+      "SI",
+      "Beach 67 St"
+    ]
+  ],
+  "beach 60 st": [
+    [
+      "H07",
+      "SI",
+      "Beach 60 St"
+    ]
+  ],
+  "beach 44 st": [
+    [
+      "H08",
+      "SI",
+      "Beach 44 St"
+    ]
+  ],
+  "beach 36 st": [
+    [
+      "H09",
+      "SI",
+      "Beach 36 St"
+    ]
+  ],
+  "beach 25 st": [
+    [
+      "H10",
+      "SI",
+      "Beach 25 St"
+    ]
+  ],
+  "far rockaway-mott av": [
+    [
+      "H11",
+      "SI",
+      "Far Rockaway-Mott Av"
+    ]
+  ],
+  "norwood-205 st": [
+    [
+      "D01",
+      "A",
+      "Norwood-205 St"
+    ]
+  ],
+  "bedford park blvd": [
+    [
+      "D03",
+      "A",
+      "Bedford Park Blvd"
+    ]
+  ],
+  "kingsbridge rd": [
+    [
+      "D04",
+      "A",
+      "Kingsbridge Rd"
+    ],
+    [
+      "406",
+      "1",
+      "Kingsbridge Rd"
+    ]
+  ],
+  "fordham rd": [
+    [
+      "D05",
+      "A",
+      "Fordham Rd"
+    ],
+    [
+      "407",
+      "1",
+      "Fordham Rd"
+    ]
+  ],
+  "182-183 sts": [
+    [
+      "D06",
+      "A",
+      "182-183 Sts"
+    ]
+  ],
+  "tremont av": [
+    [
+      "D07",
+      "A",
+      "Tremont Av"
+    ]
+  ],
+  "174-175 sts": [
+    [
+      "D08",
+      "A",
+      "174-175 Sts"
+    ]
+  ],
+  "170 st": [
+    [
+      "D09",
+      "A",
+      "170 St"
+    ],
+    [
+      "412",
+      "1",
+      "170 St"
+    ]
+  ],
+  "167 st": [
+    [
+      "D10",
+      "A",
+      "167 St"
+    ],
+    [
+      "413",
+      "1",
+      "167 St"
+    ]
+  ],
+  "161 st-yankee stadium": [
+    [
+      "D11",
+      "A",
+      "161 St-Yankee Stadium"
+    ],
+    [
+      "414",
+      "1",
+      "161 St-Yankee Stadium"
+    ]
+  ],
+  "21 st-queensbridge": [
+    [
+      "B04",
+      "A",
+      "21 St-Queensbridge"
+    ]
+  ],
+  "roosevelt island": [
+    [
+      "B06",
+      "A",
+      "Roosevelt Island"
+    ]
+  ],
+  "lexington av/63 st": [
+    [
+      "B08",
+      "A",
+      "Lexington Av/63 St"
+    ]
+  ],
+  "57 st": [
+    [
+      "B10",
+      "A",
+      "57 St"
+    ]
+  ],
+  "47-50 sts-rockefeller ctr": [
+    [
+      "D15",
+      "A",
+      "47-50 Sts-Rockefeller Ctr"
+    ]
+  ],
+  "42 st-bryant pk": [
+    [
+      "D16",
+      "A",
+      "42 St-Bryant Pk"
+    ]
+  ],
+  "broadway-lafayette st": [
+    [
+      "D21",
+      "A",
+      "Broadway-Lafayette St"
+    ]
+  ],
+  "2 av": [
+    [
+      "F14",
+      "A",
+      "2 Av"
+    ]
+  ],
+  "east broadway": [
+    [
+      "F16",
+      "A",
+      "East Broadway"
+    ]
+  ],
+  "york st": [
+    [
+      "F18",
+      "A",
+      "York St"
+    ]
+  ],
+  "bergen st": [
+    [
+      "F20",
+      "A",
+      "Bergen St"
+    ],
+    [
+      "236",
+      "1",
+      "Bergen St"
+    ]
+  ],
+  "carroll st": [
+    [
+      "F21",
+      "A",
+      "Carroll St"
+    ]
+  ],
+  "smith-9 sts": [
+    [
+      "F22",
+      "A",
+      "Smith-9 Sts"
+    ]
+  ],
+  "15 st-prospect park": [
+    [
+      "F25",
+      "A",
+      "15 St-Prospect Park"
+    ]
+  ],
+  "ditmas av": [
+    [
+      "F29",
+      "A",
+      "Ditmas Av"
+    ]
+  ],
+  "avenue i": [
+    [
+      "F31",
+      "A",
+      "Avenue I"
+    ]
+  ],
+  "avenue n": [
+    [
+      "F33",
+      "A",
+      "Avenue N"
+    ]
+  ],
+  "avenue p": [
+    [
+      "F34",
+      "A",
+      "Avenue P"
+    ]
+  ],
+  "avenue x": [
+    [
+      "F38",
+      "A",
+      "Avenue X"
+    ]
+  ],
+  "neptune av": [
+    [
+      "F39",
+      "A",
+      "Neptune Av"
+    ]
+  ],
+  "jamaica-179 st": [
+    [
+      "F01",
+      "A",
+      "Jamaica-179 St"
+    ]
+  ],
+  "169 st": [
+    [
+      "F02",
+      "A",
+      "169 St"
+    ]
+  ],
+  "parsons blvd": [
+    [
+      "F03",
+      "A",
+      "Parsons Blvd"
+    ]
+  ],
+  "sutphin blvd": [
+    [
+      "F04",
+      "A",
+      "Sutphin Blvd"
+    ]
+  ],
+  "briarwood": [
+    [
+      "F05",
+      "A",
+      "Briarwood"
+    ]
+  ],
+  "kew gardens-union tpke": [
+    [
+      "F06",
+      "A",
+      "Kew Gardens-Union Tpke"
+    ]
+  ],
+  "75 av": [
+    [
+      "F07",
+      "A",
+      "75 Av"
+    ]
+  ],
+  "forest hills-71 av": [
+    [
+      "G08",
+      "G",
+      "Forest Hills-71 Av"
+    ]
+  ],
+  "67 av": [
+    [
+      "G09",
+      "G",
+      "67 Av"
+    ]
+  ],
+  "63 dr-rego park": [
+    [
+      "G10",
+      "G",
+      "63 Dr-Rego Park"
+    ]
+  ],
+  "grand av-newtown": [
+    [
+      "G12",
+      "G",
+      "Grand Av-Newtown"
+    ]
+  ],
+  "elmhurst av": [
+    [
+      "G13",
+      "G",
+      "Elmhurst Av"
+    ]
+  ],
+  "jackson hts-roosevelt av": [
+    [
+      "G14",
+      "G",
+      "Jackson Hts-Roosevelt Av"
+    ]
+  ],
+  "65 st": [
+    [
+      "G15",
+      "G",
+      "65 St"
+    ]
+  ],
+  "northern blvd": [
+    [
+      "G16",
+      "G",
+      "Northern Blvd"
+    ]
+  ],
+  "46 st": [
+    [
+      "G18",
+      "G",
+      "46 St"
+    ]
+  ],
+  "steinway st": [
+    [
+      "G19",
+      "G",
+      "Steinway St"
+    ]
+  ],
+  "queens plaza": [
+    [
+      "G21",
+      "G",
+      "Queens Plaza"
+    ]
+  ],
+  "court sq-23 st": [
+    [
+      "F09",
+      "A",
+      "Court Sq-23 St"
+    ]
+  ],
+  "lexington av/53 st": [
+    [
+      "F11",
+      "A",
+      "Lexington Av/53 St"
+    ]
+  ],
+  "5 av/53 st": [
+    [
+      "F12",
+      "A",
+      "5 Av/53 St"
+    ]
+  ],
+  "jamaica center-parsons/archer": [
+    [
+      "G05",
+      "G",
+      "Jamaica Center-Parsons/Archer"
+    ]
+  ],
+  "sutphin blvd-archer av-jfk airport": [
+    [
+      "G06",
+      "G",
+      "Sutphin Blvd-Archer Av-JFK Airport"
+    ]
+  ],
+  "jamaica-van wyck": [
+    [
+      "G07",
+      "G",
+      "Jamaica-Van Wyck"
+    ]
+  ],
+  "court sq": [
+    [
+      "G22",
+      "G",
+      "Court Sq"
+    ],
+    [
+      "719",
+      "1",
+      "Court Sq"
+    ]
+  ],
+  "21 st": [
+    [
+      "G24",
+      "G",
+      "21 St"
+    ]
+  ],
+  "greenpoint av": [
+    [
+      "G26",
+      "G",
+      "Greenpoint Av"
+    ]
+  ],
+  "nassau av": [
+    [
+      "G28",
+      "G",
+      "Nassau Av"
+    ]
+  ],
+  "metropolitan av": [
+    [
+      "G29",
+      "G",
+      "Metropolitan Av"
+    ]
+  ],
+  "myrtle-willoughby avs": [
+    [
+      "G32",
+      "G",
+      "Myrtle-Willoughby Avs"
+    ]
+  ],
+  "bedford-nostrand avs": [
+    [
+      "G33",
+      "G",
+      "Bedford-Nostrand Avs"
+    ]
+  ],
+  "classon av": [
+    [
+      "G34",
+      "G",
+      "Classon Av"
+    ]
+  ],
+  "van cortlandt park-242 st": [
+    [
+      "101",
+      "1",
+      "Van Cortlandt Park-242 St"
+    ]
+  ],
+  "238 st": [
+    [
+      "103",
+      "1",
+      "238 St"
+    ]
+  ],
+  "231 st": [
+    [
+      "104",
+      "1",
+      "231 St"
+    ]
+  ],
+  "marble hill-225 st": [
+    [
+      "106",
+      "1",
+      "Marble Hill-225 St"
+    ]
+  ],
+  "215 st": [
+    [
+      "107",
+      "1",
+      "215 St"
+    ]
+  ],
+  "207 st": [
+    [
+      "108",
+      "1",
+      "207 St"
+    ]
+  ],
+  "191 st": [
+    [
+      "110",
+      "1",
+      "191 St"
+    ]
+  ],
+  "168 st-washington hts": [
+    [
+      "112",
+      "1",
+      "168 St-Washington Hts"
+    ]
+  ],
+  "157 st": [
+    [
+      "113",
+      "1",
+      "157 St"
+    ]
+  ],
+  "137 st-city college": [
+    [
+      "115",
+      "1",
+      "137 St-City College"
+    ]
+  ],
+  "116 st-columbia university": [
+    [
+      "117",
+      "1",
+      "116 St-Columbia University"
+    ]
+  ],
+  "66 st-lincoln center": [
+    [
+      "124",
+      "1",
+      "66 St-Lincoln Center"
+    ]
+  ],
+  "18 st": [
+    [
+      "131",
+      "1",
+      "18 St"
+    ]
+  ],
+  "christopher st-stonewall": [
+    [
+      "133",
+      "1",
+      "Christopher St-Stonewall"
+    ]
+  ],
+  "houston st": [
+    [
+      "134",
+      "1",
+      "Houston St"
+    ]
+  ],
+  "franklin st": [
+    [
+      "136",
+      "1",
+      "Franklin St"
+    ]
+  ],
+  "wtc cortlandt": [
+    [
+      "138",
+      "1",
+      "WTC Cortlandt"
+    ]
+  ],
+  "south ferry": [
+    [
+      "142",
+      "1",
+      "South Ferry"
+    ]
+  ],
+  "park place": [
+    [
+      "228",
+      "1",
+      "Park Place"
+    ]
+  ],
+  "wall st": [
+    [
+      "230",
+      "1",
+      "Wall St"
+    ],
+    [
+      "419",
+      "1",
+      "Wall St"
+    ]
+  ],
+  "clark st": [
+    [
+      "231",
+      "1",
+      "Clark St"
+    ]
+  ],
+  "borough hall": [
+    [
+      "232",
+      "1",
+      "Borough Hall"
+    ],
+    [
+      "423",
+      "1",
+      "Borough Hall"
+    ]
+  ],
+  "hoyt st": [
+    [
+      "233",
+      "1",
+      "Hoyt St"
+    ]
+  ],
+  "nevins st": [
+    [
+      "234",
+      "1",
+      "Nevins St"
+    ]
+  ],
+  "grand army plaza": [
+    [
+      "237",
+      "1",
+      "Grand Army Plaza"
+    ]
+  ],
+  "eastern pkwy-brooklyn museum": [
+    [
+      "238",
+      "1",
+      "Eastern Pkwy-Brooklyn Museum"
+    ]
+  ],
+  "franklin av-medgar evers college": [
+    [
+      "239",
+      "1",
+      "Franklin Av-Medgar Evers College"
+    ]
+  ],
+  "kingston av": [
+    [
+      "249",
+      "1",
+      "Kingston Av"
+    ]
+  ],
+  "crown hts-utica av": [
+    [
+      "250",
+      "1",
+      "Crown Hts-Utica Av"
+    ]
+  ],
+  "sutter av-rutland rd": [
+    [
+      "251",
+      "1",
+      "Sutter Av-Rutland Rd"
+    ]
+  ],
+  "saratoga av": [
+    [
+      "252",
+      "1",
+      "Saratoga Av"
+    ]
+  ],
+  "junius st": [
+    [
+      "254",
+      "1",
+      "Junius St"
+    ]
+  ],
+  "pennsylvania av": [
+    [
+      "255",
+      "1",
+      "Pennsylvania Av"
+    ]
+  ],
+  "president st-medgar evers college": [
+    [
+      "241",
+      "1",
+      "President St-Medgar Evers College"
+    ]
+  ],
+  "sterling st": [
+    [
+      "242",
+      "1",
+      "Sterling St"
+    ]
+  ],
+  "winthrop st": [
+    [
+      "243",
+      "1",
+      "Winthrop St"
+    ]
+  ],
+  "beverly rd": [
+    [
+      "245",
+      "1",
+      "Beverly Rd"
+    ]
+  ],
+  "newkirk av-little haiti": [
+    [
+      "246",
+      "1",
+      "Newkirk Av-Little Haiti"
+    ]
+  ],
+  "flatbush av-brooklyn college": [
+    [
+      "247",
+      "1",
+      "Flatbush Av-Brooklyn College"
+    ]
+  ],
+  "pelham bay park": [
+    [
+      "601",
+      "1",
+      "Pelham Bay Park"
+    ]
+  ],
+  "buhre av": [
+    [
+      "602",
+      "1",
+      "Buhre Av"
+    ]
+  ],
+  "middletown rd": [
+    [
+      "603",
+      "1",
+      "Middletown Rd"
+    ]
+  ],
+  "westchester sq-e tremont av": [
+    [
+      "604",
+      "1",
+      "Westchester Sq-E Tremont Av"
+    ]
+  ],
+  "zerega av": [
+    [
+      "606",
+      "1",
+      "Zerega Av"
+    ]
+  ],
+  "castle hill av": [
+    [
+      "607",
+      "1",
+      "Castle Hill Av"
+    ]
+  ],
+  "parkchester": [
+    [
+      "608",
+      "1",
+      "Parkchester"
+    ]
+  ],
+  "st lawrence av": [
+    [
+      "609",
+      "1",
+      "St Lawrence Av"
+    ]
+  ],
+  "morrison av-soundview": [
+    [
+      "610",
+      "1",
+      "Morrison Av-Soundview"
+    ]
+  ],
+  "elder av": [
+    [
+      "611",
+      "1",
+      "Elder Av"
+    ]
+  ],
+  "whitlock av": [
+    [
+      "612",
+      "1",
+      "Whitlock Av"
+    ]
+  ],
+  "hunts point av": [
+    [
+      "613",
+      "1",
+      "Hunts Point Av"
+    ]
+  ],
+  "longwood av": [
+    [
+      "614",
+      "1",
+      "Longwood Av"
+    ]
+  ],
+  "e 149 st": [
+    [
+      "615",
+      "1",
+      "E 149 St"
+    ]
+  ],
+  "e 143 st-st mary's st": [
+    [
+      "616",
+      "1",
+      "E 143 St-St Mary's St"
+    ]
+  ],
+  "cypress av": [
+    [
+      "617",
+      "1",
+      "Cypress Av"
+    ]
+  ],
+  "brook av": [
+    [
+      "618",
+      "1",
+      "Brook Av"
+    ]
+  ],
+  "3 av-138 st": [
+    [
+      "619",
+      "1",
+      "3 Av-138 St"
+    ]
+  ],
+  "woodlawn": [
+    [
+      "401",
+      "1",
+      "Woodlawn"
+    ]
+  ],
+  "mosholu pkwy": [
+    [
+      "402",
+      "1",
+      "Mosholu Pkwy"
+    ]
+  ],
+  "bedford park blvd-lehman college": [
+    [
+      "405",
+      "1",
+      "Bedford Park Blvd-Lehman College"
+    ]
+  ],
+  "183 st": [
+    [
+      "408",
+      "1",
+      "183 St"
+    ]
+  ],
+  "burnside av": [
+    [
+      "409",
+      "1",
+      "Burnside Av"
+    ]
+  ],
+  "176 st": [
+    [
+      "410",
+      "1",
+      "176 St"
+    ]
+  ],
+  "mt eden av": [
+    [
+      "411",
+      "1",
+      "Mt Eden Av"
+    ]
+  ],
+  "149 st-grand concourse": [
+    [
+      "415",
+      "1",
+      "149 St-Grand Concourse"
+    ],
+    [
+      "222",
+      "1",
+      "149 St-Grand Concourse"
+    ]
+  ],
+  "138 st-grand concourse": [
+    [
+      "416",
+      "1",
+      "138 St-Grand Concourse"
+    ]
+  ],
+  "110 st": [
+    [
+      "623",
+      "1",
+      "110 St"
+    ]
+  ],
+  "68 st-hunter college": [
+    [
+      "628",
+      "1",
+      "68 St-Hunter College"
+    ]
+  ],
+  "51 st": [
+    [
+      "630",
+      "1",
+      "51 St"
+    ]
+  ],
+  "grand central-42 st": [
+    [
+      "631",
+      "1",
+      "Grand Central-42 St"
+    ],
+    [
+      "723",
+      "1",
+      "Grand Central-42 St"
+    ],
+    [
+      "901",
+      "1",
+      "Grand Central-42 St"
+    ]
+  ],
+  "33 st": [
+    [
+      "632",
+      "1",
+      "33 St"
+    ]
+  ],
+  "astor pl": [
+    [
+      "636",
+      "1",
+      "Astor Pl"
+    ]
+  ],
+  "bleecker st": [
+    [
+      "637",
+      "1",
+      "Bleecker St"
+    ]
+  ],
+  "brooklyn bridge-city hall": [
+    [
+      "640",
+      "1",
+      "Brooklyn Bridge-City Hall"
+    ]
+  ],
+  "bowling green": [
+    [
+      "420",
+      "1",
+      "Bowling Green"
+    ]
+  ],
+  "wakefield-241 st": [
+    [
+      "201",
+      "1",
+      "Wakefield-241 St"
+    ]
+  ],
+  "nereid av": [
+    [
+      "204",
+      "1",
+      "Nereid Av"
+    ]
+  ],
+  "233 st": [
+    [
+      "205",
+      "1",
+      "233 St"
+    ]
+  ],
+  "225 st": [
+    [
+      "206",
+      "1",
+      "225 St"
+    ]
+  ],
+  "219 st": [
+    [
+      "207",
+      "1",
+      "219 St"
+    ]
+  ],
+  "gun hill rd": [
+    [
+      "208",
+      "1",
+      "Gun Hill Rd"
+    ],
+    [
+      "503",
+      "1",
+      "Gun Hill Rd"
+    ]
+  ],
+  "burke av": [
+    [
+      "209",
+      "1",
+      "Burke Av"
+    ]
+  ],
+  "allerton av": [
+    [
+      "210",
+      "1",
+      "Allerton Av"
+    ]
+  ],
+  "pelham pkwy": [
+    [
+      "211",
+      "1",
+      "Pelham Pkwy"
+    ],
+    [
+      "504",
+      "1",
+      "Pelham Pkwy"
+    ]
+  ],
+  "bronx park east": [
+    [
+      "212",
+      "1",
+      "Bronx Park East"
+    ]
+  ],
+  "e 180 st": [
+    [
+      "213",
+      "1",
+      "E 180 St"
+    ]
+  ],
+  "west farms sq-e tremont av": [
+    [
+      "214",
+      "1",
+      "West Farms Sq-E Tremont Av"
+    ]
+  ],
+  "174 st": [
+    [
+      "215",
+      "1",
+      "174 St"
+    ]
+  ],
+  "freeman st": [
+    [
+      "216",
+      "1",
+      "Freeman St"
+    ]
+  ],
+  "simpson st": [
+    [
+      "217",
+      "1",
+      "Simpson St"
+    ]
+  ],
+  "intervale av": [
+    [
+      "218",
+      "1",
+      "Intervale Av"
+    ]
+  ],
+  "jackson av": [
+    [
+      "220",
+      "1",
+      "Jackson Av"
+    ]
+  ],
+  "3 av-149 st": [
+    [
+      "221",
+      "1",
+      "3 Av-149 St"
+    ]
+  ],
+  "harlem-148 st": [
+    [
+      "301",
+      "1",
+      "Harlem-148 St"
+    ]
+  ],
+  "110 st-malcolm x plaza": [
+    [
+      "227",
+      "1",
+      "110 St-Malcolm X Plaza"
+    ]
+  ],
+  "eastchester-dyre av": [
+    [
+      "501",
+      "1",
+      "Eastchester-Dyre Av"
+    ]
+  ],
+  "baychester av": [
+    [
+      "502",
+      "1",
+      "Baychester Av"
+    ]
+  ],
+  "morris park": [
+    [
+      "505",
+      "1",
+      "Morris Park"
+    ]
+  ],
+  "flushing-main st": [
+    [
+      "701",
+      "1",
+      "Flushing-Main St"
+    ]
+  ],
+  "mets-willets point": [
+    [
+      "702",
+      "1",
+      "Mets-Willets Point"
+    ]
+  ],
+  "103 st-corona plaza": [
+    [
+      "706",
+      "1",
+      "103 St-Corona Plaza"
+    ]
+  ],
+  "junction blvd": [
+    [
+      "707",
+      "1",
+      "Junction Blvd"
+    ]
+  ],
+  "90 st-elmhurst av": [
+    [
+      "708",
+      "1",
+      "90 St-Elmhurst Av"
+    ]
+  ],
+  "82 st-jackson hts": [
+    [
+      "709",
+      "1",
+      "82 St-Jackson Hts"
+    ]
+  ],
+  "74 st-broadway": [
+    [
+      "710",
+      "1",
+      "74 St-Broadway"
+    ]
+  ],
+  "69 st": [
+    [
+      "711",
+      "1",
+      "69 St"
+    ]
+  ],
+  "61 st-woodside": [
+    [
+      "712",
+      "1",
+      "61 St-Woodside"
+    ]
+  ],
+  "52 st": [
+    [
+      "713",
+      "1",
+      "52 St"
+    ]
+  ],
+  "46 st-bliss st": [
+    [
+      "714",
+      "1",
+      "46 St-Bliss St"
+    ]
+  ],
+  "40 st-lowery st": [
+    [
+      "715",
+      "1",
+      "40 St-Lowery St"
+    ]
+  ],
+  "33 st-rawson st": [
+    [
+      "716",
+      "1",
+      "33 St-Rawson St"
+    ]
+  ],
+  "queensboro plaza": [
+    [
+      "R09",
+      "N",
+      "Queensboro Plaza"
+    ],
+    [
+      "718",
+      "1",
+      "Queensboro Plaza"
+    ]
+  ],
+  "hunters point av": [
+    [
+      "720",
+      "1",
+      "Hunters Point Av"
+    ]
+  ],
+  "vernon blvd-jackson av": [
+    [
+      "721",
+      "1",
+      "Vernon Blvd-Jackson Av"
+    ]
+  ],
+  "5 av": [
+    [
+      "724",
+      "1",
+      "5 Av"
+    ]
+  ],
+  "34 st-hudson yards": [
+    [
+      "726",
+      "1",
+      "34 St-Hudson Yards"
+    ]
+  ],
+  "st george": [
+    [
+      "S31",
+      "1",
+      "St George"
+    ]
+  ],
+  "tompkinsville": [
+    [
+      "S30",
+      "1",
+      "Tompkinsville"
+    ]
+  ],
+  "stapleton": [
+    [
+      "S29",
+      "1",
+      "Stapleton"
+    ]
+  ],
+  "clifton": [
+    [
+      "S28",
+      "1",
+      "Clifton"
+    ]
+  ],
+  "grasmere": [
+    [
+      "S27",
+      "1",
+      "Grasmere"
+    ]
+  ],
+  "old town": [
+    [
+      "S26",
+      "1",
+      "Old Town"
+    ]
+  ],
+  "dongan hills": [
+    [
+      "S25",
+      "1",
+      "Dongan Hills"
+    ]
+  ],
+  "jefferson av": [
+    [
+      "S24",
+      "1",
+      "Jefferson Av"
+    ]
+  ],
+  "grant city": [
+    [
+      "S23",
+      "1",
+      "Grant City"
+    ]
+  ],
+  "new dorp": [
+    [
+      "S22",
+      "1",
+      "New Dorp"
+    ]
+  ],
+  "oakwood heights": [
+    [
+      "S21",
+      "1",
+      "Oakwood Heights"
+    ]
+  ],
+  "bay terrace": [
+    [
+      "S20",
+      "1",
+      "Bay Terrace"
+    ]
+  ],
+  "great kills": [
+    [
+      "S19",
+      "1",
+      "Great Kills"
+    ]
+  ],
+  "eltingville": [
+    [
+      "S18",
+      "1",
+      "Eltingville"
+    ]
+  ],
+  "annadale": [
+    [
+      "S17",
+      "1",
+      "Annadale"
+    ]
+  ],
+  "huguenot": [
+    [
+      "S16",
+      "1",
+      "Huguenot"
+    ]
+  ],
+  "prince's bay": [
+    [
+      "S15",
+      "1",
+      "Prince's Bay"
+    ]
+  ],
+  "pleasant plains": [
+    [
+      "S14",
+      "1",
+      "Pleasant Plains"
+    ]
+  ],
+  "richmond valley": [
+    [
+      "S13",
+      "1",
+      "Richmond Valley"
+    ]
+  ],
+  "tottenville": [
+    [
+      "S09",
+      "1",
+      "Tottenville"
+    ]
+  ],
+  "arthur kill": [
+    [
+      "S11",
+      "1",
+      "Arthur Kill"
+    ]
+  ],
+  "wtc": [
+    [
+      "E01",
+      "A",
+      "World Trade Center"
+    ]
+  ],
+  "bronx": [
+    [
+      "212",
+      "1",
+      "Bronx Park East"
+    ]
+  ]
+}
