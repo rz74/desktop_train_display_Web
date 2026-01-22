@@ -14,7 +14,7 @@ A production-ready transit display system designed for 4.2" e-ink screens, power
 
 ---
 
-## 👵 For Regular Users (Non-Technical)
+## For Regular Users (Non-Technical)
 
 ### What This System Does
 
