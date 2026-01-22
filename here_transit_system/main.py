@@ -18,7 +18,12 @@ load_dotenv()
 app = FastAPI(title="HERE Transit Display")
 
 # Configuration
-HERE_API_KEY = os.getenv("HERE_API_KEY", "3323Fg4PTSpFKcex0iIRwr7ECrOTi_InEZQ3zSpIzCg")
+HERE_API_KEY = os.getenv("HERE_API_KEY")
+if not HERE_API_KEY:
+    raise ValueError(
+        "HERE_API_KEY environment variable is required. "
+        "Create a .env file with HERE_API_KEY=your_key or set it as an environment variable."
+    )
 DEPARTURES_URL = "https://transit.hereapi.com/v8/departures"
 
 # Load GTFS to HERE mapping
