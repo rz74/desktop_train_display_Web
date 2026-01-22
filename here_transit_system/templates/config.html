@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configure Display - {{ display_id }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .display-id {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        select, input[type="number"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
+        .time-window {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 15px;
+            align-items: end;
+        }
+        
+        .separator {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            padding-bottom: 12px;
+        }
+        
+        .resolution-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .resolution-option {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .resolution-option:hover {
+            background: #f0f0f0;
+        }
+        
+        .resolution-option.selected {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+        
+        input[type="radio"] {
+            display: none;
+        }
+        
+        .passcode-note {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-save {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-save:hover {
+            background: #45a049;
+        }
+        
+        .btn-cancel {
+            background: #f44336;
+            color: white;
+        }
+        
+        .btn-cancel:hover {
+            background: #da190b;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .search-box {
+            margin-bottom: 10px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Configure Display</h1>
+        <div class="display-id">Display ID: <strong>{{ display_id }}</strong></div>
+        
+        {% if message %}
+        <div class="message {{ message_type }}">{{ message }}</div>
+        {% endif %}
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="station-search">Search Station:</label>
+                <div class="search-box">
+                    <input type="text" id="station-search" placeholder="Type to filter stations...">
+                </div>
+                <label for="gtfs_id">Select Station:</label>
+                <select name="gtfs_id" id="gtfs_id" required size="8">
+                    <optgroup label="MAJOR HUBS">
+                        {% for station in stations %}
+                        {% if station.agency == 'COMPLEX' %}
+                        <option value="{{ station.id }}" {% if station.id == config.gtfs_id %}selected{% endif %}>
+                            {{ station.name }}
+                        </option>
+                        {% endif %}
+                        {% endfor %}
+                    </optgroup>
+                    <optgroup label="PATH TRAIN">
+                        {% for station in stations %}
+                        {% if station.agency == 'PATH' %}
+                        <option value="{{ station.id }}" {% if station.id == config.gtfs_id %}selected{% endif %}>
+                            {{ station.name }}
+                        </option>
+                        {% endif %}
+                        {% endfor %}
+                    </optgroup>
+                    <optgroup label="MTA SUBWAY">
+                        {% for station in stations %}
+                        {% if station.agency == 'MTA' %}
+                        <option value="{{ station.id }}" {% if station.id == config.gtfs_id %}selected{% endif %}>
+                            {{ station.name }}
+                        </option>
+                        {% endif %}
+                        {% endfor %}
+                    </optgroup>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Time Window (Minutes):</label>
+                <div class="time-window">
+                    <div>
+                        <label for="min_minutes">Minimum:</label>
+                        <input type="number" name="min_minutes" id="min_minutes" 
+                               value="{{ config.min_minutes }}" min="0" max="60" required>
+                    </div>
+                    <div class="separator">to</div>
+                    <div>
+                        <label for="max_minutes">Maximum:</label>
+                        <input type="number" name="max_minutes" id="max_minutes" 
+                               value="{{ config.max_minutes }}" min="0" max="120" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Display Resolution:</label>
+                <div class="resolution-options">
+                    <label class="resolution-option {% if config.display_res == '400x300' %}selected{% endif %}">
+                        <input type="radio" name="display_res" value="400x300" 
+                               {% if config.display_res == '400x300' %}checked{% endif %}>
+                        400x300
+                    </label>
+                    <label class="resolution-option {% if config.display_res == '800x600' %}selected{% endif %}">
+                        <input type="radio" name="display_res" value="800x600" 
+                               {% if config.display_res == '800x600' %}checked{% endif %}>
+                        800x600
+                    </label>
+                    <label class="resolution-option {% if config.display_res == '640x384' %}selected{% endif %}">
+                        <input type="radio" name="display_res" value="640x384" 
+                               {% if config.display_res == '640x384' %}checked{% endif %}>
+                        640x384
+                    </label>
+                    <label class="resolution-option {% if config.display_res == '1200x825' %}selected{% endif %}">
+                        <input type="radio" name="display_res" value="1200x825" 
+                               {% if config.display_res == '1200x825' %}checked{% endif %}>
+                        1200x825
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="passcode">Admin Passcode:</label>
+                <input type="password" name="passcode" id="passcode" required 
+                       placeholder="Enter admin passcode to save">
+                <div class="passcode-note">Required to make changes</div>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit" class="btn-save">Save Configuration</button>
+                <button type="button" class="btn-cancel" onclick="window.location.href='{{ root_path }}/{{ display_id }}'">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Resolution option selection
+        document.querySelectorAll('.resolution-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.resolution-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                this.querySelector('input[type="radio"]').checked = true;
+            });
+        });
+        
+        // Station search filter
+        const searchInput = document.getElementById('station-search');
+        const stationSelect = document.getElementById('gtfs_id');
+        const allOptions = Array.from(stationSelect.querySelectorAll('option'));
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            
+            allOptions.forEach(option => {
+                const text = option.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    option.style.display = '';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

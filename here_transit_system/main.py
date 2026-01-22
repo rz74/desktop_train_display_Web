@@ -1,21 +1,37 @@
 """
-HERE Transit API v8 - Backend Proxy
+HERE Transit API v8 - Multi-Tenant Backend
 Real-time arrival board for MTA Subway and PATH trains
 """
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Form, Request
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi.responses import JSONResponse, FileResponse, HTMLResponse, RedirectResponse
+from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv
 import httpx
 import json
+import re
 from pathlib import Path
 from datetime import datetime
 import os
 
+try:
+    from underground import SubwayFeed
+    MTA_FEED_AVAILABLE = True
+except ImportError:
+    MTA_FEED_AVAILABLE = False
+    print("Warning: underground library not installed. MTA real-time data unavailable.")
+
 # Load environment variables
 load_dotenv()
 
-app = FastAPI(title="HERE Transit Display")
+# Initialize FastAPI with root_path for Nginx deployment
+app = FastAPI(
+    title="HERE Transit Display - Multi-Tenant",
+    root_path="/einktrain"
+)
+
+# Initialize Jinja2 templates
+templates = Jinja2Templates(directory="templates")
 
 # Configuration
 HERE_API_KEY = os.getenv("HERE_API_KEY")
@@ -24,11 +40,24 @@ if not HERE_API_KEY:
         "HERE_API_KEY environment variable is required. "
         "Create a .env file with HERE_API_KEY=your_key or set it as an environment variable."
     )
+ADMIN_PASSCODE = os.getenv("ADMIN_PASSCODE")
+if not ADMIN_PASSCODE:
+    raise ValueError(
+        "ADMIN_PASSCODE environment variable is required. "
+        "Set it in your .env file for admin access."
+    )
 DEPARTURES_URL = "https://transit.hereapi.com/v8/departures"
+
+# User configurations file
+USER_CONFIGS_FILE = Path(__file__).parent / "user_configs.json"
 
 # Load GTFS to HERE mapping
 MAPPING_FILE = Path(__file__).parent / "gtfs_to_here_map.json"
+COORDINATE_MAPPING_FILE = Path(__file__).parent / "coordinate_mapping.json"
 STATION_MAPPING = {}
+STATION_NAMES = {}  # Maps GTFS ID to station name
+STATION_AGENCY = {}  # Maps GTFS ID to agency (MTA or PATH)
+STATION_AGENCY = {}  # Maps GTFS ID to agency (MTA or PATH)
 
 # Manual overrides for 3 stations that failed discovery (100% coverage)
 MANUAL_OVERRIDES = {
@@ -86,8 +115,8 @@ STATION_COMPLEXES = {
 
 
 def load_station_mapping():
-    """Load GTFS to HERE mapping with manual overrides applied."""
-    global STATION_MAPPING
+    """Load GTFS to HERE mapping with manual overrides and station names."""
+    global STATION_MAPPING, STATION_NAMES, STATION_AGENCY, STATION_AGENCY
     
     if MAPPING_FILE.exists():
         with open(MAPPING_FILE, 'r', encoding='utf-8') as f:
@@ -98,6 +127,30 @@ def load_station_mapping():
     # Apply manual overrides
     STATION_MAPPING.update(MANUAL_OVERRIDES)
     
+    # Load station names from coordinate mapping
+    if COORDINATE_MAPPING_FILE.exists():
+        with open(COORDINATE_MAPPING_FILE, 'r', encoding='utf-8') as f:
+            coord_data = json.load(f)
+            
+            # Load MTA station names
+            if 'mta' in coord_data:
+                for gtfs_id, station_info in coord_data['mta'].items():
+                    if 'stop_name' in station_info:
+                        STATION_NAMES[gtfs_id] = station_info['stop_name']
+                    STATION_AGENCY[gtfs_id] = 'MTA'
+            
+            # Load PATH station names (use station_name for PATH)
+            if 'path' in coord_data:
+                for gtfs_id, station_info in coord_data['path'].items():
+                    if 'station_name' in station_info:
+                        STATION_NAMES[gtfs_id] = station_info['station_name']
+                    STATION_AGENCY[gtfs_id] = 'PATH'
+    
+    # Add manual override names
+    STATION_NAMES['723'] = 'Grand Central-42 St'
+    STATION_NAMES['901'] = 'Grand Central-42 St'
+    STATION_NAMES['Newark Penn Station'] = 'Newark Penn Station'
+    
     print(f"✓ Loaded {len(STATION_MAPPING)} station mappings")
     print(f"✓ Manual overrides: {list(MANUAL_OVERRIDES.keys())}")
 
@@ -105,6 +158,73 @@ def load_station_mapping():
 # Load mapping on startup
 load_station_mapping()
 
+
+def load_user_config(display_id: str):
+    """Load configuration for a specific display ID. Returns dict or None."""
+    if not USER_CONFIGS_FILE.exists():
+        return None
+    
+    with open(USER_CONFIGS_FILE, 'r', encoding='utf-8') as f:
+        configs = json.load(f)
+    
+    return configs.get(display_id)
+
+
+def save_user_config(display_id: str, config: dict):
+    """Save configuration for a specific display ID."""
+    configs = {}
+    if USER_CONFIGS_FILE.exists():
+        with open(USER_CONFIGS_FILE, 'r', encoding='utf-8') as f:
+            configs = json.load(f)
+    
+    configs[display_id] = config
+    
+    with open(USER_CONFIGS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(configs, f, indent=2)
+
+
+def get_all_stations() -> list:
+    """Get all stations for dropdown (includes complexes, PATH, and MTA)."""
+    stations = []
+    complex_gtfs_ids = set()
+    
+    # Add station complexes first
+    for complex_id, info in STATION_COMPLEXES.items():
+        stations.append({
+            'id': complex_id,
+            'name': info['name'],
+            'agency': 'COMPLEX',
+            'here_id': 'complex'
+        })
+        complex_gtfs_ids.update(info['gtfs_ids'])
+    
+    # Add regular stations (skip those in complexes)
+    for gtfs_id, here_id in STATION_MAPPING.items():
+        if gtfs_id not in complex_gtfs_ids:
+            # Get proper station name
+            station_name = STATION_NAMES.get(gtfs_id, gtfs_id)
+            
+            # Get agency from STATION_AGENCY dict (default to MTA if not found)
+            agency = STATION_AGENCY.get(gtfs_id, 'MTA')
+            
+            stations.append({
+                'id': gtfs_id,
+                'name': station_name,
+                'agency': agency,
+                'here_id': here_id
+            })
+    
+    # Sort: Complexes first, then PATH, then MTA, all alphabetically
+    def sort_key(s):
+        if s['agency'] == 'COMPLEX':
+            return (0, s['name'])
+        elif s['agency'] == 'PATH':
+            return (1, s['name'])
+        else:
+            return (2, s['name'])
+    
+    stations.sort(key=sort_key)
+    return stations
 
 
 async def fetch_departures(here_station_id: str) -> dict:
@@ -114,7 +234,10 @@ async def fetch_departures(here_station_id: str) -> dict:
     """
     params = {
         'ids': here_station_id,
-        'apiKey': HERE_API_KEY
+        'apiKey': HERE_API_KEY,
+        'maxPerBoard': 40,  # Max departures per platform/board (default is 5)
+        'maxBoards': 10,    # Max platforms/boards to return
+        'lang': 'en-US'
     }
     
     async with httpx.AsyncClient(timeout=30.0) as client:
@@ -138,6 +261,80 @@ def parse_iso_time(iso_string: str) -> int:
         return 0
 
 
+def get_mta_arrivals(gtfs_id: str) -> list:
+    """
+    Get real-time MTA subway arrivals using underground library.
+    Returns: [{"line": "F", "dest": "Coney Island", "min": 3}, ...]
+    """
+    if not MTA_FEED_AVAILABLE:
+        return []
+    
+    try:
+        # underground library needs route letters/numbers, not stop IDs
+        # Query all major routes and filter by stop_id
+        routes = ['A', 'C', 'E', 'B', 'D', 'F', 'M', 'G', 'L', 'J', 'Z',
+                  'N', 'Q', 'R', 'W', '1', '2', '3', '4', '5', '6', '7', 'S']
+        
+        arrivals = []
+        
+        for route in routes:
+            try:
+                feed = SubwayFeed.get(route)
+                for train in feed:
+                    # The stop_id in GTFS has N/S suffix for direction, our IDs don't
+                    # Match if either the exact ID matches or the base ID matches
+                    train_stop_id = getattr(train, 'stop_id', None)
+                    if not train_stop_id:
+                        continue
+                    
+                    # Remove direction suffix (N/S) if present
+                    base_stop_id = train_stop_id.rstrip('NS')
+                    target_base = gtfs_id.rstrip('NS')
+                    
+                    # Check if this train stops at our station
+                    if train_stop_id == gtfs_id or base_stop_id == target_base:
+                        # Extract route/line
+                        line = route
+                        
+                        # Extract destination
+                        dest = getattr(train, 'headsign', None) or getattr(train, 'direction', 'Unknown')
+                        
+                        # Calculate minutes until arrival
+                        if hasattr(train, 'time'):
+                            time_obj = train.time
+                            try:
+                                if isinstance(time_obj, datetime):
+                                    now = datetime.now(time_obj.tzinfo if time_obj.tzinfo else None)
+                                    delta = time_obj - now
+                                    minutes = int(delta.total_seconds() / 60)
+                                elif isinstance(time_obj, (int, float)):
+                                    # Assume it's a timestamp
+                                    from datetime import timezone
+                                    now = datetime.now(timezone.utc)
+                                    arrival_time = datetime.fromtimestamp(time_obj, tz=timezone.utc)
+                                    delta = arrival_time - now
+                                    minutes = int(delta.total_seconds() / 60)
+                                else:
+                                    continue
+                                
+                                if minutes >= 0:  # Only include future arrivals
+                                    arrivals.append({
+                                        'line': line,
+                                        'dest': dest,
+                                        'min': minutes
+                                    })
+                            except Exception:
+                                continue
+            except Exception as e:
+                # Route might not exist or have errors, skip it silently
+                pass
+        
+        return arrivals
+    except Exception as e:
+        print(f"MTA GTFS error for {gtfs_id}: {e}")
+        return []
+
+
 def transform_arrivals(api_response: dict) -> list:
     """
     Transform HERE API response into clean arrival list.
@@ -151,22 +348,44 @@ def transform_arrivals(api_response: dict) -> list:
         for dep in departures:
             transport = dep.get('transport', {})
             
-            # Extract line name (route number/letter)
-            line = transport.get('name', '')
-            if not line:
-                line = transport.get('shortName', '')
+            # Extract line name - try multiple fields aggressively
+            line = None
+            
+            # Try shortName first (usually the route letter/number)
+            if transport.get('shortName'):
+                line = transport.get('shortName').strip()
+            
+            # Try name as fallback
+            if not line and transport.get('name'):
+                name = transport.get('name').strip()
+                # If name is short (1-4 chars), it's probably the route
+                if len(name) <= 4:
+                    line = name
+                else:
+                    # Try to extract route from longer name (e.g., "Subway D")
+                    words = name.split()
+                    for word in words:
+                        if len(word) <= 3 and word[0].isalnum():
+                            line = word
+                            break
+            
+            # Try headsign as last resort
             if not line:
                 headsign = transport.get('headsign', '')
                 if headsign:
-                    line = headsign.split()[0]  # First word
-                else:
-                    line = 'N/A'
+                    # Look for single letter/number patterns
+                    match = re.search(r'\b([A-Z0-9]{1,3})\b', headsign)
+                    if match:
+                        line = match.group(1)
+            
+            # If still no line, use placeholder instead of skipping
+            if not line:
+                line = '?'
             
             # Extract destination
             destination = transport.get('headsign', 'Unknown')
             
             # Calculate minutes until arrival
-            # HERE API v8 structure: dep['time'] is a string, not a dict
             departure_time_str = dep.get('time', '')
             if not departure_time_str:
                 # Try nested structure as fallback
@@ -182,9 +401,9 @@ def transform_arrivals(api_response: dict) -> list:
                 'min': minutes
             })
     
-    # Sort by minutes (soonest first) and limit to 10
+    # Sort by minutes (soonest first) - don't limit here, let caller decide
     arrivals.sort(key=lambda x: x['min'])
-    return arrivals[:10]
+    return arrivals
 
 
 @app.get("/api/arrivals/{gtfs_id}")
@@ -364,6 +583,198 @@ async def get_stations():
         stations = [{'id': k, 'name': k, 'agency': 'Unknown', 'here_id': v} 
                    for k, v in STATION_MAPPING.items()]
         return {'stations': stations}
+
+
+@app.get("/debug/{gtfs_id}")
+async def debug_station(gtfs_id: str):
+    """Debug endpoint to see raw API response for a station."""
+    here_id = STATION_MAPPING.get(gtfs_id)
+    if not here_id:
+        return {"error": f"Station {gtfs_id} not found in mapping"}
+    
+    try:
+        api_response = await fetch_departures(here_id)
+        return {
+            "gtfs_id": gtfs_id,
+            "here_id": here_id,
+            "station_name": STATION_NAMES.get(gtfs_id, gtfs_id),
+            "raw_api_response": api_response
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/{display_id}")
+async def display_page(request: Request, display_id: str):
+    """
+    Render the e-ink display page for a specific display ID.
+    If no config exists, redirect to config page.
+    """
+    config = load_user_config(display_id)
+    
+    if not config:
+        # No config found, redirect to config page
+        return RedirectResponse(url=f"/{display_id}/config")
+    
+    # Get arrivals for configured station
+    gtfs_id = config['gtfs_id']
+    min_minutes = config.get('min_minutes', 2)
+    max_minutes = config.get('max_minutes', 20)
+    
+    # Parse display resolution
+    display_res = config.get('display_res', '800x600')
+    width, height = map(int, display_res.split('x'))
+    
+    # Check if station complex
+    if gtfs_id in STATION_COMPLEXES:
+        complex_info = STATION_COMPLEXES[gtfs_id]
+        all_arrivals = []
+        
+        for sub_gtfs_id in complex_info["gtfs_ids"]:
+            here_id = STATION_MAPPING.get(sub_gtfs_id)
+            if not here_id:
+                continue
+            
+            try:
+                api_response = await fetch_departures(here_id)
+                arrivals = transform_arrivals(api_response)
+                all_arrivals.extend(arrivals)
+            except Exception as e:
+                print(f"Warning: Failed to fetch {sub_gtfs_id}: {e}")
+                continue
+        
+        # Filter and sort based on user's time window
+        filtered = [a for a in all_arrivals if min_minutes <= a['min'] <= max_minutes]
+        filtered.sort(key=lambda x: x['min'])
+        # Show all filtered trains, up to 15
+        arrivals = filtered[:15]
+        station_name = complex_info['name']
+        
+    else:
+        # Single station
+        here_id = STATION_MAPPING.get(gtfs_id)
+        if not here_id:
+            return {"error": f"Station {gtfs_id} not found"}
+        
+        station_name = STATION_NAMES.get(gtfs_id, gtfs_id)
+        agency = STATION_AGENCY.get(gtfs_id, 'MTA')
+        
+        try:
+            # Get HERE API data
+            api_response = await fetch_departures(here_id)
+            here_arrivals = transform_arrivals(api_response)
+            print(f"HERE API: {len(here_arrivals)} arrivals")
+            
+            # Get MTA GTFS data if this is an MTA station
+            mta_arrivals = []
+            if agency == 'MTA' and MTA_FEED_AVAILABLE:
+                mta_arrivals = get_mta_arrivals(gtfs_id)
+                print(f"MTA GTFS: {len(mta_arrivals)} arrivals")
+            
+            # Combine and deduplicate arrivals
+            all_arrivals = here_arrivals + mta_arrivals
+            print(f"Combined total: {len(all_arrivals)} arrivals")
+            
+            # Filter and sort based on user's time window
+            filtered = [a for a in all_arrivals if min_minutes <= a['min'] <= max_minutes]
+            print(f"After filtering {min_minutes}-{max_minutes} min: {len(filtered)} arrivals")
+            filtered.sort(key=lambda x: (x['min'], x['line']))
+            # Show all filtered trains, up to 15
+            arrivals = filtered[:15]
+            
+        except Exception as e:
+            return {"error": str(e)}
+    
+    # Get current time
+    from datetime import datetime
+    current_time = datetime.now().strftime("%I:%M %p")
+    
+    return templates.TemplateResponse("display.html", {
+        "request": request,
+        "display_id": display_id,
+        "width": width,
+        "height": height,
+        "current_time": current_time,
+        "station_name": station_name,
+        "arrivals": arrivals
+    })
+
+
+@app.get("/{display_id}/config")
+async def config_page(request: Request, display_id: str):
+    """
+    Render the configuration form for a specific display ID.
+    """
+    config = load_user_config(display_id) or {
+        'gtfs_id': '',
+        'min_minutes': 2,
+        'max_minutes': 20,
+        'display_res': '800x600'
+    }
+    
+    stations = get_all_stations()
+    
+    return templates.TemplateResponse("config.html", {
+        "request": request,
+        "display_id": display_id,
+        "stations": stations,
+        "config": config,
+        "message": None,
+        "message_type": None,
+        "root_path": request.app.root_path
+    })
+
+
+@app.post("/{display_id}/config")
+async def save_config(
+    request: Request,
+    display_id: str,
+    gtfs_id: str = Form(...),
+    min_minutes: int = Form(...),
+    max_minutes: int = Form(...),
+    display_res: str = Form(...),
+    passcode: str = Form(...)
+):
+    """
+    Save configuration for a specific display ID.
+    Requires user's password for authentication.
+    """
+    # Load existing config to get user's password
+    existing_config = load_user_config(display_id)
+    
+    # Validate passcode against user's password
+    if not existing_config or passcode != existing_config.get('password', ''):
+        stations = get_all_stations()
+        return templates.TemplateResponse("config.html", {
+            "request": request,
+            "display_id": display_id,
+            "stations": stations,
+            "config": {
+                'gtfs_id': gtfs_id,
+                'min_minutes': min_minutes,
+                'max_minutes': max_minutes,
+                'display_res': display_res
+            },
+            "message": "Invalid password",
+            "message_type": "error",
+            "root_path": request.app.root_path
+        })
+    
+    # Save configuration (keep existing password)
+    config = {
+        'gtfs_id': gtfs_id,
+        'min_minutes': min_minutes,
+        'max_minutes': max_minutes,
+        'display_res': display_res,
+        'password': existing_config['password']
+    }
+    save_user_config(display_id, config)
+    
+    # Redirect to display page
+    return RedirectResponse(
+        url=f"/{display_id}",
+        status_code=303
+    )
 
 
 # Mount static files

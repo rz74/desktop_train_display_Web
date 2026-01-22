@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transit Display - {{ display_id }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: #FFF;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: {{ width }}px;
+            height: {{ height }}px;
+            background: #FFF;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .station-name {
+            font-size: 32px;
+            font-weight: 700;
+            flex: 1;
+        }
+        
+        .time-info {
+            text-align: right;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .current-time {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .last-refresh {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            flex: 1;
+        }
+        
+        th {
+            background: #000;
+            color: #FFF;
+            font-size: 24px;
+            font-weight: 700;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            background: #FFF;
+            color: #000;
+            font-size: 22px;
+            font-weight: 700;
+            padding: 10px 12px;
+            border-bottom: 2px solid #E0E0E0;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .line-cell {
+            font-size: 28px;
+            text-align: center;
+            width: 15%;
+        }
+        
+        .dest-cell {
+            width: 60%;
+        }
+        
+        .min-cell {
+            text-align: center;
+            font-size: 32px;
+            width: 25%;
+        }
+        
+        .no-trains {
+            text-align: center;
+            font-size: 24px;
+            padding: 40px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="station-name">{{ station_name }}</div>
+            <div class="time-info">
+                <div class="current-time">{{ current_time }}</div>
+                <div class="last-refresh">Last refresh: {{ current_time }}</div>
+            </div>
+        </div>
+        
+        {% if arrivals %}
+        <table>
+            <thead>
+                <tr>
+                    <th class="line-cell">LINE</th>
+                    <th class="dest-cell">DESTINATION</th>
+                    <th class="min-cell">MIN</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for arrival in arrivals %}
+                <tr>
+                    <td class="line-cell">{{ arrival.line }}</td>
+                    <td class="dest-cell">{{ arrival.dest }}</td>
+                    <td class="min-cell">{{ arrival.min }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="no-trains">No trains in time window</div>
+        {% endif %}
+    </div>
+    
+    <script>
+        // Hard refresh every 60 seconds
+        setTimeout(function() {
+            window.location.reload(true);
+        }, 60000);
+    </script>
+</body>
+</html>
