@@ -194,3 +194,21 @@ def calculate_minutes_until(arrival_time):
     
     time_diff = (arrival_eastern - current_time).total_seconds()
     return int(time_diff / 60)
+
+# Static mapping of PATH stations to their serving routes
+# Used as fallback when real-time feed is empty
+PATH_STATION_ROUTES = {
+    "26722": ["861", "1024", "859"],  # 14th Street: YL, OR, BL (JSQ-33, JSQ-33 via HOB, HOB-33)
+    "26723": ["861", "1024", "859"],  # 23rd Street: YL, OR, BL
+    "26724": ["861", "1024", "859"],  # 33rd Street: YL, OR, BL
+    "26725": ["862", "860"],          # 9th Street: RD, GN (NWK-WTC, HOB-WTC)
+    "26726": ["862", "860"],          # Christopher Street: RD, GN
+    "26727": ["862", "860"],          # Exchange Place: RD, GN
+    "26728": ["862", "860", "861", "1024"],  # Grove Street: RD, GN, YL, OR (all except BL)
+    "26729": ["862"],                 # Harrison: RD (NWK-WTC only)
+    "26730": ["860", "1024", "859"],  # Hoboken: GN, OR, BL (HOB-WTC, JSQ-33 via HOB, HOB-33)
+    "26731": ["861", "1024", "862"],  # Journal Square: YL, OR, RD (JSQ-33, JSQ-33 via HOB, NWK-WTC)
+    "26732": ["862", "860"],          # Newport: RD, GN
+    "26733": ["862"],                 # Newark: RD (NWK-WTC only)
+    "26734": ["862", "860"]           # World Trade Center: RD, GN
+}

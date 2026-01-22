@@ -1,0 +1,7103 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-22 11:25:56",
+    "method": "coordinate-based proximity search",
+    "search_radius_meters": 100,
+    "mta_total": 496,
+    "mta_found": 494,
+    "mta_not_found": 2,
+    "path_total": 13,
+    "path_found": 12,
+    "path_not_found": 1,
+    "coverage_percent": 99
+  },
+  "mta": {
+    "127": {
+      "gtfs_stop_id": "127",
+      "stop_name": "Times Sq-42 St",
+      "here_id": "10327_73",
+      "here_name": "Times Sq-42 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.75529,
+        "lng": -73.987495
+      }
+    },
+    "S17": {
+      "gtfs_stop_id": "S17",
+      "stop_name": "Annadale",
+      "here_id": "10327_1434",
+      "here_name": "Annadale",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.54046,
+        "lng": -74.178217
+      }
+    },
+    "S01": {
+      "gtfs_stop_id": "S01",
+      "stop_name": "Franklin Av",
+      "here_id": "10327_1404",
+      "here_name": "Franklin Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.680596,
+        "lng": -73.955827
+      }
+    },
+    "254": {
+      "gtfs_stop_id": "254",
+      "stop_name": "Junius St",
+      "here_id": "10327_262",
+      "here_name": "Junius St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.663515,
+        "lng": -73.902447
+      }
+    },
+    "M01": {
+      "gtfs_stop_id": "M01",
+      "stop_name": "Middle Village-Metropolitan Av",
+      "here_id": "10327_1203",
+      "here_name": "Middle Village-Metropolitan Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.711396,
+        "lng": -73.889601
+      }
+    },
+    "726": {
+      "gtfs_stop_id": "726",
+      "stop_name": "34 St-Hudson Yards",
+      "here_id": "10327_1782",
+      "here_name": "34 St-Hudson Yards",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.755882,
+        "lng": -74.00191
+      }
+    },
+    "713": {
+      "gtfs_stop_id": "713",
+      "stop_name": "52 St",
+      "here_id": "10327_493",
+      "here_name": "52 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.744149,
+        "lng": -73.912549
+      }
+    },
+    "615": {
+      "gtfs_stop_id": "615",
+      "stop_name": "E 149 St",
+      "here_id": "10327_388",
+      "here_name": "E 149 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.812118,
+        "lng": -73.904098
+      }
+    },
+    "M11": {
+      "gtfs_stop_id": "M11",
+      "stop_name": "Myrtle Av",
+      "here_id": "10327_1224",
+      "here_name": "Myrtle Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.697207,
+        "lng": -73.935657
+      }
+    },
+    "F16": {
+      "gtfs_stop_id": "F16",
+      "stop_name": "East Broadway",
+      "here_id": "10327_895",
+      "here_name": "East Broadway",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.713715,
+        "lng": -73.990173
+      }
+    },
+    "F33": {
+      "gtfs_stop_id": "F33",
+      "stop_name": "Avenue N",
+      "here_id": "10327_937",
+      "here_name": "Avenue N",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.61514,
+        "lng": -73.974197
+      }
+    },
+    "233": {
+      "gtfs_stop_id": "233",
+      "stop_name": "Hoyt St",
+      "here_id": "10327_202",
+      "here_name": "Hoyt St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.690545,
+        "lng": -73.985065
+      }
+    },
+    "M05": {
+      "gtfs_stop_id": "M05",
+      "stop_name": "Forest Av",
+      "here_id": "10327_1209",
+      "here_name": "Forest Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.704423,
+        "lng": -73.903077
+      }
+    },
+    "S30": {
+      "gtfs_stop_id": "S30",
+      "stop_name": "Tompkinsville",
+      "here_id": "10327_1473",
+      "here_name": "Tompkinsville",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.636949,
+        "lng": -74.074835
+      }
+    },
+    "R43": {
+      "gtfs_stop_id": "R43",
+      "stop_name": "77 St",
+      "here_id": "10327_1395",
+      "here_name": "77 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.629742,
+        "lng": -74.02551
+      }
+    },
+    "A36": {
+      "gtfs_stop_id": "A36",
+      "stop_name": "Chambers St",
+      "here_id": "10327_613",
+      "here_name": "Chambers St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.714111,
+        "lng": -74.008585
+      }
+    },
+    "604": {
+      "gtfs_stop_id": "604",
+      "stop_name": "Westchester Sq-E Tremont Av",
+      "here_id": "10327_358",
+      "here_name": "Westchester Sq-E Tremont Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.839892,
+        "lng": -73.842952
+      }
+    },
+    "D09": {
+      "gtfs_stop_id": "D09",
+      "stop_name": "170 St",
+      "here_id": "10327_757",
+      "here_name": "170 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.839306,
+        "lng": -73.9134
+      }
+    },
+    "629": {
+      "gtfs_stop_id": "629",
+      "stop_name": "59 St",
+      "here_id": "10327_427",
+      "here_name": "59 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.762526,
+        "lng": -73.967967
+      }
+    },
+    "219": {
+      "gtfs_stop_id": "219",
+      "stop_name": "Prospect Av",
+      "here_id": "10327_163",
+      "here_name": "Prospect Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.819585,
+        "lng": -73.90177
+      }
+    },
+    "F39": {
+      "gtfs_stop_id": "F39",
+      "stop_name": "Neptune Av",
+      "here_id": "10327_952",
+      "here_name": "Neptune Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.581011,
+        "lng": -73.974574
+      }
+    },
+    "N09": {
+      "gtfs_stop_id": "N09",
+      "stop_name": "Avenue U",
+      "here_id": "10327_1278",
+      "here_name": "Avenue U",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.597473,
+        "lng": -73.979137
+      }
+    },
+    "610": {
+      "gtfs_stop_id": "610",
+      "stop_name": "Morrison Av-Soundview",
+      "here_id": "10327_373",
+      "here_name": "Morrison Av-Soundview",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.829521,
+        "lng": -73.874516
+      }
+    },
+    "F32": {
+      "gtfs_stop_id": "F32",
+      "stop_name": "Bay Pkwy",
+      "here_id": "10327_934",
+      "here_name": "Bay Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.620769,
+        "lng": -73.975264
+      }
+    },
+    "R13": {
+      "gtfs_stop_id": "R13",
+      "stop_name": "5 Av/59 St",
+      "here_id": "10327_1311",
+      "here_name": "5 Av/59 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.764811,
+        "lng": -73.973347
+      }
+    },
+    "B22": {
+      "gtfs_stop_id": "B22",
+      "stop_name": "25 Av",
+      "here_id": "10327_730",
+      "here_name": "25 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.597704,
+        "lng": -73.986829
+      }
+    },
+    "622": {
+      "gtfs_stop_id": "622",
+      "stop_name": "116 St",
+      "here_id": "10327_406",
+      "here_name": "116 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.798629,
+        "lng": -73.941617
+      }
+    },
+    "H14": {
+      "gtfs_stop_id": "H14",
+      "stop_name": "Beach 105 St",
+      "here_id": "10327_1074",
+      "here_name": "Beach 105 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.583209,
+        "lng": -73.827559
+      }
+    },
+    "F05": {
+      "gtfs_stop_id": "F05",
+      "stop_name": "Briarwood",
+      "here_id": "10327_871",
+      "here_name": "Briarwood",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.709179,
+        "lng": -73.820574
+      }
+    },
+    "R19": {
+      "gtfs_stop_id": "R19",
+      "stop_name": "23 St",
+      "here_id": "10327_1329",
+      "here_name": "23 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.741303,
+        "lng": -73.989344
+      }
+    },
+    "R18": {
+      "gtfs_stop_id": "R18",
+      "stop_name": "28 St",
+      "here_id": "10327_1326",
+      "here_name": "28 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.745494,
+        "lng": -73.988691
+      }
+    },
+    "114": {
+      "gtfs_stop_id": "114",
+      "stop_name": "145 St",
+      "here_id": "10327_34",
+      "here_name": "145 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.826551,
+        "lng": -73.95036
+      }
+    },
+    "A03": {
+      "gtfs_stop_id": "A03",
+      "stop_name": "Dyckman St",
+      "here_id": "10327_535",
+      "here_name": "Dyckman St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.865491,
+        "lng": -73.927271
+      }
+    },
+    "M16": {
+      "gtfs_stop_id": "M16",
+      "stop_name": "Marcy Av",
+      "here_id": "10327_1236",
+      "here_name": "Marcy Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.708359,
+        "lng": -73.957757
+      }
+    },
+    "720": {
+      "gtfs_stop_id": "720",
+      "stop_name": "Hunters Point Av",
+      "here_id": "10327_511",
+      "here_name": "Hunters Point Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.742216,
+        "lng": -73.948916
+      }
+    },
+    "A16": {
+      "gtfs_stop_id": "A16",
+      "stop_name": "116 St",
+      "here_id": "10327_565",
+      "here_name": "116 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.805085,
+        "lng": -73.954882
+      }
+    },
+    "A41": {
+      "gtfs_stop_id": "A41",
+      "stop_name": "Jay St-MetroTech",
+      "here_id": "10327_622",
+      "here_name": "Jay St-MetroTech",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.692338,
+        "lng": -73.987342
+      }
+    },
+    "R39": {
+      "gtfs_stop_id": "R39",
+      "stop_name": "45 St",
+      "here_id": "10327_1383",
+      "here_name": "45 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.648939,
+        "lng": -74.010006
+      }
+    },
+    "A52": {
+      "gtfs_stop_id": "A52",
+      "stop_name": "Liberty Av",
+      "here_id": "10327_655",
+      "here_name": "Liberty Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.674542,
+        "lng": -73.896548
+      }
+    },
+    "G34": {
+      "gtfs_stop_id": "G34",
+      "stop_name": "Classon Av",
+      "here_id": "10327_1030",
+      "here_name": "Classon Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.688873,
+        "lng": -73.96007
+      }
+    },
+    "D30": {
+      "gtfs_stop_id": "D30",
+      "stop_name": "Cortelyou Rd",
+      "here_id": "10327_817",
+      "here_name": "Cortelyou Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.640927,
+        "lng": -73.963891
+      }
+    },
+    "G20": {
+      "gtfs_stop_id": "G20",
+      "stop_name": "36 St",
+      "here_id": "10327_997",
+      "here_name": "36 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.752039,
+        "lng": -73.928781
+      }
+    },
+    "418": {
+      "gtfs_stop_id": "418",
+      "stop_name": "Fulton St",
+      "here_id": "10327_322",
+      "here_name": "Fulton St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.710368,
+        "lng": -74.009509
+      }
+    },
+    "212": {
+      "gtfs_stop_id": "212",
+      "stop_name": "Bronx Park East",
+      "here_id": "10327_142",
+      "here_name": "Bronx Park East",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.848828,
+        "lng": -73.868457
+      }
+    },
+    "503": {
+      "gtfs_stop_id": "503",
+      "stop_name": "Gun Hill Rd",
+      "here_id": "10327_340",
+      "here_name": "Gun Hill Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.869526,
+        "lng": -73.846384
+      }
+    },
+    "B18": {
+      "gtfs_stop_id": "B18",
+      "stop_name": "79 St",
+      "here_id": "10327_718",
+      "here_name": "79 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.613501,
+        "lng": -74.00061
+      }
+    },
+    "G29": {
+      "gtfs_stop_id": "G29",
+      "stop_name": "Metropolitan Av",
+      "here_id": "10327_1015",
+      "here_name": "Metropolitan Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.712792,
+        "lng": -73.951418
+      }
+    },
+    "G21": {
+      "gtfs_stop_id": "G21",
+      "stop_name": "Queens Plaza",
+      "here_id": "10327_1000",
+      "here_name": "Queens Plaza",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.748973,
+        "lng": -73.937243
+      }
+    },
+    "406": {
+      "gtfs_stop_id": "406",
+      "stop_name": "Kingsbridge Rd",
+      "here_id": "10327_289",
+      "here_name": "Kingsbridge Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.86776,
+        "lng": -73.897174
+      }
+    },
+    "R23": {
+      "gtfs_stop_id": "R23",
+      "stop_name": "Canal St",
+      "here_id": "10327_1341",
+      "here_name": "Canal St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.719527,
+        "lng": -74.001775
+      }
+    },
+    "110": {
+      "gtfs_stop_id": "110",
+      "stop_name": "191 St",
+      "here_id": "10327_22",
+      "here_name": "191 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.855225,
+        "lng": -73.929412
+      }
+    },
+    "G09": {
+      "gtfs_stop_id": "G09",
+      "stop_name": "67 Av",
+      "here_id": "10327_967",
+      "here_name": "67 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.726523,
+        "lng": -73.852719
+      }
+    },
+    "A51": {
+      "gtfs_stop_id": "A51",
+      "stop_name": "Broadway Junction",
+      "here_id": "10327_652",
+      "here_name": "Broadway Junction",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.678334,
+        "lng": -73.905316
+      }
+    },
+    "R01": {
+      "gtfs_stop_id": "R01",
+      "stop_name": "Astoria-Ditmars Blvd",
+      "here_id": "10327_1287",
+      "here_name": "Astoria-Ditmars Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.775036,
+        "lng": -73.912034
+      }
+    },
+    "246": {
+      "gtfs_stop_id": "246",
+      "stop_name": "Newkirk Av-Little Haiti",
+      "here_id": "10327_238",
+      "here_name": "Newkirk Av-Little Haiti",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.639967,
+        "lng": -73.948411
+      }
+    },
+    "L15": {
+      "gtfs_stop_id": "L15",
+      "stop_name": "Jefferson St",
+      "here_id": "10327_1164",
+      "here_name": "Jefferson St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.706607,
+        "lng": -73.922913
+      }
+    },
+    "725": {
+      "gtfs_stop_id": "725",
+      "stop_name": "Times Sq-42 St",
+      "here_id": "10327_523",
+      "here_name": "Times Sq-42 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.755477,
+        "lng": -73.987691
+      }
+    },
+    "S25": {
+      "gtfs_stop_id": "S25",
+      "stop_name": "Dongan Hills",
+      "here_id": "10327_1458",
+      "here_name": "Dongan Hills",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.588849,
+        "lng": -74.09609
+      }
+    },
+    "H01": {
+      "gtfs_stop_id": "H01",
+      "stop_name": "Aqueduct Racetrack",
+      "here_id": "10327_1483",
+      "here_name": "Aqueduct Racetrack",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.672097,
+        "lng": -73.835919
+      }
+    },
+    "J22": {
+      "gtfs_stop_id": "J22",
+      "stop_name": "Cleveland St",
+      "here_id": "10327_1107",
+      "here_name": "Cleveland St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.679947,
+        "lng": -73.884639
+      }
+    },
+    "A20": {
+      "gtfs_stop_id": "A20",
+      "stop_name": "86 St",
+      "here_id": "10327_577",
+      "here_name": "86 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.785868,
+        "lng": -73.968916
+      }
+    },
+    "A57": {
+      "gtfs_stop_id": "A57",
+      "stop_name": "Grant Av",
+      "here_id": "10327_667",
+      "here_name": "Grant Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.677044,
+        "lng": -73.86505
+      }
+    },
+    "G15": {
+      "gtfs_stop_id": "G15",
+      "stop_name": "65 St",
+      "here_id": "10327_985",
+      "here_name": "65 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.749669,
+        "lng": -73.898453
+      }
+    },
+    "D34": {
+      "gtfs_stop_id": "D34",
+      "stop_name": "Avenue M",
+      "here_id": "10327_829",
+      "here_name": "Avenue M",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.617618,
+        "lng": -73.959399
+      }
+    },
+    "103": {
+      "gtfs_stop_id": "103",
+      "stop_name": "238 St",
+      "here_id": "10327_4",
+      "here_name": "238 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.884667,
+        "lng": -73.90087
+      }
+    },
+    "238": {
+      "gtfs_stop_id": "238",
+      "stop_name": "Eastern Pkwy-Brooklyn Museum",
+      "here_id": "10327_217",
+      "here_name": "Eastern Pkwy-Brooklyn Museum",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.671987,
+        "lng": -73.964375
+      }
+    },
+    "637": {
+      "gtfs_stop_id": "637",
+      "stop_name": "Bleecker St",
+      "here_id": "10327_451",
+      "here_name": "Bleecker St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.725915,
+        "lng": -73.994659
+      }
+    },
+    "D29": {
+      "gtfs_stop_id": "D29",
+      "stop_name": "Beverley Rd",
+      "here_id": "10327_1776",
+      "here_name": "Beverley Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.644031,
+        "lng": -73.964492
+      }
+    },
+    "705": {
+      "gtfs_stop_id": "705",
+      "stop_name": "111 St",
+      "here_id": "10327_469",
+      "here_name": "111 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.75173,
+        "lng": -73.855334
+      }
+    },
+    "A15": {
+      "gtfs_stop_id": "A15",
+      "stop_name": "125 St",
+      "here_id": "10327_562",
+      "here_name": "125 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.811109,
+        "lng": -73.952343
+      }
+    },
+    "D18": {
+      "gtfs_stop_id": "D18",
+      "stop_name": "23 St",
+      "here_id": "10327_784",
+      "here_name": "23 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.742878,
+        "lng": -73.992821
+      }
+    },
+    "419": {
+      "gtfs_stop_id": "419",
+      "stop_name": "Wall St",
+      "here_id": "10327_325",
+      "here_name": "Wall St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.707557,
+        "lng": -74.011862
+      }
+    },
+    "N08": {
+      "gtfs_stop_id": "N08",
+      "stop_name": "Kings Hwy",
+      "here_id": "10327_1275",
+      "here_name": "Kings Hwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.603923,
+        "lng": -73.980353
+      }
+    },
+    "115": {
+      "gtfs_stop_id": "115",
+      "stop_name": "137 St-City College",
+      "here_id": "10327_37",
+      "here_name": "137 St-City College",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.822008,
+        "lng": -73.953676
+      }
+    },
+    "226": {
+      "gtfs_stop_id": "226",
+      "stop_name": "116 St",
+      "here_id": "10327_181",
+      "here_name": "116 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.802098,
+        "lng": -73.949625
+      }
+    },
+    "136": {
+      "gtfs_stop_id": "136",
+      "stop_name": "Franklin St",
+      "here_id": "10327_100",
+      "here_name": "Franklin St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.719318,
+        "lng": -74.006886
+      }
+    },
+    "410": {
+      "gtfs_stop_id": "410",
+      "stop_name": "176 St",
+      "here_id": "10327_301",
+      "here_name": "176 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.84848,
+        "lng": -73.911794
+      }
+    },
+    "D14": {
+      "gtfs_stop_id": "D14",
+      "stop_name": "7 Av",
+      "here_id": "10327_772",
+      "here_name": "7 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.762862,
+        "lng": -73.981637
+      }
+    },
+    "D08": {
+      "gtfs_stop_id": "D08",
+      "stop_name": "174-175 Sts",
+      "here_id": "10327_754",
+      "here_name": "174-175 Sts",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.8459,
+        "lng": -73.910136
+      }
+    },
+    "M20": {
+      "gtfs_stop_id": "M20",
+      "stop_name": "Canal St",
+      "here_id": "10327_1245",
+      "here_name": "Canal St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.718092,
+        "lng": -73.999892
+      }
+    },
+    "L10": {
+      "gtfs_stop_id": "L10",
+      "stop_name": "Lorimer St",
+      "here_id": "10327_1149",
+      "here_name": "Lorimer St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.714063,
+        "lng": -73.950275
+      }
+    },
+    "A30": {
+      "gtfs_stop_id": "A30",
+      "stop_name": "23 St",
+      "here_id": "10327_598",
+      "here_name": "23 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.745906,
+        "lng": -73.998041
+      }
+    },
+    "A46": {
+      "gtfs_stop_id": "A46",
+      "stop_name": "Nostrand Av",
+      "here_id": "10327_637",
+      "here_name": "Nostrand Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.680438,
+        "lng": -73.950426
+      }
+    },
+    "N03": {
+      "gtfs_stop_id": "N03",
+      "stop_name": "Fort Hamilton Pkwy",
+      "here_id": "10327_1260",
+      "here_name": "Fort Hamilton Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.631386,
+        "lng": -74.005351
+      }
+    },
+    "504": {
+      "gtfs_stop_id": "504",
+      "stop_name": "Pelham Pkwy",
+      "here_id": "10327_343",
+      "here_name": "Pelham Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.858985,
+        "lng": -73.855359
+      }
+    },
+    "R06": {
+      "gtfs_stop_id": "R06",
+      "stop_name": "36 Av",
+      "here_id": "10327_1299",
+      "here_name": "36 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.756804,
+        "lng": -73.929575
+      }
+    },
+    "D03": {
+      "gtfs_stop_id": "D03",
+      "stop_name": "Bedford Park Blvd",
+      "here_id": "10327_739",
+      "here_name": "Bedford Park Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.873244,
+        "lng": -73.887138
+      }
+    },
+    "619": {
+      "gtfs_stop_id": "619",
+      "stop_name": "3 Av-138 St",
+      "here_id": "10327_400",
+      "here_name": "3 Av-138 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.810476,
+        "lng": -73.926138
+      }
+    },
+    "M10": {
+      "gtfs_stop_id": "M10",
+      "stop_name": "Central Av",
+      "here_id": "10327_1221",
+      "here_name": "Central Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.697857,
+        "lng": -73.927397
+      }
+    },
+    "242": {
+      "gtfs_stop_id": "242",
+      "stop_name": "Sterling St",
+      "here_id": "10327_226",
+      "here_name": "Sterling St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.662742,
+        "lng": -73.95085
+      }
+    },
+    "F22": {
+      "gtfs_stop_id": "F22",
+      "stop_name": "Smith-9 Sts",
+      "here_id": "10327_907",
+      "here_name": "Smith-9 Sts",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.67358,
+        "lng": -73.995959
+      }
+    },
+    "611": {
+      "gtfs_stop_id": "611",
+      "stop_name": "Elder Av",
+      "here_id": "10327_376",
+      "here_name": "Elder Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.828584,
+        "lng": -73.879159
+      }
+    },
+    "Q05": {
+      "gtfs_stop_id": "Q05",
+      "stop_name": "96 St",
+      "here_id": "10327_2361",
+      "here_name": "96 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.784318,
+        "lng": -73.947152
+      }
+    },
+    "229": {
+      "gtfs_stop_id": "229",
+      "stop_name": "Fulton St",
+      "here_id": "10327_190",
+      "here_name": "Fulton St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.709416,
+        "lng": -74.006571
+      }
+    },
+    "S29": {
+      "gtfs_stop_id": "S29",
+      "stop_name": "Stapleton",
+      "here_id": "10327_1470",
+      "here_name": "Stapleton",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.627915,
+        "lng": -74.075162
+      }
+    },
+    "M04": {
+      "gtfs_stop_id": "M04",
+      "stop_name": "Fresh Pond Rd",
+      "here_id": "10327_1206",
+      "here_name": "Fresh Pond Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.706186,
+        "lng": -73.895877
+      }
+    },
+    "A10": {
+      "gtfs_stop_id": "A10",
+      "stop_name": "163 St-Amsterdam Av",
+      "here_id": "10327_550",
+      "here_name": "163 St-Amsterdam Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.836013,
+        "lng": -73.939892
+      }
+    },
+    "R30": {
+      "gtfs_stop_id": "R30",
+      "stop_name": "DeKalb Av",
+      "here_id": "10327_1362",
+      "here_name": "DeKalb Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.690635,
+        "lng": -73.981824
+      }
+    },
+    "633": {
+      "gtfs_stop_id": "633",
+      "stop_name": "28 St",
+      "here_id": "10327_439",
+      "here_name": "28 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.74307,
+        "lng": -73.984264
+      }
+    },
+    "119": {
+      "gtfs_stop_id": "119",
+      "stop_name": "103 St",
+      "here_id": "10327_49",
+      "here_name": "103 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.799446,
+        "lng": -73.968379
+      }
+    },
+    "B04": {
+      "gtfs_stop_id": "B04",
+      "stop_name": "21 St-Queensbridge",
+      "here_id": "10327_688",
+      "here_name": "21 St-Queensbridge",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.754203,
+        "lng": -73.942836
+      }
+    },
+    "204": {
+      "gtfs_stop_id": "204",
+      "stop_name": "Nereid Av",
+      "here_id": "10327_118",
+      "here_name": "Nereid Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.898379,
+        "lng": -73.854376
+      }
+    },
+    "J14": {
+      "gtfs_stop_id": "J14",
+      "stop_name": "104 St",
+      "here_id": "10327_1086",
+      "here_name": "104 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.695178,
+        "lng": -73.84433
+      }
+    },
+    "L24": {
+      "gtfs_stop_id": "L24",
+      "stop_name": "Atlantic Av",
+      "here_id": "10327_1185",
+      "here_name": "Atlantic Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.675345,
+        "lng": -73.903097
+      }
+    },
+    "R29": {
+      "gtfs_stop_id": "R29",
+      "stop_name": "Jay St-MetroTech",
+      "here_id": "10327_1359",
+      "here_name": "Jay St-MetroTech",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.69218,
+        "lng": -73.985942
+      }
+    },
+    "234": {
+      "gtfs_stop_id": "234",
+      "stop_name": "Nevins St",
+      "here_id": "10327_205",
+      "here_name": "Nevins St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.688246,
+        "lng": -73.980492
+      }
+    },
+    "L25": {
+      "gtfs_stop_id": "L25",
+      "stop_name": "Sutter Av",
+      "here_id": "10327_1188",
+      "here_name": "Sutter Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.669367,
+        "lng": -73.901975
+      }
+    },
+    "D24": {
+      "gtfs_stop_id": "D24",
+      "stop_name": "Atlantic Av-Barclays Ctr",
+      "here_id": "10327_799",
+      "here_name": "Atlantic Av-Barclays Ctr",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.68446,
+        "lng": -73.97689
+      }
+    },
+    "606": {
+      "gtfs_stop_id": "606",
+      "stop_name": "Zerega Av",
+      "here_id": "10327_361",
+      "here_name": "Zerega Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.836488,
+        "lng": -73.847036
+      }
+    },
+    "F27": {
+      "gtfs_stop_id": "F27",
+      "stop_name": "Church Av",
+      "here_id": "10327_922",
+      "here_name": "Church Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.644041,
+        "lng": -73.979678
+      }
+    },
+    "D42": {
+      "gtfs_stop_id": "D42",
+      "stop_name": "W 8 St-NY Aquarium",
+      "here_id": "10327_850",
+      "here_name": "W 8 St-NY Aquarium",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.576127,
+        "lng": -73.975939
+      }
+    },
+    "F34": {
+      "gtfs_stop_id": "F34",
+      "stop_name": "Avenue P",
+      "here_id": "10327_940",
+      "here_name": "Avenue P",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.608944,
+        "lng": -73.973022
+      }
+    },
+    "414": {
+      "gtfs_stop_id": "414",
+      "stop_name": "161 St-Yankee Stadium",
+      "here_id": "10327_313",
+      "here_name": "161 St-Yankee Stadium",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.827994,
+        "lng": -73.925831
+      }
+    },
+    "301": {
+      "gtfs_stop_id": "301",
+      "stop_name": "Harlem-148 St",
+      "here_id": "10327_274",
+      "here_name": "Harlem-148 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.82388,
+        "lng": -73.93647
+      }
+    },
+    "132": {
+      "gtfs_stop_id": "132",
+      "stop_name": "14 St",
+      "here_id": "10327_88",
+      "here_name": "14 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.737826,
+        "lng": -74.000201
+      }
+    },
+    "H08": {
+      "gtfs_stop_id": "H08",
+      "stop_name": "Beach 44 St",
+      "here_id": "10327_1056",
+      "here_name": "Beach 44 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.592943,
+        "lng": -73.776013
+      }
+    },
+    "218": {
+      "gtfs_stop_id": "218",
+      "stop_name": "Intervale Av",
+      "here_id": "10327_160",
+      "here_name": "Intervale Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.822181,
+        "lng": -73.896736
+      }
+    },
+    "201": {
+      "gtfs_stop_id": "201",
+      "stop_name": "Wakefield-241 St",
+      "here_id": "10327_115",
+      "here_name": "Wakefield-241 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.903125,
+        "lng": -73.85062
+      }
+    },
+    "F15": {
+      "gtfs_stop_id": "F15",
+      "stop_name": "Delancey St-Essex St",
+      "here_id": "10327_892",
+      "here_name": "Delancey St-Essex St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.718611,
+        "lng": -73.988114
+      }
+    },
+    "J13": {
+      "gtfs_stop_id": "J13",
+      "stop_name": "111 St",
+      "here_id": "10327_1083",
+      "here_name": "111 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.697418,
+        "lng": -73.836345
+      }
+    },
+    "F01": {
+      "gtfs_stop_id": "F01",
+      "stop_name": "Jamaica-179 St",
+      "here_id": "10327_859",
+      "here_name": "Jamaica-179 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.712646,
+        "lng": -73.783817
+      }
+    },
+    "614": {
+      "gtfs_stop_id": "614",
+      "stop_name": "Longwood Av",
+      "here_id": "10327_385",
+      "here_name": "Longwood Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.816104,
+        "lng": -73.896435
+      }
+    },
+    "118": {
+      "gtfs_stop_id": "118",
+      "stop_name": "Cathedral Pkwy (110 St)",
+      "here_id": "10327_46",
+      "here_name": "Cathedral Pkwy (110 St)",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.803967,
+        "lng": -73.966847
+      }
+    },
+    "R14": {
+      "gtfs_stop_id": "R14",
+      "stop_name": "57 St-7 Av",
+      "here_id": "10327_1314",
+      "here_name": "57 St-7 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.764664,
+        "lng": -73.980658
+      }
+    },
+    "607": {
+      "gtfs_stop_id": "607",
+      "stop_name": "Castle Hill Av",
+      "here_id": "10327_364",
+      "here_name": "Castle Hill Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.834255,
+        "lng": -73.851222
+      }
+    },
+    "B21": {
+      "gtfs_stop_id": "B21",
+      "stop_name": "Bay Pkwy",
+      "here_id": "10327_727",
+      "here_name": "Bay Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.601875,
+        "lng": -73.993728
+      }
+    },
+    "623": {
+      "gtfs_stop_id": "623",
+      "stop_name": "110 St",
+      "here_id": "10327_409",
+      "here_name": "110 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.79502,
+        "lng": -73.94425
+      }
+    },
+    "230": {
+      "gtfs_stop_id": "230",
+      "stop_name": "Wall St",
+      "here_id": "10327_193",
+      "here_name": "Wall St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.706821,
+        "lng": -74.0091
+      }
+    },
+    "H13": {
+      "gtfs_stop_id": "H13",
+      "stop_name": "Beach 98 St",
+      "here_id": "10327_1071",
+      "here_name": "Beach 98 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.585307,
+        "lng": -73.820558
+      }
+    },
+    "R15": {
+      "gtfs_stop_id": "R15",
+      "stop_name": "49 St",
+      "here_id": "10327_1317",
+      "here_name": "49 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.759901,
+        "lng": -73.984139
+      }
+    },
+    "D12": {
+      "gtfs_stop_id": "D12",
+      "stop_name": "155 St",
+      "here_id": "10327_766",
+      "here_name": "155 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.830135,
+        "lng": -73.938209
+      }
+    },
+    "S16": {
+      "gtfs_stop_id": "S16",
+      "stop_name": "Huguenot",
+      "here_id": "10327_1431",
+      "here_name": "Huguenot",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.533674,
+        "lng": -74.191794
+      }
+    },
+    "255": {
+      "gtfs_stop_id": "255",
+      "stop_name": "Pennsylvania Av",
+      "here_id": "10327_265",
+      "here_name": "Pennsylvania Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.664635,
+        "lng": -73.894895
+      }
+    },
+    "714": {
+      "gtfs_stop_id": "714",
+      "stop_name": "46 St-Bliss St",
+      "here_id": "10327_496",
+      "here_name": "46 St-Bliss St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.743132,
+        "lng": -73.918435
+      }
+    },
+    "213": {
+      "gtfs_stop_id": "213",
+      "stop_name": "E 180 St",
+      "here_id": "10327_145",
+      "here_name": "E 180 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.841894,
+        "lng": -73.873488
+      }
+    },
+    "409": {
+      "gtfs_stop_id": "409",
+      "stop_name": "Burnside Av",
+      "here_id": "10327_298",
+      "here_name": "Burnside Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.853453,
+        "lng": -73.907684
+      }
+    },
+    "Q04": {
+      "gtfs_stop_id": "Q04",
+      "stop_name": "86 St",
+      "here_id": "10327_2358",
+      "here_name": "86 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.777891,
+        "lng": -73.951787
+      }
+    },
+    "F12": {
+      "gtfs_stop_id": "F12",
+      "stop_name": "5 Av/53 St",
+      "here_id": "10327_886",
+      "here_name": "5 Av/53 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.760167,
+        "lng": -73.975224
+      }
+    },
+    "G30": {
+      "gtfs_stop_id": "G30",
+      "stop_name": "Broadway",
+      "here_id": "10327_1018",
+      "here_name": "Broadway",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.706092,
+        "lng": -73.950308
+      }
+    },
+    "A24": {
+      "gtfs_stop_id": "A24",
+      "stop_name": "59 St-Columbus Circle",
+      "here_id": "10327_586",
+      "here_name": "59 St-Columbus Circle",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.768296,
+        "lng": -73.981736
+      }
+    },
+    "R25": {
+      "gtfs_stop_id": "R25",
+      "stop_name": "Cortlandt St",
+      "here_id": "10327_1347",
+      "here_name": "Cortlandt St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.710668,
+        "lng": -74.011029
+      }
+    },
+    "208": {
+      "gtfs_stop_id": "208",
+      "stop_name": "Gun Hill Rd",
+      "here_id": "10327_130",
+      "here_name": "Gun Hill Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.87785,
+        "lng": -73.866256
+      }
+    },
+    "128": {
+      "gtfs_stop_id": "128",
+      "stop_name": "34 St-Penn Station",
+      "here_id": "10327_76",
+      "here_name": "34 St-Penn Station",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.750373,
+        "lng": -73.991057
+      }
+    },
+    "D38": {
+      "gtfs_stop_id": "D38",
+      "stop_name": "Neck Rd",
+      "here_id": "10327_838",
+      "here_name": "Neck Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.595246,
+        "lng": -73.955161
+      }
+    },
+    "A61": {
+      "gtfs_stop_id": "A61",
+      "stop_name": "Rockaway Blvd",
+      "here_id": "10327_676",
+      "here_name": "Rockaway Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.680429,
+        "lng": -73.843853
+      }
+    },
+    "R42": {
+      "gtfs_stop_id": "R42",
+      "stop_name": "Bay Ridge Av",
+      "here_id": "10327_1392",
+      "here_name": "Bay Ridge Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.634967,
+        "lng": -74.023377
+      }
+    },
+    "D43": {
+      "gtfs_stop_id": "D43",
+      "stop_name": "Coney Island-Stillwell Av",
+      "here_id": "10327_853",
+      "here_name": "Coney Island-Stillwell Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.577422,
+        "lng": -73.981233
+      }
+    },
+    "628": {
+      "gtfs_stop_id": "628",
+      "stop_name": "68 St-Hunter College",
+      "here_id": "10327_424",
+      "here_name": "68 St-Hunter College",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.768141,
+        "lng": -73.96387
+      }
+    },
+    "G16": {
+      "gtfs_stop_id": "G16",
+      "stop_name": "Northern Blvd",
+      "here_id": "10327_988",
+      "here_name": "Northern Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.752885,
+        "lng": -73.906006
+      }
+    },
+    "L29": {
+      "gtfs_stop_id": "L29",
+      "stop_name": "Canarsie-Rockaway Pkwy",
+      "here_id": "10327_1200",
+      "here_name": "Canarsie-Rockaway Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.646654,
+        "lng": -73.90185
+      }
+    },
+    "A31": {
+      "gtfs_stop_id": "A31",
+      "stop_name": "14 St",
+      "here_id": "10327_601",
+      "here_name": "14 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.740893,
+        "lng": -74.00169
+      }
+    },
+    "G22": {
+      "gtfs_stop_id": "G22",
+      "stop_name": "Court Sq",
+      "here_id": "10327_1003",
+      "here_name": "Court Sq",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.746554,
+        "lng": -73.943832
+      }
+    },
+    "237": {
+      "gtfs_stop_id": "237",
+      "stop_name": "Grand Army Plaza",
+      "here_id": "10327_214",
+      "here_name": "Grand Army Plaza",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.675235,
+        "lng": -73.971046
+      }
+    },
+    "J31": {
+      "gtfs_stop_id": "J31",
+      "stop_name": "Kosciuszko St",
+      "here_id": "10327_1128",
+      "here_name": "Kosciuszko St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.693342,
+        "lng": -73.928814
+      }
+    },
+    "D19": {
+      "gtfs_stop_id": "D19",
+      "stop_name": "14 St",
+      "here_id": "10327_787",
+      "here_name": "14 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.738228,
+        "lng": -73.996209
+      }
+    },
+    "M09": {
+      "gtfs_stop_id": "M09",
+      "stop_name": "Knickerbocker Av",
+      "here_id": "10327_1218",
+      "here_name": "Knickerbocker Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.698664,
+        "lng": -73.919711
+      }
+    },
+    "618": {
+      "gtfs_stop_id": "618",
+      "stop_name": "Brook Av",
+      "here_id": "10327_397",
+      "here_name": "Brook Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.807566,
+        "lng": -73.91924
+      }
+    },
+    "H02": {
+      "gtfs_stop_id": "H02",
+      "stop_name": "Aqueduct-N Conduit Av",
+      "here_id": "10327_1041",
+      "here_name": "Aqueduct-N Conduit Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.668234,
+        "lng": -73.834058
+      }
+    },
+    "S21": {
+      "gtfs_stop_id": "S21",
+      "stop_name": "Oakwood Heights",
+      "here_id": "10327_1446",
+      "here_name": "Oakwood Heights",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.56511,
+        "lng": -74.12632
+      }
+    },
+    "123": {
+      "gtfs_stop_id": "123",
+      "stop_name": "72 St",
+      "here_id": "10327_61",
+      "here_name": "72 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.778453,
+        "lng": -73.98197
+      }
+    },
+    "B17": {
+      "gtfs_stop_id": "B17",
+      "stop_name": "71 St",
+      "here_id": "10327_715",
+      "here_name": "71 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.619589,
+        "lng": -73.998864
+      }
+    },
+    "250": {
+      "gtfs_stop_id": "250",
+      "stop_name": "Crown Hts-Utica Av",
+      "here_id": "10327_250",
+      "here_name": "Crown Hts-Utica Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.668897,
+        "lng": -73.932942
+      }
+    },
+    "709": {
+      "gtfs_stop_id": "709",
+      "stop_name": "82 St-Jackson Hts",
+      "here_id": "10327_481",
+      "here_name": "82 St-Jackson Hts",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.747659,
+        "lng": -73.883697
+      }
+    },
+    "J23": {
+      "gtfs_stop_id": "J23",
+      "stop_name": "Van Siclen Av",
+      "here_id": "10327_1110",
+      "here_name": "Van Siclen Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.678024,
+        "lng": -73.891688
+      }
+    },
+    "L11": {
+      "gtfs_stop_id": "L11",
+      "stop_name": "Graham Av",
+      "here_id": "10327_1152",
+      "here_name": "Graham Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.714565,
+        "lng": -73.944053
+      }
+    },
+    "J17": {
+      "gtfs_stop_id": "J17",
+      "stop_name": "75 St-Elderts Ln",
+      "here_id": "10327_1095",
+      "here_name": "75 St-Elderts Ln",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.691324,
+        "lng": -73.867139
+      }
+    },
+    "702": {
+      "gtfs_stop_id": "702",
+      "stop_name": "Mets-Willets Point",
+      "here_id": "10327_466",
+      "here_name": "Mets-Willets Point",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.754622,
+        "lng": -73.845625
+      }
+    },
+    "638": {
+      "gtfs_stop_id": "638",
+      "stop_name": "Spring St",
+      "here_id": "10327_454",
+      "here_name": "Spring St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.722301,
+        "lng": -73.997141
+      }
+    },
+    "B10": {
+      "gtfs_stop_id": "B10",
+      "stop_name": "57 St",
+      "here_id": "10327_697",
+      "here_name": "57 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.763972,
+        "lng": -73.97745
+      }
+    },
+    "227": {
+      "gtfs_stop_id": "227",
+      "stop_name": "110 St-Malcolm X Plaza",
+      "here_id": "10327_184",
+      "here_name": "110 St-Malcolm X Plaza",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.799075,
+        "lng": -73.951822
+      }
+    },
+    "A19": {
+      "gtfs_stop_id": "A19",
+      "stop_name": "96 St",
+      "here_id": "10327_574",
+      "here_name": "96 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.791642,
+        "lng": -73.964696
+      }
+    },
+    "R36": {
+      "gtfs_stop_id": "R36",
+      "stop_name": "36 St",
+      "here_id": "10327_1380",
+      "here_name": "36 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.655144,
+        "lng": -74.003549
+      }
+    },
+    "F04": {
+      "gtfs_stop_id": "F04",
+      "stop_name": "Sutphin Blvd",
+      "here_id": "10327_868",
+      "here_name": "Sutphin Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.70546,
+        "lng": -73.810708
+      }
+    },
+    "A55": {
+      "gtfs_stop_id": "A55",
+      "stop_name": "Euclid Av",
+      "here_id": "10327_664",
+      "here_name": "Euclid Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.675377,
+        "lng": -73.872106
+      }
+    },
+    "R22": {
+      "gtfs_stop_id": "R22",
+      "stop_name": "Prince St",
+      "here_id": "10327_1338",
+      "here_name": "Prince St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.724329,
+        "lng": -73.997702
+      }
+    },
+    "111": {
+      "gtfs_stop_id": "111",
+      "stop_name": "181 St",
+      "here_id": "10327_25",
+      "here_name": "181 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.849505,
+        "lng": -73.933596
+      }
+    },
+    "S26": {
+      "gtfs_stop_id": "S26",
+      "stop_name": "Old Town",
+      "here_id": "10327_1461",
+      "here_name": "Old Town",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.596612,
+        "lng": -74.087368
+      }
+    },
+    "A34": {
+      "gtfs_stop_id": "A34",
+      "stop_name": "Canal St",
+      "here_id": "10327_610",
+      "here_name": "Canal St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.720824,
+        "lng": -74.005229
+      }
+    },
+    "A02": {
+      "gtfs_stop_id": "A02",
+      "stop_name": "Inwood-207 St",
+      "here_id": "10327_532",
+      "here_name": "Inwood-207 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.868072,
+        "lng": -73.919899
+      }
+    },
+    "D33": {
+      "gtfs_stop_id": "D33",
+      "stop_name": "Avenue J",
+      "here_id": "10327_826",
+      "here_name": "Avenue J",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.625039,
+        "lng": -73.960803
+      }
+    },
+    "245": {
+      "gtfs_stop_id": "245",
+      "stop_name": "Beverly Rd",
+      "here_id": "10327_235",
+      "here_name": "Beverly Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.645098,
+        "lng": -73.948959
+      }
+    },
+    "708": {
+      "gtfs_stop_id": "708",
+      "stop_name": "90 St-Elmhurst Av",
+      "here_id": "10327_478",
+      "here_name": "90 St-Elmhurst Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.748408,
+        "lng": -73.876613
+      }
+    },
+    "M14": {
+      "gtfs_stop_id": "M14",
+      "stop_name": "Hewes St",
+      "here_id": "10327_1233",
+      "here_name": "Hewes St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.70687,
+        "lng": -73.953431
+      }
+    },
+    "405": {
+      "gtfs_stop_id": "405",
+      "stop_name": "Bedford Park Blvd-Lehman College",
+      "here_id": "10327_286",
+      "here_name": "Bedford Park Blvd-Lehman College",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.873412,
+        "lng": -73.890064
+      }
+    },
+    "L03": {
+      "gtfs_stop_id": "L03",
+      "stop_name": "14 St-Union Sq",
+      "here_id": "10327_1137",
+      "here_name": "14 St-Union Sq",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.734789,
+        "lng": -73.99073
+      }
+    },
+    "L14": {
+      "gtfs_stop_id": "L14",
+      "stop_name": "Morgan Av",
+      "here_id": "10327_1161",
+      "here_name": "Morgan Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.706152,
+        "lng": -73.933147
+      }
+    },
+    "D15": {
+      "gtfs_stop_id": "D15",
+      "stop_name": "47-50 Sts-Rockefeller Ctr",
+      "here_id": "10327_775",
+      "here_name": "47-50 Sts-Rockefeller Ctr",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.758663,
+        "lng": -73.981329
+      }
+    },
+    "719": {
+      "gtfs_stop_id": "719",
+      "stop_name": "Court Sq",
+      "here_id": "10327_508",
+      "here_name": "Court Sq",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.747023,
+        "lng": -73.945264
+      }
+    },
+    "135": {
+      "gtfs_stop_id": "135",
+      "stop_name": "Canal St",
+      "here_id": "10327_97",
+      "here_name": "Canal St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.722854,
+        "lng": -74.006277
+      }
+    },
+    "A63": {
+      "gtfs_stop_id": "A63",
+      "stop_name": "104 St",
+      "here_id": "10327_679",
+      "here_name": "104 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.681711,
+        "lng": -73.837683
+      }
+    },
+    "M21": {
+      "gtfs_stop_id": "M21",
+      "stop_name": "Chambers St",
+      "here_id": "10327_1248",
+      "here_name": "Chambers St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.713243,
+        "lng": -74.003401
+      }
+    },
+    "L05": {
+      "gtfs_stop_id": "L05",
+      "stop_name": "3 Av",
+      "here_id": "10327_1140",
+      "here_name": "3 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.732849,
+        "lng": -73.986122
+      }
+    },
+    "D04": {
+      "gtfs_stop_id": "D04",
+      "stop_name": "Kingsbridge Rd",
+      "here_id": "10327_742",
+      "here_name": "Kingsbridge Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.866978,
+        "lng": -73.893509
+      }
+    },
+    "249": {
+      "gtfs_stop_id": "249",
+      "stop_name": "Kingston Av",
+      "here_id": "10327_247",
+      "here_name": "Kingston Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.669399,
+        "lng": -73.942161
+      }
+    },
+    "R26": {
+      "gtfs_stop_id": "R26",
+      "stop_name": "Rector St",
+      "here_id": "10327_1350",
+      "here_name": "Rector St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.70722,
+        "lng": -74.013342
+      }
+    },
+    "J19": {
+      "gtfs_stop_id": "J19",
+      "stop_name": "Cypress Hills",
+      "here_id": "10327_1098",
+      "here_name": "Cypress Hills",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.689941,
+        "lng": -73.87255
+      }
+    },
+    "A40": {
+      "gtfs_stop_id": "A40",
+      "stop_name": "High St",
+      "here_id": "10327_619",
+      "here_name": "High St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.699337,
+        "lng": -73.990531
+      }
+    },
+    "G08": {
+      "gtfs_stop_id": "G08",
+      "stop_name": "Forest Hills-71 Av",
+      "here_id": "10327_964",
+      "here_name": "Forest Hills-71 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.721691,
+        "lng": -73.844521
+      }
+    },
+    "L20": {
+      "gtfs_stop_id": "L20",
+      "stop_name": "Wilson Av",
+      "here_id": "10327_1176",
+      "here_name": "Wilson Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.688764,
+        "lng": -73.904046
+      }
+    },
+    "G33": {
+      "gtfs_stop_id": "G33",
+      "stop_name": "Bedford-Nostrand Avs",
+      "here_id": "10327_1027",
+      "here_name": "Bedford-Nostrand Avs",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.689627,
+        "lng": -73.953522
+      }
+    },
+    "S11": {
+      "gtfs_stop_id": "S11",
+      "stop_name": "Arthur Kill",
+      "here_id": "10327_2364",
+      "here_name": "Arthur Kill",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.516578,
+        "lng": -74.242096
+      }
+    },
+    "L26": {
+      "gtfs_stop_id": "L26",
+      "stop_name": "Livonia Av",
+      "here_id": "10327_1191",
+      "here_name": "Livonia Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.664038,
+        "lng": -73.900571
+      }
+    },
+    "131": {
+      "gtfs_stop_id": "131",
+      "stop_name": "18 St",
+      "here_id": "10327_85",
+      "here_name": "18 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.74104,
+        "lng": -73.997871
+      }
+    },
+    "L19": {
+      "gtfs_stop_id": "L19",
+      "stop_name": "Halsey St",
+      "here_id": "10327_1173",
+      "here_name": "Halsey St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.695602,
+        "lng": -73.904084
+      }
+    },
+    "724": {
+      "gtfs_stop_id": "724",
+      "stop_name": "5 Av",
+      "here_id": "10327_520",
+      "here_name": "5 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.753821,
+        "lng": -73.981963
+      }
+    },
+    "F21": {
+      "gtfs_stop_id": "F21",
+      "stop_name": "Carroll St",
+      "here_id": "10327_904",
+      "here_name": "Carroll St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.680303,
+        "lng": -73.995048
+      }
+    },
+    "241": {
+      "gtfs_stop_id": "241",
+      "stop_name": "President St-Medgar Evers College",
+      "here_id": "10327_223",
+      "here_name": "President St-Medgar Evers College",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.667883,
+        "lng": -73.950683
+      }
+    },
+    "F29": {
+      "gtfs_stop_id": "F29",
+      "stop_name": "Ditmas Av",
+      "here_id": "10327_925",
+      "here_name": "Ditmas Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.636119,
+        "lng": -73.978172
+      }
+    },
+    "F35": {
+      "gtfs_stop_id": "F35",
+      "stop_name": "Kings Hwy",
+      "here_id": "10327_943",
+      "here_name": "Kings Hwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.603217,
+        "lng": -73.972361
+      }
+    },
+    "415": {
+      "gtfs_stop_id": "415",
+      "stop_name": "149 St-Grand Concourse",
+      "here_id": "10327_172",
+      "here_name": "149 St - Grand Concourse",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.818375,
+        "lng": -73.927351
+      }
+    },
+    "S22": {
+      "gtfs_stop_id": "S22",
+      "stop_name": "New Dorp",
+      "here_id": "10327_1449",
+      "here_name": "New Dorp",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.57348,
+        "lng": -74.11721
+      }
+    },
+    "H07": {
+      "gtfs_stop_id": "H07",
+      "stop_name": "Beach 60 St",
+      "here_id": "10327_1053",
+      "here_name": "Beach 60 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.592374,
+        "lng": -73.788522
+      }
+    },
+    "222": {
+      "gtfs_stop_id": "222",
+      "stop_name": "149 St-Grand Concourse",
+      "here_id": "10327_172",
+      "here_name": "149 St - Grand Concourse",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.81841,
+        "lng": -73.926718
+      }
+    },
+    "R31": {
+      "gtfs_stop_id": "R31",
+      "stop_name": "Atlantic Av-Barclays Ctr",
+      "here_id": "10327_1365",
+      "here_name": "Atlantic Av-Barclays Ctr",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.683666,
+        "lng": -73.97881
+      }
+    },
+    "209": {
+      "gtfs_stop_id": "209",
+      "stop_name": "Burke Av",
+      "here_id": "10327_133",
+      "here_name": "Burke Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.871356,
+        "lng": -73.867164
+      }
+    },
+    "D25": {
+      "gtfs_stop_id": "D25",
+      "stop_name": "7 Av",
+      "here_id": "10327_802",
+      "here_name": "7 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.67705,
+        "lng": -73.972367
+      }
+    },
+    "D39": {
+      "gtfs_stop_id": "D39",
+      "stop_name": "Sheepshead Bay",
+      "here_id": "10327_841",
+      "here_name": "Sheepshead Bay",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.586896,
+        "lng": -73.954155
+      }
+    },
+    "B12": {
+      "gtfs_stop_id": "B12",
+      "stop_name": "9 Av",
+      "here_id": "10327_700",
+      "here_name": "9 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.646292,
+        "lng": -73.994324
+      }
+    },
+    "A32": {
+      "gtfs_stop_id": "A32",
+      "stop_name": "W 4 St-Wash Sq",
+      "here_id": "10327_604",
+      "here_name": "W 4 St-Wash Sq",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.732338,
+        "lng": -74.000495
+      }
+    },
+    "G07": {
+      "gtfs_stop_id": "G07",
+      "stop_name": "Jamaica-Van Wyck",
+      "here_id": "10327_961",
+      "here_name": "Jamaica-Van Wyck",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.702566,
+        "lng": -73.816859
+      }
+    },
+    "G24": {
+      "gtfs_stop_id": "G24",
+      "stop_name": "21 St",
+      "here_id": "10327_1006",
+      "here_name": "21 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.744065,
+        "lng": -73.949724
+      }
+    },
+    "A11": {
+      "gtfs_stop_id": "A11",
+      "stop_name": "155 St",
+      "here_id": "10327_553",
+      "here_name": "155 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.830518,
+        "lng": -73.941514
+      }
+    },
+    "413": {
+      "gtfs_stop_id": "413",
+      "stop_name": "167 St",
+      "here_id": "10327_310",
+      "here_name": "167 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.835537,
+        "lng": -73.9214
+      }
+    },
+    "101": {
+      "gtfs_stop_id": "101",
+      "stop_name": "Van Cortlandt Park-242 St",
+      "here_id": "10327_1",
+      "here_name": "Van Cortlandt Park-242 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.889248,
+        "lng": -73.898583
+      }
+    },
+    "A25": {
+      "gtfs_stop_id": "A25",
+      "stop_name": "50 St",
+      "here_id": "10327_589",
+      "here_name": "50 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.762456,
+        "lng": -73.985984
+      }
+    },
+    "632": {
+      "gtfs_stop_id": "632",
+      "stop_name": "33 St",
+      "here_id": "10327_436",
+      "here_name": "33 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.746081,
+        "lng": -73.982076
+      }
+    },
+    "122": {
+      "gtfs_stop_id": "122",
+      "stop_name": "79 St",
+      "here_id": "10327_58",
+      "here_name": "79 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.783934,
+        "lng": -73.979917
+      }
+    },
+    "A47": {
+      "gtfs_stop_id": "A47",
+      "stop_name": "Kingston-Throop Avs",
+      "here_id": "10327_640",
+      "here_name": "Kingston-Throop Avs",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.679921,
+        "lng": -73.940858
+      }
+    },
+    "207": {
+      "gtfs_stop_id": "207",
+      "stop_name": "219 St",
+      "here_id": "10327_127",
+      "here_name": "219 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.883895,
+        "lng": -73.862633
+      }
+    },
+    "G12": {
+      "gtfs_stop_id": "G12",
+      "stop_name": "Grand Av-Newtown",
+      "here_id": "10327_976",
+      "here_name": "Grand Av-Newtown",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.737015,
+        "lng": -73.877223
+      }
+    },
+    "N04": {
+      "gtfs_stop_id": "N04",
+      "stop_name": "New Utrecht Av",
+      "here_id": "10327_1263",
+      "here_name": "New Utrecht Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.624842,
+        "lng": -73.996353
+      }
+    },
+    "A12": {
+      "gtfs_stop_id": "A12",
+      "stop_name": "145 St",
+      "here_id": "10327_556",
+      "here_name": "145 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.824783,
+        "lng": -73.944216
+      }
+    },
+    "R05": {
+      "gtfs_stop_id": "R05",
+      "stop_name": "Broadway",
+      "here_id": "10327_1296",
+      "here_name": "Broadway",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.76182,
+        "lng": -73.925508
+      }
+    },
+    "A43": {
+      "gtfs_stop_id": "A43",
+      "stop_name": "Lafayette Av",
+      "here_id": "10327_628",
+      "here_name": "Lafayette Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.686113,
+        "lng": -73.973946
+      }
+    },
+    "D37": {
+      "gtfs_stop_id": "D37",
+      "stop_name": "Avenue U",
+      "here_id": "10327_835",
+      "here_name": "Avenue U",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.5993,
+        "lng": -73.955929
+      }
+    },
+    "A60": {
+      "gtfs_stop_id": "A60",
+      "stop_name": "88 St",
+      "here_id": "10327_673",
+      "here_name": "88 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.679843,
+        "lng": -73.85147
+      }
+    },
+    "R35": {
+      "gtfs_stop_id": "R35",
+      "stop_name": "25 St",
+      "here_id": "10327_1377",
+      "here_name": "25 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.660397,
+        "lng": -73.998091
+      }
+    },
+    "G18": {
+      "gtfs_stop_id": "G18",
+      "stop_name": "46 St",
+      "here_id": "10327_991",
+      "here_name": "46 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.756312,
+        "lng": -73.913333
+      }
+    },
+    "G36": {
+      "gtfs_stop_id": "G36",
+      "stop_name": "Fulton St",
+      "here_id": "10327_1036",
+      "here_name": "Fulton St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.687119,
+        "lng": -73.975375
+      }
+    },
+    "639": {
+      "gtfs_stop_id": "639",
+      "stop_name": "Canal St",
+      "here_id": "10327_457",
+      "here_name": "Canal St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.718803,
+        "lng": -74.000193
+      }
+    },
+    "423": {
+      "gtfs_stop_id": "423",
+      "stop_name": "Borough Hall",
+      "here_id": "10327_331",
+      "here_name": "Borough Hall",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.692404,
+        "lng": -73.990151
+      }
+    },
+    "117": {
+      "gtfs_stop_id": "117",
+      "stop_name": "116 St-Columbia University",
+      "here_id": "10327_43",
+      "here_name": "116 St-Columbia University",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.807722,
+        "lng": -73.96411
+      }
+    },
+    "608": {
+      "gtfs_stop_id": "608",
+      "stop_name": "Parkchester",
+      "here_id": "10327_367",
+      "here_name": "Parkchester",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.833226,
+        "lng": -73.860816
+      }
+    },
+    "634": {
+      "gtfs_stop_id": "634",
+      "stop_name": "23 St-Baruch College",
+      "here_id": "10327_442",
+      "here_name": "23 St-Baruch College",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.739864,
+        "lng": -73.986599
+      }
+    },
+    "H06": {
+      "gtfs_stop_id": "H06",
+      "stop_name": "Beach 67 St",
+      "here_id": "10327_1050",
+      "here_name": "Beach 67 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.590927,
+        "lng": -73.796924
+      }
+    },
+    "408": {
+      "gtfs_stop_id": "408",
+      "stop_name": "183 St",
+      "here_id": "10327_295",
+      "here_name": "183 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.858407,
+        "lng": -73.903879
+      }
+    },
+    "F11": {
+      "gtfs_stop_id": "F11",
+      "stop_name": "Lexington Av/53 St",
+      "here_id": "10327_883",
+      "here_name": "Lexington Av/53 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.757552,
+        "lng": -73.969055
+      }
+    },
+    "D26": {
+      "gtfs_stop_id": "D26",
+      "stop_name": "Prospect Park",
+      "here_id": "10327_805",
+      "here_name": "Prospect Park",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.661614,
+        "lng": -73.962246
+      }
+    },
+    "129": {
+      "gtfs_stop_id": "129",
+      "stop_name": "28 St",
+      "here_id": "10327_79",
+      "here_name": "28 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.747215,
+        "lng": -73.993365
+      }
+    },
+    "R24": {
+      "gtfs_stop_id": "R24",
+      "stop_name": "City Hall",
+      "here_id": "10327_1344",
+      "here_name": "City Hall",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.713282,
+        "lng": -74.006978
+      }
+    },
+    "F07": {
+      "gtfs_stop_id": "F07",
+      "stop_name": "75 Av",
+      "here_id": "10327_877",
+      "here_name": "75 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.718331,
+        "lng": -73.837324
+      }
+    },
+    "N05": {
+      "gtfs_stop_id": "N05",
+      "stop_name": "18 Av",
+      "here_id": "10327_1266",
+      "here_name": "18 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.620671,
+        "lng": -73.990414
+      }
+    },
+    "R16": {
+      "gtfs_stop_id": "R16",
+      "stop_name": "Times Sq-42 St",
+      "here_id": "10327_1320",
+      "here_name": "Times Sq-42 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.754672,
+        "lng": -73.986754
+      }
+    },
+    "112": {
+      "gtfs_stop_id": "112",
+      "stop_name": "168 St-Washington Hts",
+      "here_id": "10327_28",
+      "here_name": "168 St-Washington Hts",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.840556,
+        "lng": -73.940133
+      }
+    },
+    "302": {
+      "gtfs_stop_id": "302",
+      "stop_name": "145 St",
+      "here_id": "10327_277",
+      "here_name": "145 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.820421,
+        "lng": -73.936245
+      }
+    },
+    "A06": {
+      "gtfs_stop_id": "A06",
+      "stop_name": "181 St",
+      "here_id": "10327_541",
+      "here_name": "181 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.851695,
+        "lng": -73.937969
+      }
+    },
+    "107": {
+      "gtfs_stop_id": "107",
+      "stop_name": "215 St",
+      "here_id": "10327_13",
+      "here_name": "215 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.869444,
+        "lng": -73.915279
+      }
+    },
+    "J30": {
+      "gtfs_stop_id": "J30",
+      "stop_name": "Gates Av",
+      "here_id": "10327_1125",
+      "here_name": "Gates Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.68963,
+        "lng": -73.92227
+      }
+    },
+    "715": {
+      "gtfs_stop_id": "715",
+      "stop_name": "40 St-Lowery St",
+      "here_id": "10327_499",
+      "here_name": "40 St-Lowery St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.743781,
+        "lng": -73.924016
+      }
+    },
+    "F20": {
+      "gtfs_stop_id": "F20",
+      "stop_name": "Bergen St",
+      "here_id": "10327_901",
+      "here_name": "Bergen St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.686145,
+        "lng": -73.990862
+      }
+    },
+    "A48": {
+      "gtfs_stop_id": "A48",
+      "stop_name": "Utica Av",
+      "here_id": "10327_643",
+      "here_name": "Utica Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.679364,
+        "lng": -73.930729
+      }
+    },
+    "Q03": {
+      "gtfs_stop_id": "Q03",
+      "stop_name": "72 St",
+      "here_id": "10327_2355",
+      "here_name": "72 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.768799,
+        "lng": -73.958424
+      }
+    },
+    "231": {
+      "gtfs_stop_id": "231",
+      "stop_name": "Clark St",
+      "here_id": "10327_196",
+      "here_name": "Clark St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.697466,
+        "lng": -73.993086
+      }
+    },
+    "A22": {
+      "gtfs_stop_id": "A22",
+      "stop_name": "72 St",
+      "here_id": "10327_583",
+      "here_name": "72 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.775594,
+        "lng": -73.97641
+      }
+    },
+    "A54": {
+      "gtfs_stop_id": "A54",
+      "stop_name": "Shepherd Av",
+      "here_id": "10327_661",
+      "here_name": "Shepherd Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.67413,
+        "lng": -73.88075
+      }
+    },
+    "R41": {
+      "gtfs_stop_id": "R41",
+      "stop_name": "59 St",
+      "here_id": "10327_1389",
+      "here_name": "59 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.641362,
+        "lng": -74.017881
+      }
+    },
+    "A38": {
+      "gtfs_stop_id": "A38",
+      "stop_name": "Fulton St",
+      "here_id": "10327_616",
+      "here_name": "Fulton St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.710197,
+        "lng": -74.007691
+      }
+    },
+    "602": {
+      "gtfs_stop_id": "602",
+      "stop_name": "Buhre Av",
+      "here_id": "10327_352",
+      "here_name": "Buhre Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.84681,
+        "lng": -73.832569
+      }
+    },
+    "D11": {
+      "gtfs_stop_id": "D11",
+      "stop_name": "161 St-Yankee Stadium",
+      "here_id": "10327_763",
+      "here_name": "161 St-Yankee Stadium",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.827905,
+        "lng": -73.925651
+      }
+    },
+    "627": {
+      "gtfs_stop_id": "627",
+      "stop_name": "77 St",
+      "here_id": "10327_421",
+      "here_name": "77 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.77362,
+        "lng": -73.959874
+      }
+    },
+    "D32": {
+      "gtfs_stop_id": "D32",
+      "stop_name": "Avenue H",
+      "here_id": "10327_823",
+      "here_name": "Avenue H",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.62927,
+        "lng": -73.961639
+      }
+    },
+    "139": {
+      "gtfs_stop_id": "139",
+      "stop_name": "Rector St",
+      "here_id": "10327_109",
+      "here_name": "Rector St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.707513,
+        "lng": -74.013783
+      }
+    },
+    "R08": {
+      "gtfs_stop_id": "R08",
+      "stop_name": "39 Av-Dutch Kills",
+      "here_id": "10327_1302",
+      "here_name": "39 Av-Dutch Kills",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.752882,
+        "lng": -73.932755
+      }
+    },
+    "D21": {
+      "gtfs_stop_id": "D21",
+      "stop_name": "Broadway-Lafayette St",
+      "here_id": "10327_793",
+      "here_name": "Broadway-Lafayette St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.725297,
+        "lng": -73.996204
+      }
+    },
+    "S20": {
+      "gtfs_stop_id": "S20",
+      "stop_name": "Bay Terrace",
+      "here_id": "10327_1443",
+      "here_name": "Bay Terrace",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.5564,
+        "lng": -74.136907
+      }
+    },
+    "J12": {
+      "gtfs_stop_id": "J12",
+      "stop_name": "121 St",
+      "here_id": "10327_1080",
+      "here_name": "121 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.700492,
+        "lng": -73.828294
+      }
+    },
+    "134": {
+      "gtfs_stop_id": "134",
+      "stop_name": "Houston St",
+      "here_id": "10327_94",
+      "here_name": "Houston St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.728251,
+        "lng": -74.005367
+      }
+    },
+    "F02": {
+      "gtfs_stop_id": "F02",
+      "stop_name": "169 St",
+      "here_id": "10327_862",
+      "here_name": "169 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.71047,
+        "lng": -73.793604
+      }
+    },
+    "F30": {
+      "gtfs_stop_id": "F30",
+      "stop_name": "18 Av",
+      "here_id": "10327_928",
+      "here_name": "18 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.629755,
+        "lng": -73.976971
+      }
+    },
+    "501": {
+      "gtfs_stop_id": "501",
+      "stop_name": "Eastchester-Dyre Av",
+      "here_id": "10327_334",
+      "here_name": "Eastchester-Dyre Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.8883,
+        "lng": -73.830834
+      }
+    },
+    "G31": {
+      "gtfs_stop_id": "G31",
+      "stop_name": "Flushing Av",
+      "here_id": "10327_1021",
+      "here_name": "Flushing Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.700377,
+        "lng": -73.950234
+      }
+    },
+    "B16": {
+      "gtfs_stop_id": "B16",
+      "stop_name": "62 St",
+      "here_id": "10327_712",
+      "here_name": "62 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.626472,
+        "lng": -73.996895
+      }
+    },
+    "251": {
+      "gtfs_stop_id": "251",
+      "stop_name": "Sutter Av-Rutland Rd",
+      "here_id": "10327_253",
+      "here_name": "Sutter Av-Rutland Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.664717,
+        "lng": -73.92261
+      }
+    },
+    "214": {
+      "gtfs_stop_id": "214",
+      "stop_name": "West Farms Sq-E Tremont Av",
+      "here_id": "10327_148",
+      "here_name": "West Farms Sq-E Tremont Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.840295,
+        "lng": -73.880049
+      }
+    },
+    "624": {
+      "gtfs_stop_id": "624",
+      "stop_name": "103 St",
+      "here_id": "10327_412",
+      "here_name": "103 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.7906,
+        "lng": -73.947478
+      }
+    },
+    "H10": {
+      "gtfs_stop_id": "H10",
+      "stop_name": "Beach 25 St",
+      "here_id": "10327_1062",
+      "here_name": "Beach 25 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.600066,
+        "lng": -73.761353
+      }
+    },
+    "M22": {
+      "gtfs_stop_id": "M22",
+      "stop_name": "Fulton St",
+      "here_id": "10327_1251",
+      "here_name": "Fulton St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.710374,
+        "lng": -74.007582
+      }
+    },
+    "R21": {
+      "gtfs_stop_id": "R21",
+      "stop_name": "8 St-NYU",
+      "here_id": "10327_1335",
+      "here_name": "8 St-Nyu",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.730328,
+        "lng": -73.992629
+      }
+    },
+    "L12": {
+      "gtfs_stop_id": "L12",
+      "stop_name": "Grand St",
+      "here_id": "10327_1155",
+      "here_name": "Grand St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.711926,
+        "lng": -73.94067
+      }
+    },
+    "902": {
+      "gtfs_stop_id": "902",
+      "stop_name": "Times Sq-42 St",
+      "here_id": "10327_529",
+      "here_name": "Times Sq-42 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.755983,
+        "lng": -73.986229
+      }
+    },
+    "S15": {
+      "gtfs_stop_id": "S15",
+      "stop_name": "Prince's Bay",
+      "here_id": "10327_1428",
+      "here_name": "Prince's Bay",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.525507,
+        "lng": -74.200064
+      }
+    },
+    "256": {
+      "gtfs_stop_id": "256",
+      "stop_name": "Van Siclen Av",
+      "here_id": "10327_268",
+      "here_name": "Van Siclen Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.665449,
+        "lng": -73.889395
+      }
+    },
+    "701": {
+      "gtfs_stop_id": "701",
+      "stop_name": "Flushing-Main St",
+      "here_id": "10327_463",
+      "here_name": "Flushing-Main St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.7596,
+        "lng": -73.83003
+      }
+    },
+    "S04": {
+      "gtfs_stop_id": "S04",
+      "stop_name": "Botanic Garden",
+      "here_id": "10327_1410",
+      "here_name": "Botanic Garden",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.670343,
+        "lng": -73.959245
+      }
+    },
+    "D05": {
+      "gtfs_stop_id": "D05",
+      "stop_name": "Fordham Rd",
+      "here_id": "10327_745",
+      "here_name": "Fordham Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.861296,
+        "lng": -73.897749
+      }
+    },
+    "236": {
+      "gtfs_stop_id": "236",
+      "stop_name": "Bergen St",
+      "here_id": "10327_211",
+      "here_name": "Bergen St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.680829,
+        "lng": -73.975098
+      }
+    },
+    "M08": {
+      "gtfs_stop_id": "M08",
+      "stop_name": "Myrtle-Wyckoff Avs",
+      "here_id": "10327_1215",
+      "here_name": "Myrtle-Wyckoff Avs",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.69943,
+        "lng": -73.912385
+      }
+    },
+    "124": {
+      "gtfs_stop_id": "124",
+      "stop_name": "66 St-Lincoln Center",
+      "here_id": "10327_64",
+      "here_name": "66 St-Lincoln Center",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.77344,
+        "lng": -73.982209
+      }
+    },
+    "F24": {
+      "gtfs_stop_id": "F24",
+      "stop_name": "7 Av",
+      "here_id": "10327_913",
+      "here_name": "7 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.666271,
+        "lng": -73.980305
+      }
+    },
+    "617": {
+      "gtfs_stop_id": "617",
+      "stop_name": "Cypress Av",
+      "here_id": "10327_394",
+      "here_name": "Cypress Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.805368,
+        "lng": -73.914042
+      }
+    },
+    "A18": {
+      "gtfs_stop_id": "A18",
+      "stop_name": "103 St",
+      "here_id": "10327_571",
+      "here_name": "103 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.796092,
+        "lng": -73.961454
+      }
+    },
+    "H03": {
+      "gtfs_stop_id": "H03",
+      "stop_name": "Howard Beach-JFK Airport",
+      "here_id": "10327_1043",
+      "here_name": "Howard Beach-JFK Airport",
+      "agency": "MTA",
+      "modes": [
+        "subway",
+        "monorail"
+      ],
+      "coordinates": {
+        "lat": 40.660476,
+        "lng": -73.830301
+      }
+    },
+    "244": {
+      "gtfs_stop_id": "244",
+      "stop_name": "Church Av",
+      "here_id": "10327_232",
+      "here_name": "Church Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.650843,
+        "lng": -73.949575
+      }
+    },
+    "710": {
+      "gtfs_stop_id": "710",
+      "stop_name": "74 St-Broadway",
+      "here_id": "10327_484",
+      "here_name": "74 St-Broadway",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.746848,
+        "lng": -73.891394
+      }
+    },
+    "J24": {
+      "gtfs_stop_id": "J24",
+      "stop_name": "Alabama Av",
+      "here_id": "10327_1113",
+      "here_name": "Alabama Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.676992,
+        "lng": -73.898654
+      }
+    },
+    "L21": {
+      "gtfs_stop_id": "L21",
+      "stop_name": "Bushwick Av-Aberdeen St",
+      "here_id": "10327_1179",
+      "here_name": "Bushwick Av-Aberdeen St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.682829,
+        "lng": -73.905249
+      }
+    },
+    "R32": {
+      "gtfs_stop_id": "R32",
+      "stop_name": "Union St",
+      "here_id": "10327_1368",
+      "here_name": "Union St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.677316,
+        "lng": -73.98311
+      }
+    },
+    "631": {
+      "gtfs_stop_id": "631",
+      "stop_name": "Grand Central-42 St",
+      "here_id": "10327_432",
+      "here_name": "Grand Central-42 St",
+      "agency": "MTA",
+      "modes": [
+        "subway",
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.751776,
+        "lng": -73.976848
+      }
+    },
+    "J16": {
+      "gtfs_stop_id": "J16",
+      "stop_name": "85 St-Forest Pkwy",
+      "here_id": "10327_1092",
+      "here_name": "85 St-Forest Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.692435,
+        "lng": -73.86001
+      }
+    },
+    "B08": {
+      "gtfs_stop_id": "B08",
+      "stop_name": "Lexington Av/63 St",
+      "here_id": "10327_694",
+      "here_name": "Lexington Av/63 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.764629,
+        "lng": -73.966113
+      }
+    },
+    "R27": {
+      "gtfs_stop_id": "R27",
+      "stop_name": "Whitehall St-South Ferry",
+      "here_id": "10327_1353",
+      "here_name": "Whitehall St-South Ferry",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.703087,
+        "lng": -74.012994
+      }
+    },
+    "217": {
+      "gtfs_stop_id": "217",
+      "stop_name": "Simpson St",
+      "here_id": "10327_157",
+      "here_name": "Simpson St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.824073,
+        "lng": -73.893064
+      }
+    },
+    "L27": {
+      "gtfs_stop_id": "L27",
+      "stop_name": "New Lots Av",
+      "here_id": "10327_1194",
+      "here_name": "New Lots Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.658733,
+        "lng": -73.899232
+      }
+    },
+    "210": {
+      "gtfs_stop_id": "210",
+      "stop_name": "Allerton Av",
+      "here_id": "10327_136",
+      "here_name": "Allerton Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.865462,
+        "lng": -73.867352
+      }
+    },
+    "D16": {
+      "gtfs_stop_id": "D16",
+      "stop_name": "42 St-Bryant Pk",
+      "here_id": "10327_778",
+      "here_name": "42 St-Bryant Pk",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.754222,
+        "lng": -73.984569
+      }
+    },
+    "F36": {
+      "gtfs_stop_id": "F36",
+      "stop_name": "Avenue U",
+      "here_id": "10327_946",
+      "here_name": "Avenue U",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.596063,
+        "lng": -73.973357
+      }
+    },
+    "416": {
+      "gtfs_stop_id": "416",
+      "stop_name": "138 St-Grand Concourse",
+      "here_id": "10327_319",
+      "here_name": "138 St-Grand Concourse",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.813224,
+        "lng": -73.929849
+      }
+    },
+    "B20": {
+      "gtfs_stop_id": "B20",
+      "stop_name": "20 Av",
+      "here_id": "10327_724",
+      "here_name": "20 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.604556,
+        "lng": -73.998168
+      }
+    },
+    "B13": {
+      "gtfs_stop_id": "B13",
+      "stop_name": "Fort Hamilton Pkwy",
+      "here_id": "10327_703",
+      "here_name": "Fort Hamilton Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.640914,
+        "lng": -73.994304
+      }
+    },
+    "F25": {
+      "gtfs_stop_id": "F25",
+      "stop_name": "15 St-Prospect Park",
+      "here_id": "10327_916",
+      "here_name": "15 St-Prospect Park",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.660365,
+        "lng": -73.979493
+      }
+    },
+    "138": {
+      "gtfs_stop_id": "138",
+      "stop_name": "WTC Cortlandt",
+      "here_id": "10327_2384",
+      "here_name": "Wtc Cortlandt",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.711835,
+        "lng": -74.012188
+      }
+    },
+    "D20": {
+      "gtfs_stop_id": "D20",
+      "stop_name": "W 4 St-Wash Sq",
+      "here_id": "10327_604",
+      "here_name": "W 4 St-Wash Sq",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.732338,
+        "lng": -74.000495
+      }
+    },
+    "G26": {
+      "gtfs_stop_id": "G26",
+      "stop_name": "Greenpoint Av",
+      "here_id": "10327_1009",
+      "here_name": "Greenpoint Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.731352,
+        "lng": -73.954449
+      }
+    },
+    "M18": {
+      "gtfs_stop_id": "M18",
+      "stop_name": "Delancey St-Essex St",
+      "here_id": "10327_1239",
+      "here_name": "Delancey St-Essex St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.718315,
+        "lng": -73.987437
+      }
+    },
+    "L06": {
+      "gtfs_stop_id": "L06",
+      "stop_name": "1 Av",
+      "here_id": "10327_1143",
+      "here_name": "1 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.730953,
+        "lng": -73.981628
+      }
+    },
+    "D40": {
+      "gtfs_stop_id": "D40",
+      "stop_name": "Brighton Beach",
+      "here_id": "10327_844",
+      "here_name": "Brighton Beach",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.577621,
+        "lng": -73.961376
+      }
+    },
+    "A27": {
+      "gtfs_stop_id": "A27",
+      "stop_name": "42 St-Port Authority Bus Terminal",
+      "here_id": "10327_592",
+      "here_name": "42 St-Port Authority Bus Terminal",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.757308,
+        "lng": -73.989735
+      }
+    },
+    "R04": {
+      "gtfs_stop_id": "R04",
+      "stop_name": "30 Av",
+      "here_id": "10327_1293",
+      "here_name": "30 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.766779,
+        "lng": -73.921479
+      }
+    },
+    "402": {
+      "gtfs_stop_id": "402",
+      "stop_name": "Mosholu Pkwy",
+      "here_id": "10327_283",
+      "here_name": "Mosholu Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.87975,
+        "lng": -73.884655
+      }
+    },
+    "H11": {
+      "gtfs_stop_id": "H11",
+      "stop_name": "Far Rockaway-Mott Av",
+      "here_id": "10327_1065",
+      "here_name": "Far Rockaway-Mott Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.603995,
+        "lng": -73.755405
+      }
+    },
+    "L02": {
+      "gtfs_stop_id": "L02",
+      "stop_name": "6 Av",
+      "here_id": "10327_1134",
+      "here_name": "6 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.737335,
+        "lng": -73.996786
+      }
+    },
+    "601": {
+      "gtfs_stop_id": "601",
+      "stop_name": "Pelham Bay Park",
+      "here_id": "10327_349",
+      "here_name": "Pelham Bay Park",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.852462,
+        "lng": -73.828121
+      }
+    },
+    "613": {
+      "gtfs_stop_id": "613",
+      "stop_name": "Hunts Point Av",
+      "here_id": "10327_382",
+      "here_name": "Hunts Point Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.820948,
+        "lng": -73.890549
+      }
+    },
+    "S27": {
+      "gtfs_stop_id": "S27",
+      "stop_name": "Grasmere",
+      "here_id": "10327_1464",
+      "here_name": "Grasmere",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.603117,
+        "lng": -74.084087
+      }
+    },
+    "J20": {
+      "gtfs_stop_id": "J20",
+      "stop_name": "Crescent St",
+      "here_id": "10327_1101",
+      "here_name": "Crescent St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.683194,
+        "lng": -73.873785
+      }
+    },
+    "A64": {
+      "gtfs_stop_id": "A64",
+      "stop_name": "111 St",
+      "here_id": "10327_682",
+      "here_name": "111 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.684331,
+        "lng": -73.832163
+      }
+    },
+    "A07": {
+      "gtfs_stop_id": "A07",
+      "stop_name": "175 St",
+      "here_id": "10327_544",
+      "here_name": "175 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.847391,
+        "lng": -73.939704
+      }
+    },
+    "106": {
+      "gtfs_stop_id": "106",
+      "stop_name": "Marble Hill-225 St",
+      "here_id": "10327_9",
+      "here_name": "Marble Hill-225 St",
+      "agency": "MTA",
+      "modes": [
+        "subway",
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.874561,
+        "lng": -73.909831
+      }
+    },
+    "121": {
+      "gtfs_stop_id": "121",
+      "stop_name": "86 St",
+      "here_id": "10327_55",
+      "here_name": "86 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.788644,
+        "lng": -73.976218
+      }
+    },
+    "206": {
+      "gtfs_stop_id": "206",
+      "stop_name": "225 St",
+      "here_id": "10327_124",
+      "here_name": "225 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.888022,
+        "lng": -73.860341
+      }
+    },
+    "G13": {
+      "gtfs_stop_id": "G13",
+      "stop_name": "Elmhurst Av",
+      "here_id": "10327_979",
+      "here_name": "Elmhurst Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.742454,
+        "lng": -73.882017
+      }
+    },
+    "635": {
+      "gtfs_stop_id": "635",
+      "stop_name": "14 St-Union Sq",
+      "here_id": "10327_445",
+      "here_name": "14 St-Union Sq",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.734673,
+        "lng": -73.989951
+      }
+    },
+    "D13": {
+      "gtfs_stop_id": "D13",
+      "stop_name": "145 St",
+      "here_id": "10327_556",
+      "here_name": "145 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.824783,
+        "lng": -73.944216
+      }
+    },
+    "D27": {
+      "gtfs_stop_id": "D27",
+      "stop_name": "Parkside Av",
+      "here_id": "10327_808",
+      "here_name": "Parkside Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.655292,
+        "lng": -73.961495
+      }
+    },
+    "248": {
+      "gtfs_stop_id": "248",
+      "stop_name": "Nostrand Av",
+      "here_id": "10327_244",
+      "here_name": "Nostrand Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.669847,
+        "lng": -73.950466
+      }
+    },
+    "707": {
+      "gtfs_stop_id": "707",
+      "stop_name": "Junction Blvd",
+      "here_id": "10327_475",
+      "here_name": "Junction Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.749145,
+        "lng": -73.869527
+      }
+    },
+    "R44": {
+      "gtfs_stop_id": "R44",
+      "stop_name": "86 St",
+      "here_id": "10327_1398",
+      "here_name": "86 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.622687,
+        "lng": -74.028398
+      }
+    },
+    "412": {
+      "gtfs_stop_id": "412",
+      "stop_name": "170 St",
+      "here_id": "10327_307",
+      "here_name": "170 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.840075,
+        "lng": -73.917791
+      }
+    },
+    "221": {
+      "gtfs_stop_id": "221",
+      "stop_name": "3 Av-149 St",
+      "here_id": "10327_169",
+      "here_name": "3 Av-149 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.816109,
+        "lng": -73.917757
+      }
+    },
+    "108": {
+      "gtfs_stop_id": "108",
+      "stop_name": "207 St",
+      "here_id": "10327_16",
+      "here_name": "207 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.864621,
+        "lng": -73.918822
+      }
+    },
+    "125": {
+      "gtfs_stop_id": "125",
+      "stop_name": "59 St-Columbus Circle",
+      "here_id": "10327_67",
+      "here_name": "59 St-Columbus Circle",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.768247,
+        "lng": -73.981929
+      }
+    },
+    "H04": {
+      "gtfs_stop_id": "H04",
+      "stop_name": "Broad Channel",
+      "here_id": "10327_1047",
+      "here_name": "Broad Channel",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.608382,
+        "lng": -73.815925
+      }
+    },
+    "A44": {
+      "gtfs_stop_id": "A44",
+      "stop_name": "Clinton-Washington Avs",
+      "here_id": "10327_631",
+      "here_name": "Clinton-Washington Avs",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.683263,
+        "lng": -73.965838
+      }
+    },
+    "A49": {
+      "gtfs_stop_id": "A49",
+      "stop_name": "Ralph Av",
+      "here_id": "10327_646",
+      "here_name": "Ralph Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.678822,
+        "lng": -73.920786
+      }
+    },
+    "711": {
+      "gtfs_stop_id": "711",
+      "stop_name": "69 St",
+      "here_id": "10327_487",
+      "here_name": "69 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.746325,
+        "lng": -73.896403
+      }
+    },
+    "B23": {
+      "gtfs_stop_id": "B23",
+      "stop_name": "Bay 50 St",
+      "here_id": "10327_733",
+      "here_name": "Bay 50 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.588841,
+        "lng": -73.983765
+      }
+    },
+    "G11": {
+      "gtfs_stop_id": "G11",
+      "stop_name": "Woodhaven Blvd",
+      "here_id": "10327_973",
+      "here_name": "Woodhaven Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.733106,
+        "lng": -73.869229
+      }
+    },
+    "S09": {
+      "gtfs_stop_id": "S09",
+      "stop_name": "Tottenville",
+      "here_id": "10327_1413",
+      "here_name": "Tottenville",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.512764,
+        "lng": -74.251961
+      }
+    },
+    "J27": {
+      "gtfs_stop_id": "J27",
+      "stop_name": "Broadway Junction",
+      "here_id": "10327_1116",
+      "here_name": "Broadway Junction",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.679498,
+        "lng": -73.904512
+      }
+    },
+    "L17": {
+      "gtfs_stop_id": "L17",
+      "stop_name": "Myrtle-Wyckoff Avs",
+      "here_id": "10327_1170",
+      "here_name": "Myrtle-Wyckoff Avs",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.699814,
+        "lng": -73.911586
+      }
+    },
+    "R09": {
+      "gtfs_stop_id": "R09",
+      "stop_name": "Queensboro Plaza",
+      "here_id": "10327_1305",
+      "here_name": "Queensboro Plaza",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.750582,
+        "lng": -73.940202
+      }
+    },
+    "M13": {
+      "gtfs_stop_id": "M13",
+      "stop_name": "Lorimer St",
+      "here_id": "10327_1230",
+      "here_name": "Lorimer St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.703869,
+        "lng": -73.947408
+      }
+    },
+    "S23": {
+      "gtfs_stop_id": "S23",
+      "stop_name": "Grant City",
+      "here_id": "10327_1452",
+      "here_name": "Grant City",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.578965,
+        "lng": -74.109704
+      }
+    },
+    "G06": {
+      "gtfs_stop_id": "G06",
+      "stop_name": "Sutphin Blvd-Archer Av-JFK Airport",
+      "here_id": "10327_958",
+      "here_name": "Sutphin Blvd-Archer Av-JFK Airport",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.700486,
+        "lng": -73.807969
+      }
+    },
+    "716": {
+      "gtfs_stop_id": "716",
+      "stop_name": "33 St-Rawson St",
+      "here_id": "10327_502",
+      "here_name": "33 St-Rawson St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.744587,
+        "lng": -73.930997
+      }
+    },
+    "A17": {
+      "gtfs_stop_id": "A17",
+      "stop_name": "Cathedral Pkwy (110 St)",
+      "here_id": "10327_568",
+      "here_name": "Cathedral Pkwy (110 St)",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.800603,
+        "lng": -73.958161
+      }
+    },
+    "F06": {
+      "gtfs_stop_id": "F06",
+      "stop_name": "Kew Gardens-Union Tpke",
+      "here_id": "10327_874",
+      "here_name": "Kew Gardens-Union Tpke",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.714441,
+        "lng": -73.831008
+      }
+    },
+    "130": {
+      "gtfs_stop_id": "130",
+      "stop_name": "23 St",
+      "here_id": "10327_82",
+      "here_name": "23 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.744081,
+        "lng": -73.995657
+      }
+    },
+    "A42": {
+      "gtfs_stop_id": "A42",
+      "stop_name": "Hoyt-Schermerhorn Sts",
+      "here_id": "10327_625",
+      "here_name": "Hoyt-Schermerhorn Sts",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.688484,
+        "lng": -73.985001
+      }
+    },
+    "R20": {
+      "gtfs_stop_id": "R20",
+      "stop_name": "14 St-Union Sq",
+      "here_id": "10327_1332",
+      "here_name": "14 St-Union Sq",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.735736,
+        "lng": -73.990568
+      }
+    },
+    "224": {
+      "gtfs_stop_id": "224",
+      "stop_name": "135 St",
+      "here_id": "10327_175",
+      "here_name": "135 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.814229,
+        "lng": -73.94077
+      }
+    },
+    "N06": {
+      "gtfs_stop_id": "N06",
+      "stop_name": "20 Av",
+      "here_id": "10327_1269",
+      "here_name": "20 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.61741,
+        "lng": -73.985026
+      }
+    },
+    "A05": {
+      "gtfs_stop_id": "A05",
+      "stop_name": "190 St",
+      "here_id": "10327_538",
+      "here_name": "190 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.859022,
+        "lng": -73.93418
+      }
+    },
+    "G35": {
+      "gtfs_stop_id": "G35",
+      "stop_name": "Clinton-Washington Avs",
+      "here_id": "10327_1033",
+      "here_name": "Clinton-Washington Avs",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.688089,
+        "lng": -73.966839
+      }
+    },
+    "616": {
+      "gtfs_stop_id": "616",
+      "stop_name": "E 143 St-St Mary's St",
+      "here_id": "10327_391",
+      "here_name": "E 143 St-St Mary's St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.808719,
+        "lng": -73.907657
+      }
+    },
+    "J29": {
+      "gtfs_stop_id": "J29",
+      "stop_name": "Halsey St",
+      "here_id": "10327_1122",
+      "here_name": "Halsey St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.68637,
+        "lng": -73.916559
+      }
+    },
+    "D22": {
+      "gtfs_stop_id": "D22",
+      "stop_name": "Grand St",
+      "here_id": "10327_796",
+      "here_name": "Grand St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.718267,
+        "lng": -73.993753
+      }
+    },
+    "N10": {
+      "gtfs_stop_id": "N10",
+      "stop_name": "86 St",
+      "here_id": "10327_1281",
+      "here_name": "86 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.592721,
+        "lng": -73.97823
+      }
+    },
+    "252": {
+      "gtfs_stop_id": "252",
+      "stop_name": "Saratoga Av",
+      "here_id": "10327_256",
+      "here_name": "Saratoga Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.661453,
+        "lng": -73.916327
+      }
+    },
+    "S19": {
+      "gtfs_stop_id": "S19",
+      "stop_name": "Great Kills",
+      "here_id": "10327_1440",
+      "here_name": "Great Kills",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.551231,
+        "lng": -74.151399
+      }
+    },
+    "232": {
+      "gtfs_stop_id": "232",
+      "stop_name": "Borough Hall",
+      "here_id": "10327_199",
+      "here_name": "Borough Hall",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.693219,
+        "lng": -73.989998
+      }
+    },
+    "M06": {
+      "gtfs_stop_id": "M06",
+      "stop_name": "Seneca Av",
+      "here_id": "10327_1212",
+      "here_name": "Seneca Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.702762,
+        "lng": -73.90774
+      }
+    },
+    "H15": {
+      "gtfs_stop_id": "H15",
+      "stop_name": "Rockaway Park-Beach 116 St",
+      "here_id": "10327_1077",
+      "here_name": "Rockaway Park-Beach 116 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.580903,
+        "lng": -73.835592
+      }
+    },
+    "L13": {
+      "gtfs_stop_id": "L13",
+      "stop_name": "Montrose Av",
+      "here_id": "10327_1158",
+      "here_name": "Montrose Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.707739,
+        "lng": -73.93985
+      }
+    },
+    "D10": {
+      "gtfs_stop_id": "D10",
+      "stop_name": "167 St",
+      "here_id": "10327_760",
+      "here_name": "167 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.833771,
+        "lng": -73.91844
+      }
+    },
+    "257": {
+      "gtfs_stop_id": "257",
+      "stop_name": "New Lots Av",
+      "here_id": "10327_271",
+      "here_name": "New Lots Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.666235,
+        "lng": -73.884079
+      }
+    },
+    "S14": {
+      "gtfs_stop_id": "S14",
+      "stop_name": "Pleasant Plains",
+      "here_id": "10327_1425",
+      "here_name": "Pleasant Plains",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.52241,
+        "lng": -74.217847
+      }
+    },
+    "502": {
+      "gtfs_stop_id": "502",
+      "stop_name": "Baychester Av",
+      "here_id": "10327_337",
+      "here_name": "Baychester Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.878663,
+        "lng": -73.838591
+      }
+    },
+    "G32": {
+      "gtfs_stop_id": "G32",
+      "stop_name": "Myrtle-Willoughby Avs",
+      "here_id": "10327_1024",
+      "here_name": "Myrtle-Willoughby Avs",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.694568,
+        "lng": -73.949046
+      }
+    },
+    "215": {
+      "gtfs_stop_id": "215",
+      "stop_name": "174 St",
+      "here_id": "10327_151",
+      "here_name": "174 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.837288,
+        "lng": -73.887734
+      }
+    },
+    "F09": {
+      "gtfs_stop_id": "F09",
+      "stop_name": "Court Sq-23 St",
+      "here_id": "10327_880",
+      "here_name": "Court Sq-23 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.747846,
+        "lng": -73.946
+      }
+    },
+    "407": {
+      "gtfs_stop_id": "407",
+      "stop_name": "Fordham Rd",
+      "here_id": "10327_292",
+      "here_name": "Fordham Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.862803,
+        "lng": -73.901034
+      }
+    },
+    "A21": {
+      "gtfs_stop_id": "A21",
+      "stop_name": "81 St-Museum of Natural History",
+      "here_id": "10327_580",
+      "here_name": "81 St-Museum of Natural History",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.781433,
+        "lng": -73.972143
+      }
+    },
+    "S31": {
+      "gtfs_stop_id": "S31",
+      "stop_name": "St George",
+      "here_id": "10327_1476",
+      "here_name": "St George",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.643748,
+        "lng": -74.073643
+      }
+    },
+    "Q01": {
+      "gtfs_stop_id": "Q01",
+      "stop_name": "Canal St",
+      "here_id": "10327_1284",
+      "here_name": "Canal St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.718383,
+        "lng": -74.00046
+      }
+    },
+    "A53": {
+      "gtfs_stop_id": "A53",
+      "stop_name": "Van Siclen Av",
+      "here_id": "10327_658",
+      "here_name": "Van Siclen Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.67271,
+        "lng": -73.890358
+      }
+    },
+    "113": {
+      "gtfs_stop_id": "113",
+      "stop_name": "157 St",
+      "here_id": "10327_31",
+      "here_name": "157 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.834041,
+        "lng": -73.94489
+      }
+    },
+    "603": {
+      "gtfs_stop_id": "603",
+      "stop_name": "Middletown Rd",
+      "here_id": "10327_355",
+      "here_name": "Middletown Rd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.843863,
+        "lng": -73.836322
+      }
+    },
+    "R34": {
+      "gtfs_stop_id": "R34",
+      "stop_name": "Prospect Av",
+      "here_id": "10327_1374",
+      "here_name": "Prospect Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.665414,
+        "lng": -73.992872
+      }
+    },
+    "E01": {
+      "gtfs_stop_id": "E01",
+      "stop_name": "World Trade Center",
+      "here_id": "10327_856",
+      "here_name": "World Trade Center",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.712582,
+        "lng": -74.009781
+      }
+    },
+    "S03": {
+      "gtfs_stop_id": "S03",
+      "stop_name": "Park Pl",
+      "here_id": "10327_1407",
+      "here_name": "Park Pl",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.674772,
+        "lng": -73.957624
+      }
+    },
+    "D31": {
+      "gtfs_stop_id": "D31",
+      "stop_name": "Newkirk Plaza",
+      "here_id": "10327_820",
+      "here_name": "Newkirk Plaza",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.635082,
+        "lng": -73.962793
+      }
+    },
+    "G19": {
+      "gtfs_stop_id": "G19",
+      "stop_name": "Steinway St",
+      "here_id": "10327_994",
+      "here_name": "Steinway St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.756879,
+        "lng": -73.92074
+      }
+    },
+    "F03": {
+      "gtfs_stop_id": "F03",
+      "stop_name": "Parsons Blvd",
+      "here_id": "10327_865",
+      "here_name": "Parsons Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.707564,
+        "lng": -73.803326
+      }
+    },
+    "133": {
+      "gtfs_stop_id": "133",
+      "stop_name": "Christopher St-Stonewall",
+      "here_id": "10327_91",
+      "here_name": "Christopher St-Stonewall",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.733422,
+        "lng": -74.002906
+      }
+    },
+    "420": {
+      "gtfs_stop_id": "420",
+      "stop_name": "Bowling Green",
+      "here_id": "10327_328",
+      "here_name": "Bowling Green",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.704817,
+        "lng": -74.014065
+      }
+    },
+    "609": {
+      "gtfs_stop_id": "609",
+      "stop_name": "St Lawrence Av",
+      "here_id": "10327_370",
+      "here_name": "St Lawrence Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.831509,
+        "lng": -73.867618
+      }
+    },
+    "116": {
+      "gtfs_stop_id": "116",
+      "stop_name": "125 St",
+      "here_id": "10327_40",
+      "here_name": "125 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.815581,
+        "lng": -73.958372
+      }
+    },
+    "R11": {
+      "gtfs_stop_id": "R11",
+      "stop_name": "Lexington Av/59 St",
+      "here_id": "10327_1308",
+      "here_name": "Lexington Av/59 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.76266,
+        "lng": -73.967258
+      }
+    },
+    "F18": {
+      "gtfs_stop_id": "F18",
+      "stop_name": "York St",
+      "here_id": "10327_898",
+      "here_name": "York St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.701397,
+        "lng": -73.986751
+      }
+    },
+    "F31": {
+      "gtfs_stop_id": "F31",
+      "stop_name": "Avenue I",
+      "here_id": "10327_931",
+      "here_name": "Avenue I",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.625322,
+        "lng": -73.976127
+      }
+    },
+    "B15": {
+      "gtfs_stop_id": "B15",
+      "stop_name": "55 St",
+      "here_id": "10327_709",
+      "here_name": "55 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.631435,
+        "lng": -73.995476
+      }
+    },
+    "H09": {
+      "gtfs_stop_id": "H09",
+      "stop_name": "Beach 36 St",
+      "here_id": "10327_1059",
+      "here_name": "Beach 36 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.595398,
+        "lng": -73.768175
+      }
+    },
+    "M23": {
+      "gtfs_stop_id": "M23",
+      "stop_name": "Broad St",
+      "here_id": "10327_1254",
+      "here_name": "Broad St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.706476,
+        "lng": -74.011056
+      }
+    },
+    "625": {
+      "gtfs_stop_id": "625",
+      "stop_name": "96 St",
+      "here_id": "10327_415",
+      "here_name": "96 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.785672,
+        "lng": -73.95107
+      }
+    },
+    "R17": {
+      "gtfs_stop_id": "R17",
+      "stop_name": "34 St-Herald Sq",
+      "here_id": "10327_1323",
+      "here_name": "34 St-Herald Sq",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.749567,
+        "lng": -73.98795
+      }
+    },
+    "142": {
+      "gtfs_stop_id": "142",
+      "stop_name": "South Ferry",
+      "here_id": "10327_2378",
+      "here_name": "South Ferry",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.702068,
+        "lng": -74.013664
+      }
+    },
+    "D06": {
+      "gtfs_stop_id": "D06",
+      "stop_name": "182-183 Sts",
+      "here_id": "10327_748",
+      "here_name": "182-183 Sts",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.856093,
+        "lng": -73.900741
+      }
+    },
+    "640": {
+      "gtfs_stop_id": "640",
+      "stop_name": "Brooklyn Bridge-City Hall",
+      "here_id": "10327_460",
+      "here_name": "Brooklyn Bridge-City Hall",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.713065,
+        "lng": -74.004131
+      }
+    },
+    "A14": {
+      "gtfs_stop_id": "A14",
+      "stop_name": "135 St",
+      "here_id": "10327_559",
+      "here_name": "135 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.817894,
+        "lng": -73.947649
+      }
+    },
+    "211": {
+      "gtfs_stop_id": "211",
+      "stop_name": "Pelham Pkwy",
+      "here_id": "10327_139",
+      "here_name": "Pelham Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.857192,
+        "lng": -73.867615
+      }
+    },
+    "N07": {
+      "gtfs_stop_id": "N07",
+      "stop_name": "Bay Pkwy",
+      "here_id": "10327_1272",
+      "here_name": "Bay Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.611815,
+        "lng": -73.981848
+      }
+    },
+    "225": {
+      "gtfs_stop_id": "225",
+      "stop_name": "125 St",
+      "here_id": "10327_178",
+      "here_name": "125 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.807754,
+        "lng": -73.945495
+      }
+    },
+    "B14": {
+      "gtfs_stop_id": "B14",
+      "stop_name": "50 St",
+      "here_id": "10327_706",
+      "here_name": "50 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.63626,
+        "lng": -73.994791
+      }
+    },
+    "R45": {
+      "gtfs_stop_id": "R45",
+      "stop_name": "Bay Ridge-95 St",
+      "here_id": "10327_1401",
+      "here_name": "Bay Ridge-95 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.616622,
+        "lng": -74.030876
+      }
+    },
+    "G28": {
+      "gtfs_stop_id": "G28",
+      "stop_name": "Nassau Av",
+      "here_id": "10327_1012",
+      "here_name": "Nassau Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.724635,
+        "lng": -73.951277
+      }
+    },
+    "A33": {
+      "gtfs_stop_id": "A33",
+      "stop_name": "Spring St",
+      "here_id": "10327_607",
+      "here_name": "Spring St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.726227,
+        "lng": -74.003739
+      }
+    },
+    "411": {
+      "gtfs_stop_id": "411",
+      "stop_name": "Mt Eden Av",
+      "here_id": "10327_304",
+      "here_name": "Mt Eden Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.844434,
+        "lng": -73.914685
+      }
+    },
+    "A09": {
+      "gtfs_stop_id": "A09",
+      "stop_name": "168 St",
+      "here_id": "10327_547",
+      "here_name": "168 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.840719,
+        "lng": -73.939561
+      }
+    },
+    "G05": {
+      "gtfs_stop_id": "G05",
+      "stop_name": "Jamaica Center-Parsons/Archer",
+      "here_id": "10327_955",
+      "here_name": "Jamaica Center-Parsons/Archer",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.702147,
+        "lng": -73.801109
+      }
+    },
+    "109": {
+      "gtfs_stop_id": "109",
+      "stop_name": "Dyckman St",
+      "here_id": "10327_19",
+      "here_name": "Dyckman St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.860531,
+        "lng": -73.925536
+      }
+    },
+    "R40": {
+      "gtfs_stop_id": "R40",
+      "stop_name": "53 St",
+      "here_id": "10327_1386",
+      "here_name": "53 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.645069,
+        "lng": -74.014034
+      }
+    },
+    "A59": {
+      "gtfs_stop_id": "A59",
+      "stop_name": "80 St",
+      "here_id": "10327_670",
+      "here_name": "80 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.679371,
+        "lng": -73.858992
+      }
+    },
+    "A50": {
+      "gtfs_stop_id": "A50",
+      "stop_name": "Rockaway Av",
+      "here_id": "10327_649",
+      "here_name": "Rockaway Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.67834,
+        "lng": -73.911946
+      }
+    },
+    "G14": {
+      "gtfs_stop_id": "G14",
+      "stop_name": "Jackson Hts-Roosevelt Av",
+      "here_id": "10327_982",
+      "here_name": "Jackson Hts-Roosevelt Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.746644,
+        "lng": -73.891338
+      }
+    },
+    "D35": {
+      "gtfs_stop_id": "D35",
+      "stop_name": "Kings Hwy",
+      "here_id": "10327_832",
+      "here_name": "Kings Hwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.60867,
+        "lng": -73.957734
+      }
+    },
+    "626": {
+      "gtfs_stop_id": "626",
+      "stop_name": "86 St",
+      "here_id": "10327_418",
+      "here_name": "86 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.779492,
+        "lng": -73.955589
+      }
+    },
+    "R03": {
+      "gtfs_stop_id": "R03",
+      "stop_name": "Astoria Blvd",
+      "here_id": "10327_1290",
+      "here_name": "Astoria Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.770258,
+        "lng": -73.917843
+      }
+    },
+    "216": {
+      "gtfs_stop_id": "216",
+      "stop_name": "Freeman St",
+      "here_id": "10327_154",
+      "here_name": "Freeman St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.829993,
+        "lng": -73.891865
+      }
+    },
+    "D01": {
+      "gtfs_stop_id": "D01",
+      "stop_name": "Norwood-205 St",
+      "here_id": "10327_736",
+      "here_name": "Norwood-205 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.874811,
+        "lng": -73.878855
+      }
+    },
+    "706": {
+      "gtfs_stop_id": "706",
+      "stop_name": "103 St-Corona Plaza",
+      "here_id": "10327_472",
+      "here_name": "103 St-Corona Plaza",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.749865,
+        "lng": -73.8627
+      }
+    },
+    "243": {
+      "gtfs_stop_id": "243",
+      "stop_name": "Winthrop St",
+      "here_id": "10327_229",
+      "here_name": "Winthrop St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.656652,
+        "lng": -73.9502
+      }
+    },
+    "F23": {
+      "gtfs_stop_id": "F23",
+      "stop_name": "4 Av-9 St",
+      "here_id": "10327_910",
+      "here_name": "4 Av-9 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.670272,
+        "lng": -73.989779
+      }
+    },
+    "F26": {
+      "gtfs_stop_id": "F26",
+      "stop_name": "Fort Hamilton Pkwy",
+      "here_id": "10327_919",
+      "here_name": "Fort Hamilton Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.650782,
+        "lng": -73.975776
+      }
+    },
+    "F38": {
+      "gtfs_stop_id": "F38",
+      "stop_name": "Avenue X",
+      "here_id": "10327_949",
+      "here_name": "Avenue X",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.58962,
+        "lng": -73.97425
+      }
+    },
+    "205": {
+      "gtfs_stop_id": "205",
+      "stop_name": "233 St",
+      "here_id": "10327_121",
+      "here_name": "233 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.893193,
+        "lng": -73.857473
+      }
+    },
+    "L16": {
+      "gtfs_stop_id": "L16",
+      "stop_name": "DeKalb Av",
+      "here_id": "10327_1167",
+      "here_name": "DeKalb Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.703811,
+        "lng": -73.918425
+      }
+    },
+    "L28": {
+      "gtfs_stop_id": "L28",
+      "stop_name": "East 105 St",
+      "here_id": "10327_1197",
+      "here_name": "East 105 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.650573,
+        "lng": -73.899485
+      }
+    },
+    "721": {
+      "gtfs_stop_id": "721",
+      "stop_name": "Vernon Blvd-Jackson Av",
+      "here_id": "10327_514",
+      "here_name": "Vernon Blvd-Jackson Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.742626,
+        "lng": -73.953581
+      }
+    },
+    "621": {
+      "gtfs_stop_id": "621",
+      "stop_name": "125 St",
+      "here_id": "10327_403",
+      "here_name": "125 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.804138,
+        "lng": -73.937594
+      }
+    },
+    "S24": {
+      "gtfs_stop_id": "S24",
+      "stop_name": "Jefferson Av",
+      "here_id": "10327_1455",
+      "here_name": "Jefferson Av",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.583591,
+        "lng": -74.103338
+      }
+    },
+    "137": {
+      "gtfs_stop_id": "137",
+      "stop_name": "Chambers St",
+      "here_id": "10327_103",
+      "here_name": "Chambers St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.715478,
+        "lng": -74.009266
+      }
+    },
+    "A65": {
+      "gtfs_stop_id": "A65",
+      "stop_name": "Ozone Park-Lefferts Blvd",
+      "here_id": "10327_685",
+      "here_name": "Ozone Park-Lefferts Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.685951,
+        "lng": -73.825798
+      }
+    },
+    "B19": {
+      "gtfs_stop_id": "B19",
+      "stop_name": "18 Av",
+      "here_id": "10327_721",
+      "here_name": "18 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.607954,
+        "lng": -74.001736
+      }
+    },
+    "M19": {
+      "gtfs_stop_id": "M19",
+      "stop_name": "Bowery",
+      "here_id": "10327_1242",
+      "here_name": "Bowery",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.72028,
+        "lng": -73.993915
+      }
+    },
+    "R33": {
+      "gtfs_stop_id": "R33",
+      "stop_name": "4 Av-9 St",
+      "here_id": "10327_1371",
+      "here_name": "4 Av-9 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.670847,
+        "lng": -73.988302
+      }
+    },
+    "239": {
+      "gtfs_stop_id": "239",
+      "stop_name": "Franklin Av-Medgar Evers College",
+      "here_id": "10327_220",
+      "here_name": "Franklin Av-Medgar Evers College",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.670682,
+        "lng": -73.958131
+      }
+    },
+    "636": {
+      "gtfs_stop_id": "636",
+      "stop_name": "Astor Pl",
+      "here_id": "10327_448",
+      "here_name": "Astor Pl",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.730054,
+        "lng": -73.99107
+      }
+    },
+    "D28": {
+      "gtfs_stop_id": "D28",
+      "stop_name": "Church Av",
+      "here_id": "10327_811",
+      "here_name": "Church Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.650527,
+        "lng": -73.962982
+      }
+    },
+    "R28": {
+      "gtfs_stop_id": "R28",
+      "stop_name": "Court St",
+      "here_id": "10327_1356",
+      "here_name": "Court St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.6941,
+        "lng": -73.991777
+      }
+    },
+    "J28": {
+      "gtfs_stop_id": "J28",
+      "stop_name": "Chauncey St",
+      "here_id": "10327_1119",
+      "here_name": "Chauncey St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.682893,
+        "lng": -73.910456
+      }
+    },
+    "712": {
+      "gtfs_stop_id": "712",
+      "stop_name": "61 St-Woodside",
+      "here_id": "10327_490",
+      "here_name": "61 St-Woodside",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.74563,
+        "lng": -73.902984
+      }
+    },
+    "D41": {
+      "gtfs_stop_id": "D41",
+      "stop_name": "Ocean Pkwy",
+      "here_id": "10327_847",
+      "here_name": "Ocean Pkwy",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.576312,
+        "lng": -73.968501
+      }
+    },
+    "J21": {
+      "gtfs_stop_id": "J21",
+      "stop_name": "Norwood Av",
+      "here_id": "10327_1104",
+      "here_name": "Norwood Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.68141,
+        "lng": -73.880039
+      }
+    },
+    "L22": {
+      "gtfs_stop_id": "L22",
+      "stop_name": "Broadway Junction",
+      "here_id": "10327_1182",
+      "here_name": "Broadway Junction",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.678856,
+        "lng": -73.90324
+      }
+    },
+    "104": {
+      "gtfs_stop_id": "104",
+      "stop_name": "231 St",
+      "here_id": "10327_7",
+      "here_name": "231 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.878856,
+        "lng": -73.904834
+      }
+    },
+    "G10": {
+      "gtfs_stop_id": "G10",
+      "stop_name": "63 Dr-Rego Park",
+      "here_id": "10327_970",
+      "here_name": "63 Dr-Rego Park",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.729846,
+        "lng": -73.861604
+      }
+    },
+    "A28": {
+      "gtfs_stop_id": "A28",
+      "stop_name": "34 St-Penn Station",
+      "here_id": "10327_595",
+      "here_name": "34 St-Penn Station",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.752287,
+        "lng": -73.993391
+      }
+    },
+    "H12": {
+      "gtfs_stop_id": "H12",
+      "stop_name": "Beach 90 St",
+      "here_id": "10327_1068",
+      "here_name": "Beach 90 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.588034,
+        "lng": -73.813641
+      }
+    },
+    "126": {
+      "gtfs_stop_id": "126",
+      "stop_name": "50 St",
+      "here_id": "10327_70",
+      "here_name": "50 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.761728,
+        "lng": -73.983849
+      }
+    },
+    "120": {
+      "gtfs_stop_id": "120",
+      "stop_name": "96 St",
+      "here_id": "10327_52",
+      "here_name": "96 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.793919,
+        "lng": -73.972323
+      }
+    },
+    "A45": {
+      "gtfs_stop_id": "A45",
+      "stop_name": "Franklin Av",
+      "here_id": "10327_634",
+      "here_name": "Franklin Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.68138,
+        "lng": -73.956848
+      }
+    },
+    "630": {
+      "gtfs_stop_id": "630",
+      "stop_name": "51 St",
+      "here_id": "10327_430",
+      "here_name": "51 St",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.757107,
+        "lng": -73.97192
+      }
+    },
+    "N02": {
+      "gtfs_stop_id": "N02",
+      "stop_name": "8 Av",
+      "here_id": "10327_1257",
+      "here_name": "8 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.635064,
+        "lng": -74.011719
+      }
+    },
+    "S13": {
+      "gtfs_stop_id": "S13",
+      "stop_name": "Richmond Valley",
+      "here_id": "10327_1422",
+      "here_name": "Richmond Valley",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.519631,
+        "lng": -74.229141
+      }
+    },
+    "235": {
+      "gtfs_stop_id": "235",
+      "stop_name": "Atlantic Av-Barclays Ctr",
+      "here_id": "10327_208",
+      "here_name": "Atlantic Av-Barclays Ctr",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.684359,
+        "lng": -73.977666
+      }
+    },
+    "247": {
+      "gtfs_stop_id": "247",
+      "stop_name": "Flatbush Av-Brooklyn College",
+      "here_id": "10327_241",
+      "here_name": "Flatbush Av-Brooklyn College",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.632836,
+        "lng": -73.947642
+      }
+    },
+    "401": {
+      "gtfs_stop_id": "401",
+      "stop_name": "Woodlawn",
+      "here_id": "10327_280",
+      "here_name": "Woodlawn",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.886037,
+        "lng": -73.878751
+      }
+    },
+    "D17": {
+      "gtfs_stop_id": "D17",
+      "stop_name": "34 St-Herald Sq",
+      "here_id": "10327_781",
+      "here_name": "34 St-Herald Sq",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.749719,
+        "lng": -73.987823
+      }
+    },
+    "505": {
+      "gtfs_stop_id": "505",
+      "stop_name": "Morris Park",
+      "here_id": "10327_346",
+      "here_name": "Morris Park",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.854364,
+        "lng": -73.860495
+      }
+    },
+    "L01": {
+      "gtfs_stop_id": "L01",
+      "stop_name": "8 Av",
+      "here_id": "10327_1131",
+      "here_name": "8 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.739777,
+        "lng": -74.002578
+      }
+    },
+    "718": {
+      "gtfs_stop_id": "718",
+      "stop_name": "Queensboro Plaza",
+      "here_id": "10327_1305",
+      "here_name": "Queensboro Plaza",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.750582,
+        "lng": -73.940202
+      }
+    },
+    "612": {
+      "gtfs_stop_id": "612",
+      "stop_name": "Whitlock Av",
+      "here_id": "10327_379",
+      "here_name": "Whitlock Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.826525,
+        "lng": -73.886283
+      }
+    },
+    "M12": {
+      "gtfs_stop_id": "M12",
+      "stop_name": "Flushing Av",
+      "here_id": "10327_1227",
+      "here_name": "Flushing Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.70026,
+        "lng": -73.941126
+      }
+    },
+    "S28": {
+      "gtfs_stop_id": "S28",
+      "stop_name": "Clifton",
+      "here_id": "10327_1467",
+      "here_name": "Clifton",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.621319,
+        "lng": -74.071402
+      }
+    },
+    "228": {
+      "gtfs_stop_id": "228",
+      "stop_name": "Park Place",
+      "here_id": "10327_187",
+      "here_name": "Park Place",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.713051,
+        "lng": -74.008811
+      }
+    },
+    "220": {
+      "gtfs_stop_id": "220",
+      "stop_name": "Jackson Av",
+      "here_id": "10327_166",
+      "here_name": "Jackson Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.81649,
+        "lng": -73.907807
+      }
+    },
+    "D07": {
+      "gtfs_stop_id": "D07",
+      "stop_name": "Tremont Av",
+      "here_id": "10327_751",
+      "here_name": "Tremont Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.85041,
+        "lng": -73.905227
+      }
+    },
+    "L08": {
+      "gtfs_stop_id": "L08",
+      "stop_name": "Bedford Av",
+      "here_id": "10327_1146",
+      "here_name": "Bedford Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.717304,
+        "lng": -73.956872
+      }
+    },
+    "B06": {
+      "gtfs_stop_id": "B06",
+      "stop_name": "Roosevelt Island",
+      "here_id": "10327_690",
+      "here_name": "Roosevelt Island",
+      "agency": "MTA",
+      "modes": [
+        "subway",
+        "aerial"
+      ],
+      "coordinates": {
+        "lat": 40.759145,
+        "lng": -73.95326
+      }
+    },
+    "J15": {
+      "gtfs_stop_id": "J15",
+      "stop_name": "Woodhaven Blvd",
+      "here_id": "10327_1089",
+      "here_name": "Woodhaven Blvd",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.693879,
+        "lng": -73.851576
+      }
+    },
+    "S18": {
+      "gtfs_stop_id": "S18",
+      "stop_name": "Eltingville",
+      "here_id": "10327_1437",
+      "here_name": "Eltingville",
+      "agency": "MTA",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.544601,
+        "lng": -74.16457
+      }
+    },
+    "F14": {
+      "gtfs_stop_id": "F14",
+      "stop_name": "2 Av",
+      "here_id": "10327_889",
+      "here_name": "2 Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.723402,
+        "lng": -73.989938
+      }
+    },
+    "253": {
+      "gtfs_stop_id": "253",
+      "stop_name": "Rockaway Av",
+      "here_id": "10327_259",
+      "here_name": "Rockaway Av",
+      "agency": "MTA",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.662549,
+        "lng": -73.908946
+      }
+    }
+  },
+  "path": {
+    "Harrison": {
+      "station_name": "Harrison",
+      "here_id": "15242_78",
+      "here_name": "Harrison",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.739462,
+        "lng": -74.155836
+      }
+    },
+    "Journal Square": {
+      "station_name": "Journal Square",
+      "here_id": "15242_61",
+      "here_name": "Journal Square",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.733126,
+        "lng": -74.062745
+      }
+    },
+    "Grove Street": {
+      "station_name": "Grove Street",
+      "here_id": "15242_6",
+      "here_name": "Grove Street",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.719742,
+        "lng": -74.042482
+      }
+    },
+    "Hoboken": {
+      "station_name": "Hoboken",
+      "here_id": "15242_56",
+      "here_name": "Hoboken",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.735657,
+        "lng": -74.029414
+      }
+    },
+    "Newport": {
+      "station_name": "Newport",
+      "here_id": "15242_86",
+      "here_name": "Newport",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.727127,
+        "lng": -74.033818
+      }
+    },
+    "Exchange Place": {
+      "station_name": "Exchange Place",
+      "here_id": "15242_88",
+      "here_name": "Exchange Place",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.716306,
+        "lng": -74.033355
+      }
+    },
+    "World Trade Center": {
+      "station_name": "World Trade Center",
+      "here_id": "15242_100",
+      "here_name": "World Trade Center",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.712582,
+        "lng": -74.012147
+      }
+    },
+    "Christopher Street": {
+      "station_name": "Christopher Street",
+      "here_id": "15242_4",
+      "here_name": "Christopher Street",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.733021,
+        "lng": -74.007135
+      }
+    },
+    "9th St": {
+      "station_name": "9th St",
+      "here_id": "15242_3",
+      "here_name": "9th Street",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.734655,
+        "lng": -73.999073
+      }
+    },
+    "14th St": {
+      "station_name": "14th St",
+      "here_id": "15242_0",
+      "here_name": "14th Street",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.737466,
+        "lng": -73.996782
+      }
+    },
+    "23rd St": {
+      "station_name": "23rd St",
+      "here_id": "10327_784",
+      "here_name": "23 St",
+      "agency": "PATH",
+      "modes": [
+        "subway"
+      ],
+      "coordinates": {
+        "lat": 40.742878,
+        "lng": -73.992821
+      }
+    },
+    "33rd St": {
+      "station_name": "33rd St",
+      "here_id": "15242_2",
+      "here_name": "33rd Street",
+      "agency": "PATH",
+      "modes": [
+        "regionalTrain"
+      ],
+      "coordinates": {
+        "lat": 40.749013,
+        "lng": -73.988466
+      }
+    }
+  },
+  "not_found": {
+    "mta": [
+      "723",
+      "901"
+    ],
+    "path": [
+      "Newark Penn Station"
+    ]
+  }
+}

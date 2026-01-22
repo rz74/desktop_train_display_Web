@@ -1,0 +1,5368 @@
+{
+  "journal square": {
+    "display_name": "Journal Square",
+    "path": {
+      "stop_id": 26731,
+      "routes": [
+        "860",
+        "861",
+        "862",
+        "1024"
+      ]
+    }
+  },
+  "grove street": {
+    "display_name": "Grove Street",
+    "path": {
+      "stop_id": 26729,
+      "routes": [
+        "860",
+        "861",
+        "862",
+        "1024"
+      ]
+    }
+  },
+  "33 st": {
+    "display_name": "33 St",
+    "mta": [
+      {
+        "stop_id": "632",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "hoboken": {
+    "display_name": "Hoboken",
+    "path": {
+      "stop_id": 26727,
+      "routes": [
+        "860",
+        "1024"
+      ]
+    }
+  },
+  "newport": {
+    "display_name": "Newport",
+    "path": {
+      "stop_id": 26728,
+      "routes": [
+        "860",
+        "861",
+        "862",
+        "1024"
+      ]
+    }
+  },
+  "exchange place": {
+    "display_name": "Exchange Place",
+    "path": {
+      "stop_id": 26730,
+      "routes": [
+        "860",
+        "861",
+        "862",
+        "1024"
+      ]
+    }
+  },
+  "harrison": {
+    "display_name": "Harrison",
+    "path": {
+      "stop_id": 26732,
+      "routes": [
+        "862"
+      ]
+    }
+  },
+  "newark": {
+    "display_name": "Newark",
+    "path": {
+      "stop_id": 26733,
+      "routes": [
+        "862"
+      ]
+    }
+  },
+  "world trade center": {
+    "display_name": "World Trade Center",
+    "mta": [
+      {
+        "stop_id": "138",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "E01",
+        "feed_group": "ace",
+        "routes": [
+          "E"
+        ]
+      },
+      {
+        "stop_id": "R25",
+        "feed_group": "nqrw",
+        "routes": [
+          "N",
+          "R",
+          "W"
+        ]
+      }
+    ],
+    "path": {
+      "stop_id": 26734,
+      "routes": [
+        "862"
+      ]
+    }
+  },
+  "christopher st-stonewall": {
+    "display_name": "Christopher St-Stonewall",
+    "mta": [
+      {
+        "stop_id": "133",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ],
+    "path": {
+      "stop_id": 26726,
+      "routes": [
+        "860",
+        "861",
+        "1024"
+      ]
+    }
+  },
+  "14 st": {
+    "display_name": "14 St-Union Sq",
+    "mta": [
+      {
+        "stop_id": "128",
+        "feed_group": "123",
+        "routes": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "stop_id": "A31",
+        "feed_group": "ace",
+        "routes": [
+          "A",
+          "C",
+          "E"
+        ]
+      },
+      {
+        "stop_id": "D14",
+        "feed_group": "bdfm",
+        "routes": [
+          "B",
+          "D",
+          "F",
+          "M"
+        ]
+      }
+    ],
+    "path": {
+      "stop_id": 26722,
+      "routes": [
+        "860",
+        "861",
+        "1024"
+      ]
+    }
+  },
+  "23 st": {
+    "display_name": "23 St",
+    "mta": [
+      {
+        "stop_id": "130",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "A30",
+        "feed_group": "ace",
+        "routes": [
+          "C",
+          "E"
+        ]
+      },
+      {
+        "stop_id": "D18",
+        "feed_group": "bdfm",
+        "routes": [
+          "B",
+          "D",
+          "F",
+          "M"
+        ]
+      },
+      {
+        "stop_id": "R19",
+        "feed_group": "nqrw",
+        "routes": [
+          "R",
+          "W"
+        ]
+      },
+      {
+        "stop_id": "634",
+        "feed_group": "456",
+        "routes": [
+          "6"
+        ]
+      }
+    ],
+    "path": {
+      "stop_id": 26723,
+      "routes": [
+        "860",
+        "861",
+        "1024"
+      ]
+    }
+  },
+  "34 st-herald sq": {
+    "display_name": "34 St-Herald Sq",
+    "mta": [
+      {
+        "stop_id": "D17",
+        "feed_group": "bdfm",
+        "routes": [
+          "B",
+          "D",
+          "F",
+          "M"
+        ]
+      },
+      {
+        "stop_id": "R17",
+        "feed_group": "nqrw",
+        "routes": [
+          "N",
+          "Q",
+          "R",
+          "W"
+        ]
+      }
+    ],
+    "path": {
+      "stop_id": 26724,
+      "routes": [
+        "860",
+        "861",
+        "1024"
+      ]
+    }
+  },
+  "astoria-ditmars blvd": {
+    "display_name": "Astoria-Ditmars Blvd",
+    "mta": [
+      {
+        "stop_id": "R01",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "astoria blvd": {
+    "display_name": "Astoria Blvd",
+    "mta": [
+      {
+        "stop_id": "R03",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "30 av": {
+    "display_name": "30 Av",
+    "mta": [
+      {
+        "stop_id": "R04",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "broadway": {
+    "display_name": "Broadway",
+    "mta": [
+      {
+        "stop_id": "R05",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "G30",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "36 av": {
+    "display_name": "36 Av",
+    "mta": [
+      {
+        "stop_id": "R06",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "39 av-dutch kills": {
+    "display_name": "39 Av-Dutch Kills",
+    "mta": [
+      {
+        "stop_id": "R08",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "lexington av/59 st": {
+    "display_name": "Lexington Av/59 St",
+    "mta": [
+      {
+        "stop_id": "R11",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "5 av/59 st": {
+    "display_name": "5 Av/59 St",
+    "mta": [
+      {
+        "stop_id": "R13",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "57 st-7 av": {
+    "display_name": "57 St-7 Av",
+    "mta": [
+      {
+        "stop_id": "R14",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "49 st": {
+    "display_name": "49 St",
+    "mta": [
+      {
+        "stop_id": "R15",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "times sq-42 st": {
+    "display_name": "Times Sq-42 St",
+    "mta": [
+      {
+        "stop_id": "R16",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "127",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "725",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "902",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "28 st": {
+    "display_name": "28 St",
+    "mta": [
+      {
+        "stop_id": "R18",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "129",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "633",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "14 st-union sq": {
+    "display_name": "14 St-Union Sq",
+    "mta": [
+      {
+        "stop_id": "R20",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "L03",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      },
+      {
+        "stop_id": "635",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "8 st-nyu": {
+    "display_name": "8 St-NYU",
+    "mta": [
+      {
+        "stop_id": "R21",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "prince st": {
+    "display_name": "Prince St",
+    "mta": [
+      {
+        "stop_id": "R22",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "canal st": {
+    "display_name": "Canal St",
+    "mta": [
+      {
+        "stop_id": "R23",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "Q01",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "M20",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "A34",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "135",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "639",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "city hall": {
+    "display_name": "City Hall",
+    "mta": [
+      {
+        "stop_id": "R24",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "cortlandt st": {
+    "display_name": "Cortlandt St",
+    "mta": [
+      {
+        "stop_id": "R25",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "rector st": {
+    "display_name": "Rector St",
+    "mta": [
+      {
+        "stop_id": "R26",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "139",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "whitehall st-south ferry": {
+    "display_name": "Whitehall St-South Ferry",
+    "mta": [
+      {
+        "stop_id": "R27",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "court st": {
+    "display_name": "Court St",
+    "mta": [
+      {
+        "stop_id": "R28",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "jay st-metrotech": {
+    "display_name": "Jay St-MetroTech",
+    "mta": [
+      {
+        "stop_id": "R29",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "A41",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "dekalb av": {
+    "display_name": "DeKalb Av",
+    "mta": [
+      {
+        "stop_id": "R30",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "L16",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "atlantic av-barclays ctr": {
+    "display_name": "Atlantic Av-Barclays Ctr",
+    "mta": [
+      {
+        "stop_id": "R31",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "D24",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "235",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "union st": {
+    "display_name": "Union St",
+    "mta": [
+      {
+        "stop_id": "R32",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "4 av-9 st": {
+    "display_name": "4 Av-9 St",
+    "mta": [
+      {
+        "stop_id": "R33",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "F23",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "prospect av": {
+    "display_name": "Prospect Av",
+    "mta": [
+      {
+        "stop_id": "R34",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "219",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "25 st": {
+    "display_name": "25 St",
+    "mta": [
+      {
+        "stop_id": "R35",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "36 st": {
+    "display_name": "36 St",
+    "mta": [
+      {
+        "stop_id": "R36",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "G20",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "45 st": {
+    "display_name": "45 St",
+    "mta": [
+      {
+        "stop_id": "R39",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "53 st": {
+    "display_name": "53 St",
+    "mta": [
+      {
+        "stop_id": "R40",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "59 st": {
+    "display_name": "59 St",
+    "mta": [
+      {
+        "stop_id": "R41",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "629",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "bay ridge av": {
+    "display_name": "Bay Ridge Av",
+    "mta": [
+      {
+        "stop_id": "R42",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "77 st": {
+    "display_name": "77 St",
+    "mta": [
+      {
+        "stop_id": "R43",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "627",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "86 st": {
+    "display_name": "86 St",
+    "mta": [
+      {
+        "stop_id": "R44",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "N10",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "A20",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "121",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "626",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "Q04",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "bay ridge-95 st": {
+    "display_name": "Bay Ridge-95 St",
+    "mta": [
+      {
+        "stop_id": "R45",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "7 av": {
+    "display_name": "7 Av",
+    "mta": [
+      {
+        "stop_id": "D25",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "F24",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "D14",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "prospect park": {
+    "display_name": "Prospect Park",
+    "mta": [
+      {
+        "stop_id": "D26",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "parkside av": {
+    "display_name": "Parkside Av",
+    "mta": [
+      {
+        "stop_id": "D27",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "church av": {
+    "display_name": "Church Av",
+    "mta": [
+      {
+        "stop_id": "D28",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "F27",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "244",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "beverley rd": {
+    "display_name": "Beverley Rd",
+    "mta": [
+      {
+        "stop_id": "D29",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "cortelyou rd": {
+    "display_name": "Cortelyou Rd",
+    "mta": [
+      {
+        "stop_id": "D30",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "newkirk plaza": {
+    "display_name": "Newkirk Plaza",
+    "mta": [
+      {
+        "stop_id": "D31",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "avenue h": {
+    "display_name": "Avenue H",
+    "mta": [
+      {
+        "stop_id": "D32",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "avenue j": {
+    "display_name": "Avenue J",
+    "mta": [
+      {
+        "stop_id": "D33",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "avenue m": {
+    "display_name": "Avenue M",
+    "mta": [
+      {
+        "stop_id": "D34",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "kings hwy": {
+    "display_name": "Kings Hwy",
+    "mta": [
+      {
+        "stop_id": "D35",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "N08",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "F35",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "avenue u": {
+    "display_name": "Avenue U",
+    "mta": [
+      {
+        "stop_id": "D37",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "N09",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "F36",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "neck rd": {
+    "display_name": "Neck Rd",
+    "mta": [
+      {
+        "stop_id": "D38",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "sheepshead bay": {
+    "display_name": "Sheepshead Bay",
+    "mta": [
+      {
+        "stop_id": "D39",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "brighton beach": {
+    "display_name": "Brighton Beach",
+    "mta": [
+      {
+        "stop_id": "D40",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "ocean pkwy": {
+    "display_name": "Ocean Pkwy",
+    "mta": [
+      {
+        "stop_id": "D41",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "w 8 st-ny aquarium": {
+    "display_name": "W 8 St-NY Aquarium",
+    "mta": [
+      {
+        "stop_id": "D42",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "coney island-stillwell av": {
+    "display_name": "Coney Island-Stillwell Av",
+    "mta": [
+      {
+        "stop_id": "D43",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "9 av": {
+    "display_name": "9 Av",
+    "mta": [
+      {
+        "stop_id": "B12",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "fort hamilton pkwy": {
+    "display_name": "Fort Hamilton Pkwy",
+    "mta": [
+      {
+        "stop_id": "B13",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "N03",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "F26",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "50 st": {
+    "display_name": "50 St",
+    "mta": [
+      {
+        "stop_id": "B14",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "A25",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "126",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "55 st": {
+    "display_name": "55 St",
+    "mta": [
+      {
+        "stop_id": "B15",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "62 st": {
+    "display_name": "62 St",
+    "mta": [
+      {
+        "stop_id": "B16",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "71 st": {
+    "display_name": "71 St",
+    "mta": [
+      {
+        "stop_id": "B17",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "79 st": {
+    "display_name": "79 St",
+    "mta": [
+      {
+        "stop_id": "B18",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "122",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "18 av": {
+    "display_name": "18 Av",
+    "mta": [
+      {
+        "stop_id": "B19",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "N05",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "F30",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "20 av": {
+    "display_name": "20 Av",
+    "mta": [
+      {
+        "stop_id": "B20",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "N06",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "bay pkwy": {
+    "display_name": "Bay Pkwy",
+    "mta": [
+      {
+        "stop_id": "B21",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "N07",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "F32",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "25 av": {
+    "display_name": "25 Av",
+    "mta": [
+      {
+        "stop_id": "B22",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "bay 50 st": {
+    "display_name": "Bay 50 St",
+    "mta": [
+      {
+        "stop_id": "B23",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "8 av": {
+    "display_name": "8 Av",
+    "mta": [
+      {
+        "stop_id": "N02",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "L01",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "new utrecht av": {
+    "display_name": "New Utrecht Av",
+    "mta": [
+      {
+        "stop_id": "N04",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "121 st": {
+    "display_name": "121 St",
+    "mta": [
+      {
+        "stop_id": "J12",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "111 st": {
+    "display_name": "111 St",
+    "mta": [
+      {
+        "stop_id": "J13",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "A64",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "705",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "104 st": {
+    "display_name": "104 St",
+    "mta": [
+      {
+        "stop_id": "J14",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "A63",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "woodhaven blvd": {
+    "display_name": "Woodhaven Blvd",
+    "mta": [
+      {
+        "stop_id": "J15",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "G11",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "85 st-forest pkwy": {
+    "display_name": "85 St-Forest Pkwy",
+    "mta": [
+      {
+        "stop_id": "J16",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "75 st-elderts ln": {
+    "display_name": "75 St-Elderts Ln",
+    "mta": [
+      {
+        "stop_id": "J17",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "cypress hills": {
+    "display_name": "Cypress Hills",
+    "mta": [
+      {
+        "stop_id": "J19",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "crescent st": {
+    "display_name": "Crescent St",
+    "mta": [
+      {
+        "stop_id": "J20",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "norwood av": {
+    "display_name": "Norwood Av",
+    "mta": [
+      {
+        "stop_id": "J21",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "cleveland st": {
+    "display_name": "Cleveland St",
+    "mta": [
+      {
+        "stop_id": "J22",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "van siclen av": {
+    "display_name": "Van Siclen Av",
+    "mta": [
+      {
+        "stop_id": "J23",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "A53",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "256",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "alabama av": {
+    "display_name": "Alabama Av",
+    "mta": [
+      {
+        "stop_id": "J24",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "broadway junction": {
+    "display_name": "Broadway Junction",
+    "mta": [
+      {
+        "stop_id": "J27",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "L22",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      },
+      {
+        "stop_id": "A51",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "chauncey st": {
+    "display_name": "Chauncey St",
+    "mta": [
+      {
+        "stop_id": "J28",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "halsey st": {
+    "display_name": "Halsey St",
+    "mta": [
+      {
+        "stop_id": "J29",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "L19",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "gates av": {
+    "display_name": "Gates Av",
+    "mta": [
+      {
+        "stop_id": "J30",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "kosciuszko st": {
+    "display_name": "Kosciuszko St",
+    "mta": [
+      {
+        "stop_id": "J31",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "myrtle av": {
+    "display_name": "Myrtle Av",
+    "mta": [
+      {
+        "stop_id": "M11",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "flushing av": {
+    "display_name": "Flushing Av",
+    "mta": [
+      {
+        "stop_id": "M12",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "G31",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "lorimer st": {
+    "display_name": "Lorimer St",
+    "mta": [
+      {
+        "stop_id": "M13",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "L10",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "hewes st": {
+    "display_name": "Hewes St",
+    "mta": [
+      {
+        "stop_id": "M14",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "marcy av": {
+    "display_name": "Marcy Av",
+    "mta": [
+      {
+        "stop_id": "M16",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "delancey st-essex st": {
+    "display_name": "Delancey St-Essex St",
+    "mta": [
+      {
+        "stop_id": "M18",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "F15",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "bowery": {
+    "display_name": "Bowery",
+    "mta": [
+      {
+        "stop_id": "M19",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "chambers st": {
+    "display_name": "Chambers St",
+    "mta": [
+      {
+        "stop_id": "M21",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "A36",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "137",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "fulton st": {
+    "display_name": "Fulton St",
+    "mta": [
+      {
+        "stop_id": "M22",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "A38",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "G36",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      },
+      {
+        "stop_id": "229",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "418",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "broad st": {
+    "display_name": "Broad St",
+    "mta": [
+      {
+        "stop_id": "M23",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "middle village-metropolitan av": {
+    "display_name": "Middle Village-Metropolitan Av",
+    "mta": [
+      {
+        "stop_id": "M01",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "fresh pond rd": {
+    "display_name": "Fresh Pond Rd",
+    "mta": [
+      {
+        "stop_id": "M04",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "forest av": {
+    "display_name": "Forest Av",
+    "mta": [
+      {
+        "stop_id": "M05",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "seneca av": {
+    "display_name": "Seneca Av",
+    "mta": [
+      {
+        "stop_id": "M06",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "myrtle-wyckoff avs": {
+    "display_name": "Myrtle-Wyckoff Avs",
+    "mta": [
+      {
+        "stop_id": "M08",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "L17",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "knickerbocker av": {
+    "display_name": "Knickerbocker Av",
+    "mta": [
+      {
+        "stop_id": "M09",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "central av": {
+    "display_name": "Central Av",
+    "mta": [
+      {
+        "stop_id": "M10",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "6 av": {
+    "display_name": "6 Av",
+    "mta": [
+      {
+        "stop_id": "L02",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "3 av": {
+    "display_name": "3 Av",
+    "mta": [
+      {
+        "stop_id": "L05",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "1 av": {
+    "display_name": "1 Av",
+    "mta": [
+      {
+        "stop_id": "L06",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "bedford av": {
+    "display_name": "Bedford Av",
+    "mta": [
+      {
+        "stop_id": "L08",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "graham av": {
+    "display_name": "Graham Av",
+    "mta": [
+      {
+        "stop_id": "L11",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "grand st": {
+    "display_name": "Grand St",
+    "mta": [
+      {
+        "stop_id": "L12",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      },
+      {
+        "stop_id": "D22",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "montrose av": {
+    "display_name": "Montrose Av",
+    "mta": [
+      {
+        "stop_id": "L13",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "morgan av": {
+    "display_name": "Morgan Av",
+    "mta": [
+      {
+        "stop_id": "L14",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "jefferson st": {
+    "display_name": "Jefferson St",
+    "mta": [
+      {
+        "stop_id": "L15",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "wilson av": {
+    "display_name": "Wilson Av",
+    "mta": [
+      {
+        "stop_id": "L20",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "bushwick av-aberdeen st": {
+    "display_name": "Bushwick Av-Aberdeen St",
+    "mta": [
+      {
+        "stop_id": "L21",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "atlantic av": {
+    "display_name": "Atlantic Av",
+    "mta": [
+      {
+        "stop_id": "L24",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "sutter av": {
+    "display_name": "Sutter Av",
+    "mta": [
+      {
+        "stop_id": "L25",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "livonia av": {
+    "display_name": "Livonia Av",
+    "mta": [
+      {
+        "stop_id": "L26",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "new lots av": {
+    "display_name": "New Lots Av",
+    "mta": [
+      {
+        "stop_id": "L27",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      },
+      {
+        "stop_id": "257",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "east 105 st": {
+    "display_name": "East 105 St",
+    "mta": [
+      {
+        "stop_id": "L28",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "canarsie-rockaway pkwy": {
+    "display_name": "Canarsie-Rockaway Pkwy",
+    "mta": [
+      {
+        "stop_id": "L29",
+        "feed_group": "l",
+        "routes": [
+          "L"
+        ]
+      }
+    ]
+  },
+  "franklin av": {
+    "display_name": "Franklin Av",
+    "mta": [
+      {
+        "stop_id": "S01",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "A45",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "park pl": {
+    "display_name": "Park Pl",
+    "mta": [
+      {
+        "stop_id": "S03",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "botanic garden": {
+    "display_name": "Botanic Garden",
+    "mta": [
+      {
+        "stop_id": "S04",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "inwood-207 st": {
+    "display_name": "Inwood-207 St",
+    "mta": [
+      {
+        "stop_id": "A02",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "dyckman st": {
+    "display_name": "Dyckman St",
+    "mta": [
+      {
+        "stop_id": "A03",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "109",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "190 st": {
+    "display_name": "190 St",
+    "mta": [
+      {
+        "stop_id": "A05",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "181 st": {
+    "display_name": "181 St",
+    "mta": [
+      {
+        "stop_id": "A06",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "111",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "175 st": {
+    "display_name": "175 St",
+    "mta": [
+      {
+        "stop_id": "A07",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "168 st": {
+    "display_name": "168 St",
+    "mta": [
+      {
+        "stop_id": "A09",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "163 st-amsterdam av": {
+    "display_name": "163 St-Amsterdam Av",
+    "mta": [
+      {
+        "stop_id": "A10",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "155 st": {
+    "display_name": "155 St",
+    "mta": [
+      {
+        "stop_id": "A11",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "D12",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "145 st": {
+    "display_name": "145 St",
+    "mta": [
+      {
+        "stop_id": "A12",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "D13",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "114",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "302",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "135 st": {
+    "display_name": "135 St",
+    "mta": [
+      {
+        "stop_id": "A14",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "224",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "125 st": {
+    "display_name": "125 St",
+    "mta": [
+      {
+        "stop_id": "A15",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "116",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "621",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "225",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "116 st": {
+    "display_name": "116 St",
+    "mta": [
+      {
+        "stop_id": "A16",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "622",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "226",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "cathedral pkwy (110 st)": {
+    "display_name": "Cathedral Pkwy (110 St)",
+    "mta": [
+      {
+        "stop_id": "A17",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "118",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "103 st": {
+    "display_name": "103 St",
+    "mta": [
+      {
+        "stop_id": "A18",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "119",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "624",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "96 st": {
+    "display_name": "96 St",
+    "mta": [
+      {
+        "stop_id": "A19",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "120",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "625",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "Q05",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "81 st-museum of natural history": {
+    "display_name": "81 St-Museum of Natural History",
+    "mta": [
+      {
+        "stop_id": "A21",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "72 st": {
+    "display_name": "72 St",
+    "mta": [
+      {
+        "stop_id": "A22",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "123",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "Q03",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      }
+    ]
+  },
+  "59 st-columbus circle": {
+    "display_name": "59 St-Columbus Circle",
+    "mta": [
+      {
+        "stop_id": "A24",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "125",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "42 st-port authority bus terminal": {
+    "display_name": "42 St-Port Authority Bus Terminal",
+    "mta": [
+      {
+        "stop_id": "A27",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "34 st-penn": {
+    "display_name": "34 St-Penn Station",
+    "mta": [
+      {
+        "stop_id": "A28",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "128",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "w 4 st-wash sq": {
+    "display_name": "W 4 St-Wash Sq",
+    "mta": [
+      {
+        "stop_id": "A32",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "D20",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "spring st": {
+    "display_name": "Spring St",
+    "mta": [
+      {
+        "stop_id": "A33",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "638",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "high st": {
+    "display_name": "High St",
+    "mta": [
+      {
+        "stop_id": "A40",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "hoyt-schermerhorn sts": {
+    "display_name": "Hoyt-Schermerhorn Sts",
+    "mta": [
+      {
+        "stop_id": "A42",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "lafayette av": {
+    "display_name": "Lafayette Av",
+    "mta": [
+      {
+        "stop_id": "A43",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "clinton-washington avs": {
+    "display_name": "Clinton-Washington Avs",
+    "mta": [
+      {
+        "stop_id": "A44",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "G35",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "nostrand av": {
+    "display_name": "Nostrand Av",
+    "mta": [
+      {
+        "stop_id": "A46",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "248",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "kingston-throop avs": {
+    "display_name": "Kingston-Throop Avs",
+    "mta": [
+      {
+        "stop_id": "A47",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "utica av": {
+    "display_name": "Utica Av",
+    "mta": [
+      {
+        "stop_id": "A48",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "ralph av": {
+    "display_name": "Ralph Av",
+    "mta": [
+      {
+        "stop_id": "A49",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "rockaway av": {
+    "display_name": "Rockaway Av",
+    "mta": [
+      {
+        "stop_id": "A50",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "253",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "liberty av": {
+    "display_name": "Liberty Av",
+    "mta": [
+      {
+        "stop_id": "A52",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "shepherd av": {
+    "display_name": "Shepherd Av",
+    "mta": [
+      {
+        "stop_id": "A54",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "euclid av": {
+    "display_name": "Euclid Av",
+    "mta": [
+      {
+        "stop_id": "A55",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "grant av": {
+    "display_name": "Grant Av",
+    "mta": [
+      {
+        "stop_id": "A57",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "80 st": {
+    "display_name": "80 St",
+    "mta": [
+      {
+        "stop_id": "A59",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "88 st": {
+    "display_name": "88 St",
+    "mta": [
+      {
+        "stop_id": "A60",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "rockaway blvd": {
+    "display_name": "Rockaway Blvd",
+    "mta": [
+      {
+        "stop_id": "A61",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "ozone park-lefferts blvd": {
+    "display_name": "Ozone Park-Lefferts Blvd",
+    "mta": [
+      {
+        "stop_id": "A65",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "norwood-205 st": {
+    "display_name": "Norwood-205 St",
+    "mta": [
+      {
+        "stop_id": "D01",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "bedford park blvd": {
+    "display_name": "Bedford Park Blvd",
+    "mta": [
+      {
+        "stop_id": "D03",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "kingsbridge rd": {
+    "display_name": "Kingsbridge Rd",
+    "mta": [
+      {
+        "stop_id": "D04",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "406",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "fordham rd": {
+    "display_name": "Fordham Rd",
+    "mta": [
+      {
+        "stop_id": "D05",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "407",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "182-183 sts": {
+    "display_name": "182-183 Sts",
+    "mta": [
+      {
+        "stop_id": "D06",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "tremont av": {
+    "display_name": "Tremont Av",
+    "mta": [
+      {
+        "stop_id": "D07",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "174-175 sts": {
+    "display_name": "174-175 Sts",
+    "mta": [
+      {
+        "stop_id": "D08",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "170 st": {
+    "display_name": "170 St",
+    "mta": [
+      {
+        "stop_id": "D09",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "412",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "167 st": {
+    "display_name": "167 St",
+    "mta": [
+      {
+        "stop_id": "D10",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "413",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "161 st-yankee stadium": {
+    "display_name": "161 St-Yankee Stadium",
+    "mta": [
+      {
+        "stop_id": "D11",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "414",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "21 st-queensbridge": {
+    "display_name": "21 St-Queensbridge",
+    "mta": [
+      {
+        "stop_id": "B04",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "roosevelt island": {
+    "display_name": "Roosevelt Island",
+    "mta": [
+      {
+        "stop_id": "B06",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "lexington av/63 st": {
+    "display_name": "Lexington Av/63 St",
+    "mta": [
+      {
+        "stop_id": "B08",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "57 st": {
+    "display_name": "57 St",
+    "mta": [
+      {
+        "stop_id": "B10",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "47-50 sts-rockefeller ctr": {
+    "display_name": "47-50 Sts-Rockefeller Ctr",
+    "mta": [
+      {
+        "stop_id": "D15",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "42 st-bryant pk": {
+    "display_name": "42 St-Bryant Pk",
+    "mta": [
+      {
+        "stop_id": "D16",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "broadway-lafayette st": {
+    "display_name": "Broadway-Lafayette St",
+    "mta": [
+      {
+        "stop_id": "D21",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "2 av": {
+    "display_name": "2 Av",
+    "mta": [
+      {
+        "stop_id": "F14",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "east broadway": {
+    "display_name": "East Broadway",
+    "mta": [
+      {
+        "stop_id": "F16",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "york st": {
+    "display_name": "York St",
+    "mta": [
+      {
+        "stop_id": "F18",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "bergen st": {
+    "display_name": "Bergen St",
+    "mta": [
+      {
+        "stop_id": "F20",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      },
+      {
+        "stop_id": "236",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "carroll st": {
+    "display_name": "Carroll St",
+    "mta": [
+      {
+        "stop_id": "F21",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "smith-9 sts": {
+    "display_name": "Smith-9 Sts",
+    "mta": [
+      {
+        "stop_id": "F22",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "15 st-prospect park": {
+    "display_name": "15 St-Prospect Park",
+    "mta": [
+      {
+        "stop_id": "F25",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "ditmas av": {
+    "display_name": "Ditmas Av",
+    "mta": [
+      {
+        "stop_id": "F29",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "avenue i": {
+    "display_name": "Avenue I",
+    "mta": [
+      {
+        "stop_id": "F31",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "avenue n": {
+    "display_name": "Avenue N",
+    "mta": [
+      {
+        "stop_id": "F33",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "avenue p": {
+    "display_name": "Avenue P",
+    "mta": [
+      {
+        "stop_id": "F34",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "avenue x": {
+    "display_name": "Avenue X",
+    "mta": [
+      {
+        "stop_id": "F38",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "neptune av": {
+    "display_name": "Neptune Av",
+    "mta": [
+      {
+        "stop_id": "F39",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "jamaica-179 st": {
+    "display_name": "Jamaica-179 St",
+    "mta": [
+      {
+        "stop_id": "F01",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "169 st": {
+    "display_name": "169 St",
+    "mta": [
+      {
+        "stop_id": "F02",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "parsons blvd": {
+    "display_name": "Parsons Blvd",
+    "mta": [
+      {
+        "stop_id": "F03",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "sutphin blvd": {
+    "display_name": "Sutphin Blvd",
+    "mta": [
+      {
+        "stop_id": "F04",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "briarwood": {
+    "display_name": "Briarwood",
+    "mta": [
+      {
+        "stop_id": "F05",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "kew gardens-union tpke": {
+    "display_name": "Kew Gardens-Union Tpke",
+    "mta": [
+      {
+        "stop_id": "F06",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "75 av": {
+    "display_name": "75 Av",
+    "mta": [
+      {
+        "stop_id": "F07",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "forest hills-71 av": {
+    "display_name": "Forest Hills-71 Av",
+    "mta": [
+      {
+        "stop_id": "G08",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "67 av": {
+    "display_name": "67 Av",
+    "mta": [
+      {
+        "stop_id": "G09",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "63 dr-rego park": {
+    "display_name": "63 Dr-Rego Park",
+    "mta": [
+      {
+        "stop_id": "G10",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "grand av-newtown": {
+    "display_name": "Grand Av-Newtown",
+    "mta": [
+      {
+        "stop_id": "G12",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "elmhurst av": {
+    "display_name": "Elmhurst Av",
+    "mta": [
+      {
+        "stop_id": "G13",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "jackson hts-roosevelt av": {
+    "display_name": "Jackson Hts-Roosevelt Av",
+    "mta": [
+      {
+        "stop_id": "G14",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "65 st": {
+    "display_name": "65 St",
+    "mta": [
+      {
+        "stop_id": "G15",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "northern blvd": {
+    "display_name": "Northern Blvd",
+    "mta": [
+      {
+        "stop_id": "G16",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "46 st": {
+    "display_name": "46 St",
+    "mta": [
+      {
+        "stop_id": "G18",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "steinway st": {
+    "display_name": "Steinway St",
+    "mta": [
+      {
+        "stop_id": "G19",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "queens plaza": {
+    "display_name": "Queens Plaza",
+    "mta": [
+      {
+        "stop_id": "G21",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "court sq-23 st": {
+    "display_name": "Court Sq-23 St",
+    "mta": [
+      {
+        "stop_id": "F09",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "lexington av/53 st": {
+    "display_name": "Lexington Av/53 St",
+    "mta": [
+      {
+        "stop_id": "F11",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "5 av/53 st": {
+    "display_name": "5 Av/53 St",
+    "mta": [
+      {
+        "stop_id": "F12",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "jamaica center-parsons/archer": {
+    "display_name": "Jamaica Center-Parsons/Archer",
+    "mta": [
+      {
+        "stop_id": "G05",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "sutphin blvd-archer av-jfk airport": {
+    "display_name": "Sutphin Blvd-Archer Av-JFK Airport",
+    "mta": [
+      {
+        "stop_id": "G06",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "jamaica-van wyck": {
+    "display_name": "Jamaica-Van Wyck",
+    "mta": [
+      {
+        "stop_id": "G07",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "court sq": {
+    "display_name": "Court Sq",
+    "mta": [
+      {
+        "stop_id": "G22",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      },
+      {
+        "stop_id": "719",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "21 st": {
+    "display_name": "21 St",
+    "mta": [
+      {
+        "stop_id": "G24",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "greenpoint av": {
+    "display_name": "Greenpoint Av",
+    "mta": [
+      {
+        "stop_id": "G26",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "nassau av": {
+    "display_name": "Nassau Av",
+    "mta": [
+      {
+        "stop_id": "G28",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "metropolitan av": {
+    "display_name": "Metropolitan Av",
+    "mta": [
+      {
+        "stop_id": "G29",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "myrtle-willoughby avs": {
+    "display_name": "Myrtle-Willoughby Avs",
+    "mta": [
+      {
+        "stop_id": "G32",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "bedford-nostrand avs": {
+    "display_name": "Bedford-Nostrand Avs",
+    "mta": [
+      {
+        "stop_id": "G33",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "classon av": {
+    "display_name": "Classon Av",
+    "mta": [
+      {
+        "stop_id": "G34",
+        "feed_group": "g",
+        "routes": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "van cortlandt park-242 st": {
+    "display_name": "Van Cortlandt Park-242 St",
+    "mta": [
+      {
+        "stop_id": "101",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "238 st": {
+    "display_name": "238 St",
+    "mta": [
+      {
+        "stop_id": "103",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "231 st": {
+    "display_name": "231 St",
+    "mta": [
+      {
+        "stop_id": "104",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "marble hill-225 st": {
+    "display_name": "Marble Hill-225 St",
+    "mta": [
+      {
+        "stop_id": "106",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "215 st": {
+    "display_name": "215 St",
+    "mta": [
+      {
+        "stop_id": "107",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "207 st": {
+    "display_name": "207 St",
+    "mta": [
+      {
+        "stop_id": "108",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "191 st": {
+    "display_name": "191 St",
+    "mta": [
+      {
+        "stop_id": "110",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "168 st-washington hts": {
+    "display_name": "168 St-Washington Hts",
+    "mta": [
+      {
+        "stop_id": "112",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "157 st": {
+    "display_name": "157 St",
+    "mta": [
+      {
+        "stop_id": "113",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "137 st-city college": {
+    "display_name": "137 St-City College",
+    "mta": [
+      {
+        "stop_id": "115",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "116 st-columbia university": {
+    "display_name": "116 St-Columbia University",
+    "mta": [
+      {
+        "stop_id": "117",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "66 st-lincoln center": {
+    "display_name": "66 St-Lincoln Center",
+    "mta": [
+      {
+        "stop_id": "124",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "18 st": {
+    "display_name": "18 St",
+    "mta": [
+      {
+        "stop_id": "131",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "houston st": {
+    "display_name": "Houston St",
+    "mta": [
+      {
+        "stop_id": "134",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "franklin st": {
+    "display_name": "Franklin St",
+    "mta": [
+      {
+        "stop_id": "136",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "wtc cortlandt": {
+    "display_name": "WTC Cortlandt",
+    "mta": [
+      {
+        "stop_id": "138",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "south ferry": {
+    "display_name": "South Ferry",
+    "mta": [
+      {
+        "stop_id": "142",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "park place": {
+    "display_name": "Park Place",
+    "mta": [
+      {
+        "stop_id": "228",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "wall st": {
+    "display_name": "Wall St",
+    "mta": [
+      {
+        "stop_id": "230",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "419",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "clark st": {
+    "display_name": "Clark St",
+    "mta": [
+      {
+        "stop_id": "231",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "borough hall": {
+    "display_name": "Borough Hall",
+    "mta": [
+      {
+        "stop_id": "232",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "423",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "hoyt st": {
+    "display_name": "Hoyt St",
+    "mta": [
+      {
+        "stop_id": "233",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "nevins st": {
+    "display_name": "Nevins St",
+    "mta": [
+      {
+        "stop_id": "234",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "grand army plaza": {
+    "display_name": "Grand Army Plaza",
+    "mta": [
+      {
+        "stop_id": "237",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "eastern pkwy-brooklyn museum": {
+    "display_name": "Eastern Pkwy-Brooklyn Museum",
+    "mta": [
+      {
+        "stop_id": "238",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "franklin av-medgar evers college": {
+    "display_name": "Franklin Av-Medgar Evers College",
+    "mta": [
+      {
+        "stop_id": "239",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "kingston av": {
+    "display_name": "Kingston Av",
+    "mta": [
+      {
+        "stop_id": "249",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "crown hts-utica av": {
+    "display_name": "Crown Hts-Utica Av",
+    "mta": [
+      {
+        "stop_id": "250",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "sutter av-rutland rd": {
+    "display_name": "Sutter Av-Rutland Rd",
+    "mta": [
+      {
+        "stop_id": "251",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "saratoga av": {
+    "display_name": "Saratoga Av",
+    "mta": [
+      {
+        "stop_id": "252",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "junius st": {
+    "display_name": "Junius St",
+    "mta": [
+      {
+        "stop_id": "254",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "pennsylvania av": {
+    "display_name": "Pennsylvania Av",
+    "mta": [
+      {
+        "stop_id": "255",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "president st-medgar evers college": {
+    "display_name": "President St-Medgar Evers College",
+    "mta": [
+      {
+        "stop_id": "241",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "sterling st": {
+    "display_name": "Sterling St",
+    "mta": [
+      {
+        "stop_id": "242",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "winthrop st": {
+    "display_name": "Winthrop St",
+    "mta": [
+      {
+        "stop_id": "243",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "beverly rd": {
+    "display_name": "Beverly Rd",
+    "mta": [
+      {
+        "stop_id": "245",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "newkirk av-little haiti": {
+    "display_name": "Newkirk Av-Little Haiti",
+    "mta": [
+      {
+        "stop_id": "246",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "flatbush av-brooklyn college": {
+    "display_name": "Flatbush Av-Brooklyn College",
+    "mta": [
+      {
+        "stop_id": "247",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "pelham bay park": {
+    "display_name": "Pelham Bay Park",
+    "mta": [
+      {
+        "stop_id": "601",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "buhre av": {
+    "display_name": "Buhre Av",
+    "mta": [
+      {
+        "stop_id": "602",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "middletown rd": {
+    "display_name": "Middletown Rd",
+    "mta": [
+      {
+        "stop_id": "603",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "westchester sq-e tremont av": {
+    "display_name": "Westchester Sq-E Tremont Av",
+    "mta": [
+      {
+        "stop_id": "604",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "zerega av": {
+    "display_name": "Zerega Av",
+    "mta": [
+      {
+        "stop_id": "606",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "castle hill av": {
+    "display_name": "Castle Hill Av",
+    "mta": [
+      {
+        "stop_id": "607",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "parkchester": {
+    "display_name": "Parkchester",
+    "mta": [
+      {
+        "stop_id": "608",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "st lawrence av": {
+    "display_name": "St Lawrence Av",
+    "mta": [
+      {
+        "stop_id": "609",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "morrison av-soundview": {
+    "display_name": "Morrison Av-Soundview",
+    "mta": [
+      {
+        "stop_id": "610",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "elder av": {
+    "display_name": "Elder Av",
+    "mta": [
+      {
+        "stop_id": "611",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "whitlock av": {
+    "display_name": "Whitlock Av",
+    "mta": [
+      {
+        "stop_id": "612",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "hunts point av": {
+    "display_name": "Hunts Point Av",
+    "mta": [
+      {
+        "stop_id": "613",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "longwood av": {
+    "display_name": "Longwood Av",
+    "mta": [
+      {
+        "stop_id": "614",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "e 149 st": {
+    "display_name": "E 149 St",
+    "mta": [
+      {
+        "stop_id": "615",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "e 143 st-st mary's st": {
+    "display_name": "E 143 St-St Mary's St",
+    "mta": [
+      {
+        "stop_id": "616",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "cypress av": {
+    "display_name": "Cypress Av",
+    "mta": [
+      {
+        "stop_id": "617",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "brook av": {
+    "display_name": "Brook Av",
+    "mta": [
+      {
+        "stop_id": "618",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "3 av-138 st": {
+    "display_name": "3 Av-138 St",
+    "mta": [
+      {
+        "stop_id": "619",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "woodlawn": {
+    "display_name": "Woodlawn",
+    "mta": [
+      {
+        "stop_id": "401",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "mosholu pkwy": {
+    "display_name": "Mosholu Pkwy",
+    "mta": [
+      {
+        "stop_id": "402",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "bedford park blvd-lehman college": {
+    "display_name": "Bedford Park Blvd-Lehman College",
+    "mta": [
+      {
+        "stop_id": "405",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "183 st": {
+    "display_name": "183 St",
+    "mta": [
+      {
+        "stop_id": "408",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "burnside av": {
+    "display_name": "Burnside Av",
+    "mta": [
+      {
+        "stop_id": "409",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "176 st": {
+    "display_name": "176 St",
+    "mta": [
+      {
+        "stop_id": "410",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "mt eden av": {
+    "display_name": "Mt Eden Av",
+    "mta": [
+      {
+        "stop_id": "411",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "149 st-grand concourse": {
+    "display_name": "149 St-Grand Concourse",
+    "mta": [
+      {
+        "stop_id": "415",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "222",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "138 st-grand concourse": {
+    "display_name": "138 St-Grand Concourse",
+    "mta": [
+      {
+        "stop_id": "416",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "110 st": {
+    "display_name": "110 St",
+    "mta": [
+      {
+        "stop_id": "623",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "68 st-hunter college": {
+    "display_name": "68 St-Hunter College",
+    "mta": [
+      {
+        "stop_id": "628",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "51 st": {
+    "display_name": "51 St",
+    "mta": [
+      {
+        "stop_id": "630",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "grand central-42 st": {
+    "display_name": "Grand Central-42 St",
+    "mta": [
+      {
+        "stop_id": "631",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "723",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "901",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "astor pl": {
+    "display_name": "Astor Pl",
+    "mta": [
+      {
+        "stop_id": "636",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "bleecker st": {
+    "display_name": "Bleecker St",
+    "mta": [
+      {
+        "stop_id": "637",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "brooklyn bridge-city hall": {
+    "display_name": "Brooklyn Bridge-City Hall",
+    "mta": [
+      {
+        "stop_id": "640",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "bowling green": {
+    "display_name": "Bowling Green",
+    "mta": [
+      {
+        "stop_id": "420",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "wakefield-241 st": {
+    "display_name": "Wakefield-241 St",
+    "mta": [
+      {
+        "stop_id": "201",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "nereid av": {
+    "display_name": "Nereid Av",
+    "mta": [
+      {
+        "stop_id": "204",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "233 st": {
+    "display_name": "233 St",
+    "mta": [
+      {
+        "stop_id": "205",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "225 st": {
+    "display_name": "225 St",
+    "mta": [
+      {
+        "stop_id": "206",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "219 st": {
+    "display_name": "219 St",
+    "mta": [
+      {
+        "stop_id": "207",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "gun hill rd": {
+    "display_name": "Gun Hill Rd",
+    "mta": [
+      {
+        "stop_id": "208",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "503",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "burke av": {
+    "display_name": "Burke Av",
+    "mta": [
+      {
+        "stop_id": "209",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "allerton av": {
+    "display_name": "Allerton Av",
+    "mta": [
+      {
+        "stop_id": "210",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "pelham pkwy": {
+    "display_name": "Pelham Pkwy",
+    "mta": [
+      {
+        "stop_id": "211",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      },
+      {
+        "stop_id": "504",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "bronx park east": {
+    "display_name": "Bronx Park East",
+    "mta": [
+      {
+        "stop_id": "212",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "e 180 st": {
+    "display_name": "E 180 St",
+    "mta": [
+      {
+        "stop_id": "213",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "west farms sq-e tremont av": {
+    "display_name": "West Farms Sq-E Tremont Av",
+    "mta": [
+      {
+        "stop_id": "214",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "174 st": {
+    "display_name": "174 St",
+    "mta": [
+      {
+        "stop_id": "215",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "freeman st": {
+    "display_name": "Freeman St",
+    "mta": [
+      {
+        "stop_id": "216",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "simpson st": {
+    "display_name": "Simpson St",
+    "mta": [
+      {
+        "stop_id": "217",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "intervale av": {
+    "display_name": "Intervale Av",
+    "mta": [
+      {
+        "stop_id": "218",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "jackson av": {
+    "display_name": "Jackson Av",
+    "mta": [
+      {
+        "stop_id": "220",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "3 av-149 st": {
+    "display_name": "3 Av-149 St",
+    "mta": [
+      {
+        "stop_id": "221",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "harlem-148 st": {
+    "display_name": "Harlem-148 St",
+    "mta": [
+      {
+        "stop_id": "301",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "110 st-malcolm x plaza": {
+    "display_name": "110 St-Malcolm X Plaza",
+    "mta": [
+      {
+        "stop_id": "227",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "eastchester-dyre av": {
+    "display_name": "Eastchester-Dyre Av",
+    "mta": [
+      {
+        "stop_id": "501",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "baychester av": {
+    "display_name": "Baychester Av",
+    "mta": [
+      {
+        "stop_id": "502",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "morris park": {
+    "display_name": "Morris Park",
+    "mta": [
+      {
+        "stop_id": "505",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "flushing-main st": {
+    "display_name": "Flushing-Main St",
+    "mta": [
+      {
+        "stop_id": "701",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "mets-willets point": {
+    "display_name": "Mets-Willets Point",
+    "mta": [
+      {
+        "stop_id": "702",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "103 st-corona plaza": {
+    "display_name": "103 St-Corona Plaza",
+    "mta": [
+      {
+        "stop_id": "706",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "junction blvd": {
+    "display_name": "Junction Blvd",
+    "mta": [
+      {
+        "stop_id": "707",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "90 st-elmhurst av": {
+    "display_name": "90 St-Elmhurst Av",
+    "mta": [
+      {
+        "stop_id": "708",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "82 st-jackson hts": {
+    "display_name": "82 St-Jackson Hts",
+    "mta": [
+      {
+        "stop_id": "709",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "74 st-broadway": {
+    "display_name": "74 St-Broadway",
+    "mta": [
+      {
+        "stop_id": "710",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "69 st": {
+    "display_name": "69 St",
+    "mta": [
+      {
+        "stop_id": "711",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "61 st-woodside": {
+    "display_name": "61 St-Woodside",
+    "mta": [
+      {
+        "stop_id": "712",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "52 st": {
+    "display_name": "52 St",
+    "mta": [
+      {
+        "stop_id": "713",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "46 st-bliss st": {
+    "display_name": "46 St-Bliss St",
+    "mta": [
+      {
+        "stop_id": "714",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "40 st-lowery st": {
+    "display_name": "40 St-Lowery St",
+    "mta": [
+      {
+        "stop_id": "715",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "33 st-rawson st": {
+    "display_name": "33 St-Rawson St",
+    "mta": [
+      {
+        "stop_id": "716",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "queensboro plaza": {
+    "display_name": "Queensboro Plaza",
+    "mta": [
+      {
+        "stop_id": "R09",
+        "feed_group": "nqrw",
+        "routes": [
+          "N"
+        ]
+      },
+      {
+        "stop_id": "718",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "hunters point av": {
+    "display_name": "Hunters Point Av",
+    "mta": [
+      {
+        "stop_id": "720",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "vernon blvd-jackson av": {
+    "display_name": "Vernon Blvd-Jackson Av",
+    "mta": [
+      {
+        "stop_id": "721",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "5 av": {
+    "display_name": "5 Av",
+    "mta": [
+      {
+        "stop_id": "724",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "34 st-hudson yards": {
+    "display_name": "34 St-Hudson Yards",
+    "mta": [
+      {
+        "stop_id": "726",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "st george": {
+    "display_name": "St George",
+    "mta": [
+      {
+        "stop_id": "S31",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "tompkinsville": {
+    "display_name": "Tompkinsville",
+    "mta": [
+      {
+        "stop_id": "S30",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "stapleton": {
+    "display_name": "Stapleton",
+    "mta": [
+      {
+        "stop_id": "S29",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "clifton": {
+    "display_name": "Clifton",
+    "mta": [
+      {
+        "stop_id": "S28",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "grasmere": {
+    "display_name": "Grasmere",
+    "mta": [
+      {
+        "stop_id": "S27",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "old town": {
+    "display_name": "Old Town",
+    "mta": [
+      {
+        "stop_id": "S26",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "dongan hills": {
+    "display_name": "Dongan Hills",
+    "mta": [
+      {
+        "stop_id": "S25",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "jefferson av": {
+    "display_name": "Jefferson Av",
+    "mta": [
+      {
+        "stop_id": "S24",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "grant city": {
+    "display_name": "Grant City",
+    "mta": [
+      {
+        "stop_id": "S23",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "new dorp": {
+    "display_name": "New Dorp",
+    "mta": [
+      {
+        "stop_id": "S22",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "oakwood heights": {
+    "display_name": "Oakwood Heights",
+    "mta": [
+      {
+        "stop_id": "S21",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "bay terrace": {
+    "display_name": "Bay Terrace",
+    "mta": [
+      {
+        "stop_id": "S20",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "great kills": {
+    "display_name": "Great Kills",
+    "mta": [
+      {
+        "stop_id": "S19",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "eltingville": {
+    "display_name": "Eltingville",
+    "mta": [
+      {
+        "stop_id": "S18",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "annadale": {
+    "display_name": "Annadale",
+    "mta": [
+      {
+        "stop_id": "S17",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "huguenot": {
+    "display_name": "Huguenot",
+    "mta": [
+      {
+        "stop_id": "S16",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "prince's bay": {
+    "display_name": "Prince's Bay",
+    "mta": [
+      {
+        "stop_id": "S15",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "pleasant plains": {
+    "display_name": "Pleasant Plains",
+    "mta": [
+      {
+        "stop_id": "S14",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "richmond valley": {
+    "display_name": "Richmond Valley",
+    "mta": [
+      {
+        "stop_id": "S13",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "tottenville": {
+    "display_name": "Tottenville",
+    "mta": [
+      {
+        "stop_id": "S09",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "arthur kill": {
+    "display_name": "Arthur Kill",
+    "mta": [
+      {
+        "stop_id": "S11",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "wtc": {
+    "display_name": "Wtc",
+    "mta": [
+      {
+        "stop_id": "E01",
+        "feed_group": "ace",
+        "routes": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "bronx": {
+    "display_name": "Bronx",
+    "mta": [
+      {
+        "stop_id": "212",
+        "feed_group": "123",
+        "routes": [
+          "1"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "mta": {
+    "103": {
+      "here_id": "10327_472",
+      "here_name": "103 St-Corona Plaza",
+      "match_type": "partial"
+    },
+    "110": {
+      "here_id": "10327_409",
+      "here_name": "110 St",
+      "match_type": "partial"
+    },
+    "111": {
+      "here_id": "10327_469",
+      "here_name": "111 St",
+      "match_type": "partial"
+    },
+    "143": {
+      "here_id": "10327_391",
+      "here_name": "E 143 St-St Mary's St",
+      "match_type": "partial"
+    },
+    "175": {
+      "here_id": "10327_754",
+      "here_name": "174-175 Sts",
+      "match_type": "partial"
+    },
+    "182": {
+      "here_id": "10327_748",
+      "here_name": "182-183 Sts",
+      "match_type": "partial"
+    },
+    "183": {
+      "here_id": "10327_748",
+      "here_name": "182-183 Sts",
+      "match_type": "partial"
+    },
+    "191": {
+      "here_id": "10327_22",
+      "here_name": "191 St",
+      "match_type": "partial"
+    },
+    "242": {
+      "here_id": "10327_1",
+      "here_name": "Van Cortlandt Park-242 St",
+      "match_type": "partial"
+    },
+    "303": {
+      "here_id": "10327_472",
+      "here_name": "103 St-Corona Plaza",
+      "match_type": "partial"
+    },
+    "310": {
+      "here_id": "10327_409",
+      "here_name": "110 St",
+      "match_type": "partial"
+    },
+    "33": {
+      "here_id": "10327_502",
+      "here_name": "33 St-Rawson St",
+      "match_type": "partial"
+    },
+    "343": {
+      "here_id": "10327_391",
+      "here_name": "E 143 St-St Mary's St",
+      "match_type": "partial"
+    },
+    "36": {
+      "here_id": "10327_997",
+      "here_name": "36 St",
+      "match_type": "partial"
+    },
+    "391": {
+      "here_id": "10327_22",
+      "here_name": "191 St",
+      "match_type": "partial"
+    },
+    "403": {
+      "here_id": "10327_472",
+      "here_name": "103 St-Corona Plaza",
+      "match_type": "partial"
+    },
+    "443": {
+      "here_id": "10327_391",
+      "here_name": "E 143 St-St Mary's St",
+      "match_type": "partial"
+    },
+    "46": {
+      "here_id": "10327_496",
+      "here_name": "46 St-Bliss St",
+      "match_type": "partial"
+    },
+    "475": {
+      "here_id": "10327_775",
+      "here_name": "47-50 Sts-Rockefeller Ctr",
+      "match_type": "partial"
+    },
+    "503": {
+      "here_id": "10327_472",
+      "here_name": "103 St-Corona Plaza",
+      "match_type": "partial"
+    },
+    "510": {
+      "here_id": "10327_409",
+      "here_name": "110 St",
+      "match_type": "partial"
+    },
+    "52": {
+      "here_id": "10327_493",
+      "here_name": "52 St",
+      "match_type": "partial"
+    },
+    "603": {
+      "here_id": "10327_472",
+      "here_name": "103 St-Corona Plaza",
+      "match_type": "partial"
+    },
+    "610": {
+      "here_id": "10327_409",
+      "here_name": "110 St",
+      "match_type": "partial"
+    },
+    "90": {
+      "here_id": "10327_478",
+      "here_name": "90 St-Elmhurst Av",
+      "match_type": "partial"
+    }
+  },
+  "path": {
+    "Newark Penn Station": {
+      "here_id": "21285_1196",
+      "here_name": "Newark Penn Station Amtrak",
+      "match_type": "partial"
+    },
+    "Journal Square": {
+      "here_id": "15242_61",
+      "here_name": "Journal Square",
+      "match_type": "exact"
+    },
+    "Grove Street": {
+      "here_id": "15242_6",
+      "here_name": "Grove Street",
+      "match_type": "exact"
+    },
+    "Hoboken": {
+      "here_id": "10890_58",
+      "here_name": "Hoboken",
+      "match_type": "exact"
+    },
+    "Newport": {
+      "here_id": "15242_86",
+      "here_name": "Newport",
+      "match_type": "exact"
+    },
+    "Exchange Place": {
+      "here_id": "15242_88",
+      "here_name": "Exchange Place",
+      "match_type": "exact"
+    },
+    "World Trade Center": {
+      "here_id": "10327_856",
+      "here_name": "World Trade Center",
+      "match_type": "exact"
+    },
+    "Christopher Street": {
+      "here_id": "15242_4",
+      "here_name": "Christopher Street",
+      "match_type": "exact"
+    },
+    "33rd St": {
+      "here_id": "15242_2",
+      "here_name": "33rd Street",
+      "match_type": "partial"
+    }
+  },
+  "metadata": {
+    "total_stations": 458,
+    "found_stations": 34,
+    "not_found_stations": 424,
+    "source": "MTA Open Data API + PATH Official List",
+    "here_api": "HERE Transit API v8",
+    "discovery_date": "2026-01-22"
+  }
+}

@@ -3,392 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transit Display</title>
+    <title>Transit Arrivals</title>
     <style>
+        /* E-Ink Display Optimization - 4.2" Screen */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             background: #FFF;
             color: #000;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            font-size: 24pt;
-            padding: 20px;
-            line-height: 1.4;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 32pt;
+            font-family: 'Arial Black', Arial, sans-serif;
             font-weight: bold;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #000;
+            padding: 10px;
+            font-size: 24px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 3px solid #000;
             padding-bottom: 10px;
         }
-
+        
         .controls {
-            margin-bottom: 30px;
-            padding: 15px;
-            border: 2px solid #000;
+            margin-bottom: 20px;
         }
-
+        
         label {
             display: block;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin-bottom: 8px;
         }
-
-        select {
+        
+        select, input {
             width: 100%;
-            padding: 10px;
-            font-size: 24pt;
-            border: 2px solid #000;
+            padding: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            border: 3px solid #000;
             background: #FFF;
             color: #000;
-            font-family: inherit;
         }
-
-        select:focus {
-            outline: 3px solid #000;
-            outline-offset: 2px;
+        
+        select:focus, input:focus {
+            outline: 4px solid #000;
         }
-
+        
+        input {
+            margin-bottom: 10px;
+        }
+        
         .status {
-            margin-bottom: 20px;
+            text-align: center;
+            font-size: 18px;
+            margin: 15px 0;
             padding: 10px;
             border: 2px solid #000;
-            font-size: 18pt;
+            background: #FFF;
         }
-
-        .status.error {
-            background: #000;
-            color: #FFF;
-        }
-
-        .status.loading {
-            border-style: dashed;
-        }
-
+        
         table {
             width: 100%;
             border-collapse: collapse;
-            border: 2px solid #000;
+            margin-top: 15px;
+            border: 3px solid #000;
         }
-
+        
+        th, td {
+            border: 3px solid #000;
+            padding: 12px 8px;
+            text-align: left;
+            font-size: 24px;
+        }
+        
         th {
             background: #000;
             color: #FFF;
-            padding: 15px 10px;
-            text-align: left;
-            font-weight: bold;
-            border: 2px solid #000;
+            font-size: 22px;
+            text-transform: uppercase;
         }
-
+        
         td {
-            padding: 15px 10px;
-            border: 2px solid #000;
+            background: #FFF;
+        }
+        
+        .line-cell {
+            font-size: 28px;
+            text-align: center;
+            width: 80px;
             font-weight: bold;
         }
-
-        tr:nth-child(even) {
-            background: #F0F0F0;
+        
+        .min-cell {
+            text-align: center;
+            width: 100px;
+            font-size: 32px;
         }
-
-        .line-badge {
-            display: inline-block;
-            min-width: 60px;
-            padding: 5px 10px;
+        
+        .dest-cell {
+            font-size: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 2px solid #000;
+        }
+        
+        .error {
             background: #000;
             color: #FFF;
-            text-align: center;
-            font-weight: bold;
-            border: 2px solid #000;
-        }
-
-        .minutes {
-            font-size: 28pt;
-            font-weight: bold;
-        }
-
-        .empty-state {
-            padding: 40px;
-            text-align: center;
-            border: 2px solid #000;
-            font-size: 20pt;
-        }
-
-        .footer {
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 2px solid #000;
-            font-size: 16pt;
-            text-align: center;
+            padding: 15px;
+            margin: 15px 0;
+            border: 3px solid #000;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚇 Transit Display</h1>
-
-        <div class="controls">
-            <label for="station-select">Select Station:</label>
-            <select id="station-select">
-                <option value="">-- Choose a station --</option>
-                
-                <optgroup label="═══ PATH - Newark Line ═══">
-                    <option value="newark">Newark Penn Station</option>
-                    <option value="harrison">Harrison</option>
-                    <option value="jsq">Journal Square</option>
-                </optgroup>
-                
-                <optgroup label="═══ PATH - JSQ ↔ 33rd ═══">
-                    <option value="jsq">Journal Square</option>
-                    <option value="grove">Grove Street</option>
-                    <option value="exchange">Exchange Place</option>
-                    <option value="wtc_path">World Trade Center</option>
-                    <option value="christopher">Christopher Street</option>
-                    <option value="9th_street">9th Street</option>
-                    <option value="14th_street">14th Street (PATH)</option>
-                    <option value="23rd_street">23rd Street (PATH)</option>
-                    <option value="33rd_street">33rd Street</option>
-                </optgroup>
-                
-                <optgroup label="═══ PATH - Hoboken Line ═══">
-                    <option value="hoboken">Hoboken</option>
-                </optgroup>
-                
-                <optgroup label="═══ MTA - Lower Manhattan ═══">
-                    <option value="fulton">Fulton St</option>
-                    <option value="cortlandt">WTC Cortlandt</option>
-                    <option value="city_hall">City Hall</option>
-                    <option value="canal">Canal St (Franklin St)</option>
-                </optgroup>
-                
-                <optgroup label="═══ MTA - Midtown ═══">
-                    <option value="penn_station">Penn Station (34th St)</option>
-                    <option value="herald_square">Herald Square</option>
-                    <option value="port_authority">Port Authority</option>
-                    <option value="grand_central">Grand Central</option>
-                    <option value="lexington_53">Lexington Ave/53rd St</option>
-                    <option value="lexington_59">Lexington Ave/59th St</option>
-                </optgroup>
-                
-                <optgroup label="═══ MTA - Union Square Area ═══">
-                    <option value="union_square">Union Square-14th St</option>
-                    <option value="astor_place">Astor Place</option>
-                </optgroup>
-                
-                <optgroup label="═══ MTA - Upper Manhattan ═══">
-                    <option value="columbus_circle">Columbus Circle</option>
-                    <option value="72nd_street">72nd Street</option>
-                    <option value="86th_street">86th Street</option>
-                    <option value="96th_street">96th Street</option>
-                </optgroup>
-                
-                <optgroup label="═══ MTA - Brooklyn ═══">
-                    <option value="atlantic_terminal">Atlantic Terminal-Barclays</option>
-                    <option value="jay_street">Jay St-MetroTech</option>
-                </optgroup>
-                
-                <optgroup label="═══ MTA - Queens ═══">
-                    <option value="queensboro">Queensboro Plaza</option>
-                    <option value="jackson_heights">Jackson Heights-Roosevelt Ave</option>
-                </optgroup>
-            </select>
-        </div>
-
-        <div id="status" class="status" style="display: none;"></div>
-
-        <div id="arrivals-container">
-            <div class="empty-state">
-                Select a station to view arrivals
+    <h1>🚇 ARRIVALS</h1>
+    
+    <div class="controls">
+        <label for="search">Search Station:</label>
+        <input type="text" id="search" placeholder="Type to filter...">
+        
+        <label for="station">Select Station:</label>
+        <select id="station" size="5">
+            <option value="">Loading stations...</option>
+        </select>
+        
+        <div style="margin-top: 20px; padding: 15px; border: 3px solid #000; background: #FFF;">
+            <label style="font-size: 20px; font-weight: 700;">Show trains arriving in:</label>
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                <input type="number" id="minMinutes" value="2" min="0" max="60" 
+                       style="width: 80px; font-size: 24px; padding: 8px; border: 3px solid #000; font-weight: 700;">
+                <span style="font-size: 20px; font-weight: 700;">to</span>
+                <input type="number" id="maxMinutes" value="20" min="0" max="120" 
+                       style="width: 80px; font-size: 24px; padding: 8px; border: 3px solid #000; font-weight: 700;">
+                <span style="font-size: 20px; font-weight: 700;">minutes</span>
             </div>
         </div>
-
-        <div class="footer">
-            Auto-refresh: 60s | Data: HERE Transit API v8
-        </div>
+    </div>
+    
+    <div class="status" id="status">Select a station</div>
+    
+    <table id="arrivals" style="display:none;">
+        <thead>
+            <tr>
+                <th>Line</th>
+                <th>Destination</th>
+                <th>Min</th>
+            </tr>
+        </thead>
+        <tbody id="arrivals-body">
+        </tbody>
+    </table>
+    
+    <div class="footer" id="footer">
+        Auto-refresh: 60s
     </div>
 
     <script>
-        // Configuration
-        const REFRESH_INTERVAL = 60000; // 60 seconds
-        const STORAGE_KEY = 'selected_station';
-
-        // State
-        let refreshTimer = null;
-        let currentStation = null;
-
-        // DOM Elements
-        const stationSelect = document.getElementById('station-select');
-        const statusDiv = document.getElementById('status');
-        const arrivalsContainer = document.getElementById('arrivals-container');
-
-        // Initialize
-        function init() {
-            // Load saved station preference
-            const savedStation = localStorage.getItem(STORAGE_KEY);
-            if (savedStation) {
-                stationSelect.value = savedStation;
-                currentStation = savedStation;
-                fetchArrivals(savedStation);
+        let stations = [];
+        let allStations = [];
+        let selectedStationId = null;
+        let refreshInterval = null;
+        
+        // Load saved station from localStorage
+        function loadSavedStation() {
+            const saved = localStorage.getItem('selectedStation');
+            if (saved) {
+                selectedStationId = saved;
+                return saved;
             }
-
-            // Setup event listeners
-            stationSelect.addEventListener('change', handleStationChange);
+            return null;
         }
-
-        // Handle station selection
-        function handleStationChange(event) {
-            const station = event.target.value;
-            
-            if (!station) {
-                stopRefresh();
-                showEmptyState();
-                return;
-            }
-
-            // Save preference
-            localStorage.setItem(STORAGE_KEY, station);
-            currentStation = station;
-
-            // Fetch arrivals and start auto-refresh
-            fetchArrivals(station);
-            startRefresh(station);
+        
+        // Save station to localStorage
+        function saveStation(stationId) {
+            localStorage.setItem('selectedStation', stationId);
+            selectedStationId = stationId;
         }
-
-        // Fetch arrivals from API
-        async function fetchArrivals(station) {
-            showStatus('Loading...', 'loading');
-
+        
+        // Load all stations from API
+        async function loadStations() {
             try {
-                const response = await fetch(`/api/arrivals/${station}`);
-                
-                if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.detail || 'Failed to fetch arrivals');
-                }
-
+                const response = await fetch('/api/stations');
                 const data = await response.json();
-                displayArrivals(data);
-                hideStatus();
-
+                allStations = data.stations || [];
+                
+                // Update dropdown
+                updateStationList(allStations);
+                
+                // Load saved station if exists
+                const saved = loadSavedStation();
+                if (saved) {
+                    document.getElementById('station').value = saved;
+                    loadArrivals(saved);
+                }
             } catch (error) {
-                console.error('Error fetching arrivals:', error);
-                showStatus(`Error: ${error.message}`, 'error');
-                showEmptyState();
+                showError('Failed to load stations');
+                console.error(error);
             }
         }
-
-        // Display arrivals in table
-        function displayArrivals(data) {
-            const arrivals = data.arrivals || [];
-
-            if (arrivals.length === 0) {
-                arrivalsContainer.innerHTML = `
-                    <div class="empty-state">
-                        No upcoming arrivals found
-                    </div>
-                `;
+        
+        // Update station dropdown with filtered list
+        function updateStationList(stationList) {
+            const select = document.getElementById('station');
+            select.innerHTML = '';
+            
+            if (stationList.length === 0) {
+                select.innerHTML = '<option value="">No stations found</option>';
                 return;
             }
-
-            let html = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Line</th>
-                            <th>Destination</th>
-                            <th>Min Away</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-
-            arrivals.forEach(arrival => {
-                const minutes = arrival.minutes === 0 ? 'Now' : arrival.minutes;
-                html += `
-                    <tr>
-                        <td><span class="line-badge">${escapeHtml(arrival.line)}</span></td>
-                        <td>${escapeHtml(arrival.destination)}</td>
-                        <td class="minutes">${minutes}</td>
-                    </tr>
-                `;
-            });
-
-            html += `
-                    </tbody>
-                </table>
-            `;
-
-            arrivalsContainer.innerHTML = html;
-        }
-
-        // Show status message
-        function showStatus(message, type = '') {
-            statusDiv.textContent = message;
-            statusDiv.className = `status ${type}`;
-            statusDiv.style.display = 'block';
-        }
-
-        // Hide status message
-        function hideStatus() {
-            statusDiv.style.display = 'none';
-        }
-
-        // Show empty state
-        function showEmptyState() {
-            arrivalsContainer.innerHTML = `
-                <div class="empty-state">
-                    Select a station to view arrivals
-                </div>
-            `;
-        }
-
-        // Start auto-refresh
-        function startRefresh(station) {
-            stopRefresh(); // Clear any existing timer
-            refreshTimer = setInterval(() => {
-                if (currentStation) {
-                    fetchArrivals(currentStation);
+            
+            // Deduplicate by station name (keep first occurrence)
+            const seen = new Set();
+            const uniqueStations = stationList.filter(station => {
+                if (seen.has(station.name)) {
+                    return false;
                 }
-            }, REFRESH_INTERVAL);
-        }
-
-        // Stop auto-refresh
-        function stopRefresh() {
-            if (refreshTimer) {
-                clearInterval(refreshTimer);
-                refreshTimer = null;
+                seen.add(station.name);
+                return true;
+            });
+            
+            // Group by agency
+            const complexes = uniqueStations.filter(s => s.agency === 'COMPLEX');
+            const path = uniqueStations.filter(s => s.agency === 'PATH');
+            const mta = uniqueStations.filter(s => s.agency === 'MTA');
+            
+            // Station Complexes first
+            if (complexes.length > 0) {
+                const complexGroup = document.createElement('optgroup');
+                complexGroup.label = '━━━ MAJOR HUBS ━━━';
+                complexes.forEach(station => {
+                    const option = document.createElement('option');
+                    option.value = station.id;
+                    option.textContent = station.name;
+                    complexGroup.appendChild(option);
+                });
+                select.appendChild(complexGroup);
+            }
+            
+            if (path.length > 0) {
+                const pathGroup = document.createElement('optgroup');
+                pathGroup.label = '━━━ PATH TRAIN ━━━';
+                path.forEach(station => {
+                    const option = document.createElement('option');
+                    option.value = station.id;
+                    option.textContent = station.name;
+                    pathGroup.appendChild(option);
+                });
+                select.appendChild(pathGroup);
+            }
+            
+            if (mta.length > 0) {
+                const mtaGroup = document.createElement('optgroup');
+                mtaGroup.label = '━━━ MTA SUBWAY ━━━';
+                mta.forEach(station => {
+                    const option = document.createElement('option');
+                    option.value = station.id;
+                    option.textContent = station.name;
+                    mtaGroup.appendChild(option);
+                });
+                select.appendChild(mtaGroup);
             }
         }
-
-        // Escape HTML to prevent XSS
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        // Handle page visibility changes (pause when hidden)
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                stopRefresh();
-            } else if (currentStation) {
-                fetchArrivals(currentStation);
-                startRefresh(currentStation);
+        
+        // Search/filter stations
+        document.getElementById('search').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (!query) {
+                updateStationList(allStations);
+                return;
+            }
+            
+            const filtered = allStations.filter(station => 
+                station.name.toLowerCase().includes(query)
+            );
+            updateStationList(filtered);
+        });
+        
+        // Station selection handler
+        document.getElementById('station').addEventListener('change', (e) => {
+            const stationId = e.target.value;
+            if (stationId) {
+                saveStation(stationId);
+                loadArrivals(stationId);
             }
         });
-
+        
+        // Time range change handlers
+        document.getElementById('minMinutes').addEventListener('change', () => {
+            if (selectedStationId) {
+                loadArrivals(selectedStationId);
+            }
+        });
+        
+        document.getElementById('maxMinutes').addEventListener('change', () => {
+            if (selectedStationId) {
+                loadArrivals(selectedStationId);
+            }
+        });
+        
+        // Load arrivals for a station
+        async function loadArrivals(stationId) {
+            try {
+                showStatus('Loading...');
+                
+                const minMinutes = document.getElementById('minMinutes').value || 2;
+                const maxMinutes = document.getElementById('maxMinutes').value || 20;
+                
+                const response = await fetch(`/api/arrivals/${stationId}?min_minutes=${minMinutes}&max_minutes=${maxMinutes}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                displayArrivals(data.arrivals);
+                
+                const stationName = allStations.find(s => s.id === stationId)?.name || stationId;
+                showStatus(`${stationName} • Updated: ${new Date().toLocaleTimeString()}`);
+                
+                // Start auto-refresh
+                startAutoRefresh(stationId);
+                
+            } catch (error) {
+                showError(`Failed to load arrivals: ${error.message}`);
+                console.error(error);
+            }
+        }
+        
+        // Display arrivals in table
+        function displayArrivals(arrivals) {
+            const table = document.getElementById('arrivals');
+            const tbody = document.getElementById('arrivals-body');
+            
+            tbody.innerHTML = '';
+            
+            if (!arrivals || arrivals.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">No arrivals</td></tr>';
+                table.style.display = 'table';
+                return;
+            }
+            
+            arrivals.forEach(arrival => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td class="line-cell">${arrival.line}</td>
+                    <td class="dest-cell">${arrival.dest}</td>
+                    <td class="min-cell">${arrival.min}</td>
+                `;
+            });
+            
+            table.style.display = 'table';
+        }
+        
+        // Show status message
+        function showStatus(message) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.style.background = '#FFF';
+            status.style.color = '#000';
+            status.style.border = '2px solid #000';
+        }
+        
+        // Show error message
+        function showError(message) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.style.background = '#000';
+            status.style.color = '#FFF';
+            status.style.border = '3px solid #000';
+            
+            document.getElementById('arrivals').style.display = 'none';
+        }
+        
+        // Auto-refresh functionality
+        function startAutoRefresh(stationId) {
+            // Clear existing interval
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+            }
+            
+            // Refresh every 60 seconds
+            refreshInterval = setInterval(() => {
+                loadArrivals(stationId);
+            }, 60000);
+        }
+        
         // Initialize on page load
-        init();
+        loadStations();
     </script>
 </body>
 </html>

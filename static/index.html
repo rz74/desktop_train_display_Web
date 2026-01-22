@@ -3,487 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Ink Transit Dashboard</title>
+    <title>Transit Dashboard</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Arial', 'Helvetica', sans-serif;
-            background: white;
-            color: black;
-            font-size: 16px;
-            line-height: 1.4;
-        }
-
-        /* Selection Page */
-        .page {
-            display: none;
+            font-family: 'System UI', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
             padding: 20px;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
-
-        .page.active {
-            display: block;
-        }
-
         h1 {
             font-size: 32px;
             font-weight: bold;
             margin-bottom: 20px;
-            border-bottom: 3px solid black;
+            border-bottom: 2px solid #000000;
             padding-bottom: 10px;
         }
-
-        h2 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-
-        input[type="text"] {
+        h2 { font-size: 24px; font-weight: bold; margin: 20px 0 10px 0; }
+        .setup-view, .gadget-view { border: 2px solid #000000; padding: 20px; margin-bottom: 20px; }
+        .hidden { display: none; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 18px; }
+        select, input {
             width: 100%;
-            padding: 15px;
-            font-size: 20px;
-            border: 3px solid black;
-            background: white;
-            color: black;
-            margin-bottom: 20px;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border: 3px solid black;
-        }
-
-        .search-results {
-            border: 2px solid black;
-            max-height: 300px;
-            overflow-y: auto;
-            margin-bottom: 20px;
-        }
-
-        .search-result {
-            padding: 15px;
-            border-bottom: 1px solid black;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .search-result:hover {
-            background: black;
-            color: white;
-        }
-
-        .search-result:last-child {
-            border-bottom: none;
-        }
-
-        .line-selector {
-            border: 2px solid black;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .line-checkbox {
-            display: block;
             padding: 12px;
-            margin-bottom: 5px;
-            cursor: pointer;
+            font-size: 16px;
+            border: 2px solid #000000;
+            background-color: #FFFFFF;
+            color: #000000;
+            font-family: inherit;
+        }
+        select:focus, input:focus { outline: 3px solid #000000; }
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .checkbox-item { display: flex; align-items: center; padding: 8px; border: 2px solid #000000; }
+        .checkbox-item input[type="checkbox"] { width: 24px; height: 24px; margin-right: 10px; cursor: pointer; }
+        .checkbox-item label { margin: 0; font-weight: normal; font-size: 16px; cursor: pointer; }
+        .button {
+            padding: 12px 24px;
             font-size: 18px;
-            border: 2px solid black;
-            background: white;
-        }
-
-        .line-checkbox:hover {
-            background: black;
-            color: white;
-        }
-
-        .line-checkbox input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
+            font-weight: bold;
+            border: 2px solid #000000;
+            background-color: #000000;
+            color: #FFFFFF;
+            cursor: pointer;
             margin-right: 10px;
-            cursor: pointer;
+            font-family: inherit;
         }
-
-        button {
-            width: 100%;
-            padding: 20px;
-            font-size: 22px;
-            font-weight: bold;
-            background: black;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-
-        button:hover {
-            background: white;
-            color: black;
-            border: 3px solid black;
-        }
-
-        button.secondary {
-            background: white;
-            color: black;
-            border: 3px solid black;
-        }
-
-        button.secondary:hover {
-            background: black;
-            color: white;
-        }
-
-        /* Dashboard Page */
-        #dashboard {
-            padding: 30px;
-        }
-
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 4px solid black;
-            padding-bottom: 20px;
-        }
-
-        .dashboard-title {
-            font-size: 36px;
+        .button:hover { background-color: #FFFFFF; color: #000000; }
+        .button-secondary { background-color: #FFFFFF; color: #000000; }
+        .button-secondary:hover { background-color: #000000; color: #FFFFFF; }
+        table { width: 100%; border-collapse: collapse; border: 2px solid #000000; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border: 2px solid #000000; font-size: 16px; }
+        th { background-color: #000000; color: #FFFFFF; font-weight: bold; }
+        tr:nth-child(even) { background-color: #F0F0F0; }
+        .loading { font-size: 18px; text-align: center; padding: 20px; font-style: italic; }
+        .error {
+            color: #000000;
+            background-color: #E0E0E0;
+            padding: 15px;
+            border: 2px solid #000000;
+            margin: 10px 0;
             font-weight: bold;
         }
-
-        .dashboard-time {
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .arrivals-container {
-            font-size: 22px;
-        }
-
-        .arrival-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 10px;
-            border-bottom: 2px solid black;
-            font-weight: bold;
-        }
-
-        .arrival-row:nth-child(odd) {
-            background: white;
-        }
-
-        .arrival-row:nth-child(even) {
-            background: #f5f5f5;
-        }
-
-        .arrival-agency {
-            width: 100px;
-            font-weight: bold;
-        }
-
-        .arrival-route {
-            width: 60px;
-            font-weight: bold;
-        }
-
-        .arrival-destination {
-            flex: 1;
-            padding-left: 15px;
-            font-weight: bold;
-        }
-
-        .arrival-time {
-            width: 120px;
-            text-align: right;
-            font-weight: bold;
-        }
-
-        .no-arrivals {
-            text-align: center;
-            padding: 50px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 50px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .back-button {
-            margin-top: 20px;
-        }
+        .last-update { font-size: 14px; text-align: right; margin-top: 10px; font-style: italic; }
+        .station-name { font-size: 28px; font-weight: bold; margin-bottom: 10px; }
+        .controls { margin-top: 20px; }
     </style>
 </head>
 <body>
-    <!-- Selection Page -->
-    <div id="selection" class="page active">
-        <h1>Transit Dashboard Setup</h1>
-        
-        <h2>1. Search for Station</h2>
-        <input type="text" id="stationSearch" placeholder="Type station name (e.g., 'WTC', '14th St')">
-        <div id="searchResults" class="search-results"></div>
+    <h1>NYC Transit Dashboard</h1>
 
-        <div id="lineSelection" style="display: none;">
-            <h2>2. Select Lines to Watch</h2>
-            <div id="linesContainer" class="line-selector"></div>
-            
-            <h2>3. Set Time Filter</h2>
-            <label for="maxMinutes" style="font-size: 18px; display: block; margin-bottom: 10px;">
-                Show arrivals within: 
-            </label>
-            <input type="number" id="maxMinutes" min="5" max="60" value="20" 
-                   style="width: 100px; padding: 10px; font-size: 20px; border: 3px solid black; margin-bottom: 20px;">
-            <span style="font-size: 18px; margin-left: 10px;">minutes</span>
-            
-            <button onclick="saveAndGo()">Watch These Lines</button>
+    <!-- Setup View -->
+    <div id="setupView" class="setup-view">
+        <h2>Setup</h2>
+        
+        <div class="form-group">
+            <label for="stationSearch">Search Station:</label>
+            <input type="text" id="stationSearch" placeholder="Type station name..." autocomplete="off">
+        </div>
+
+        <div class="form-group">
+            <label for="stationSelect">Select Station:</label>
+            <select id="stationSelect" size="10">
+                <option value="">-- Loading stations --</option>
+            </select>
+        </div>
+
+        <div id="linesSection" class="hidden">
+            <h2>Select Lines:</h2>
+            <div id="linesCheckboxes" class="checkbox-grid"></div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="button" disabled>Start Dashboard</button>
         </div>
     </div>
 
-    <!-- Dashboard Page -->
-    <div id="dashboard" class="page">
-        <div class="dashboard-header">
-            <div class="dashboard-title" id="stationName">Loading...</div>
-            <div class="dashboard-time" id="currentTime">--:--</div>
-        </div>
+    <!-- Gadget View -->
+    <div id="gadgetView" class="gadget-view hidden">
+        <div class="station-name" id="stationName"></div>
         
-        <div id="arrivalsContainer" class="arrivals-container">
+        <div id="arrivalsContent">
             <div class="loading">Loading arrivals...</div>
         </div>
 
-        <button class="secondary back-button" onclick="goBack()">Back to Setup</button>
+        <div class="last-update" id="lastUpdate"></div>
+
+        <div class="controls">
+            <button id="backBtn" class="button button-secondary">Back to Setup</button>
+            <button id="refreshBtn" class="button">Refresh Now</button>
+        </div>
     </div>
 
     <script>
+        let stations = {};
         let selectedStation = null;
         let selectedLines = [];
-        let maxMinutes = 20;
-        let refreshTimer = null;
         let refreshInterval = null;
 
-        // Station search with debouncing
-        let searchTimeout = null;
-        document.getElementById('stationSearch').addEventListener('input', function(e) {
-            clearTimeout(searchTimeout);
-            const query = e.target.value.trim();
-            
-            if (query.length < 2) {
-                document.getElementById('searchResults').innerHTML = '';
-                return;
+        async function loadStations() {
+            try {
+                const response = await fetch('/api/stations');
+                const data = await response.json();
+                stations = data.stations;
+                populateStationDropdown(Object.keys(stations));
+                loadSavedState();
+            } catch (error) {
+                console.error('Error loading stations:', error);
+                document.getElementById('stationSelect').innerHTML = '<option value="">Error loading stations</option>';
             }
+        }
 
-            searchTimeout = setTimeout(() => {
-                searchStations(query);
-            }, 300);
+        function populateStationDropdown(stationIds) {
+            const select = document.getElementById('stationSelect');
+            select.innerHTML = '';
+            stationIds.forEach(id => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = stations[id].display_name;
+                select.appendChild(option);
+            });
+        }
+
+        document.getElementById('stationSearch').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = Object.keys(stations).filter(id => 
+                stations[id].display_name.toLowerCase().includes(query)
+            );
+            populateStationDropdown(filtered);
         });
 
-        async function searchStations(query) {
+        document.getElementById('stationSelect').addEventListener('change', async (e) => {
+            selectedStation = e.target.value;
+            if (selectedStation) await loadStationLines(selectedStation);
+        });
+
+        async function loadStationLines(stationId) {
             try {
-                const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
-                const stations = await response.json();
+                const response = await fetch(`/api/lines/${stationId}`);
+                const data = await response.json();
+                const container = document.getElementById('linesCheckboxes');
+                container.innerHTML = '';
                 
-                const resultsDiv = document.getElementById('searchResults');
-                if (stations.length === 0) {
-                    resultsDiv.innerHTML = '<div class="search-result">No stations found</div>';
-                    return;
-                }
-
-                resultsDiv.innerHTML = stations.map(station => `
-                    <div class="search-result" onclick='selectStation(${JSON.stringify(station)})'>
-                        ${station.name} [${station.type}]
-                    </div>
-                `).join('');
+                data.lines.forEach(line => {
+                    const div = document.createElement('div');
+                    div.className = 'checkbox-item';
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = `line-${line.line_id}`;
+                    checkbox.value = line.line_id;
+                    checkbox.checked = true;
+                    const label = document.createElement('label');
+                    label.htmlFor = `line-${line.line_id}`;
+                    label.textContent = `${line.agency} ${line.line_name}`;
+                    div.appendChild(checkbox);
+                    div.appendChild(label);
+                    container.appendChild(div);
+                });
+                
+                document.getElementById('linesSection').classList.remove('hidden');
+                document.getElementById('startBtn').disabled = false;
             } catch (error) {
-                console.error('Search error:', error);
+                console.error('Error loading lines:', error);
             }
         }
 
-        async function selectStation(station) {
-            selectedStation = station;
-            document.getElementById('searchResults').innerHTML = '';
-            document.getElementById('stationSearch').value = station.name;
-            
-            // Load lines for this station
-            try {
-                const response = await fetch(`/api/lines?station_id=${encodeURIComponent(station.id)}`);
-                const lines = await response.json();
-                
-                const linesContainer = document.getElementById('linesContainer');
-                linesContainer.innerHTML = lines.map(line => `
-                    <label class="line-checkbox">
-                        <input type="checkbox" value="${line.line_id}" checked>
-                        ${line.line_name}
-                    </label>
-                `).join('');
-                
-                document.getElementById('lineSelection').style.display = 'block';
-            } catch (error) {
-                console.error('Lines error:', error);
-            }
+        document.getElementById('startBtn').addEventListener('click', () => {
+            selectedLines = Array.from(document.querySelectorAll('#linesCheckboxes input[type="checkbox"]:checked'))
+                .map(cb => cb.value);
+            saveState();
+            showGadgetView();
+        });
+
+        function showGadgetView() {
+            document.getElementById('setupView').classList.add('hidden');
+            document.getElementById('gadgetView').classList.remove('hidden');
+            document.getElementById('stationName').textContent = stations[selectedStation].display_name;
+            fetchArrivals();
+            refreshInterval = setInterval(fetchArrivals, 60000);
         }
 
-        function saveAndGo() {
-            // Get selected lines
-            const checkboxes = document.querySelectorAll('.line-checkbox input:checked');
-            selectedLines = Array.from(checkboxes).map(cb => cb.value);
-            
-            if (selectedLines.length === 0) {
-                alert('Please select at least one line to watch');
-                return;
-            }
-
-            // Get max minutes
-            maxMinutes = parseInt(document.getElementById('maxMinutes').value) || 20;
-            
-            // Save to localStorage
-            localStorage.setItem('selectedStation', JSON.stringify(selectedStation));
-            localStorage.setItem('selectedLines', JSON.stringify(selectedLines));
-            localStorage.setItem('maxMinutes', maxMinutes);
-            
-            // Switch to dashboard
-            showDashboard();
-        }
-
-        function showDashboard() {
-            document.getElementById('selection').classList.remove('active');
-            document.getElementById('dashboard').classList.add('active');
-            
-            // Update station name
-            document.getElementById('stationName').textContent = selectedStation.name;
-            
-            // Start refresh cycle
-            updateTime();
-            refreshData();
-            scheduleNextRefresh();
-        }
-
-        function goBack() {
-            document.getElementById('dashboard').classList.remove('active');
-            document.getElementById('selection').classList.add('active');
-            
-            // Stop refresh timers
-            if (refreshTimer) {
-                clearTimeout(refreshTimer);
-                refreshTimer = null;
-            }
-            if (refreshInterval) {
-                clearInterval(refreshInterval);
-                refreshInterval = null;
-            }
-        }
-
-        function updateTime() {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            const displayHours = hours % 12 || 12;
-            const displayMinutes = minutes.toString().padStart(2, '0');
-            
-            document.getElementById('currentTime').textContent = 
-                `${displayHours}:${displayMinutes} ${ampm}`;
-        }
-
-        async function refreshData() {
-            updateTime();
-            
+        async function fetchArrivals() {
             try {
                 const response = await fetch('/api/arrivals', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        station_id: selectedStation.id,
-                        selected_lines: selectedLines,
-                        max_minutes: maxMinutes
+                        station_id: selectedStation,
+                        selected_lines: selectedLines.length > 0 ? selectedLines : null
                     })
                 });
-                
                 const data = await response.json();
                 displayArrivals(data.arrivals);
+                document.getElementById('lastUpdate').textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
             } catch (error) {
-                console.error('Refresh error:', error);
-                document.getElementById('arrivalsContainer').innerHTML = 
-                    '<div class="no-arrivals">Error loading arrivals</div>';
+                console.error('Error fetching arrivals:', error);
+                document.getElementById('arrivalsContent').innerHTML = 
+                    '<div class="error">Error loading arrivals. Check console for details.</div>';
             }
         }
 
         function displayArrivals(arrivals) {
-            const container = document.getElementById('arrivalsContainer');
-            
-            if (!arrivals || arrivals.length === 0) {
-                container.innerHTML = '<div class="no-arrivals">No upcoming arrivals</div>';
+            const container = document.getElementById('arrivalsContent');
+            if (arrivals.length === 0) {
+                container.innerHTML = '<div class="loading">No arrivals available</div>';
                 return;
             }
-
-            container.innerHTML = arrivals.slice(0, 20).map(arrival => {
-                const minutesText = arrival.minutes === 0 ? 'Due' : `${arrival.minutes} min`;
-                const destination = arrival.destination || '';
-                
-                return `
-                    <div class="arrival-row">
-                        <div class="arrival-agency">[${arrival.agency}]</div>
-                        <div class="arrival-route">${arrival.route}</div>
-                        <div class="arrival-destination">${destination}</div>
-                        <div class="arrival-time">${minutesText}</div>
-                    </div>
-                `;
-            }).join('');
+            let html = '<table><thead><tr><th>Line</th><th>Destination</th><th>Minutes</th></tr></thead><tbody>';
+            arrivals.forEach(arr => {
+                html += `<tr><td><strong>${arr.route}</strong></td><td>${arr.destination}</td><td><strong>${arr.minutes} min</strong></td></tr>`;
+            });
+            html += '</tbody></table>';
+            container.innerHTML = html;
         }
 
-        function scheduleNextRefresh() {
-            // Clear any existing timers
-            if (refreshTimer) clearTimeout(refreshTimer);
-            if (refreshInterval) clearInterval(refreshInterval);
-            
-            // Calculate time until next minute (XX:XX:00)
-            const now = new Date();
-            const secondsUntilNextMinute = 60 - now.getSeconds();
-            const msUntilNextMinute = secondsUntilNextMinute * 1000 - now.getMilliseconds();
-            
-            console.log(`Next refresh in ${secondsUntilNextMinute} seconds (at :00)`);
-            
-            // Wait until the start of next minute
-            refreshTimer = setTimeout(() => {
-                console.log('Refreshing on the minute!');
-                refreshData();
-                
-                // Now set up interval to refresh every 60 seconds, perfectly synced
-                refreshInterval = setInterval(() => {
-                    console.log('Scheduled refresh at :00');
-                    refreshData();
-                }, 60000);
-            }, msUntilNextMinute);
-        }
-
-        // Load saved configuration on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedStation = localStorage.getItem('selectedStation');
-            const savedLines = localStorage.getItem('selectedLines');
-            const savedMaxMinutes = localStorage.getItem('maxMinutes');
-            
-            if (savedStation && savedLines) {
-                selectedStation = JSON.parse(savedStation);
-                selectedLines = JSON.parse(savedLines);
-                maxMinutes = savedMaxMinutes ? parseInt(savedMaxMinutes) : 20;
-                
-                // Show dashboard immediately
-                showDashboard();
-            }
+        document.getElementById('backBtn').addEventListener('click', () => {
+            clearInterval(refreshInterval);
+            document.getElementById('setupView').classList.remove('hidden');
+            document.getElementById('gadgetView').classList.add('hidden');
         });
+
+        document.getElementById('refreshBtn').addEventListener('click', fetchArrivals);
+
+        function saveState() {
+            localStorage.setItem('transitDashboard', JSON.stringify({
+                station: selectedStation,
+                lines: selectedLines
+            }));
+        }
+
+        function loadSavedState() {
+            const saved = localStorage.getItem('transitDashboard');
+            if (saved) {
+                const state = JSON.parse(saved);
+                if (stations[state.station]) {
+                    selectedStation = state.station;
+                    selectedLines = state.lines;
+                    document.getElementById('stationSelect').value = selectedStation;
+                    loadStationLines(selectedStation).then(() => {
+                        state.lines.forEach(lineId => {
+                            const checkbox = document.getElementById(`line-${lineId}`);
+                            if (checkbox) checkbox.checked = true;
+                        });
+                    });
+                }
+            }
+        }
+
+        loadStations();
     </script>
 </body>
 </html>
