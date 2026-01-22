@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transit Display</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #FFF;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+            font-size: 24pt;
+            padding: 20px;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 32pt;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+
+        .controls {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 2px solid #000;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 24pt;
+            border: 2px solid #000;
+            background: #FFF;
+            color: #000;
+            font-family: inherit;
+        }
+
+        select:focus {
+            outline: 3px solid #000;
+            outline-offset: 2px;
+        }
+
+        .status {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid #000;
+            font-size: 18pt;
+        }
+
+        .status.error {
+            background: #000;
+            color: #FFF;
+        }
+
+        .status.loading {
+            border-style: dashed;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #000;
+        }
+
+        th {
+            background: #000;
+            color: #FFF;
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: bold;
+            border: 2px solid #000;
+        }
+
+        td {
+            padding: 15px 10px;
+            border: 2px solid #000;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #F0F0F0;
+        }
+
+        .line-badge {
+            display: inline-block;
+            min-width: 60px;
+            padding: 5px 10px;
+            background: #000;
+            color: #FFF;
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid #000;
+        }
+
+        .minutes {
+            font-size: 28pt;
+            font-weight: bold;
+        }
+
+        .empty-state {
+            padding: 40px;
+            text-align: center;
+            border: 2px solid #000;
+            font-size: 20pt;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px solid #000;
+            font-size: 16pt;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚇 Transit Display</h1>
+
+        <div class="controls">
+            <label for="station-select">Select Station:</label>
+            <select id="station-select">
+                <option value="">-- Choose a station --</option>
+                <option value="jsq">Journal Square</option>
+                <option value="wtc">World Trade Center</option>
+                <option value="fulton">Fulton St</option>
+                <option value="cortlandt">WTC Cortlandt</option>
+            </select>
+        </div>
+
+        <div id="status" class="status" style="display: none;"></div>
+
+        <div id="arrivals-container">
+            <div class="empty-state">
+                Select a station to view arrivals
+            </div>
+        </div>
+
+        <div class="footer">
+            Auto-refresh: 60s | Data: HERE Transit API v8
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const REFRESH_INTERVAL = 60000; // 60 seconds
+        const STORAGE_KEY = 'selected_station';
+
+        // State
+        let refreshTimer = null;
+        let currentStation = null;
+
+        // DOM Elements
+        const stationSelect = document.getElementById('station-select');
+        const statusDiv = document.getElementById('status');
+        const arrivalsContainer = document.getElementById('arrivals-container');
+
+        // Initialize
+        function init() {
+            // Load saved station preference
+            const savedStation = localStorage.getItem(STORAGE_KEY);
+            if (savedStation) {
+                stationSelect.value = savedStation;
+                currentStation = savedStation;
+                fetchArrivals(savedStation);
+            }
+
+            // Setup event listeners
+            stationSelect.addEventListener('change', handleStationChange);
+        }
+
+        // Handle station selection
+        function handleStationChange(event) {
+            const station = event.target.value;
+            
+            if (!station) {
+                stopRefresh();
+                showEmptyState();
+                return;
+            }
+
+            // Save preference
+            localStorage.setItem(STORAGE_KEY, station);
+            currentStation = station;
+
+            // Fetch arrivals and start auto-refresh
+            fetchArrivals(station);
+            startRefresh(station);
+        }
+
+        // Fetch arrivals from API
+        async function fetchArrivals(station) {
+            showStatus('Loading...', 'loading');
+
+            try {
+                const response = await fetch(`/api/arrivals/${station}`);
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Failed to fetch arrivals');
+                }
+
+                const data = await response.json();
+                displayArrivals(data);
+                hideStatus();
+
+            } catch (error) {
+                console.error('Error fetching arrivals:', error);
+                showStatus(`Error: ${error.message}`, 'error');
+                showEmptyState();
+            }
+        }
+
+        // Display arrivals in table
+        function displayArrivals(data) {
+            const arrivals = data.arrivals || [];
+
+            if (arrivals.length === 0) {
+                arrivalsContainer.innerHTML = `
+                    <div class="empty-state">
+                        No upcoming arrivals found
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Line</th>
+                            <th>Destination</th>
+                            <th>Min Away</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            arrivals.forEach(arrival => {
+                const minutes = arrival.minutes === 0 ? 'Now' : arrival.minutes;
+                html += `
+                    <tr>
+                        <td><span class="line-badge">${escapeHtml(arrival.line)}</span></td>
+                        <td>${escapeHtml(arrival.destination)}</td>
+                        <td class="minutes">${minutes}</td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            arrivalsContainer.innerHTML = html;
+        }
+
+        // Show status message
+        function showStatus(message, type = '') {
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+            statusDiv.style.display = 'block';
+        }
+
+        // Hide status message
+        function hideStatus() {
+            statusDiv.style.display = 'none';
+        }
+
+        // Show empty state
+        function showEmptyState() {
+            arrivalsContainer.innerHTML = `
+                <div class="empty-state">
+                    Select a station to view arrivals
+                </div>
+            `;
+        }
+
+        // Start auto-refresh
+        function startRefresh(station) {
+            stopRefresh(); // Clear any existing timer
+            refreshTimer = setInterval(() => {
+                if (currentStation) {
+                    fetchArrivals(currentStation);
+                }
+            }, REFRESH_INTERVAL);
+        }
+
+        // Stop auto-refresh
+        function stopRefresh() {
+            if (refreshTimer) {
+                clearInterval(refreshTimer);
+                refreshTimer = null;
+            }
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Handle page visibility changes (pause when hidden)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopRefresh();
+            } else if (currentStation) {
+                fetchArrivals(currentStation);
+                startRefresh(currentStation);
+            }
+        });
+
+        // Initialize on page load
+        init();
+    </script>
+</body>
+</html>
