@@ -41,6 +41,17 @@
             font-size: 32px;
             font-weight: 700;
             flex: 1;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            text-align: left;
+            transition: color 0.2s;
+        }
+        
+        .station-name:hover {
+            color: #0066CC;
+            text-decoration: underline;
         }
         
         .time-info {
@@ -83,6 +94,10 @@
             border-bottom: 2px solid #E0E0E0;
         }
         
+        tbody tr:nth-child(even) td {
+            background: #F5F5F5;
+        }
+        
         tr:last-child td {
             border-bottom: none;
         }
@@ -114,7 +129,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="station-name">{{ station_name }}</div>
+            <button class="station-name" onclick="window.location.href='/{{ display_id }}/config'">{{ station_name }}</button>
             <div class="time-info">
                 <div class="current-time">{{ current_time }}</div>
                 <div class="last-refresh">Last refresh: {{ current_time }}</div>
@@ -123,13 +138,6 @@
         
         {% if arrivals %}
         <table>
-            <thead>
-                <tr>
-                    <th class="line-cell">LINE</th>
-                    <th class="dest-cell">DESTINATION</th>
-                    <th class="min-cell">MIN</th>
-                </tr>
-            </thead>
             <tbody>
                 {% for arrival in arrivals %}
                 <tr>
