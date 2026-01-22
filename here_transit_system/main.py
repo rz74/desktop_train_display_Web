@@ -18,8 +18,19 @@ STATIONS_FILE = Path(__file__).parent / "stations.json"
 with open(STATIONS_FILE, 'r') as f:
     STATIONS = json.load(f)
 
-# HERE API Configuration
-HERE_API_KEY = os.getenv("HERE_API_KEY", "YOUR_HERE_API_KEY")
+# HERE API Configuration - load from .env.example if exists
+env_file = Path(__file__).parent / ".env.example"
+if env_file.exists():
+    with open(env_file, 'r') as f:
+        for line in f:
+            if line.startswith('HERE_API_KEY='):
+                HERE_API_KEY = line.split('=', 1)[1].strip()
+                break
+        else:
+            HERE_API_KEY = os.getenv("HERE_API_KEY", "YOUR_HERE_API_KEY")
+else:
+    HERE_API_KEY = os.getenv("HERE_API_KEY", "YOUR_HERE_API_KEY")
+
 DEPARTURES_URL = "https://transit.hereapi.com/v8/departures"
 
 # Mount static files
@@ -97,14 +108,13 @@ async def get_arrivals(station_key: str):
             
             for dep in departures:
                 transport = dep.get('transport', {})
-                time_info = dep.get('time', {})
                 
                 # Extract key fields
                 line = transport.get('name', 'Unknown')
                 headsign = transport.get('headsign', 'Unknown')
                 
-                # Parse departure time
-                dep_time_str = time_info.get('expected') or time_info.get('timetabled')
+                # Parse departure time (time is directly in dep, not nested)
+                dep_time_str = dep.get('time')
                 if not dep_time_str:
                     continue
                 
