@@ -1,0 +1,62 @@
+{
+  "path": {
+    "newark_line": {
+      "newark": "21285_1196",
+      "harrison": "15242_78",
+      "jsq": "15242_61"
+    },
+    "jsq_33rd_line": {
+      "jsq": "15242_61",
+      "grove": "15242_6",
+      "exchange": "15242_88",
+      "wtc_path": "10327_856",
+      "christopher": "15242_4",
+      "9th_street": "15242_3",
+      "14th_street": "15242_0",
+      "23rd_street": "15242_1",
+      "33rd_street": "15242_2"
+    },
+    "hoboken_line": {
+      "hoboken": "15242_56",
+      "christopher": "15242_4",
+      "9th_street": "15242_3",
+      "14th_street": "15242_0",
+      "23rd_street": "15242_1",
+      "33rd_street": "15242_2"
+    }
+  },
+  "mta": {
+    "lower_manhattan": {
+      "fulton": "10327_1251",
+      "cortlandt": "10327_1347",
+      "city_hall": "10327_1344",
+      "canal": "10327_100"
+    },
+    "midtown": {
+      "herald_square": "10327_1323",
+      "penn_station": "10324_2",
+      "port_authority": "10327_592",
+      "grand_central": "21285_1337",
+      "lexington_53": "10327_883",
+      "lexington_59": "10327_1308"
+    },
+    "union_square_area": {
+      "union_square": "10327_1137",
+      "astor_place": "10327_448"
+    },
+    "upper_manhattan": {
+      "columbus_circle": "10327_67",
+      "72nd_street": "10327_61",
+      "86th_street": "10327_418",
+      "96th_street": "10327_52"
+    },
+    "brooklyn": {
+      "atlantic_terminal": "10327_799",
+      "jay_street": "10327_622"
+    },
+    "queens": {
+      "queensboro": "10327_1305",
+      "jackson_heights": "10327_982"
+    }
+  }
+}
