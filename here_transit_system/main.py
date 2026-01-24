@@ -709,7 +709,7 @@ async def config_page(request: Request, display_id: str):
         'gtfs_id': '',
         'min_minutes': 2,
         'max_minutes': 20,
-        'display_res': '800x600'
+        'display_res': '800x480'
     }
     
     stations = get_all_stations()

@@ -246,25 +246,25 @@
             <div class="form-group">
                 <label>Display Resolution:</label>
                 <div class="resolution-options">
+                    <label class="resolution-option {% if config.display_res == '800x480' %}selected{% endif %}">
+                        <input type="radio" name="display_res" value="800x480" 
+                               {% if config.display_res == '800x480' %}checked{% endif %}>
+                        800x480 (Default)
+                    </label>
                     <label class="resolution-option {% if config.display_res == '400x300' %}selected{% endif %}">
                         <input type="radio" name="display_res" value="400x300" 
                                {% if config.display_res == '400x300' %}checked{% endif %}>
                         400x300
-                    </label>
-                    <label class="resolution-option {% if config.display_res == '800x600' %}selected{% endif %}">
-                        <input type="radio" name="display_res" value="800x600" 
-                               {% if config.display_res == '800x600' %}checked{% endif %}>
-                        800x600
                     </label>
                     <label class="resolution-option {% if config.display_res == '640x384' %}selected{% endif %}">
                         <input type="radio" name="display_res" value="640x384" 
                                {% if config.display_res == '640x384' %}checked{% endif %}>
                         640x384
                     </label>
-                    <label class="resolution-option {% if config.display_res == '1200x825' %}selected{% endif %}">
-                        <input type="radio" name="display_res" value="1200x825" 
-                               {% if config.display_res == '1200x825' %}checked{% endif %}>
-                        1200x825
+                    <label class="resolution-option {% if config.display_res == '800x600' %}selected{% endif %}">
+                        <input type="radio" name="display_res" value="800x600" 
+                               {% if config.display_res == '800x600' %}checked{% endif %}>
+                        800x600
                     </label>
                 </div>
             </div>
