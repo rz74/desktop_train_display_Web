@@ -26,9 +26,29 @@
             padding: 40px;
         }
         
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logout-btn {
+            padding: 8px 16px;
+            background: #f44336;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: #d32f2f;
+        }
+        
         h1 {
             font-size: 28px;
-            margin-bottom: 10px;
             color: #333;
         }
         
@@ -106,12 +126,6 @@
         
         input[type="radio"] {
             display: none;
-        }
-        
-        .passcode-note {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
         }
         
         .char-counter {
@@ -242,8 +256,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>Configure Display</h1>
-        <div class="display-id">Display ID: <strong>{{ display_id }}</strong></div>
+        <div class="header-bar">
+            <div>
+                <h1>Configure Display</h1>
+                <div class="display-id">Display ID: <strong>{{ display_id }}</strong></div>
+            </div>
+            <a href="{{ root_path }}/logout" class="logout-btn">Logout</a>
+        </div>
         
         {% if message %}
         <div class="message {{ message_type }}">{{ message }}</div>
@@ -342,13 +361,6 @@
                 <textarea name="custom_note" id="custom_note" maxlength="200" 
                           placeholder="Enter a custom message for your display...">{{ config.custom_note if config.custom_note else '' }}</textarea>
                 <div class="char-counter" id="char-counter">0 / 200 characters</div>
-            </div>
-            
-            <div class="form-group">
-                <label for="passcode">Admin Passcode:</label>
-                <input type="password" name="passcode" id="passcode" required 
-                       placeholder="Enter admin passcode to save">
-                <div class="passcode-note">Required to make changes</div>
             </div>
             
             <div class="button-group">

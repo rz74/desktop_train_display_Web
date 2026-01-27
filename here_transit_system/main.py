@@ -6,6 +6,7 @@ from fastapi import FastAPI, HTTPException, Form, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse, FileResponse, HTMLResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
+from starlette.middleware.sessions import SessionMiddleware
 from dotenv import load_dotenv
 import httpx
 import json
@@ -33,11 +34,21 @@ except ImportError:
 # Load environment variables
 load_dotenv()
 
-# Initialize FastAPI with root_path for Nginx deployment
+# Initialize FastAPI with dynamic root_path for deployment flexibility
+ROOT_PATH = os.getenv("ROOT_PATH", "/einktrain")
 app = FastAPI(
     title="HERE Transit Display - Multi-Tenant",
-    root_path="/einktrain"
+    root_path=ROOT_PATH
 )
+
+# Add session middleware for authentication
+SESSION_SECRET_KEY = os.getenv("SESSION_SECRET_KEY")
+if not SESSION_SECRET_KEY:
+    raise ValueError(
+        "SESSION_SECRET_KEY environment variable is required. "
+        "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
+    )
+app.add_middleware(SessionMiddleware, secret_key=SESSION_SECRET_KEY)
 
 # Initialize Jinja2 templates
 templates = Jinja2Templates(directory="templates")
@@ -909,6 +920,78 @@ async def debug_station(gtfs_id: str):
         return {"error": str(e)}
 
 
+# ===== Authentication Routes (must be defined before parametrized routes) =====
+
+@app.get("/login")
+async def login_page(request: Request, redirect_to: str = None):
+    """
+    Display the login page.
+    """
+    return templates.TemplateResponse("login.html", {
+        "request": request,
+        "display_id": None,
+        "message": None,
+        "message_type": None,
+        "redirect_to": redirect_to,
+        "root_path": request.app.root_path
+    })
+
+
+@app.post("/login")
+async def login(
+    request: Request,
+    display_id: str = Form(...),
+    password: str = Form(...),
+    redirect_to: str = Form(None)
+):
+    """
+    Authenticate user and create session.
+    """
+    # Load user config to verify password
+    user_config = load_user_config(display_id)
+    
+    if not user_config:
+        return templates.TemplateResponse("login.html", {
+            "request": request,
+            "display_id": display_id,
+            "message": "Display ID not found. Please check your username.",
+            "message_type": "error",
+            "redirect_to": redirect_to,
+            "root_path": request.app.root_path
+        })
+    
+    # Verify password
+    if password != user_config.get('password', ''):
+        return templates.TemplateResponse("login.html", {
+            "request": request,
+            "display_id": display_id,
+            "message": "Invalid password. Please try again.",
+            "message_type": "error",
+            "redirect_to": redirect_to,
+            "root_path": request.app.root_path
+        })
+    
+    # Authentication successful - create session
+    request.session['display_id'] = display_id
+    
+    # Redirect to requested page or config page
+    if redirect_to:
+        return RedirectResponse(url=redirect_to, status_code=303)
+    else:
+        return RedirectResponse(url=f"/{display_id}/config", status_code=303)
+
+
+@app.get("/logout")
+async def logout(request: Request):
+    """
+    Clear session and redirect to login.
+    """
+    request.session.clear()
+    return RedirectResponse(url="/login", status_code=303)
+
+
+# ===== Display Routes =====
+
 @app.get("/{display_id}")
 async def display_page(request: Request, display_id: str):
     """
@@ -1029,7 +1112,17 @@ async def display_page(request: Request, display_id: str):
 async def config_page(request: Request, display_id: str):
     """
     Render the configuration form for a specific display ID.
+    Requires authentication - user must be logged in as this display_id.
     """
+    # Check authentication
+    session_display_id = request.session.get('display_id')
+    if not session_display_id or session_display_id != display_id:
+        # Redirect to login with return URL
+        return RedirectResponse(
+            url=f"/login?redirect_to=/{display_id}/config",
+            status_code=303
+        )
+    
     config = load_user_config(display_id) or {
         'gtfs_id': '',
         'min_minutes': 2,
@@ -1058,18 +1151,26 @@ async def save_config(
     min_minutes: int = Form(...),
     max_minutes: int = Form(...),
     display_res: str = Form(...),
-    custom_note: str = Form(""),
-    passcode: str = Form(...)
+    custom_note: str = Form("")
 ):
     """
     Save configuration for a specific display ID.
-    Requires user's password for authentication.
+    Requires authentication - user must be logged in as this display_id.
+    Password is no longer required in the form since user is already authenticated.
     """
-    # Load existing config to get user's password and weather data
-    existing_config = load_user_config(display_id)
+    # Check authentication
+    session_display_id = request.session.get('display_id')
+    if not session_display_id or session_display_id != display_id:
+        # Redirect to login
+        return RedirectResponse(
+            url=f"/login?redirect_to=/{display_id}/config",
+            status_code=303
+        )
     
-    # Validate passcode against user's password
-    if not existing_config or passcode != existing_config.get('password', ''):
+    # Load existing config to preserve password and weather data
+    existing_config = load_user_config(display_id)
+    if not existing_config:
+        # Should not happen if user is logged in, but handle gracefully
         stations = get_all_stations()
         return templates.TemplateResponse("config.html", {
             "request": request,
@@ -1082,7 +1183,7 @@ async def save_config(
                 'display_res': display_res,
                 'custom_note': custom_note
             },
-            "message": "Invalid password",
+            "message": "Configuration not found. Please contact administrator.",
             "message_type": "error",
             "root_path": request.app.root_path
         })
