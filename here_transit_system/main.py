@@ -6,7 +6,7 @@ from fastapi import FastAPI, HTTPException, Form, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse, FileResponse, HTMLResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
-from starlette.middleware.sessions import SessionMiddleware
+
 from dotenv import load_dotenv
 import httpx
 import json
@@ -40,15 +40,6 @@ app = FastAPI(
     title="HERE Transit Display - Multi-Tenant",
     root_path=ROOT_PATH
 )
-
-# Add session middleware for authentication
-import secrets
-SESSION_SECRET_KEY = os.getenv("SESSION_SECRET_KEY")
-if not SESSION_SECRET_KEY:
-    # Auto-generate a random secret key for this session
-    SESSION_SECRET_KEY = secrets.token_hex(32)
-    print("Warning: SESSION_SECRET_KEY not set in .env. Using auto-generated key (will change on restart).")
-app.add_middleware(SessionMiddleware, secret_key=SESSION_SECRET_KEY)
 
 # Initialize Jinja2 templates
 templates = Jinja2Templates(directory="templates")
@@ -985,7 +976,7 @@ async def login(
     redirect_to: str = Form(None)
 ):
     """
-    Authenticate user and create session.
+    Authenticate user.
     """
     # Load user config to verify password
     user_config = load_user_config(display_id)
@@ -1022,9 +1013,7 @@ async def login(
             "root_path": request.app.root_path
         })
     
-    # Authentication successful - create session
-    request.session['display_id'] = display_id
-    
+    # Authentication successful - redirect to config page
     # Redirect to requested page or config page
     if redirect_to:
         return RedirectResponse(url=redirect_to, status_code=303)
@@ -1035,9 +1024,8 @@ async def login(
 @app.get("/logout")
 async def logout(request: Request):
     """
-    Clear session and redirect to login.
+    Redirect to login page.
     """
-    request.session.clear()
     return RedirectResponse(url="/login", status_code=303)
 
 
@@ -1196,17 +1184,7 @@ async def display_page(request: Request, display_id: str):
 async def config_page(request: Request, display_id: str):
     """
     Render the configuration form for a specific display ID.
-    Requires authentication - user must be logged in as this display_id.
     """
-    # Check authentication
-    session_display_id = request.session.get('display_id')
-    if not session_display_id or session_display_id != display_id:
-        # Redirect to login with return URL
-        return RedirectResponse(
-            url=f"/login?redirect_to=/{display_id}/config",
-            status_code=303
-        )
-    
     config = load_user_config(display_id) or {
         'gtfs_id': '',
         'min_minutes': 2,
@@ -1239,18 +1217,7 @@ async def save_config(
 ):
     """
     Save configuration for a specific display ID.
-    Requires authentication - user must be logged in as this display_id.
-    Password is no longer required in the form since user is already authenticated.
     """
-    # Check authentication
-    session_display_id = request.session.get('display_id')
-    if not session_display_id or session_display_id != display_id:
-        # Redirect to login
-        return RedirectResponse(
-            url=f"/login?redirect_to=/{display_id}/config",
-            status_code=303
-        )
-    
     # Load existing config to preserve password and weather data
     existing_config = load_user_config(display_id)
     if not existing_config:
