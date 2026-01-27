@@ -17,6 +17,8 @@ if not exist ".env" (
     echo   - HERE_API_KEY
     echo   - OPENWEATHER_API_KEY
     echo   - SESSION_SECRET_KEY
+    echo   - ADMIN_PASSCODE
+    echo   - USER1_PW, USER2_PW, etc. (one for each user)
     echo See .env.example for reference
     pause
     exit /b 1

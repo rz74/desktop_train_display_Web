@@ -4,15 +4,14 @@
     "min_minutes": 2,
     "max_minutes": 60,
     "display_res": "800x480",
-    "custom_note": "Daily Message:\r\nResilience is like a snowplow. You can\u2019t stop the storm from coming, but you can keep clearing the path until the sun comes out.",
+    "custom_note": "Daily Message:\r\nResilience is like a snowplow. You can’t stop the storm from coming, but you can keep clearing the path until the sun comes out.",
     "selected_lines": [
       "7",
       "R"
     ],
-    "password": "1234",
     "weather_data": {
       "temp_c": "-6",
-      "temp_f": "22",
+      "temp_f": "21",
       "condition": "Clouds",
       "icon": "cloudy",
       "high_c": "-6",
@@ -24,10 +23,9 @@
     "min_minutes": 2,
     "max_minutes": 20,
     "display_res": "800x480",
-    "password": "4321",
     "weather_data": {
       "temp_c": "-6",
-      "temp_f": "22",
+      "temp_f": "21",
       "condition": "Clouds",
       "icon": "cloudy",
       "high_c": "-6",

@@ -1000,8 +1000,19 @@ async def login(
             "root_path": request.app.root_path
         })
     
-    # Verify password
-    if password != user_config.get('password', ''):
+    # Verify password from environment variable
+    expected_password = os.getenv(f"{display_id.upper()}_PW")
+    if not expected_password:
+        return templates.TemplateResponse("login.html", {
+            "request": request,
+            "display_id": display_id,
+            "message": f"Password not configured for {display_id}. Please contact administrator.",
+            "message_type": "error",
+            "redirect_to": redirect_to,
+            "root_path": request.app.root_path
+        })
+    
+    if password != expected_password:
         return templates.TemplateResponse("login.html", {
             "request": request,
             "display_id": display_id,
