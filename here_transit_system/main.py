@@ -111,6 +111,31 @@ STATION_COMPLEXES = {
             "A38",  # Chambers St (A/C) - connects via Park Place
         ]
     },
+    "Times Sq-42 St": {
+        "name": "Times Sq-42 St",
+        "gtfs_ids": [
+            "127",  # Times Sq-42 St (1/2/3)
+            "725",  # Times Sq-42 St (7)
+            "R16",  # Times Sq-42 St (N/Q/R/W)
+            "902",  # Times Sq-42 St (A/C/E)
+        ]
+    },
+    "Grand Central-42 St": {
+        "name": "Grand Central-42 St",
+        "gtfs_ids": [
+            "631",  # Grand Central-42 St (4/5/6/7/S)
+            "723",  # Grand Central-42 St (Lexington)
+            "901",  # Grand Central-42 St (Madison)
+        ]
+    },
+    "Atlantic Av-Barclays Ctr": {
+        "name": "Atlantic Av-Barclays Ctr",
+        "gtfs_ids": [
+            "D24",  # Atlantic Av-Barclays Ctr (B/D)
+            "R31",  # Atlantic Av-Barclays Ctr (N/Q/R/W)
+            "235",  # Atlantic Av-Barclays Ctr (2/3/4/5)
+        ]
+    },
     "33rd St": {
         "name": "33rd Street Complex",
         "gtfs_ids": [
