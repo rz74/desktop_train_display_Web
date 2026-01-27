@@ -1079,18 +1079,18 @@ async def display_page(request: Request, display_id: str):
             # Normalize selected lines: strip whitespace and uppercase
             selected_lines_upper = [s.strip().upper() for s in selected_lines]
             # Debug: Show what we're comparing
-            print(f"Complex Filter: Selected lines (normalized): {selected_lines_upper}")
+            # print(f"Complex Filter: Selected lines (normalized): {selected_lines_upper}")
             
             filtered_with_debug = []
             for a in filtered:
                 arrival_line_normalized = a['line'].strip().upper()
                 is_match = arrival_line_normalized in selected_lines_upper
-                print(f"  Comparing Arrival Line: '{a['line']}' (normalized: '{arrival_line_normalized}') against Filter: {selected_lines_upper} → Match: {is_match}")
+                # print(f"  Comparing Arrival Line: '{a['line']}' (normalized: '{arrival_line_normalized}') against Filter: {selected_lines_upper} → Match: {is_match}")
                 if is_match:
                     filtered_with_debug.append(a)
             
             filtered = filtered_with_debug
-            print(f"Complex: After line filtering: {len(filtered)} arrivals")
+            # print(f"Complex: After line filtering: {len(filtered)} arrivals")
         
         filtered.sort(key=lambda x: x['min'])
         # Limit to 12 trains to fit 480px screen perfectly
@@ -1243,7 +1243,7 @@ async def save_config(
     form_data = await request.form()
     selected_lines = form_data.getlist('selected_lines')
     
-    # Save configuration (keep existing password and weather data)
+    # Save configuration (keep existing weather data)
     config = {
         'gtfs_id': gtfs_id,
         'min_minutes': min_minutes,
@@ -1251,7 +1251,6 @@ async def save_config(
         'display_res': display_res,
         'custom_note': custom_note[:200],  # Enforce 200 char limit
         'selected_lines': selected_lines,
-        'password': existing_config['password'],
         'weather_data': existing_config.get('weather_data', {'temp_c': '--', 'temp_f': '--', 'condition': 'N/A', 'icon': 'cloud', 'high_c': '--', 'low_c': '--'})
     }
     save_user_config(display_id, config)
