@@ -7,8 +7,23 @@ echo.
 REM Navigate to script directory
 cd /d "%~dp0"
 
+REM Check if virtual environment exists
+if not exist "..\venv\" (
+    echo ERROR: Virtual environment not found!
+    echo Please run setup_env.bat from the project root directory first
+    echo.
+    pause
+    exit /b 1
+)
+
 REM Activate virtual environment
 call ..\venv\Scripts\activate.bat
+if errorlevel 1 (
+    echo ERROR: Failed to activate virtual environment
+    echo Please run setup_env.bat from the project root directory
+    pause
+    exit /b 1
+)
 
 REM Check if .env file exists
 if not exist ".env" (
