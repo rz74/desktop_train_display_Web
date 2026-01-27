@@ -79,7 +79,17 @@ if not exist "here_transit_system\requirements.txt" (
 
 python -m pip install -r here_transit_system\requirements.txt
 if errorlevel 1 (
+    echo.
     echo ERROR: Failed to install packages
+    echo.
+    echo If you see "Microsoft Visual C++ 14.0 or greater is required" error:
+    echo   Option 1: Install Microsoft C++ Build Tools from:
+    echo             https://visualstudio.microsoft.com/visual-cpp-build-tools/
+    echo.
+    echo   Option 2: Install pre-built packages individually:
+    echo             python -m pip install fastapi uvicorn[standard] httpx python-dotenv jinja2 itsdangerous
+    echo             python -m pip install playwright --only-binary :all:
+    echo.
     pause
     exit /b 1
 )
