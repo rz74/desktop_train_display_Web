@@ -71,10 +71,11 @@ USER_CONFIGS_FILE = Path(__file__).parent / "user_configs.json"
 # Load GTFS to HERE mapping
 MAPPING_FILE = Path(__file__).parent / "gtfs_to_here_map.json"
 COORDINATE_MAPPING_FILE = Path(__file__).parent / "coordinate_mapping.json"
+STATION_LINES_FILE = Path(__file__).parent / "station_lines.json"
 STATION_MAPPING = {}
 STATION_NAMES = {}  # Maps GTFS ID to station name
 STATION_AGENCY = {}  # Maps GTFS ID to agency (MTA or PATH)
-STATION_AGENCY = {}  # Maps GTFS ID to agency (MTA or PATH)
+STATION_LINES_METADATA = {}  # Maps station ID to available lines
 
 # Manual overrides for 3 stations that failed discovery (100% coverage)
 MANUAL_OVERRIDES = {
@@ -162,6 +163,18 @@ def load_station_mapping():
                     if 'station_name' in station_info:
                         STATION_NAMES[gtfs_id] = station_info['station_name']
                     STATION_AGENCY[gtfs_id] = 'PATH'
+    
+    # Load station lines metadata
+    if STATION_LINES_FILE.exists():
+        with open(STATION_LINES_FILE, 'r', encoding='utf-8') as f:
+            lines_data = json.load(f)
+            # Flatten all station types into one dictionary
+            for category in ['path_stations', 'complexes', 'mta_all_stations']:
+                if category in lines_data:
+                    STATION_LINES_METADATA.update(lines_data[category])
+            print(f"✓ Loaded line metadata for {len(STATION_LINES_METADATA)} stations")
+    else:
+        print("⚠ station_lines.json not found, will fetch lines dynamically")
     
     # Add manual override names
     STATION_NAMES['723'] = 'Grand Central-42 St'
@@ -806,6 +819,77 @@ async def get_stations():
         return {'stations': stations}
 
 
+@app.get("/api/station-lines/{gtfs_id}")
+async def get_station_lines(gtfs_id: str):
+    """
+    Get available lines/routes for a specific station from metadata.
+    Returns a list of unique line identifiers.
+    """
+    lines = set()
+    
+    # Check if it's a station complex
+    if gtfs_id in STATION_COMPLEXES:
+        complex_info = STATION_COMPLEXES[gtfs_id]
+        # Merge lines from all GTFS IDs in the complex
+        for complex_gtfs_id in complex_info['gtfs_ids']:
+            if complex_gtfs_id in STATION_LINES_METADATA:
+                lines.update(STATION_LINES_METADATA[complex_gtfs_id])
+        
+        # Also check if complex itself has metadata
+        if gtfs_id in STATION_LINES_METADATA:
+            lines.update(STATION_LINES_METADATA[gtfs_id])
+    else:
+        # Single station - check metadata
+        if gtfs_id in STATION_LINES_METADATA:
+            lines.update(STATION_LINES_METADATA[gtfs_id])
+        else:
+            # Fallback: try to fetch lines dynamically from live data
+            try:
+                station_lines = await _fetch_station_lines(gtfs_id)
+                lines.update(station_lines)
+            except Exception as e:
+                return JSONResponse(
+                    status_code=404,
+                    content={"error": f"No line metadata found for station: {gtfs_id}"}
+                )
+    
+    if not lines:
+        return JSONResponse(
+            status_code=404,
+            content={"error": f"No lines found for station: {gtfs_id}"}
+        )
+    
+    return {"lines": sorted(list(lines))}
+
+
+async def _fetch_station_lines(gtfs_id: str) -> set:
+    """
+    Helper function to fetch lines for a single station.
+    Returns a set of line identifiers.
+    """
+    lines = set()
+    
+    # Try to get lines from HERE API by fetching current arrivals
+    here_id = STATION_MAPPING.get(gtfs_id)
+    if here_id:
+        try:
+            api_response = await fetch_departures(here_id)
+            arrivals = transform_arrivals(api_response)
+            lines.update([a['line'] for a in arrivals if a['line'] != '?'])
+        except:
+            pass
+    
+    # For MTA stations, also try to get from real-time feed
+    if STATION_AGENCY.get(gtfs_id) == 'MTA' and MTA_FEED_AVAILABLE:
+        try:
+            mta_arrivals = get_mta_arrivals(gtfs_id)
+            lines.update([a['line'] for a in mta_arrivals if a['line'] != '?'])
+        except:
+            pass
+    
+    return lines
+
+
 @app.get("/debug/{gtfs_id}")
 async def debug_station(gtfs_id: str):
     """Debug endpoint to see raw API response for a station."""
@@ -899,6 +983,13 @@ async def display_page(request: Request, display_id: str):
             # Filter and sort based on user's time window
             filtered = [a for a in all_arrivals if min_minutes <= a['min'] <= max_minutes]
             print(f"After filtering {min_minutes}-{max_minutes} min: {len(filtered)} arrivals")
+            
+            # Apply line filtering if selected_lines is configured
+            selected_lines = config.get('selected_lines', [])
+            if selected_lines:
+                filtered = [a for a in filtered if a['line'] in selected_lines]
+                print(f"After line filtering {selected_lines}: {len(filtered)} arrivals")
+            
             filtered.sort(key=lambda x: (x['min'], x['line']))
             # Limit to 12 trains to fit 480px screen perfectly
             arrivals = filtered[:12]
@@ -996,6 +1087,10 @@ async def save_config(
             "root_path": request.app.root_path
         })
     
+    # Get selected lines from form data
+    form_data = await request.form()
+    selected_lines = form_data.getlist('selected_lines')
+    
     # Save configuration (keep existing password and weather data)
     config = {
         'gtfs_id': gtfs_id,
@@ -1003,8 +1098,9 @@ async def save_config(
         'max_minutes': max_minutes,
         'display_res': display_res,
         'custom_note': custom_note[:200],  # Enforce 200 char limit
+        'selected_lines': selected_lines,
         'password': existing_config['password'],
-        'weather_data': existing_config.get('weather_data', {'temp_c': '--', 'temp_f': '--', 'condition': 'N/A', 'high_c': '--', 'low_c': '--'})
+        'weather_data': existing_config.get('weather_data', {'temp_c': '--', 'temp_f': '--', 'condition': 'N/A', 'icon': 'cloud', 'high_c': '--', 'low_c': '--'})
     }
     save_user_config(display_id, config)
     
