@@ -4,13 +4,31 @@
     "min_minutes": 2,
     "max_minutes": 20,
     "display_res": "800x480",
-    "password": "1234"
+    "custom_note": "Daily Message:\r\nResilience is like a snowplow. You can’t stop the storm from coming, but you can keep clearing the path until the sun comes out.",
+    "password": "1234",
+    "weather_data": {
+      "temp_c": "-9",
+      "temp_f": "16",
+      "condition": "Fog",
+      "icon": "cloud-fog",
+      "high_c": "0",
+      "low_c": "-9"
+    }
   },
   "user2": {
     "gtfs_id": "Journal Square",
     "min_minutes": 2,
     "max_minutes": 20,
     "display_res": "800x480",
-    "password": "4321"
+    "password": "4321",
+    "weather_data": {
+      "temp_c": "-9",
+      "temp_f": "16",
+      "condition": "Fog",
+      "icon": "cloud-fog",
+      "high_c": "0",
+      "low_c": "-9"
+    },
+    "custom_note": "Welcome to Jersey City"
   }
 }

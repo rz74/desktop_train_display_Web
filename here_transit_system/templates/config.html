@@ -114,6 +114,35 @@
             margin-top: 5px;
         }
         
+        .char-counter {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .char-counter.warning {
+            color: #f44336;
+            font-weight: 600;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
         .button-group {
             display: flex;
             gap: 15px;
@@ -270,6 +299,13 @@
             </div>
             
             <div class="form-group">
+                <label for="custom_note">Custom Message:</label>
+                <textarea name="custom_note" id="custom_note" maxlength="200" 
+                          placeholder="Enter a custom message for your display...">{{ config.custom_note if config.custom_note else '' }}</textarea>
+                <div class="char-counter" id="char-counter">0 / 200 characters</div>
+            </div>
+            
+            <div class="form-group">
                 <label for="passcode">Admin Passcode:</label>
                 <input type="password" name="passcode" id="passcode" required 
                        placeholder="Enter admin passcode to save">
@@ -286,6 +322,23 @@
     </div>
     
     <script>
+        // Character counter for custom message
+        const customNote = document.getElementById('custom_note');
+        const charCounter = document.getElementById('char-counter');
+        
+        function updateCharCounter() {
+            const length = customNote.value.length;
+            charCounter.textContent = `${length} / 200 characters`;
+            if (length > 180) {
+                charCounter.classList.add('warning');
+            } else {
+                charCounter.classList.remove('warning');
+            }
+        }
+        
+        customNote.addEventListener('input', updateCharCounter);
+        updateCharCounter(); // Initialize on load
+        
         // Resolution option selection
         document.querySelectorAll('.resolution-option').forEach(option => {
             option.addEventListener('click', function() {

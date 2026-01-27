@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transit Display - {{ display_id }}</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         * {
             margin: 0;
@@ -11,36 +12,112 @@
             box-sizing: border-box;
         }
         
-        body {
+        html, body {
+            width: {{ width }}px;
+            height: {{ height }}px;
+            overflow: hidden;
             font-family: 'Arial', 'Helvetica', sans-serif;
             background: #FFF;
             color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
         
         .container {
             width: {{ width }}px;
             height: {{ height }}px;
-            background: #FFF;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0;
+            overflow: hidden;
         }
         
-        .header {
+        /* Top-Left: Weather */
+        .weather-section {
+            grid-column: 1;
+            grid-row: 1;
+            border-right: 2px solid #000;
+            border-bottom: 2px solid #000;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .weather-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .weather-temp {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 2px;
+            line-height: 1;
+        }
+        
+        .weather-temp-f {
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .weather-condition {
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .weather-hilo {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        /* Bottom-Left: Custom Note */
+        .note-section {
+            grid-column: 1;
+            grid-row: 2;
+            border-right: 2px solid #000;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .custom-note {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+        
+        /* Right: Transit Section */
+        .transit-section {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            overflow: hidden;
+        }
+        
+        .transit-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #000;
         }
         
         .station-name {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
-            flex: 1;
             background: none;
             border: none;
             padding: 0;
@@ -56,17 +133,17 @@
         
         .time-info {
             text-align: right;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
         }
         
         .current-time {
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 2px;
         }
         
         .last-refresh {
-            font-size: 11px;
+            font-size: 10px;
             color: #666;
         }
         
@@ -76,21 +153,12 @@
             flex: 1;
         }
         
-        th {
-            background: #000;
-            color: #FFF;
-            font-size: 24px;
-            font-weight: 700;
-            padding: 12px;
-            text-align: left;
-        }
-        
         td {
             background: #FFF;
             color: #000;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
-            padding: 6px 8px;
+            padding: 5px 6px;
             border-bottom: 1px solid #E0E0E0;
         }
         
@@ -103,58 +171,80 @@
         }
         
         .line-cell {
-            font-size: 20px;
+            font-size: 18px;
             text-align: center;
             width: 12%;
         }
         
         .dest-cell {
             width: 65%;
-            font-size: 15px;
+            font-size: 14px;
         }
         
         .min-cell {
             text-align: center;
-            font-size: 22px;
+            font-size: 20px;
             width: 23%;
         }
         
         .no-trains {
             text-align: center;
-            font-size: 24px;
-            padding: 40px;
+            font-size: 18px;
+            padding: 30px;
             font-weight: 700;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <button class="station-name" onclick="window.location.href='/{{ display_id }}/config'">{{ station_name }}</button>
-            <div class="time-info">
-                <div class="current-time">{{ current_time }}</div>
-                <div class="last-refresh">Last refresh: {{ current_time }}</div>
-            </div>
+        <!-- Top-Left: Weather -->
+        <div class="weather-section">
+            <!-- Lucide weather icon -->
+            <i data-lucide="{{ weather_data.icon }}" class="weather-icon" stroke-width="2.5"></i>
+            
+            <div class="weather-temp">{{ weather_data.temp_c }}°C</div>
+            <div class="weather-temp-f">({{ weather_data.temp_f }}°F)</div>
+            <div class="weather-condition">{{ weather_data.condition }}</div>
+            <div class="weather-hilo">H: {{ weather_data.high_c }}° L: {{ weather_data.low_c }}°</div>
         </div>
         
-        {% if arrivals %}
-        <table>
-            <tbody>
-                {% for arrival in arrivals %}
-                <tr>
-                    <td class="line-cell">{{ arrival.line }}</td>
-                    <td class="dest-cell">{{ arrival.dest }}</td>
-                    <td class="min-cell">{{ arrival.min }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-        <div class="no-trains">No trains in time window</div>
-        {% endif %}
+        <!-- Bottom-Left: Custom Note -->
+        <div class="note-section">
+            <div class="custom-note">{{ custom_note }}</div>
+        </div>
+        
+        <!-- Right: Transit -->
+        <div class="transit-section">
+            <div class="transit-header">
+                <button class="station-name" onclick="window.location.href='/{{ display_id }}/config'">{{ station_name }}</button>
+                <div class="time-info">
+                    <div class="current-time">{{ current_time }}</div>
+                    <div class="last-refresh">Last: {{ current_time }}</div>
+                </div>
+            </div>
+            
+            {% if arrivals %}
+            <table>
+                <tbody>
+                    {% for arrival in arrivals %}
+                    <tr>
+                        <td class="line-cell">{{ arrival.line }}</td>
+                        <td class="dest-cell">{{ arrival.dest }}</td>
+                        <td class="min-cell">{{ arrival.min }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="no-trains">No trains</div>
+            {% endif %}
+        </div>
     </div>
     
     <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
         // Hard refresh every 60 seconds
         setTimeout(function() {
             window.location.reload(true);

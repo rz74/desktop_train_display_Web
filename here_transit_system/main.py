@@ -4,7 +4,7 @@ Real-time arrival board for MTA Subway and PATH trains
 """
 from fastapi import FastAPI, HTTPException, Form, Request
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import JSONResponse, FileResponse, HTMLResponse, RedirectResponse
+from fastapi.responses import JSONResponse, FileResponse, HTMLResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv
 import httpx
@@ -13,6 +13,8 @@ import re
 from pathlib import Path
 from datetime import datetime
 import os
+import asyncio
+from io import BytesIO
 
 try:
     from underground import SubwayFeed
@@ -20,6 +22,13 @@ try:
 except ImportError:
     MTA_FEED_AVAILABLE = False
     print("Warning: underground library not installed. MTA real-time data unavailable.")
+
+try:
+    from playwright.async_api import async_playwright
+    PLAYWRIGHT_AVAILABLE = True
+except ImportError:
+    PLAYWRIGHT_AVAILABLE = False
+    print("Warning: playwright library not installed. Screenshot rendering unavailable.")
 
 # Load environment variables
 load_dotenv()
@@ -46,7 +55,15 @@ if not ADMIN_PASSCODE:
         "ADMIN_PASSCODE environment variable is required. "
         "Set it in your .env file for admin access."
     )
+OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
+if not OPENWEATHER_API_KEY:
+    print("Warning: OPENWEATHER_API_KEY not set. Weather data will not be updated automatically.")
+
 DEPARTURES_URL = "https://transit.hereapi.com/v8/departures"
+WEATHER_URL = "https://api.openweathermap.org/data/3.0/onecall"
+# NYC coordinates
+NYC_LAT = 40.7128
+NYC_LON = -74.0060
 
 # User configurations file
 USER_CONFIGS_FILE = Path(__file__).parent / "user_configs.json"
@@ -157,6 +174,210 @@ def load_station_mapping():
 
 # Load mapping on startup
 load_station_mapping()
+
+
+# ============================================================
+# Screenshot Service - Persistent Browser Manager
+# ============================================================
+class BrowserManager:
+    """Manages a single persistent headless browser instance for screenshots."""
+    
+    def __init__(self):
+        self.playwright = None
+        self.browser = None
+        self.page = None
+    
+    async def start(self):
+        """Initialize the browser instance."""
+        if not PLAYWRIGHT_AVAILABLE:
+            print("Warning: Playwright not available. Screenshot rendering disabled.")
+            return
+        
+        try:
+            self.playwright = await async_playwright().start()
+            self.browser = await self.playwright.chromium.launch(headless=True)
+            self.page = await self.browser.new_page(viewport={'width': 800, 'height': 480})
+            print("✓ Browser manager initialized")
+        except Exception as e:
+            print(f"Error initializing browser: {e}")
+    
+    async def close(self):
+        """Close the browser instance."""
+        if self.page:
+            await self.page.close()
+        if self.browser:
+            await self.browser.close()
+        if self.playwright:
+            await self.playwright.stop()
+        print("✓ Browser manager closed")
+    
+    async def capture_screenshot(self, url: str) -> bytes:
+        """
+        Navigate to URL and capture screenshot.
+        Returns PNG image bytes.
+        """
+        if not self.page:
+            raise RuntimeError("Browser not initialized")
+        
+        await self.page.goto(url, wait_until='networkidle')
+        screenshot_bytes = await self.page.screenshot(type='png')
+        return screenshot_bytes
+
+
+# Initialize browser manager
+browser_manager = BrowserManager()
+
+# Weather update task
+weather_task = None
+
+
+# Icon mapping for OpenWeather conditions/icon codes to Lucide icons
+ICON_MAP = {
+    # OpenWeather icon codes
+    '01d': 'sun',           # clear sky day
+    '01n': 'moon',          # clear sky night
+    '02d': 'cloud-sun',     # few clouds day
+    '02n': 'cloud-moon',    # few clouds night
+    '03d': 'cloud',         # scattered clouds
+    '03n': 'cloud',
+    '04d': 'cloudy',        # broken clouds
+    '04n': 'cloudy',
+    '09d': 'cloud-drizzle', # shower rain
+    '09n': 'cloud-drizzle',
+    '10d': 'cloud-rain',    # rain day
+    '10n': 'cloud-rain',    # rain night
+    '11d': 'cloud-lightning', # thunderstorm
+    '11n': 'cloud-lightning',
+    '13d': 'snowflake',     # snow
+    '13n': 'snowflake',
+    '50d': 'cloud-fog',     # mist
+    '50n': 'cloud-fog',
+    # OpenWeather main conditions (fallback)
+    'Clear': 'sun',
+    'Clouds': 'cloud',
+    'Rain': 'cloud-rain',
+    'Drizzle': 'cloud-drizzle',
+    'Thunderstorm': 'cloud-lightning',
+    'Snow': 'snowflake',
+    'Mist': 'cloud-fog',
+    'Smoke': 'cloud-fog',
+    'Haze': 'cloud-fog',
+    'Dust': 'cloud-fog',
+    'Fog': 'cloud-fog',
+    'Sand': 'cloud-fog',
+    'Ash': 'cloud-fog',
+    'Squall': 'wind',
+    'Tornado': 'tornado'
+}
+
+
+async def fetch_nyc_weather():
+    """Fetch current weather data for NYC from OpenWeatherMap One Call API 3.0."""
+    if not OPENWEATHER_API_KEY:
+        return None
+    
+    try:
+        params = {
+            'lat': NYC_LAT,
+            'lon': NYC_LON,
+            'appid': OPENWEATHER_API_KEY,
+            'units': 'metric'  # Get temperature in Celsius
+        }
+        
+        async with httpx.AsyncClient() as client:
+            response = await client.get(WEATHER_URL, params=params, timeout=10.0)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Extract weather information from One Call API 3.0 response
+            current = data['current']
+            daily = data['daily'][0]  # Today's forecast for high/low
+            
+            # Get icon code and map to Lucide icon
+            icon_code = current['weather'][0].get('icon', '')
+            condition = current['weather'][0]['main']
+            lucide_icon = ICON_MAP.get(icon_code, ICON_MAP.get(condition, 'cloud'))
+            
+            weather_data = {
+                'temp_c': str(round(current['temp'])),
+                'temp_f': str(round(current['temp'] * 9/5 + 32)),
+                'condition': condition,
+                'icon': lucide_icon,
+                'high_c': str(round(daily['temp']['max'])),
+                'low_c': str(round(daily['temp']['min']))
+            }
+            
+            print(f"Weather updated: {weather_data['temp_c']}°C / {weather_data['temp_f']}°F - {weather_data['condition']}")
+            return weather_data
+            
+    except Exception as e:
+        print(f"Error fetching weather: {e}")
+        return None
+
+
+async def update_all_user_weather():
+    """Update weather data for all users in config file."""
+    weather_data = await fetch_nyc_weather()
+    if not weather_data:
+        return
+    
+    if not USER_CONFIGS_FILE.exists():
+        return
+    
+    try:
+        with open(USER_CONFIGS_FILE, 'r', encoding='utf-8') as f:
+            configs = json.load(f)
+        
+        # Update weather for all users
+        for user_id in configs:
+            configs[user_id]['weather_data'] = weather_data
+        
+        with open(USER_CONFIGS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(configs, f, indent=2, ensure_ascii=False)
+            
+        print(f"Updated weather data for {len(configs)} user(s)")
+        
+    except Exception as e:
+        print(f"Error updating user configs with weather: {e}")
+
+
+async def weather_update_loop():
+    """Background task to update weather every hour."""
+    while True:
+        try:
+            await update_all_user_weather()
+            # Wait 1 hour before next update
+            await asyncio.sleep(3600)
+        except Exception as e:
+            print(f"Error in weather update loop: {e}")
+            await asyncio.sleep(60)  # Wait 1 minute on error before retrying
+
+
+@app.on_event("startup")
+async def startup_event():
+    """Initialize browser and start weather updates on startup."""
+    global weather_task
+    await browser_manager.start()
+    
+    # Initial weather update
+    if OPENWEATHER_API_KEY:
+        await update_all_user_weather()
+        # Start background task for hourly updates
+        weather_task = asyncio.create_task(weather_update_loop())
+        print("Weather update task started (updates every hour)")
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Close browser and stop weather updates on shutdown."""
+    global weather_task
+    if weather_task:
+        weather_task.cancel()
+        try:
+            await weather_task
+        except asyncio.CancelledError:
+            pass
+    await browser_manager.close()
 
 
 def load_user_config(display_id: str):
@@ -646,8 +867,8 @@ async def display_page(request: Request, display_id: str):
         # Filter and sort based on user's time window
         filtered = [a for a in all_arrivals if min_minutes <= a['min'] <= max_minutes]
         filtered.sort(key=lambda x: x['min'])
-        # Show all filtered trains, up to 15
-        arrivals = filtered[:15]
+        # Limit to 12 trains to fit 480px screen perfectly
+        arrivals = filtered[:12]
         station_name = complex_info['name']
         
     else:
@@ -679,8 +900,8 @@ async def display_page(request: Request, display_id: str):
             filtered = [a for a in all_arrivals if min_minutes <= a['min'] <= max_minutes]
             print(f"After filtering {min_minutes}-{max_minutes} min: {len(filtered)} arrivals")
             filtered.sort(key=lambda x: (x['min'], x['line']))
-            # Show all filtered trains, up to 15
-            arrivals = filtered[:15]
+            # Limit to 12 trains to fit 480px screen perfectly
+            arrivals = filtered[:12]
             
         except Exception as e:
             return {"error": str(e)}
@@ -689,6 +910,17 @@ async def display_page(request: Request, display_id: str):
     from datetime import datetime
     current_time = datetime.now().strftime("%I:%M %p")
     
+    # Get weather data and custom note from config
+    weather_data = config.get('weather_data', {
+        'temp_c': '--',
+        'temp_f': '--',
+        'condition': 'N/A',
+        'icon': 'cloud',
+        'high_c': '--',
+        'low_c': '--'
+    })
+    custom_note = config.get('custom_note', '')
+    
     return templates.TemplateResponse("display.html", {
         "request": request,
         "display_id": display_id,
@@ -696,7 +928,9 @@ async def display_page(request: Request, display_id: str):
         "height": height,
         "current_time": current_time,
         "station_name": station_name,
-        "arrivals": arrivals
+        "arrivals": arrivals,
+        "weather_data": weather_data,
+        "custom_note": custom_note
     })
 
 
@@ -733,13 +967,14 @@ async def save_config(
     min_minutes: int = Form(...),
     max_minutes: int = Form(...),
     display_res: str = Form(...),
+    custom_note: str = Form(""),
     passcode: str = Form(...)
 ):
     """
     Save configuration for a specific display ID.
     Requires user's password for authentication.
     """
-    # Load existing config to get user's password
+    # Load existing config to get user's password and weather data
     existing_config = load_user_config(display_id)
     
     # Validate passcode against user's password
@@ -753,20 +988,23 @@ async def save_config(
                 'gtfs_id': gtfs_id,
                 'min_minutes': min_minutes,
                 'max_minutes': max_minutes,
-                'display_res': display_res
+                'display_res': display_res,
+                'custom_note': custom_note
             },
             "message": "Invalid password",
             "message_type": "error",
             "root_path": request.app.root_path
         })
     
-    # Save configuration (keep existing password)
+    # Save configuration (keep existing password and weather data)
     config = {
         'gtfs_id': gtfs_id,
         'min_minutes': min_minutes,
         'max_minutes': max_minutes,
         'display_res': display_res,
-        'password': existing_config['password']
+        'custom_note': custom_note[:200],  # Enforce 200 char limit
+        'password': existing_config['password'],
+        'weather_data': existing_config.get('weather_data', {'temp_c': '--', 'temp_f': '--', 'condition': 'N/A', 'high_c': '--', 'low_c': '--'})
     }
     save_user_config(display_id, config)
     
@@ -775,6 +1013,49 @@ async def save_config(
         url=f"/{display_id}",
         status_code=303
     )
+
+
+@app.get("/render/{display_id}")
+async def render_display(display_id: str):
+    """
+    Server-side screenshot rendering endpoint.
+    Returns a PNG image of the display page at 800x480 resolution.
+    """
+    if not PLAYWRIGHT_AVAILABLE:
+        raise HTTPException(
+            status_code=503,
+            detail="Screenshot service unavailable. Playwright not installed."
+        )
+    
+    if not browser_manager.page:
+        raise HTTPException(
+            status_code=503,
+            detail="Browser not initialized"
+        )
+    
+    try:
+        # Construct URL to local display page
+        url = f"http://localhost:8000/{display_id}"
+        
+        # Capture screenshot
+        screenshot_bytes = await browser_manager.capture_screenshot(url)
+        
+        # Return as streaming response
+        return StreamingResponse(
+            BytesIO(screenshot_bytes),
+            media_type="image/png",
+            headers={
+                "Cache-Control": "no-cache, no-store, must-revalidate",
+                "Pragma": "no-cache",
+                "Expires": "0"
+            }
+        )
+    
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Screenshot capture failed: {str(e)}"
+        )
 
 
 # Mount static files
