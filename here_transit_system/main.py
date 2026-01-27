@@ -585,6 +585,15 @@ def transform_arrivals(api_response: dict) -> list:
     Transform HERE API response into clean arrival list.
     Returns: [{"line": "4", "dest": "Woodlawn", "min": 5}, ...]
     """
+    # PATH route name mapping (HERE API longName -> our abbreviated format)
+    PATH_ROUTE_MAP = {
+        "Hoboken - 33rd Street": "HOB-33",
+        "Journal Square - 33rd Street": "JSQ-33",
+        "Newark - World Trade Center": "NWK-WTC",
+        "Journal Square - World Trade Center": "JSQ-WTC",
+        "Hoboken - World Trade Center": "HOB-WTC"
+    }
+    
     arrivals = []
     
     boards = api_response.get('boards', [])
@@ -596,8 +605,14 @@ def transform_arrivals(api_response: dict) -> list:
             # Extract line name - try multiple fields aggressively
             line = None
             
-            # Try shortName first (usually the route letter/number)
-            if transport.get('shortName'):
+            # PATH-specific handling: Use longName to get the full route name
+            if transport.get('shortName') == 'PATH' and transport.get('longName'):
+                long_name = transport.get('longName').strip()
+                # Convert full name to abbreviated format
+                line = PATH_ROUTE_MAP.get(long_name, 'PATH')
+            
+            # Try shortName first (usually the route letter/number) for MTA
+            if not line and transport.get('shortName'):
                 line = transport.get('shortName').strip()
             
             # Try name as fallback
@@ -1033,6 +1048,26 @@ async def display_page(request: Request, display_id: str):
         
         # Filter and sort based on user's time window
         filtered = [a for a in all_arrivals if min_minutes <= a['min'] <= max_minutes]
+        
+        # Apply line filtering if selected_lines is configured (case-insensitive, whitespace-resilient)
+        selected_lines = config.get('selected_lines', [])
+        if selected_lines:
+            # Normalize selected lines: strip whitespace and uppercase
+            selected_lines_upper = [s.strip().upper() for s in selected_lines]
+            # Debug: Show what we're comparing
+            print(f"Complex Filter: Selected lines (normalized): {selected_lines_upper}")
+            
+            filtered_with_debug = []
+            for a in filtered:
+                arrival_line_normalized = a['line'].strip().upper()
+                is_match = arrival_line_normalized in selected_lines_upper
+                print(f"  Comparing Arrival Line: '{a['line']}' (normalized: '{arrival_line_normalized}') against Filter: {selected_lines_upper} → Match: {is_match}")
+                if is_match:
+                    filtered_with_debug.append(a)
+            
+            filtered = filtered_with_debug
+            print(f"Complex: After line filtering: {len(filtered)} arrivals")
+        
         filtered.sort(key=lambda x: x['min'])
         # Limit to 12 trains to fit 480px screen perfectly
         arrivals = filtered[:12]
@@ -1067,11 +1102,24 @@ async def display_page(request: Request, display_id: str):
             filtered = [a for a in all_arrivals if min_minutes <= a['min'] <= max_minutes]
             print(f"After filtering {min_minutes}-{max_minutes} min: {len(filtered)} arrivals")
             
-            # Apply line filtering if selected_lines is configured
+            # Apply line filtering if selected_lines is configured (case-insensitive, whitespace-resilient)
             selected_lines = config.get('selected_lines', [])
             if selected_lines:
-                filtered = [a for a in filtered if a['line'] in selected_lines]
-                print(f"After line filtering {selected_lines}: {len(filtered)} arrivals")
+                # Normalize selected lines: strip whitespace and uppercase
+                selected_lines_upper = [s.strip().upper() for s in selected_lines]
+                # Debug: Show what we're comparing
+                print(f"Single Station Filter: Selected lines (normalized): {selected_lines_upper}")
+                
+                filtered_with_debug = []
+                for a in filtered:
+                    arrival_line_normalized = a['line'].strip().upper()
+                    is_match = arrival_line_normalized in selected_lines_upper
+                    print(f"  Comparing Arrival Line: '{a['line']}' (normalized: '{arrival_line_normalized}') against Filter: {selected_lines_upper} → Match: {is_match}")
+                    if is_match:
+                        filtered_with_debug.append(a)
+                
+                filtered = filtered_with_debug
+                print(f"Single Station: After line filtering: {len(filtered)} arrivals")
             
             filtered.sort(key=lambda x: (x['min'], x['line']))
             # Limit to 12 trains to fit 480px screen perfectly
