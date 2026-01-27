@@ -70,7 +70,7 @@ python -m pip install --upgrade pip >nul 2>&1
 echo.
 
 REM Install required packages
-echo [5/5] Installing required packages from requirements.txt...
+echo [5/6] Installing required packages from requirements.txt...
 if not exist "here_transit_system\requirements.txt" (
     echo ERROR: requirements.txt not found in here_transit_system\
     pause
@@ -92,6 +92,20 @@ if errorlevel 1 (
     echo.
     pause
     exit /b 1
+)
+echo.
+
+echo [6/6] Installing Playwright browser (Chromium)...
+echo       This may take a few minutes on first install...
+playwright install chromium
+if errorlevel 1 (
+    echo.
+    echo WARNING: Failed to install Playwright browser
+    echo          Screenshot functionality will not be available
+    echo          You can install it later with: playwright install chromium
+    echo.
+) else (
+    echo       ^> Chromium browser installed successfully
 )
 echo.
 
