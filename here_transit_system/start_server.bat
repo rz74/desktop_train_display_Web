@@ -13,7 +13,10 @@ call ..\venv\Scripts\activate.bat
 REM Check if .env file exists
 if not exist ".env" (
     echo ERROR: .env file not found!
-    echo Please create .env with your HERE_API_KEY
+    echo Please create .env with required API keys:
+    echo   - HERE_API_KEY
+    echo   - OPENWEATHER_API_KEY
+    echo   - SESSION_SECRET_KEY
     echo See .env.example for reference
     pause
     exit /b 1

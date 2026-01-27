@@ -1,21 +1,20 @@
 {
   "user1": {
-    "gtfs_id": "14th St",
+    "gtfs_id": "33rd St",
     "min_minutes": 2,
     "max_minutes": 20,
     "display_res": "800x480",
     "custom_note": "Daily Message:\r\nResilience is like a snowplow. You can\u2019t stop the storm from coming, but you can keep clearing the path until the sun comes out.",
     "selected_lines": [
-      "4",
-      "HOB-33",
+      "1",
       "JSQ-33"
     ],
     "password": "1234",
     "weather_data": {
       "temp_c": "-6",
-      "temp_f": "20",
-      "condition": "Clear",
-      "icon": "sun",
+      "temp_f": "22",
+      "condition": "Clouds",
+      "icon": "cloudy",
       "high_c": "-6",
       "low_c": "-13"
     }
@@ -28,9 +27,9 @@
     "password": "4321",
     "weather_data": {
       "temp_c": "-6",
-      "temp_f": "20",
-      "condition": "Clear",
-      "icon": "sun",
+      "temp_f": "22",
+      "condition": "Clouds",
+      "icon": "cloudy",
       "high_c": "-6",
       "low_c": "-13"
     },
