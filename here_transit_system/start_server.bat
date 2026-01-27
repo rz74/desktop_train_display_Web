@@ -30,10 +30,10 @@ if not exist ".env" (
     echo ERROR: .env file not found!
     echo Please create .env with required API keys:
     echo   - HERE_API_KEY
-    echo   - OPENWEATHER_API_KEY
-    echo   - SESSION_SECRET_KEY
+    echo   - OPENWEATHER_API_KEY (optional)
     echo   - ADMIN_PASSCODE
     echo   - USER1_PW, USER2_PW, etc. (one for each user)
+    echo   - SESSION_SECRET_KEY (optional - will auto-generate)
     echo See .env.example for reference
     pause
     exit /b 1

@@ -42,12 +42,12 @@ app = FastAPI(
 )
 
 # Add session middleware for authentication
+import secrets
 SESSION_SECRET_KEY = os.getenv("SESSION_SECRET_KEY")
 if not SESSION_SECRET_KEY:
-    raise ValueError(
-        "SESSION_SECRET_KEY environment variable is required. "
-        "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
-    )
+    # Auto-generate a random secret key for this session
+    SESSION_SECRET_KEY = secrets.token_hex(32)
+    print("Warning: SESSION_SECRET_KEY not set in .env. Using auto-generated key (will change on restart).")
 app.add_middleware(SessionMiddleware, secret_key=SESSION_SECRET_KEY)
 
 # Initialize Jinja2 templates
