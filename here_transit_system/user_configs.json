@@ -1,10 +1,10 @@
 {
   "user1": {
-    "gtfs_id": "WTC",
+    "gtfs_id": "33rd St",
     "min_minutes": 2,
     "max_minutes": 60,
     "display_res": "800x480",
-    "custom_note": "Daily Message:\r\nResilience is like a snowplow. You can’t stop the storm from coming, but you can keep clearing the path until the sun comes out.",
+    "custom_note": "Resilience is like a snowplow. You can\u2019t stop the storm from coming, but you can keep clearing the path until the sun comes out.",
     "selected_lines": [],
     "weather_data": {
       "temp_c": "-5",

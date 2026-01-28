@@ -77,6 +77,16 @@ NYC_LON = -74.0060
 # Maximum number of arrivals to display
 MAX_ARRIVALS = 13
 
+# Enable Playwright-based screenshot rendering (resource intensive)
+# Set to True if you need /render/{display_id} endpoint for HTML rendering
+# Set to False to use only /render_alt/{display_id} (Pillow-based rendering)
+ENABLE_PLAYWRIGHT_RENDERING = False
+
+# Enable HTML display pages at /{display_id}
+# Set to True if you need web-based HTML preview pages
+# Set to False to use only /render_alt/{display_id} (direct image endpoint for e-ink)
+ENABLE_HTML_PAGES = False
+
 # User configurations file
 USER_CONFIGS_FILE = Path(__file__).parent / "user_configs.json"
 
@@ -437,7 +447,8 @@ async def weather_update_loop():
 async def startup_event():
     """Initialize browser and start weather updates on startup."""
     global weather_task
-    await browser_manager.start()
+    if ENABLE_PLAYWRIGHT_RENDERING:
+        await browser_manager.start()
     
     # Initial weather update
     if OPENWEATHER_API_KEY:
@@ -1076,7 +1087,14 @@ async def display_page(request: Request, display_id: str):
     """
     Render the e-ink display page for a specific display ID.
     If no config exists, redirect to config page.
+    Note: This endpoint is disabled by default. Use /render_alt/{display_id} instead.
     """
+    if not ENABLE_HTML_PAGES:
+        raise HTTPException(
+            status_code=503,
+            detail="HTML pages are disabled. Use /render_alt/{display_id} for direct image rendering."
+        )
+    
     config = load_user_config(display_id)
     
     if not config:
@@ -1295,9 +1313,9 @@ async def save_config(
     }
     save_user_config(display_id, config)
     
-    # Redirect to display page
+    # Redirect to render_alt page (Pillow-based image)
     return RedirectResponse(
-        url=f"/{display_id}",
+        url=f"/render_alt/{display_id}",
         status_code=303
     )
 
@@ -1305,9 +1323,16 @@ async def save_config(
 @app.get("/render/{display_id}")
 async def render_display(display_id: str):
     """
-    Server-side screenshot rendering endpoint.
+    Server-side screenshot rendering endpoint (Playwright-based HTML rendering).
     Returns a PNG image of the display page at 800x480 resolution.
+    Note: This endpoint is disabled by default. Use /render_alt/{display_id} instead.
     """
+    if not ENABLE_PLAYWRIGHT_RENDERING:
+        raise HTTPException(
+            status_code=503,
+            detail="Playwright rendering is disabled. Use /render_alt/{display_id} for Pillow-based rendering."
+        )
+    
     if not PLAYWRIGHT_AVAILABLE:
         raise HTTPException(
             status_code=503,
@@ -1693,8 +1718,33 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 async def root():
-    """Serve the frontend."""
-    return FileResponse("static/index.html")
+    """
+    Root page - disabled by default.
+    Access configuration via: /{display_id}/config
+    Access image rendering via: /render_alt/{display_id}
+    """
+    return JSONResponse(
+        status_code=200,
+        content={
+            "service": "HERE Transit Display - Multi-Tenant E-Ink Display System",
+            "endpoints": {
+                "config": "/{display_id}/config - Configure display settings",
+                "render": "/render_alt/{display_id} - Get PNG image for e-ink display",
+                "api": {
+                    "arrivals": "/api/arrivals/{gtfs_id} - Get transit arrivals",
+                    "stations": "/api/stations - List all stations"
+                }
+            },
+            "note": "HTML display pages are disabled. Use /render_alt/{display_id} for direct image rendering."
+        }
+    )
+
+
+@app.get("/favicon.ico")
+async def favicon():
+    """Return 204 No Content for favicon requests to avoid 503 errors."""
+    from fastapi import Response
+    return Response(status_code=204)
 
 
 if __name__ == "__main__":
