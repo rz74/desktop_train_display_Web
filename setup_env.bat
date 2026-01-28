@@ -97,12 +97,12 @@ echo.
 
 echo [6/6] Installing Playwright browser (Chromium)...
 echo       This may take a few minutes on first install...
-playwright install chromium
+python -m playwright install chromium
 if errorlevel 1 (
     echo.
     echo WARNING: Failed to install Playwright browser
     echo          Screenshot functionality will not be available
-    echo          You can install it later with: playwright install chromium
+    echo          You can install it later with: python -m playwright install chromium
     echo.
 ) else (
     echo       ^> Chromium browser installed successfully
