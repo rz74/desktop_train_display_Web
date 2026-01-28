@@ -70,7 +70,7 @@ python -m pip install --upgrade pip >nul 2>&1
 echo.
 
 REM Install required packages
-echo [5/6] Installing required packages from requirements.txt...
+echo [5/5] Installing required packages from requirements.txt...
 if not exist "here_transit_system\requirements.txt" (
     echo ERROR: requirements.txt not found in here_transit_system\
     pause
@@ -87,25 +87,10 @@ if errorlevel 1 (
     echo             https://visualstudio.microsoft.com/visual-cpp-build-tools/
     echo.
     echo   Option 2: Install pre-built packages individually:
-    echo             python -m pip install fastapi uvicorn[standard] httpx python-dotenv jinja2 itsdangerous
-    echo             python -m pip install playwright --only-binary :all:
+    echo             python -m pip install fastapi uvicorn[standard] httpx python-dotenv jinja2 pillow
     echo.
     pause
     exit /b 1
-)
-echo.
-
-echo [6/6] Installing Playwright browser (Chromium)...
-echo       This may take a few minutes on first install...
-python -m playwright install chromium
-if errorlevel 1 (
-    echo.
-    echo WARNING: Failed to install Playwright browser
-    echo          Screenshot functionality will not be available
-    echo          You can install it later with: python -m playwright install chromium
-    echo.
-) else (
-    echo       ^> Chromium browser installed successfully
 )
 echo.
 
@@ -120,7 +105,9 @@ echo   1. Navigate to here_transit_system folder
 echo   2. Create .env file with your API keys (see .env.example)
 echo   3. Run start_server.bat to start the application
 echo.
-echo To activate the virtual environment manually:
-echo   venv\Scripts\activate.bat
+echo NOTE: Playwright browser rendering is disabled by default.
+echo       The system uses Pillow-based image rendering instead.
+echo       To enable Playwright, set ENABLE_PLAYWRIGHT_RENDERING = True in main.py
+echo       and run: python -m playwright install chromium
 echo.
 pause
