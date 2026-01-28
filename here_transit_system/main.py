@@ -18,6 +18,13 @@ import asyncio
 from io import BytesIO
 
 try:
+    from PIL import Image, ImageDraw, ImageFont
+    PILLOW_AVAILABLE = True
+except ImportError:
+    PILLOW_AVAILABLE = False
+    print("Warning: Pillow library not installed. Alternative rendering unavailable.")
+
+try:
     from underground import SubwayFeed
     MTA_FEED_AVAILABLE = True
 except ImportError:
@@ -66,6 +73,9 @@ WEATHER_URL = "https://api.openweathermap.org/data/3.0/onecall"
 # NYC coordinates
 NYC_LAT = 40.7128
 NYC_LON = -74.0060
+
+# Maximum number of arrivals to display
+MAX_ARRIVALS = 13
 
 # User configurations file
 USER_CONFIGS_FILE = Path(__file__).parent / "user_configs.json"
@@ -214,6 +224,36 @@ def load_station_mapping():
 
 # Load mapping on startup
 load_station_mapping()
+
+
+# ============================================================
+# MTA Line Colors (Official MTA Standards)
+# ============================================================
+MTA_LINE_COLORS = {
+    # IRT Broadway-Seventh Avenue Line (Red)
+    '1': '#EE352E', '2': '#EE352E', '3': '#EE352E',
+    # IRT Lexington Avenue Line (Green)
+    '4': '#00933C', '5': '#00933C', '6': '#00933C', '6X': '#00933C',
+    # IRT Flushing Line (Purple)
+    '7': '#B933AD', '7X': '#B933AD',
+    # BMT Canarsie Line (Gray)
+    'L': '#A7A9AC',
+    # BMT Nassau Street Line (Brown)
+    'J': '#996633', 'Z': '#996633',
+    # BMT Broadway Line (Yellow)
+    'N': '#FCCC0A', 'Q': '#FCCC0A', 'R': '#FCCC0A', 'W': '#FCCC0A',
+    # IND Eighth Avenue Line (Blue)
+    'A': '#0039A6', 'C': '#0039A6', 'E': '#0039A6',
+    # IND Sixth Avenue Line (Orange)
+    'B': '#FF6319', 'D': '#FF6319', 'F': '#FF6319', 'M': '#FF6319',
+    # IND Crosstown Line (Light Green)
+    'G': '#6CBE45',
+    # Shuttle (Dark Gray)
+    'S': '#808183', 'FS': '#808183', 'H': '#808183',
+    # PATH (Blue - PATH specific)
+    'HOB-33': '#1E90FF', 'JSQ-33': '#1E90FF', 'NWK-WTC': '#1E90FF',
+    'JSQ-WTC': '#1E90FF', 'HOB-WTC': '#1E90FF',
+}
 
 
 # ============================================================
@@ -1093,8 +1133,8 @@ async def display_page(request: Request, display_id: str):
             # print(f"Complex: After line filtering: {len(filtered)} arrivals")
         
         filtered.sort(key=lambda x: x['min'])
-        # Limit to 12 trains to fit 480px screen perfectly
-        arrivals = filtered[:12]
+        # Limit trains to fit screen
+        arrivals = filtered[:MAX_ARRIVALS]
         station_name = complex_info['name']
         
     else:
@@ -1146,8 +1186,8 @@ async def display_page(request: Request, display_id: str):
                 print(f"Single Station: After line filtering: {len(filtered)} arrivals")
             
             filtered.sort(key=lambda x: (x['min'], x['line']))
-            # Limit to 12 trains to fit 480px screen perfectly
-            arrivals = filtered[:12]
+            # Limit trains to fit screen
+            arrivals = filtered[:MAX_ARRIVALS]
             
         except Exception as e:
             return {"error": str(e)}
@@ -1303,6 +1343,348 @@ async def render_display(display_id: str):
             status_code=500,
             detail=f"Screenshot capture failed: {str(e)}"
         )
+
+
+@app.get("/render_alt/{display_id}")
+async def render_display_alt(display_id: str):
+    """
+    Alternative Pillow-based rendering endpoint.
+    Generates a PNG image directly using PIL without HTML/browser rendering.
+    Returns an 800x480 PNG image.
+    """
+    if not PILLOW_AVAILABLE:
+        raise HTTPException(
+            status_code=503,
+            detail="Pillow rendering service unavailable. PIL not installed."
+        )
+    
+    # Load user config
+    config = load_user_config(display_id)
+    if not config:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No configuration found for display: {display_id}"
+        )
+    
+    # Get arrivals using same logic as display_page
+    gtfs_id = config['gtfs_id']
+    min_minutes = config.get('min_minutes', 2)
+    max_minutes = config.get('max_minutes', 20)
+    selected_lines = config.get('selected_lines', [])
+    
+    # Fetch arrivals (same logic as display_page)
+    if gtfs_id in STATION_COMPLEXES:
+        complex_info = STATION_COMPLEXES[gtfs_id]
+        all_arrivals = []
+        
+        for sub_gtfs_id in complex_info["gtfs_ids"]:
+            here_id = STATION_MAPPING.get(sub_gtfs_id)
+            if not here_id:
+                continue
+            
+            try:
+                api_response = await fetch_departures(here_id)
+                arrivals = transform_arrivals(api_response)
+                all_arrivals.extend(arrivals)
+            except Exception as e:
+                print(f"Warning: Failed to fetch {sub_gtfs_id}: {e}")
+                continue
+        
+        # Filter by time window
+        filtered = [a for a in all_arrivals if min_minutes <= a['min'] <= max_minutes]
+        
+        # Apply line filtering
+        if selected_lines:
+            selected_lines_upper = [s.strip().upper() for s in selected_lines]
+            filtered = [a for a in filtered if a['line'].strip().upper() in selected_lines_upper]
+        
+        filtered.sort(key=lambda x: x['min'])
+        arrivals = filtered[:MAX_ARRIVALS]
+        station_name = complex_info['name']
+        
+    else:
+        # Single station
+        here_id = STATION_MAPPING.get(gtfs_id)
+        if not here_id:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Station mapping not found for: {gtfs_id}"
+            )
+        
+        station_name = STATION_NAMES.get(gtfs_id, gtfs_id)
+        agency = STATION_AGENCY.get(gtfs_id, 'MTA')
+        
+        try:
+            # Get HERE API data
+            api_response = await fetch_departures(here_id)
+            here_arrivals = transform_arrivals(api_response)
+            
+            # Get MTA GTFS data if this is an MTA station
+            mta_arrivals = []
+            if agency == 'MTA' and MTA_FEED_AVAILABLE:
+                mta_arrivals = get_mta_arrivals(gtfs_id)
+            
+            # Combine arrivals
+            all_arrivals = here_arrivals + mta_arrivals
+            
+            # Filter by time window
+            filtered = [a for a in all_arrivals if min_minutes <= a['min'] <= max_minutes]
+            
+            # Apply line filtering
+            if selected_lines:
+                selected_lines_upper = [s.strip().upper() for s in selected_lines]
+                filtered = [a for a in filtered if a['line'].strip().upper() in selected_lines_upper]
+            
+            filtered.sort(key=lambda x: x['min'])
+            arrivals = filtered[:MAX_ARRIVALS]
+            
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Failed to fetch arrivals: {str(e)}"
+            )
+    
+    # Get weather data
+    weather_data = config.get('weather_data', {
+        'temp_c': '--',
+        'temp_f': '--',
+        'condition': 'N/A',
+        'icon': 'cloud'
+    })
+    
+    # Generate image using Pillow
+    try:
+        img = draw_transit_display(
+            station_name=station_name,
+            arrivals=arrivals,
+            weather_data=weather_data,
+            custom_note=config.get('custom_note', '')
+        )
+        
+        # Convert to bytes
+        img_byte_arr = BytesIO()
+        img.save(img_byte_arr, format='PNG')
+        img_byte_arr.seek(0)
+        
+        return StreamingResponse(
+            img_byte_arr,
+            media_type="image/png",
+            headers={
+                "Cache-Control": "no-cache, no-store, must-revalidate",
+                "Pragma": "no-cache",
+                "Expires": "0"
+            }
+        )
+        
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Image generation failed: {str(e)}"
+        )
+
+
+def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, custom_note: str = '') -> Image.Image:
+    """
+    Draw the transit display using Pillow matching the original HTML layout.
+    Returns a PIL Image object (800x480, white background).
+    Layout: 2-column grid - Left (250px): Weather + Note | Right (550px): Transit
+    """
+    # Create canvas - WHITE background to match HTML
+    img = Image.new('RGB', (800, 480), color='white')
+    draw = ImageDraw.Draw(img)
+    
+    # Load fonts
+    try:
+        font_paths = [
+            'C:\\Windows\\Fonts\\arialbd.ttf',  # Windows Arial Bold
+            'C:\\Windows\\Fonts\\Arial.ttf',  # Windows Arial
+            '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',  # Linux
+            '/System/Library/Fonts/Helvetica.ttc',  # macOS
+        ]
+        
+        font_xlarge = None
+        font_large = None
+        font_medium = None
+        font_small = None
+        font_xsmall = None
+        font_tiny = None
+        
+        for font_path in font_paths:
+            if os.path.exists(font_path):
+                font_xlarge = ImageFont.truetype(font_path, 42)  # Weather temp
+                font_large = ImageFont.truetype(font_path, 20)   # Minutes
+                font_medium = ImageFont.truetype(font_path, 18)  # Line/Station
+                font_small = ImageFont.truetype(font_path, 16)   # Weather condition/Note
+                font_xsmall = ImageFont.truetype(font_path, 14)  # Time/Destination
+                font_tiny = ImageFont.truetype(font_path, 16)    # PATH line names (column 1)
+                break
+        
+        if not font_xlarge:
+            font_xlarge = font_large = font_medium = font_small = font_xsmall = font_tiny = ImageFont.load_default()
+            
+    except Exception as e:
+        print(f"Warning: Could not load custom font: {e}")
+        font_xlarge = font_large = font_medium = font_small = font_xsmall = font_tiny = ImageFont.load_default()
+    
+    # PATH routes for font size detection
+    PATH_ROUTES = {'HOB-33', 'JSQ-33', 'NWK-WTC', 'JSQ-WTC', 'HOB-WTC'}
+    
+    # PATH route display names (color-coded)
+    PATH_DISPLAY_NAMES = {
+        'JSQ-33': 'P-ORG',     # Orange line (Journal Square - 33rd)
+        'HOB-33': 'P-BLU',     # Blue line (Hoboken - 33rd)
+        'NWK-WTC': 'P-RED',    # Red line (Newark - WTC)
+        'HOB-WTC': 'P-BLU',    # Blue line (Hoboken - WTC)
+        'JSQ-WTC': 'P-ORG'     # Orange/Green line (Journal Square - WTC)
+    }
+    
+    # ===== LEFT COLUMN (250px wide) =====
+    left_col_width = 250
+    
+    # Draw vertical border between left and right columns
+    draw.line([(left_col_width, 0), (left_col_width, 480)], fill='black', width=2)
+    
+    # Draw horizontal border splitting left column in half
+    draw.line([(0, 240), (left_col_width, 240)], fill='black', width=2)
+    
+    # ----- TOP-LEFT: Weather Section (250x240) -----
+    weather_y_start = 60
+    
+    # Temperature (centered)
+    temp_c = weather_data.get('temp_c', '--')
+    temp_text = f"{temp_c}°C"
+    temp_bbox = draw.textbbox((0, 0), temp_text, font=font_xlarge)
+    temp_width = temp_bbox[2] - temp_bbox[0]
+    draw.text((left_col_width // 2 - temp_width // 2, weather_y_start), 
+              temp_text, fill='black', font=font_xlarge)
+    
+    # Temperature F (centered, below)
+    temp_f = weather_data.get('temp_f', '--')
+    temp_f_text = f"({temp_f}°F)"
+    temp_f_bbox = draw.textbbox((0, 0), temp_f_text, font=font_small)
+    temp_f_width = temp_f_bbox[2] - temp_f_bbox[0]
+    draw.text((left_col_width // 2 - temp_f_width // 2, weather_y_start + 50), 
+              temp_f_text, fill=(102, 102, 102), font=font_small)
+    
+    # Condition (centered)
+    condition = weather_data.get('condition', 'N/A')
+    cond_bbox = draw.textbbox((0, 0), condition, font=font_small)
+    cond_width = cond_bbox[2] - cond_bbox[0]
+    draw.text((left_col_width // 2 - cond_width // 2, weather_y_start + 80), 
+              condition, fill=(102, 102, 102), font=font_small)
+    
+    # High/Low (centered)
+    high_c = weather_data.get('high_c', '--')
+    low_c = weather_data.get('low_c', '--')
+    hilo_text = f"H: {high_c}° L: {low_c}°"
+    hilo_bbox = draw.textbbox((0, 0), hilo_text, font=font_xsmall)
+    hilo_width = hilo_bbox[2] - hilo_bbox[0]
+    draw.text((left_col_width // 2 - hilo_width // 2, weather_y_start + 110), 
+              hilo_text, fill=(51, 51, 51), font=font_xsmall)
+    
+    # ----- BOTTOM-LEFT: Custom Note Section (250x240) -----
+    if custom_note:
+        # Word wrap the note to fit in 230px width (with 10px padding on each side)
+        note_lines = []
+        words = custom_note.split()
+        current_line = ""
+        
+        for word in words:
+            test_line = current_line + " " + word if current_line else word
+            bbox = draw.textbbox((0, 0), test_line, font=font_small)
+            if bbox[2] - bbox[0] <= 230:  # Max width 230px
+                current_line = test_line
+            else:
+                if current_line:
+                    note_lines.append(current_line)
+                current_line = word
+        
+        if current_line:
+            note_lines.append(current_line)
+        
+        # Center the text block vertically
+        total_height = len(note_lines) * 22  # ~22px per line
+        note_y_start = 240 + (240 - total_height) // 2
+        
+        for i, line in enumerate(note_lines[:6]):  # Max 6 lines
+            bbox = draw.textbbox((0, 0), line, font=font_small)
+            line_width = bbox[2] - bbox[0]
+            draw.text((left_col_width // 2 - line_width // 2, note_y_start + i * 22), 
+                     line, fill='black', font=font_small)
+    
+    # ===== RIGHT COLUMN (550px wide) =====
+    right_col_x = left_col_width + 10  # 10px padding
+    
+    # ----- Transit Header -----
+    header_y = 10
+    
+    # Station name (left)
+    draw.text((right_col_x, header_y), station_name, fill='black', font=font_medium)
+    
+    # Current time (right)
+    current_time = datetime.now().strftime('%I:%M %p')
+    time_bbox = draw.textbbox((0, 0), current_time, font=font_xsmall)
+    time_width = time_bbox[2] - time_bbox[0]
+    draw.text((790 - time_width, header_y), current_time, fill='black', font=font_xsmall)
+    
+    # Last refresh (right, below time)
+    last_refresh = f"Last: {current_time}"
+    last_bbox = draw.textbbox((0, 0), last_refresh, font=font_xsmall)
+    last_width = last_bbox[2] - last_bbox[0]
+    draw.text((790 - last_width, header_y + 18), last_refresh, fill=(102, 102, 102), font=font_xsmall)
+    
+    # Header bottom border
+    header_bottom = header_y + 42
+    draw.line([(right_col_x, header_bottom), (795, header_bottom)], fill='black', width=2)
+    
+    # ----- Transit Table -----
+    table_y = header_bottom + 8
+    row_height = 32
+    
+    if arrivals:
+        for i, arrival in enumerate(arrivals[:MAX_ARRIVALS]):  # Max rows to display
+            y_pos = table_y + i * row_height
+            
+            # Alternating row background (even rows get light gray)
+            if i % 2 == 1:
+                draw.rectangle([(right_col_x - 5, y_pos - 2), (795, y_pos + row_height - 5)], 
+                              fill=(245, 245, 245))
+            
+            # Line (12% width = ~66px)
+            # Use smaller font for PATH trains (font_tiny = 10px)
+            line = arrival['line']
+            # Display color-coded names for PATH trains
+            display_line = PATH_DISPLAY_NAMES.get(line, line)
+            line_x = right_col_x + 15
+            line_font = font_tiny if line in PATH_ROUTES else font_medium
+            draw.text((line_x, y_pos + (3 if line in PATH_ROUTES else 0)), display_line, fill='black', font=line_font)
+            
+            # Destination (65% width = ~357px)
+            dest = arrival['dest'][:35]  # Truncate long destinations
+            dest_x = right_col_x + 80
+            draw.text((dest_x, y_pos), dest, fill='black', font=font_xsmall)
+            
+            # Minutes (23% width = ~126px, right-aligned)
+            minutes = str(arrival['min'])
+            min_bbox = draw.textbbox((0, 0), minutes, font=font_large)
+            min_width = min_bbox[2] - min_bbox[0]
+            min_x = 765 - min_width
+            draw.text((min_x, y_pos - 2), minutes, fill='black', font=font_large)
+            
+            # Row bottom border (light gray)
+            if i < len(arrivals) - 1:  # Don't draw on last row
+                draw.line([(right_col_x, y_pos + row_height - 5), 
+                          (795, y_pos + row_height - 5)], fill=(224, 224, 224), width=1)
+    
+    else:
+        # No trains message
+        no_trains_text = "No trains"
+        bbox = draw.textbbox((0, 0), no_trains_text, font=font_medium)
+        text_width = bbox[2] - bbox[0]
+        draw.text(((left_col_width + 800) // 2 - text_width // 2, 240), 
+                 no_trains_text, fill='black', font=font_medium)
+    
+    return img
 
 
 # Mount static files

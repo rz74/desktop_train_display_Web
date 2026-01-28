@@ -1,22 +1,18 @@
 {
   "user1": {
-    "gtfs_id": "33rd St",
+    "gtfs_id": "WTC",
     "min_minutes": 2,
     "max_minutes": 60,
     "display_res": "800x480",
-    "custom_note": "Daily Message:\r\nResilience is like a snowplow. You can\u2019t stop the storm from coming, but you can keep clearing the path until the sun comes out.",
-    "selected_lines": [
-      "1",
-      "JSQ-33",
-      "R"
-    ],
+    "custom_note": "Daily Message:\r\nResilience is like a snowplow. You can’t stop the storm from coming, but you can keep clearing the path until the sun comes out.",
+    "selected_lines": [],
     "weather_data": {
-      "temp_c": "-7",
-      "temp_f": "20",
-      "condition": "Clouds",
-      "icon": "cloudy",
-      "high_c": "-7",
-      "low_c": "-13"
+      "temp_c": "-5",
+      "temp_f": "23",
+      "condition": "Clear",
+      "icon": "sun",
+      "high_c": "-5",
+      "low_c": "-15"
     }
   },
   "user2": {
@@ -25,12 +21,12 @@
     "max_minutes": 20,
     "display_res": "800x480",
     "weather_data": {
-      "temp_c": "-7",
-      "temp_f": "20",
-      "condition": "Clouds",
-      "icon": "cloudy",
-      "high_c": "-7",
-      "low_c": "-13"
+      "temp_c": "-5",
+      "temp_f": "23",
+      "condition": "Clear",
+      "icon": "sun",
+      "high_c": "-5",
+      "low_c": "-15"
     },
     "custom_note": "Welcome to Jersey City"
   }
