@@ -9,8 +9,8 @@
     "weather_data": {
       "temp_c": "-5",
       "temp_f": "23",
-      "condition": "Clear",
-      "icon": "sun",
+      "condition": "Clouds",
+      "icon": "cloud-sun",
       "high_c": "-5",
       "low_c": "-15"
     }
@@ -23,8 +23,8 @@
     "weather_data": {
       "temp_c": "-5",
       "temp_f": "23",
-      "condition": "Clear",
-      "icon": "sun",
+      "condition": "Clouds",
+      "icon": "cloud-sun",
       "high_c": "-5",
       "low_c": "-15"
     },

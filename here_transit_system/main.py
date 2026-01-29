@@ -81,6 +81,16 @@ MAX_ARRIVALS = 13
 # Timezone Configuration - US Eastern Time (automatically handles DST)
 EASTERN_TZ = ZoneInfo("America/New_York")
 
+# Global font cache (loaded once at startup for better Pi performance)
+FONT_CACHE = {
+    'xlarge': None, 'large': None, 'medium': None,
+    'small': None, 'xsmall': None, 'tiny': None
+}
+
+# User config cache (reduces SD card reads on Pi)
+USER_CONFIG_CACHE = {}
+USER_CONFIG_CACHE_TIME = {}
+
 # Enable Playwright-based screenshot rendering (resource intensive)
 # Set to True if you need /render/{display_id} endpoint for HTML rendering
 # Set to False to use only /render_alt/{display_id} (Pillow-based rendering)
@@ -238,6 +248,41 @@ def load_station_mapping():
 
 # Load mapping on startup
 load_station_mapping()
+
+
+def load_fonts_at_startup():
+    """Load all fonts once at startup and cache them globally (Pi optimization)."""
+    global FONT_CACHE
+    try:
+        font_paths = [
+            'C:\\Windows\\Fonts\\arialbd.ttf',  # Windows Arial Bold
+            'C:\\Windows\\Fonts\\Arial.ttf',  # Windows Arial
+            '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',  # Linux
+            '/System/Library/Fonts/Helvetica.ttc',  # macOS
+        ]
+        
+        for font_path in font_paths:
+            if os.path.exists(font_path):
+                FONT_CACHE['xlarge'] = ImageFont.truetype(font_path, 42)
+                FONT_CACHE['large'] = ImageFont.truetype(font_path, 20)
+                FONT_CACHE['medium'] = ImageFont.truetype(font_path, 18)
+                FONT_CACHE['small'] = ImageFont.truetype(font_path, 16)
+                FONT_CACHE['xsmall'] = ImageFont.truetype(font_path, 14)
+                FONT_CACHE['tiny'] = ImageFont.truetype(font_path, 10)
+                print(f"✓ Fonts cached from: {font_path}")
+                return
+        
+        # Fallback to default font
+        default_font = ImageFont.load_default()
+        for key in FONT_CACHE:
+            FONT_CACHE[key] = default_font
+        print("⚠ Using default font (TrueType fonts not found)")
+            
+    except Exception as e:
+        print(f"Warning: Font loading error: {e}")
+        default_font = ImageFont.load_default()
+        for key in FONT_CACHE:
+            FONT_CACHE[key] = default_font
 
 
 # ============================================================
@@ -451,6 +496,11 @@ async def weather_update_loop():
 async def startup_event():
     """Initialize browser and start weather updates on startup."""
     global weather_task
+    
+    # Load fonts once at startup (Pi optimization)
+    if PILLOW_AVAILABLE:
+        load_fonts_at_startup()
+    
     if ENABLE_PLAYWRIGHT_RENDERING:
         await browser_manager.start()
     
@@ -476,18 +526,33 @@ async def shutdown_event():
 
 
 def load_user_config(display_id: str):
-    """Load configuration for a specific display ID. Returns dict or None."""
+    """Load configuration for a specific display ID (with cache for Pi performance). Returns dict or None."""
+    global USER_CONFIG_CACHE, USER_CONFIG_CACHE_TIME
+    
     if not USER_CONFIGS_FILE.exists():
         return None
     
-    with open(USER_CONFIGS_FILE, 'r', encoding='utf-8') as f:
-        configs = json.load(f)
-    
-    return configs.get(display_id)
+    try:
+        # Check if file was modified (compare mtime)
+        current_mtime = USER_CONFIGS_FILE.stat().st_mtime
+        cached_mtime = USER_CONFIG_CACHE_TIME.get('file_mtime', 0)
+        
+        # Reload from disk only if file changed
+        if current_mtime != cached_mtime:
+            with open(USER_CONFIGS_FILE, 'r', encoding='utf-8') as f:
+                USER_CONFIG_CACHE = json.load(f)
+                USER_CONFIG_CACHE_TIME['file_mtime'] = current_mtime
+        
+        return USER_CONFIG_CACHE.get(display_id)
+    except Exception as e:
+        print(f"Error loading user config: {e}")
+        return None
 
 
 def save_user_config(display_id: str, config: dict):
     """Save configuration for a specific display ID."""
+    global USER_CONFIG_CACHE, USER_CONFIG_CACHE_TIME
+    
     configs = {}
     if USER_CONFIGS_FILE.exists():
         with open(USER_CONFIGS_FILE, 'r', encoding='utf-8') as f:
@@ -497,6 +562,9 @@ def save_user_config(display_id: str, config: dict):
     
     with open(USER_CONFIGS_FILE, 'w', encoding='utf-8') as f:
         json.dump(configs, f, indent=2)
+    
+    # Invalidate cache after save
+    USER_CONFIG_CACHE_TIME['file_mtime'] = 0
 
 
 def get_all_stations() -> list:
@@ -586,10 +654,14 @@ def get_mta_arrivals(gtfs_id: str) -> list:
         return []
     
     try:
-        # underground library needs route letters/numbers, not stop IDs
-        # Query all major routes and filter by stop_id
-        routes = ['A', 'C', 'E', 'B', 'D', 'F', 'M', 'G', 'L', 'J', 'Z',
-                  'N', 'Q', 'R', 'W', '1', '2', '3', '4', '5', '6', '7', 'S']
+        # Pi Optimization: Query only routes that serve this station (reduces API calls by ~70%)
+        if gtfs_id in STATION_LINES_METADATA:
+            routes = STATION_LINES_METADATA[gtfs_id]
+            # print(f"Optimized: Querying {len(routes)} routes for station {gtfs_id}: {routes}")
+        else:
+            # Fallback: Query all major routes if metadata not available
+            routes = ['A', 'C', 'E', 'B', 'D', 'F', 'M', 'G', 'L', 'J', 'Z',
+                      'N', 'Q', 'R', 'W', '1', '2', '3', '4', '5', '6', '7', 'S']
         
         arrivals = []
         
@@ -1490,9 +1562,9 @@ async def render_display_alt(display_id: str):
             custom_note=config.get('custom_note', '')
         )
         
-        # Convert to bytes
+        # Convert to bytes (optimize=False for faster encoding on Pi)
         img_byte_arr = BytesIO()
-        img.save(img_byte_arr, format='PNG')
+        img.save(img_byte_arr, format='PNG', optimize=False)
         img_byte_arr.seek(0)
         
         return StreamingResponse(
@@ -1522,38 +1594,13 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
     img = Image.new('RGB', (800, 480), color='white')
     draw = ImageDraw.Draw(img)
     
-    # Load fonts
-    try:
-        font_paths = [
-            'C:\\Windows\\Fonts\\arialbd.ttf',  # Windows Arial Bold
-            'C:\\Windows\\Fonts\\Arial.ttf',  # Windows Arial
-            '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',  # Linux
-            '/System/Library/Fonts/Helvetica.ttc',  # macOS
-        ]
-        
-        font_xlarge = None
-        font_large = None
-        font_medium = None
-        font_small = None
-        font_xsmall = None
-        font_tiny = None
-        
-        for font_path in font_paths:
-            if os.path.exists(font_path):
-                font_xlarge = ImageFont.truetype(font_path, 42)  # Weather temp
-                font_large = ImageFont.truetype(font_path, 20)   # Minutes
-                font_medium = ImageFont.truetype(font_path, 18)  # Line/Station
-                font_small = ImageFont.truetype(font_path, 16)   # Weather condition/Note
-                font_xsmall = ImageFont.truetype(font_path, 14)  # Time/Destination
-                font_tiny = ImageFont.truetype(font_path, 16)    # PATH line names (column 1)
-                break
-        
-        if not font_xlarge:
-            font_xlarge = font_large = font_medium = font_small = font_xsmall = font_tiny = ImageFont.load_default()
-            
-    except Exception as e:
-        print(f"Warning: Could not load custom font: {e}")
-        font_xlarge = font_large = font_medium = font_small = font_xsmall = font_tiny = ImageFont.load_default()
+    # Use cached fonts (loaded once at startup for Pi performance)
+    font_xlarge = FONT_CACHE['xlarge']
+    font_large = FONT_CACHE['large']
+    font_medium = FONT_CACHE['medium']
+    font_small = FONT_CACHE['small']
+    font_xsmall = FONT_CACHE['xsmall']
+    font_tiny = FONT_CACHE['tiny']
     
     # PATH routes for font size detection
     PATH_ROUTES = {'HOB-33', 'JSQ-33', 'NWK-WTC', 'JSQ-WTC', 'HOB-WTC'}
@@ -1673,11 +1720,6 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
     if arrivals:
         for i, arrival in enumerate(arrivals[:MAX_ARRIVALS]):  # Max rows to display
             y_pos = table_y + i * row_height
-            
-            # Alternating row background (even rows get light gray)
-            if i % 2 == 1:
-                draw.rectangle([(right_col_x - 5, y_pos - 2), (795, y_pos + row_height - 5)], 
-                              fill=(245, 245, 245))
             
             # Line (12% width = ~66px)
             # Use smaller font for PATH trains (font_tiny = 10px)

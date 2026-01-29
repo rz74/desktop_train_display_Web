@@ -1,18 +1,26 @@
 #!/bin/bash
+echo "=== Corrected Pi Transit Setup ==="
 
-echo "=== Starting Dedicated Pi Transit Setup ==="
-
-# 1. Install System Dependencies
+# 1. Foundations
 sudo apt-get update
-sudo apt-get install -y python3-pip python3-pil libopenjp2-7 libtiff5-dev \
-                        libjpeg-dev libfreetype-dev libcap-dev git
+sudo apt-get install -y git python3-pip python3-pil libopenjp2-7 libtiff5-dev \
+                        libjpeg-dev libfreetype-dev libcap-dev
 
-# 2. Hardware and Global Python Setup
+# 2. Hardware and Requests
 sudo raspi-config nonint do_spi 0
-sudo pip3 install requests Pillow --break-system-packages
+sudo pip3 install requests --break-system-packages
 
-# 3. Create the strictly-after-boot Service
-# We use 'graphical.target' and 'ExecStartPre' to ensure a full boot
+# 3. Waveshare Driver - Corrected Command
+echo "Installing Waveshare Drivers..."
+if [ ! -d "e-Paper" ]; then
+    git clone https://github.com/waveshare/e-Paper.git
+fi
+cd e-Paper/RaspberryPi_JetsonNano/python
+# FIXED: Using pip instead of setup.py for system-wide install
+sudo pip3 install . --break-system-packages
+cd ~/eink
+
+# 4. Service Configuration (Points to eink.py)
 cat <<EOF | sudo tee /etc/systemd/system/transit_display.service
 [Unit]
 Description=E-Ink Transit Display Client
@@ -20,23 +28,19 @@ After=graphical.target network-online.target ssh.service
 Wants=graphical.target network-online.target
 
 [Service]
-# Wait an extra 10 seconds AFTER boot triggers to ensure OS stability
-ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/python3 $(pwd)/eink.py
-WorkingDirectory=$(pwd)
-
-# Keep it low priority so SSH is always fast and responsive
+ExecStartPre=/bin/sleep 15
+ExecStart=/usr/bin/python3 /home/eink1/eink/eink.py
+WorkingDirectory=/home/eink1/eink
 Nice=10
 Restart=always
 RestartSec=20
-User=$USER
+User=eink1
 
 [Install]
-# This ensures it is part of the final boot stage
 WantedBy=graphical.target
 EOF
 
-# 4. Finalize
 sudo systemctl daemon-reload
 sudo systemctl enable transit_display.service
-echo "=== Setup Complete! Reboot to test the 'Strict Start' sequence. ==="
+
+echo "=== Setup Complete! ==="

@@ -1,6 +1,9 @@
 # Environment variables
 .env
 
+# User configurations (contains personal data)
+user_configs.json
+
 # Python
 __pycache__/
 *.py[cod]
