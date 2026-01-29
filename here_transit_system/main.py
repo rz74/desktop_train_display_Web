@@ -13,6 +13,7 @@ import json
 import re
 from pathlib import Path
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import os
 import asyncio
 from io import BytesIO
@@ -76,6 +77,9 @@ NYC_LON = -74.0060
 
 # Maximum number of arrivals to display
 MAX_ARRIVALS = 13
+
+# Timezone Configuration - US Eastern Time (automatically handles DST)
+EASTERN_TZ = ZoneInfo("America/New_York")
 
 # Enable Playwright-based screenshot rendering (resource intensive)
 # Set to True if you need /render/{display_id} endpoint for HTML rendering
@@ -1212,7 +1216,7 @@ async def display_page(request: Request, display_id: str):
     
     # Get current time
     from datetime import datetime
-    current_time = datetime.now().strftime("%I:%M %p")
+    current_time = datetime.now(EASTERN_TZ).strftime("%I:%M %p")
     
     # Get weather data and custom note from config
     weather_data = config.get('weather_data', {
@@ -1647,7 +1651,7 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
     draw.text((right_col_x, header_y), station_name, fill='black', font=font_medium)
     
     # Current time (right)
-    current_time = datetime.now().strftime('%I:%M %p')
+    current_time = datetime.now(EASTERN_TZ).strftime('%I:%M %p')
     time_bbox = draw.textbbox((0, 0), current_time, font=font_xsmall)
     time_width = time_bbox[2] - time_bbox[0]
     draw.text((790 - time_width, header_y), current_time, fill='black', font=font_xsmall)
