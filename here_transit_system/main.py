@@ -87,6 +87,12 @@ FONT_CACHE = {
     'small': None, 'xsmall': None, 'tiny': None
 }
 
+# Left column image cache (weather + note section for Pi performance)
+LEFT_COL_CACHE = {
+    'data_hash': None,
+    'image': None
+}
+
 # User config cache (reduces SD card reads on Pi)
 USER_CONFIG_CACHE = {}
 USER_CONFIG_CACHE_TIME = {}
@@ -1590,6 +1596,8 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
     Returns a PIL Image object (800x480, white background).
     Layout: 2-column grid - Left (250px): Weather + Note | Right (550px): Transit
     """
+    global LEFT_COL_CACHE
+    
     # Create canvas - WHITE background to match HTML
     img = Image.new('RGB', (800, 480), color='white')
     draw = ImageDraw.Draw(img)
@@ -1614,79 +1622,98 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
         'JSQ-WTC': 'P-ORG'     # Orange/Green line (Journal Square - WTC)
     }
     
-    # ===== LEFT COLUMN (250px wide) =====
+    # ===== LEFT COLUMN (250px wide) - WITH CACHING =====
     left_col_width = 250
+    
+    # Generate hash for left column data (weather + note)
+    temp_c = weather_data.get('temp_c', '--')
+    temp_f = weather_data.get('temp_f', '--')
+    condition = weather_data.get('condition', 'N/A')
+    high_c = weather_data.get('high_c', '--')
+    low_c = weather_data.get('low_c', '--')
+    data_hash = f"{temp_c}|{temp_f}|{condition}|{high_c}|{low_c}|{custom_note}"
+    
+    # Check if we can use cached left column
+    if LEFT_COL_CACHE['data_hash'] == data_hash and LEFT_COL_CACHE['image'] is not None:
+        # Use cached left column
+        img.paste(LEFT_COL_CACHE['image'], (0, 0))
+    else:
+        # Render new left column and cache it
+        left_col_img = Image.new('RGB', (left_col_width, 480), color='white')
+        left_draw = ImageDraw.Draw(left_col_img)
+        
+        # Draw horizontal border splitting left column in half
+        left_draw.line([(0, 240), (left_col_width, 240)], fill='black', width=2)
+        
+        # ----- TOP-LEFT: Weather Section (250x240) -----
+        weather_y_start = 60
+        
+        # Temperature (centered)
+        temp_text = f"{temp_c}°C"
+        temp_bbox = left_draw.textbbox((0, 0), temp_text, font=font_xlarge)
+        temp_width = temp_bbox[2] - temp_bbox[0]
+        left_draw.text((left_col_width // 2 - temp_width // 2, weather_y_start), 
+                  temp_text, fill='black', font=font_xlarge)
+        
+        # Temperature F (centered, below)
+        temp_f_text = f"({temp_f}°F)"
+        temp_f_bbox = left_draw.textbbox((0, 0), temp_f_text, font=font_small)
+        temp_f_width = temp_f_bbox[2] - temp_f_bbox[0]
+        left_draw.text((left_col_width // 2 - temp_f_width // 2, weather_y_start + 50), 
+                  temp_f_text, fill=(102, 102, 102), font=font_small)
+        
+        # Condition (centered)
+        cond_bbox = left_draw.textbbox((0, 0), condition, font=font_small)
+        cond_width = cond_bbox[2] - cond_bbox[0]
+        left_draw.text((left_col_width // 2 - cond_width // 2, weather_y_start + 80), 
+                  condition, fill=(102, 102, 102), font=font_small)
+        
+        # High/Low (centered)
+        hilo_text = f"H: {high_c}° L: {low_c}°"
+        hilo_bbox = left_draw.textbbox((0, 0), hilo_text, font=font_xsmall)
+        hilo_width = hilo_bbox[2] - hilo_bbox[0]
+        left_draw.text((left_col_width // 2 - hilo_width // 2, weather_y_start + 110), 
+                  hilo_text, fill=(51, 51, 51), font=font_xsmall)
+        
+        # ----- BOTTOM-LEFT: Custom Note Section (250x240) -----
+        if custom_note:
+            # Word wrap the note to fit in 230px width (with 10px padding on each side)
+            note_lines = []
+            words = custom_note.split()
+            current_line = ""
+            
+            for word in words:
+                test_line = current_line + " " + word if current_line else word
+                bbox = left_draw.textbbox((0, 0), test_line, font=font_small)
+                if bbox[2] - bbox[0] <= 230:  # Max width 230px
+                    current_line = test_line
+                else:
+                    if current_line:
+                        note_lines.append(current_line)
+                    current_line = word
+            
+            if current_line:
+                note_lines.append(current_line)
+            
+            # Center the text block vertically
+            total_height = len(note_lines) * 22  # ~22px per line
+            note_y_start = 240 + (240 - total_height) // 2
+            
+            for i, line in enumerate(note_lines[:6]):  # Max 6 lines
+                bbox = left_draw.textbbox((0, 0), line, font=font_small)
+                line_width = bbox[2] - bbox[0]
+                left_draw.text((left_col_width // 2 - line_width // 2, note_y_start + i * 22), 
+                         line, fill='black', font=font_small)
+        
+        # Cache the rendered left column
+        LEFT_COL_CACHE['data_hash'] = data_hash
+        LEFT_COL_CACHE['image'] = left_col_img
+        
+        # Paste cached image onto main canvas
+        img.paste(left_col_img, (0, 0))
     
     # Draw vertical border between left and right columns
     draw.line([(left_col_width, 0), (left_col_width, 480)], fill='black', width=2)
-    
-    # Draw horizontal border splitting left column in half
-    draw.line([(0, 240), (left_col_width, 240)], fill='black', width=2)
-    
-    # ----- TOP-LEFT: Weather Section (250x240) -----
-    weather_y_start = 60
-    
-    # Temperature (centered)
-    temp_c = weather_data.get('temp_c', '--')
-    temp_text = f"{temp_c}°C"
-    temp_bbox = draw.textbbox((0, 0), temp_text, font=font_xlarge)
-    temp_width = temp_bbox[2] - temp_bbox[0]
-    draw.text((left_col_width // 2 - temp_width // 2, weather_y_start), 
-              temp_text, fill='black', font=font_xlarge)
-    
-    # Temperature F (centered, below)
-    temp_f = weather_data.get('temp_f', '--')
-    temp_f_text = f"({temp_f}°F)"
-    temp_f_bbox = draw.textbbox((0, 0), temp_f_text, font=font_small)
-    temp_f_width = temp_f_bbox[2] - temp_f_bbox[0]
-    draw.text((left_col_width // 2 - temp_f_width // 2, weather_y_start + 50), 
-              temp_f_text, fill=(102, 102, 102), font=font_small)
-    
-    # Condition (centered)
-    condition = weather_data.get('condition', 'N/A')
-    cond_bbox = draw.textbbox((0, 0), condition, font=font_small)
-    cond_width = cond_bbox[2] - cond_bbox[0]
-    draw.text((left_col_width // 2 - cond_width // 2, weather_y_start + 80), 
-              condition, fill=(102, 102, 102), font=font_small)
-    
-    # High/Low (centered)
-    high_c = weather_data.get('high_c', '--')
-    low_c = weather_data.get('low_c', '--')
-    hilo_text = f"H: {high_c}° L: {low_c}°"
-    hilo_bbox = draw.textbbox((0, 0), hilo_text, font=font_xsmall)
-    hilo_width = hilo_bbox[2] - hilo_bbox[0]
-    draw.text((left_col_width // 2 - hilo_width // 2, weather_y_start + 110), 
-              hilo_text, fill=(51, 51, 51), font=font_xsmall)
-    
-    # ----- BOTTOM-LEFT: Custom Note Section (250x240) -----
-    if custom_note:
-        # Word wrap the note to fit in 230px width (with 10px padding on each side)
-        note_lines = []
-        words = custom_note.split()
-        current_line = ""
-        
-        for word in words:
-            test_line = current_line + " " + word if current_line else word
-            bbox = draw.textbbox((0, 0), test_line, font=font_small)
-            if bbox[2] - bbox[0] <= 230:  # Max width 230px
-                current_line = test_line
-            else:
-                if current_line:
-                    note_lines.append(current_line)
-                current_line = word
-        
-        if current_line:
-            note_lines.append(current_line)
-        
-        # Center the text block vertically
-        total_height = len(note_lines) * 22  # ~22px per line
-        note_y_start = 240 + (240 - total_height) // 2
-        
-        for i, line in enumerate(note_lines[:6]):  # Max 6 lines
-            bbox = draw.textbbox((0, 0), line, font=font_small)
-            line_width = bbox[2] - bbox[0]
-            draw.text((left_col_width // 2 - line_width // 2, note_y_start + i * 22), 
-                     line, fill='black', font=font_small)
     
     # ===== RIGHT COLUMN (550px wide) =====
     right_col_x = left_col_width + 10  # 10px padding
@@ -1741,11 +1768,6 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
             min_width = min_bbox[2] - min_bbox[0]
             min_x = 765 - min_width
             draw.text((min_x, y_pos - 2), minutes, fill='black', font=font_large)
-            
-            # Row bottom border (light gray)
-            if i < len(arrivals) - 1:  # Don't draw on last row
-                draw.line([(right_col_x, y_pos + row_height - 5), 
-                          (795, y_pos + row_height - 5)], fill=(224, 224, 224), width=1)
     
     else:
         # No trains message
