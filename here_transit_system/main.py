@@ -1476,6 +1476,10 @@ async def render_display_alt(display_id: str):
     Generates a PNG image directly using PIL without HTML/browser rendering.
     Returns an 800x480 PNG image.
     """
+    import time
+    start_time = time.time()
+    print(f"\n[SERVER] Render request for {display_id} at {datetime.now(EASTERN_TZ).strftime('%H:%M:%S.%f')[:-3]}")
+    
     if not PILLOW_AVAILABLE:
         raise HTTPException(
             status_code=503,
@@ -1483,7 +1487,9 @@ async def render_display_alt(display_id: str):
         )
     
     # Load user config
+    config_start = time.time()
     config = load_user_config(display_id)
+    print(f"  → Config load: {(time.time() - config_start)*1000:.1f}ms")
     if not config:
         raise HTTPException(
             status_code=404,
@@ -1497,6 +1503,7 @@ async def render_display_alt(display_id: str):
     selected_lines = config.get('selected_lines', [])
     
     # Fetch arrivals (same logic as display_page)
+    fetch_start = time.time()
     if gtfs_id in STATION_COMPLEXES:
         complex_info = STATION_COMPLEXES[gtfs_id]
         all_arrivals = []
@@ -1507,11 +1514,13 @@ async def render_display_alt(display_id: str):
                 continue
             
             try:
+                sub_start = time.time()
                 api_response = await fetch_departures(here_id)
                 arrivals = transform_arrivals(api_response)
                 all_arrivals.extend(arrivals)
+                print(f"    • {sub_gtfs_id}: {(time.time() - sub_start)*1000:.0f}ms")
             except Exception as e:
-                print(f"Warning: Failed to fetch {sub_gtfs_id}: {e}")
+                print(f"    ✗ {sub_gtfs_id}: {e}")
                 continue
         
         # Filter by time window
@@ -1525,6 +1534,7 @@ async def render_display_alt(display_id: str):
         filtered.sort(key=lambda x: x['min'])
         arrivals = filtered[:MAX_ARRIVALS]
         station_name = complex_info['name']
+        print(f"  → Fetch arrivals: {(time.time() - fetch_start)*1000:.0f}ms ({len(all_arrivals)} total, {len(arrivals)} filtered)")
         
     else:
         # Single station
@@ -1540,13 +1550,17 @@ async def render_display_alt(display_id: str):
         
         try:
             # Get HERE API data
+            here_start = time.time()
             api_response = await fetch_departures(here_id)
             here_arrivals = transform_arrivals(api_response)
+            print(f"    • HERE API: {(time.time() - here_start)*1000:.0f}ms ({len(here_arrivals)} arrivals)")
             
             # Get MTA GTFS data if this is an MTA station
             mta_arrivals = []
             if agency == 'MTA' and MTA_FEED_AVAILABLE:
+                mta_start = time.time()
                 mta_arrivals = get_mta_arrivals(gtfs_id)
+                print(f"    • MTA GTFS: {(time.time() - mta_start)*1000:.0f}ms ({len(mta_arrivals)} arrivals)")
             
             # Combine arrivals
             all_arrivals = here_arrivals + mta_arrivals
@@ -1561,6 +1575,7 @@ async def render_display_alt(display_id: str):
             
             filtered.sort(key=lambda x: x['min'])
             arrivals = filtered[:MAX_ARRIVALS]
+            print(f"  → Fetch arrivals: {(time.time() - fetch_start)*1000:.0f}ms ({len(all_arrivals)} total, {len(arrivals)} filtered)")
             
         except Exception as e:
             raise HTTPException(
@@ -1578,20 +1593,28 @@ async def render_display_alt(display_id: str):
     
     # Generate image using Pillow
     try:
+        draw_start = time.time()
         img = draw_transit_display(
             station_name=station_name,
             arrivals=arrivals,
             weather_data=weather_data,
             custom_note=config.get('custom_note', '')
         )
+        print(f"  → Draw image: {(time.time() - draw_start)*1000:.1f}ms")
         
         # Convert to bytes (compress_level=1 for 3-5x faster encoding)
+        encode_start = time.time()
         img_byte_arr = BytesIO()
         img.save(img_byte_arr, format='PNG', compress_level=1)
         img_byte_arr.seek(0)
+        img_size = len(img_byte_arr.getvalue())
+        print(f"  → PNG encode: {(time.time() - encode_start)*1000:.1f}ms ({img_size/1024:.1f}KB)")
         
         # Explicit cleanup (immediate memory release)
         img.close()
+        
+        total_time = time.time() - start_time
+        print(f"✓ Total server time: {total_time*1000:.0f}ms ({total_time:.2f}s)\n")
         
         return StreamingResponse(
             img_byte_arr,

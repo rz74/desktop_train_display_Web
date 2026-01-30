@@ -46,9 +46,17 @@ def main():
 
                 # INCREASED TIMEOUT: Give the server 90 seconds to respond
 
-                print(f"Requesting update... {time.ctime()}")
+                print(f"\n[{time.ctime()}] Requesting update...")
 
-                response = requests.get(TARGET_URL, timeout=90) 
+                request_start = time.time()
+
+                
+
+                response = requests.get(TARGET_URL, timeout=90)
+
+                request_end = time.time()
+
+                print(f"  → HTTP request: {(request_end - request_start)*1000:.0f}ms")
 
                 
 
@@ -56,15 +64,38 @@ def main():
 
                     # Direct buffer creation (reduces memory usage)
 
+                    image_start = time.time()
+
                     img_data = response.content
+
+                    print(f"  → Image size: {len(img_data)/1024:.1f}KB")
+
+                    
 
                     Himage = Image.open(io.BytesIO(img_data))
 
+                    image_end = time.time()
+
+                    print(f"  → Image decode: {(image_end - image_start)*1000:.0f}ms")
+
+                    
+
+                    display_start = time.time()
+
                     epd.display(epd.getbuffer(Himage))
+
+                    display_end = time.time()
+
+                    print(f"  → Display update: {(display_end - display_start)*1000:.0f}ms")
+
+                    
 
                     Himage.close()  # Explicit cleanup
 
-                    print("Update Success.")
+                    total_time = display_end - request_start
+
+                    print(f"✓ Total: {total_time*1000:.0f}ms ({total_time:.2f}s)")
+
 
                 else:
 
