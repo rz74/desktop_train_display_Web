@@ -54,11 +54,15 @@ def main():
 
                 if response.status_code == 200:
 
-                    Himage = Image.open(io.BytesIO(response.content)).convert('L')
+                    # Direct buffer creation (reduces memory usage)
 
-                    Himage = Himage.resize((800, 480))
+                    img_data = response.content
+
+                    Himage = Image.open(io.BytesIO(img_data))
 
                     epd.display(epd.getbuffer(Himage))
+
+                    Himage.close()  # Explicit cleanup
 
                     print("Update Success.")
 

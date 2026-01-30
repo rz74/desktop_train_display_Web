@@ -97,6 +97,9 @@ LEFT_COL_CACHE = {
 USER_CONFIG_CACHE = {}
 USER_CONFIG_CACHE_TIME = {}
 
+# Global httpx client for connection pooling (reduces overhead)
+HTTP_CLIENT = None
+
 # Enable Playwright-based screenshot rendering (resource intensive)
 # Set to True if you need /render/{display_id} endpoint for HTML rendering
 # Set to False to use only /render_alt/{display_id} (Pillow-based rendering)
@@ -429,9 +432,13 @@ async def fetch_nyc_weather():
             'units': 'metric'  # Get temperature in Celsius
         }
         
-        async with httpx.AsyncClient() as client:
-            response = await client.get(WEATHER_URL, params=params, timeout=10.0)
+        if HTTP_CLIENT:
+            response = await HTTP_CLIENT.get(WEATHER_URL, params=params)
             response.raise_for_status()
+        else:
+            async with httpx.AsyncClient(timeout=10.0) as client:
+                response = await client.get(WEATHER_URL, params=params)
+                response.raise_for_status()
             data = response.json()
             
             # Extract weather information from One Call API 3.0 response
@@ -501,7 +508,10 @@ async def weather_update_loop():
 @app.on_event("startup")
 async def startup_event():
     """Initialize browser and start weather updates on startup."""
-    global weather_task
+    global weather_task, HTTP_CLIENT
+    
+    # Initialize global HTTP client with connection pooling
+    HTTP_CLIENT = httpx.AsyncClient(timeout=30.0, limits=httpx.Limits(max_keepalive_connections=5, max_connections=10))
     
     # Load fonts once at startup (Pi optimization)
     if PILLOW_AVAILABLE:
@@ -521,13 +531,15 @@ async def startup_event():
 @app.on_event("shutdown")
 async def shutdown_event():
     """Close browser and stop weather updates on shutdown."""
-    global weather_task
+    global weather_task, HTTP_CLIENT
     if weather_task:
         weather_task.cancel()
         try:
             await weather_task
         except asyncio.CancelledError:
             pass
+    if HTTP_CLIENT:
+        await HTTP_CLIENT.aclose()
     await browser_manager.close()
 
 
@@ -630,10 +642,15 @@ async def fetch_departures(here_station_id: str) -> dict:
         'lang': 'en-US'
     }
     
-    async with httpx.AsyncClient(timeout=30.0) as client:
-        response = await client.get(DEPARTURES_URL, params=params)
+    if HTTP_CLIENT:
+        response = await HTTP_CLIENT.get(DEPARTURES_URL, params=params)
         response.raise_for_status()
         return response.json()
+    else:
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            response = await client.get(DEPARTURES_URL, params=params)
+            response.raise_for_status()
+            return response.json()
 
 
 def parse_iso_time(iso_string: str) -> int:
@@ -1568,10 +1585,13 @@ async def render_display_alt(display_id: str):
             custom_note=config.get('custom_note', '')
         )
         
-        # Convert to bytes (optimize=False for faster encoding on Pi)
+        # Convert to bytes (compress_level=1 for 3-5x faster encoding)
         img_byte_arr = BytesIO()
-        img.save(img_byte_arr, format='PNG', optimize=False)
+        img.save(img_byte_arr, format='PNG', compress_level=1)
         img_byte_arr.seek(0)
+        
+        # Explicit cleanup (immediate memory release)
+        img.close()
         
         return StreamingResponse(
             img_byte_arr,
@@ -1593,13 +1613,13 @@ async def render_display_alt(display_id: str):
 def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, custom_note: str = '') -> Image.Image:
     """
     Draw the transit display using Pillow matching the original HTML layout.
-    Returns a PIL Image object (800x480, white background).
+    Returns a PIL Image object (800x480, grayscale for e-ink optimization).
     Layout: 2-column grid - Left (250px): Weather + Note | Right (550px): Transit
     """
     global LEFT_COL_CACHE
     
-    # Create canvas - WHITE background to match HTML
-    img = Image.new('RGB', (800, 480), color='white')
+    # Create canvas - GRAYSCALE for e-ink optimization (255=white, 0=black)
+    img = Image.new('L', (800, 480), color=255)
     draw = ImageDraw.Draw(img)
     
     # Use cached fonts (loaded once at startup for Pi performance)
@@ -1639,11 +1659,11 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
         img.paste(LEFT_COL_CACHE['image'], (0, 0))
     else:
         # Render new left column and cache it
-        left_col_img = Image.new('RGB', (left_col_width, 480), color='white')
+        left_col_img = Image.new('L', (left_col_width, 480), color=255)
         left_draw = ImageDraw.Draw(left_col_img)
         
         # Draw horizontal border splitting left column in half
-        left_draw.line([(0, 240), (left_col_width, 240)], fill='black', width=2)
+        left_draw.line([(0, 240), (left_col_width, 240)], fill=0, width=2)
         
         # ----- TOP-LEFT: Weather Section (250x240) -----
         weather_y_start = 60
@@ -1653,27 +1673,27 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
         temp_bbox = left_draw.textbbox((0, 0), temp_text, font=font_xlarge)
         temp_width = temp_bbox[2] - temp_bbox[0]
         left_draw.text((left_col_width // 2 - temp_width // 2, weather_y_start), 
-                  temp_text, fill='black', font=font_xlarge)
+                  temp_text, fill=0, font=font_xlarge)
         
         # Temperature F (centered, below)
         temp_f_text = f"({temp_f}°F)"
         temp_f_bbox = left_draw.textbbox((0, 0), temp_f_text, font=font_small)
         temp_f_width = temp_f_bbox[2] - temp_f_bbox[0]
         left_draw.text((left_col_width // 2 - temp_f_width // 2, weather_y_start + 50), 
-                  temp_f_text, fill=(102, 102, 102), font=font_small)
+                  temp_f_text, fill=102, font=font_small)
         
         # Condition (centered)
         cond_bbox = left_draw.textbbox((0, 0), condition, font=font_small)
         cond_width = cond_bbox[2] - cond_bbox[0]
         left_draw.text((left_col_width // 2 - cond_width // 2, weather_y_start + 80), 
-                  condition, fill=(102, 102, 102), font=font_small)
+                  condition, fill=102, font=font_small)
         
         # High/Low (centered)
         hilo_text = f"H: {high_c}° L: {low_c}°"
         hilo_bbox = left_draw.textbbox((0, 0), hilo_text, font=font_xsmall)
         hilo_width = hilo_bbox[2] - hilo_bbox[0]
         left_draw.text((left_col_width // 2 - hilo_width // 2, weather_y_start + 110), 
-                  hilo_text, fill=(51, 51, 51), font=font_xsmall)
+                  hilo_text, fill=51, font=font_xsmall)
         
         # ----- BOTTOM-LEFT: Custom Note Section (250x240) -----
         if custom_note:
@@ -1703,7 +1723,7 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
                 bbox = left_draw.textbbox((0, 0), line, font=font_small)
                 line_width = bbox[2] - bbox[0]
                 left_draw.text((left_col_width // 2 - line_width // 2, note_y_start + i * 22), 
-                         line, fill='black', font=font_small)
+                         line, fill=0, font=font_small)
         
         # Cache the rendered left column
         LEFT_COL_CACHE['data_hash'] = data_hash
@@ -1713,7 +1733,7 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
         img.paste(left_col_img, (0, 0))
     
     # Draw vertical border between left and right columns
-    draw.line([(left_col_width, 0), (left_col_width, 480)], fill='black', width=2)
+    draw.line([(left_col_width, 0), (left_col_width, 480)], fill=0, width=2)
     
     # ===== RIGHT COLUMN (550px wide) =====
     right_col_x = left_col_width + 10  # 10px padding
@@ -1722,23 +1742,23 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
     header_y = 10
     
     # Station name (left)
-    draw.text((right_col_x, header_y), station_name, fill='black', font=font_medium)
+    draw.text((right_col_x, header_y), station_name, fill=0, font=font_medium)
     
     # Current time (right)
     current_time = datetime.now(EASTERN_TZ).strftime('%I:%M %p')
     time_bbox = draw.textbbox((0, 0), current_time, font=font_xsmall)
     time_width = time_bbox[2] - time_bbox[0]
-    draw.text((790 - time_width, header_y), current_time, fill='black', font=font_xsmall)
+    draw.text((790 - time_width, header_y), current_time, fill=0, font=font_xsmall)
     
     # Last refresh (right, below time)
     last_refresh = f"Last: {current_time}"
     last_bbox = draw.textbbox((0, 0), last_refresh, font=font_xsmall)
     last_width = last_bbox[2] - last_bbox[0]
-    draw.text((790 - last_width, header_y + 18), last_refresh, fill=(102, 102, 102), font=font_xsmall)
+    draw.text((790 - last_width, header_y + 18), last_refresh, fill=102, font=font_xsmall)
     
     # Header bottom border
     header_bottom = header_y + 42
-    draw.line([(right_col_x, header_bottom), (795, header_bottom)], fill='black', width=2)
+    draw.line([(right_col_x, header_bottom), (795, header_bottom)], fill=0, width=2)
     
     # ----- Transit Table -----
     table_y = header_bottom + 8
@@ -1755,19 +1775,19 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
             display_line = PATH_DISPLAY_NAMES.get(line, line)
             line_x = right_col_x + 15
             line_font = font_tiny if line in PATH_ROUTES else font_medium
-            draw.text((line_x, y_pos + (3 if line in PATH_ROUTES else 0)), display_line, fill='black', font=line_font)
+            draw.text((line_x, y_pos + (3 if line in PATH_ROUTES else 0)), display_line, fill=0, font=line_font)
             
             # Destination (65% width = ~357px)
             dest = arrival['dest'][:35]  # Truncate long destinations
             dest_x = right_col_x + 80
-            draw.text((dest_x, y_pos), dest, fill='black', font=font_xsmall)
+            draw.text((dest_x, y_pos), dest, fill=0, font=font_xsmall)
             
             # Minutes (23% width = ~126px, right-aligned)
             minutes = str(arrival['min'])
             min_bbox = draw.textbbox((0, 0), minutes, font=font_large)
             min_width = min_bbox[2] - min_bbox[0]
             min_x = 765 - min_width
-            draw.text((min_x, y_pos - 2), minutes, fill='black', font=font_large)
+            draw.text((min_x, y_pos - 2), minutes, fill=0, font=font_large)
     
     else:
         # No trains message
@@ -1775,7 +1795,7 @@ def draw_transit_display(station_name: str, arrivals: list, weather_data: dict, 
         bbox = draw.textbbox((0, 0), no_trains_text, font=font_medium)
         text_width = bbox[2] - bbox[0]
         draw.text(((left_col_width + 800) // 2 - text_width // 2, 240), 
-                 no_trains_text, fill='black', font=font_medium)
+                 no_trains_text, fill=0, font=font_medium)
     
     return img
 
